@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+.body{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.index {
+    background-color: #D6C6FB;
+}
+
+.main-index{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 1440px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.container .login {
+    justify-content: center;
+    align-items: center;
+    margin-left: 15%;
+    margin-bottom: 10%;
+}
+
+.container .login img {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.container .login h1 {
+    font-size: 80px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #673781;
+}
+
+.formulario {
+    width: 100%;
+}
+
+.formulario h3 {
+    font-size: 25px;
+    font-weight: 600;
+    color: #000;
+    margin-top: 8px;
+    text-align: left;
+}
+
+.formulario input {
+    width: 350px;
+    height: 40px;
+    margin-bottom: 15px;
+    margin-top: -8px;
+    padding: 5px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+
+.botao-sair, .botao-entrar {
+    width: 120px;
+    height: 40px;
+    font-size: 18px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.botao-sair {
+    background-color: #f2f2f2;
+    color: #000;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    margin-right: 75px;
+}
+
+.botao-entrar {
+    background-color: #673781;
+    color: #fff;
+    border: 2px solid #5a317b;
+    border-radius: 10px;
+}
+
+/* Hover effects for buttons */
+.botao-sair:hover {
+    background-color: #e0e0e0;
+}
+
+.botao-entrar:hover {
+    background-color: #5a317b;
+}
+
+@media (max-width: 1418px) {
+    .container .login{
+        margin-right: 500px;
+    }
+}
+@media (max-width: 960px) {
+  .container{
+    flex-direction: column;
+    margin: 0px 0;
+  }
+  .container .login{
+    justify-content: center;
+    margin-right: 130px;
+  }
+}
