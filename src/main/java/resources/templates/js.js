@@ -10,7 +10,9 @@ function validarUsuario(){
 }else{
     alert("Loguin realizado com sucesso!");
     window.location.href = "./menu.html";
-} 
-   
- 
+}  
+
+}
+function sair(){
+    window.location.href = "./logout.html";
 }
