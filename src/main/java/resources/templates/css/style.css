@@ -177,7 +177,7 @@ margin-bottom: 5px;
 
 .formulario-produtos-dois {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column; /* Garante que os itens dentro dessa div fiquem um embaixo do outro */
 }
 .formulario-produtos-um{
     padding: 15px;
