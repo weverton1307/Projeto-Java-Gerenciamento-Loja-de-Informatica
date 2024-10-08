@@ -122,7 +122,7 @@ function salvarProduto() {
 
 }
 function validarNumero(input) {
-    const valor = input.value;    n 
+    const valor = input.value; 
     if (!/^\d*\.?\d*$/.test(valor)) {
         alert('Por favor, insira apenas números.');
         input.value = "";
@@ -135,5 +135,9 @@ function alterarProduto(){
 function buscarProduto(){
     alert("Busca realizada com sucesso!"); 
 }
+function voltarPagina(){
+    window.location.href = "./menu.html";
+}
 
 //Fim produtos
+

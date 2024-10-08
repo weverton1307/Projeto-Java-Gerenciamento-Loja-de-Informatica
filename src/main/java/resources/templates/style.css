@@ -281,3 +281,11 @@ margin-bottom: 5px;
     margin-top: -8px;
 }
 /* Fim Produtos*/
+/* Funcionários */
+.container-funcionarios{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+/* Fim Funcionários */
