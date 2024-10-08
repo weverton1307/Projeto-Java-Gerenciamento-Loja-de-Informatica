@@ -31,23 +31,25 @@
             <!--container-funcionarios-->
             <div class="container-Funcionario">
                 <div class="formulario-funcionario-um">
-                    <form>
+                    <form onsubmit="return salvarFuncionario()">
                         <label>Nome:</label>
                         <input id="nomeFuncionario" type="text" required><br>
                         <label>Endereço:</label>
                         <input id="endereço" type="text" required><br>
                         <label>CPF:</label>
-                        <input id="cpf" type="text" required><br>
+                        <input id="cpf" type="text" required placeholder="xxx.xxx.xxx-xx"><br>
                         <label>Telefone:</label>
-                        <input id="telefone" type="text" required><br>
+                        <input id="telefone" type="text" required placeholder="(xx) xxxx-xxxx"><br>
                         <label>Email:</label>
-                        <input id="email" type="text" required><br>
+                        <input id="email" type="email" required placeholder="exemplo@dominio.com"><br>
+
+
                     </form>
 
                     <div class="botoes-formulario">
                         <button type="button" class="form-control voltar" onclick="voltarPagina()" id="voltar" >Voltar</button>
-                        <button type="button" class="form-control" onclick="salvarProduto()" id="salvar">Salvar</button>
-                        <button type="submit" class="form-control" onclick="alterarProduto()" id="alterar">Alterar</button>
+                        <button type="button" class="form-control" onclick="salvarFuncionario()" id="salvar">Salvar</button>
+                        <button type="submit" class="form-control" onclick="alterarFuncionario()" id="alterar">Alterar</button>
                         <button type="submit" class="form-control" onclick="limparCamposProduto()">Limpar</button>
                     </div>
                 </div>

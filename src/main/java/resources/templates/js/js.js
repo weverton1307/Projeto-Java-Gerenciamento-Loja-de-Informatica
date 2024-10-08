@@ -186,5 +186,67 @@ function atualizarTabela() {
         tabelaFuncionario.appendChild(row);
     });
 }
+function limparCamposFuncionario() {
+    document.getElementById('nomeFuncionario').value = '';
+    document.getElementById('endereço').value = '';
+    document.getElementById('cpf').value = '';
+    document.getElementById('telefone').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('cargo').value = 'Selecione um item';
+    document.getElementById('nomeUsuario').value = '';
+    document.getElementById('senha').value = '';
+}
 
+
+function salvarFuncionario() {
+    if (!validarCampos()) {
+        return false;
+    }
+    const nomeFuncionario = document.getElementById('nomeFuncionario').value.trim();
+    const EnderecoFuncionario = document.getElementById('endereço').value.trim();
+    const cpfFuncionario = document.getElementById('cpf').value.trim();
+    const telefoneFuncionario = document.getElementById('telefone').value.trim();
+    const emailFuncionario = document.getElementById('email').value.trim();
+    const cargoFuncionario = document.getElementById('cargo').value.trim();
+    const usuarioFuncionario = document.getElementById('nomeUsuario').value.trim();
+    const senhaFuncionario = document.getElementById('senha').value.trim();
+    const tipoUsuarioFuncionario = cargoFuncionario;
+
+    if (!nomeFuncionario || !EnderecoFuncionario || !cpfFuncionario || !telefoneFuncionario || !emailFuncionario || cargoFuncionario === "Selecione um item" ||
+        !usuarioFuncionario || !senhaFuncionario) {
+        alert('Por favor, preencha todos os campos obrigatórios.');
+        return false;
+    } else {
+        alert("Funcionário cadastrado com sucesso!");
+        limparCamposFuncionario();
+    }
+    
+    return true;
+}
+//validar campos
+function validarCampos() {
+    const cpf = document.getElementById('cpf').value;
+    const telefone = document.getElementById('telefone').value;
+    const email = document.getElementById('email').value;
+
+    const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+    if (!cpfRegex.test(cpf)) {
+        alert('Por favor, insira o CPF no formato: xxx.xxx.xxx-xx');
+        return false;
+    }
+
+    const telefoneRegex = /^\(\d{2}\)\d{4}-\d{4}$/;
+    if (!telefoneRegex.test(telefone)) {
+        alert('Por favor, insira o telefone no formato: (xx)xxxx-xxxx');
+        return false;
+    }
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+        alert('Por favor, insira um email válido no formato: exemplo@dominio.com');
+        return false;
+    }
+
+    return true;
+}
 //Fim funcionários
