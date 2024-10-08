@@ -128,12 +128,78 @@ function validarNumero(input) {
         input.value = "";
     }
 }
+//função para atualizar produto cadastrado
 function alterarProduto(){
     alert("Atualização realizada com sucesso!");
     limparCamposProduto();
-}
+}//função para buscar produto cadastrado
 function buscarProduto(){
-    alert("Busca realizada com sucesso!"); 
+    if (document.getElementById('radio1').checked) {
+        const campoPesquisa = document.getElementById("campo").value;
+    
+        if (campoPesquisa === "") {
+            alert("Por favor, digite o código do produto");
+        } 
+        else if (!/^\d+$/.test(campoPesquisa)) { 
+            alert("Por favor, digite um número inteiro válido.");
+            document.getElementById("campo").value = "";
+        } 
+        else {
+            alert("Busca realizada com sucesso!"); 
+            document.getElementById("campo").value = "";
+        }
+    } else if (document.getElementById('radio2').checked) { 
+        const campoPesquisa = document.getElementById("campo").value;
+        if (campoPesquisa === "") {
+            alert("Por favor, digite o nome do produto");
+        }else {
+            alert("Busca realizada com sucesso!"); 
+            document.getElementById("campo").value = "";
+        }
+        document.getElementById("campo").value = "";
+    } else if (document.getElementById('radio3').checked) { 
+        const campoPesquisa = document.getElementById("campo").value;
+        if (campoPesquisa === "") {
+            alert("Por favor, digite o modelo do produto");
+        }else {
+            alert("Busca realizada com sucesso!"); 
+            document.getElementById("campo").value = "";
+        }
+        document.getElementById("campo").value = "";
+    } else if (document.getElementById('radio4').checked) {
+        const campoPesquisa = document.getElementById("campo").value;
+        if (campoPesquisa === "") {
+            alert("Por favor, digite o fabricante do produto");
+        }else {
+            alert("Busca realizada com sucesso!"); 
+            document.getElementById("campo").value = "";
+        }
+        document.getElementById("campo").value = "";
+    } else if (document.getElementById('radio5').checked) {
+        alert("Busca realizada com sucesso!");
+        atualizarTabelaStatus("Disponível");
+        return;
+    } else if (document.getElementById('radio6').checked) {
+        alert("Busca realizada com sucesso!");
+        atualizarTabelaDevolvido('Devolvido');
+        return;
+    } else if (document.getElementById('radio7').checked) {
+        const categoria = document.getElementById('item-categoria').value;
+        
+        // Validação: Verifica se o valor da categoria é válido
+        if (categoria === "Selecione uma categoria" || !categoria) {
+            alert('Por favor, selecione uma categoria');
+            return; // Impede a continuação da busca se a categoria não foi selecionada
+        }
+        
+        alert("Busca realizada com sucesso!");
+        atualizarTabelaCategoria(categoria);
+        return;
+    } else {
+        alert('Selecione um critério de pesquisa.');
+        return;
+    }
+    
 }
 function voltarPagina(){
     window.location.href = "./menu.html";
@@ -223,6 +289,28 @@ function salvarFuncionario() {
     
     return true;
 }
+//função para atualizar funcionário cadastrado
+function alterarFuncionario(){
+    alert("Atualização realizada com sucesso!");
+    limparCamposProduto();
+}
+//função apara buscar funcionário cadastrado
+function buscarFuncionario(){
+    const codigo =document.getElementById("pesquisar").value;
+    if(codigo == "" ){
+        alert("Por favor, preenche o campo pesquisar com o código  do funcionário");
+    }else if (!/^\d+$/.test(codigo)) { 
+        alert("Por favor, digite um número inteiro válido.");
+        document.getElementById("pesquisar").value = "";
+    }else {
+        alert("Busca realizada com sucesso!"); 
+        document.getElementById("pesquisar").value = "";
+    }  
+}
+//função para atualizar funcionário cadastrado
+function alterarFuncionario(){
+    alert("Atualização realizada com sucesso!");
+}
 //validar campos
 function validarCampos() {
     const cpf = document.getElementById('cpf').value;
@@ -250,3 +338,70 @@ function validarCampos() {
     return true;
 }
 //Fim funcionários
+//Clientes
+function atualizarTabelaClientes() {
+    const cliente1 = {
+        id: "1",
+        nomeCliente: "Samara dos Santos",
+        endereço:  "Santa maria quadra 314 lote 3",
+        cpf: "333.443.554-21",
+        telefone: "(61)9458-2254",
+        email: "samara@gmail.com",
+        totalCompras: 5
+    };
+    
+    const cliente2 = {
+        id: "2",
+        nomeCliente: "Paulo Ferreira Costa",
+        endereço:  "Gama setor sul quadra 13 lote 3",
+        cpf: "112.221.221-76",
+        telefone: "(61)3323-6767",
+        email: "paulo@gmail.com",
+        totalCompras: 2
+    };
+    
+    const clientes = [cliente1, cliente2];
+    const tabelaClientes = document.getElementById('tabela-cliente');
+    tabelaClientes.innerHTML = '';
+
+    clientes.forEach(cliente => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${cliente.id}</td>
+            <td>${cliente.nomeCliente}</td>
+            <td>${cliente.endereço}</td>
+            <td>${cliente.email}</td>
+            <td>${cliente.telefone}</td>
+            <td>${cliente.cpf}</td>
+            <td>${cliente.totalCompras}</td>
+        `;
+        tabelaClientes.appendChild(row);
+    });
+}
+//função para cadastrar clientes
+function salvarCliente(){
+    const nomeFuncionario = document.getElementById('nomeCliente').value.trim();
+    const EnderecoFuncionario = document.getElementById('endereçoCliente').value.trim();
+    const cpfFuncionario = document.getElementById('cpfCliente').value.trim();
+    const telefoneFuncionario = document.getElementById('telefoneCliente').value.trim();
+    const emailFuncionario = document.getElementById('emailCliente').value.trim();
+    alert("Funcionário cadastrado com sucesso!");
+    limparCamposFuncionario();
+    
+}
+function buscarCliente(){
+    alert("Busca realizada com sucesso!");
+    limparCamposFuncionario(); 
+}
+function alterarCliente(){
+    alert("Atualização realizada com sucesso!");
+    limparCamposFuncionario();
+}
+function limparCamposCliente(){
+    document.getElementById('nomeCliente').value = '';
+    document.getElementById('endereçoCliente').value = '';
+    document.getElementById('cpfCliente').value = '';
+    document.getElementById('telefoneCliente').value = '';
+    document.getElementById('emailCliente').value = '';
+}
+//Fim clientes

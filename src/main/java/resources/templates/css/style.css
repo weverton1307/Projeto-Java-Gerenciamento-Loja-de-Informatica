@@ -340,3 +340,38 @@ margin-bottom: 5px;
 #email{
     width: 230px;
 }
+/*Fim funcionários*/
+/*clientes*/
+.container-cliente{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.formulario-cliente,
+.pesquisar-cliente{
+    padding: 30px;
+    padding-bottom: 80px;
+}
+.formulario-cliente form input,
+.formulario-cliente form label{
+margin: 10px;
+}
+.pesquisar-cliente div{
+    margin-bottom: -50px;
+}
+#botao-pesquisar-cliente{
+    margin-top: 65px;
+}
+#nomeCliente{
+    width: 210px;
+}
+#cpfCliente{
+    width: 225px;
+}
+#telefoneCliente{
+    width: 193px;
+}
+#emailCliente{
+    width: 215px;
+}
+/*Fim clientes*/
