@@ -140,4 +140,51 @@ function voltarPagina(){
 }
 
 //Fim produtos
+//Funcionários
 
+// Função para atualizar a tabela
+function atualizarTabela() {
+    const funcionario1 = {
+        id: "1",
+        nomeFuncionario: "Maria Sousa Silva",
+        endereço:  "Gama setor leste quadra 7",
+        cpf: "456.125.451-41",
+        telefone: "(61)99141-9127",
+        email: "maria@gmail.com",
+        tipoUsuario: "Vendedor",
+        ultimoLogin: "07:10 12/10/2024"
+    };
+    
+    const funcionario2 = {
+        id: "2",
+        nomeFuncionario: "João Pereira Silva",
+        endereço:  "Gama setor Oeste quadra 12",
+        cpf: "455.212.777-74",
+        telefone: "(61)99177-9128",
+        email: "joao@gmail.com",
+        tipoUsuario: "Gerente",
+        ultimoLogin: "16:00 07/10/2024"
+    };
+    
+    const funcionarios = [funcionario1, funcionario2];
+    const tabelaFuncionario = document.getElementById('tabela-funcionario');
+    tabelaFuncionario.innerHTML = '';
+
+    funcionarios.forEach(funcionario => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${funcionario.id}</td>
+            <td>${funcionario.nomeFuncionario}</td>
+            <td>${funcionario.endereço}</td>
+            <td>${funcionario.email}</td>
+            <td>${funcionario.tipoUsuario}</td>
+            <td>${funcionario.telefone}</td>
+            <td>${funcionario.cpf}</td>
+            <td>${funcionario.tipoUsuario}</td>
+            <td>${funcionario.ultimoLogin}</td>
+        `;
+        tabelaFuncionario.appendChild(row);
+    });
+}
+
+//Fim funcionários

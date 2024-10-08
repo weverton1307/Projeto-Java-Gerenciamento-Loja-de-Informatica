@@ -281,3 +281,62 @@ margin-bottom: 5px;
     margin-top: -8px;
 }
 /* Fim Produtos*/
+/* Funcionário*/
+.container-Funcionario{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.formulario-funcionario-dois{
+    padding: 15px;
+}
+.formulario-funcionario-dois div{
+    margin: 10px;
+}
+.formulario-funcionario-dois {
+    display: flex;
+    flex-direction: column;
+}
+.formulario-funcionario-um{
+    padding: 15px;
+}
+.formulario-funcionario-um div{
+    margin: 10px;
+}
+.formulario-funcionario-um form label,
+.formulario-funcionario-um form input{
+    margin: 10px;
+}
+.formulario-funcionario-um form input{
+    width: 200px;
+}
+#senha{
+    margin-top: 15px;
+}
+#nomeUsuario{
+    margin-top: 10px;
+}
+#pesquisar{
+    margin-top: 60px;
+}
+#botao-funcionario-buscar{
+    margin-left: 83px;
+}
+#cargo{
+    margin-left: 80px;
+}
+#senha{
+    margin-left: 77px;
+}
+#nomeFuncionario{
+    width: 222px;
+}
+#cpf{
+    width: 240px;
+}
+#telefone{
+    width: 210px;
+}
+#email{
+    width: 230px;
+}
