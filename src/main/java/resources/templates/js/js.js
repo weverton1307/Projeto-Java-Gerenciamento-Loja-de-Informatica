@@ -378,19 +378,65 @@ function atualizarTabelaClientes() {
         tabelaClientes.appendChild(row);
     });
 }
+//validar campos
+function validarCamposCliente() {
+    const cpf = document.getElementById('cpfCliente').value;
+    const telefone = document.getElementById('telefoneCliente').value;
+    const email = document.getElementById('emailCliente').value;
+
+    const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+    if (!cpfRegex.test(cpf)) {
+        alert('Por favor, insira o CPF no formato: xxx.xxx.xxx-xx');
+        return false;
+    }
+
+    const telefoneRegex = /^\(\d{2}\)\d{4}-\d{4}$/;
+    if (!telefoneRegex.test(telefone)) {
+        alert('Por favor, insira o telefone no formato: (xx)xxxx-xxxx');
+        return false;
+    }
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+        alert('Por favor, insira um email válido no formato: exemplo@dominio.com');
+        return false;
+    }
+
+    return true;
+}
 //função para cadastrar clientes
 function salvarCliente(){
-    const nomeFuncionario = document.getElementById('nomeCliente').value.trim();
-    const EnderecoFuncionario = document.getElementById('endereçoCliente').value.trim();
-    const cpfFuncionario = document.getElementById('cpfCliente').value.trim();
-    const telefoneFuncionario = document.getElementById('telefoneCliente').value.trim();
-    const emailFuncionario = document.getElementById('emailCliente').value.trim();
-    alert("Funcionário cadastrado com sucesso!");
-    limparCamposFuncionario();
+    if (!validarCamposCliente()) {
+        return false;
+    }
+    const nomeCliente = document.getElementById('nomeCliente').value.trim();
+    const EnderecoCliente = document.getElementById('endereçoCliente').value.trim();
+    const cpfCliente = document.getElementById('cpfCliente').value.trim();
+    const telefoneCliente = document.getElementById('telefoneCliente').value.trim();
+    const emailCliente = document.getElementById('emailCliente').value.trim();
+    if (!nomeCliente || !EnderecoCliente || !cpfCliente || !telefoneCliente || !emailCliente) {
+        alert('Por favor, preencha todos os campos obrigatórios.');
+        return false;
+    } else {
+        alert("Cliente cadastrado com sucesso!");
+        limparCamposCliente();
+    }
+    
+    return true;
+    
     
 }
 function buscarCliente(){
-    alert("Busca realizada com sucesso!");
+    const codigo =document.getElementById("pesquisar").value;
+    if(codigo == "" ){
+        alert("Por favor, preenche o campo pesquisar com o código  do cliente");
+    }else if (!/^\d+$/.test(codigo)) { 
+        alert("Por favor, digite um número inteiro válido.");
+        document.getElementById("pesquisar").value = "";
+    }else {
+        alert("Busca realizada com sucesso!"); 
+        document.getElementById("pesquisar").value = "";
+    }  
     limparCamposFuncionario(); 
 }
 function alterarCliente(){

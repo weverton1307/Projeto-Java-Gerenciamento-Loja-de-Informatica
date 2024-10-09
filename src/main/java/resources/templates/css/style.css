@@ -350,7 +350,7 @@ margin-bottom: 5px;
 .formulario-cliente,
 .pesquisar-cliente{
     padding: 30px;
-    padding-bottom: 80px;
+    padding-bottom: 30px;
 }
 .formulario-cliente form input,
 .formulario-cliente form label{
@@ -373,5 +373,8 @@ margin: 10px;
 }
 #emailCliente{
     width: 215px;
+}
+.botoes-formulario{
+    margin-top: 30px;
 }
 /*Fim clientes*/
