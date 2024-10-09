@@ -177,7 +177,7 @@ margin-bottom: 5px;
 
 .formulario-produtos-dois {
     display: flex;
-    flex-direction: column; /* Garante que os itens dentro dessa div fiquem um embaixo do outro */
+    flex-direction: column; 
 }
 .formulario-produtos-um{
     padding: 15px;
@@ -378,3 +378,40 @@ margin: 10px;
     margin-top: 30px;
 }
 /*Fim clientes*/
+/*Devolução ou troca*/
+.container-devolucaoOuTroca{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding-bottom: 30px;
+}
+.formulario-devolucaoOuTroca,
+.pesquisar-devolucaoOuTroca{
+margin-top: 30px;
+}
+.radio-devolucaoOuTroca{
+    margin-left: 140px;
+}
+
+ .radio-devolucaoOuTroca .radio2{
+    margin-left: 42px;
+ }
+ .textoArea{
+    display: flex;
+    margin: 15px 50px;
+    
+ }
+ #motivo-devolucaoOuTroca{
+    width: 300px;
+    height: 150px;
+    margin-left: 4px;
+   
+ }
+ .textoArea label{
+    margin-left: 38px;
+ }
+ .data-devolucaoOuTroca{
+    margin-left: 105px;
+ }
+
+/*Fim Devolução ou troca*/

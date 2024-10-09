@@ -451,3 +451,58 @@ function limparCamposCliente(){
     document.getElementById('emailCliente').value = '';
 }
 //Fim clientes
+//Devolução ou Troca
+function atualizarTabelaDevolucaoOuTroca() {
+    const devolvido = {
+        id: "1",
+        codigoProduto: "3",
+        motivo: "O motivo é que o mouse está com o botão esquerdo sem funcionar",
+        tipo:  "Devolução",
+        data: "02/10/2024",
+    };
+    
+    const troca = {
+        id: "2",
+        codigoProduto: "10",
+        motivo: "O motivo é que o teclado está com o botão enter sem funcionar",
+        tipo:  "troca",
+        data: "03/10/2024",
+    };
+    
+    const devolvidos = [devolvido, troca];
+    const tabelaDevolvidos = document.getElementById('tabela-devolucaoOuTroca');
+    tabelaDevolvidos.innerHTML = '';
+
+    devolvidos.forEach(devolvido => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${devolvido.id}</td>
+            <td>${devolvido.codigoProduto}</td>
+            <td>${devolvido.motivo}</td>
+            <td>${devolvido.tipo}</td>
+            <td>${devolvido.data}</td>
+        `;
+        tabelaDevolvidos.appendChild(row);
+    });
+}
+function salvarDevolvido(){
+    alert("Salvado com sucesso!");
+    limparCamposDevolvido();
+}
+function alterarDevolvido(){
+    alert("Atualizado com sucesso!");
+    limparCamposDevolvido();
+}
+function excluirDevolvido(){
+    alert("Exclusão realizada com sucesso!");
+    limparCamposDevolvido();
+}
+function buscarDevolvido(){
+ alert("Busca realizada do sucesso!");
+}
+function limparCamposDevolvido(){
+    document.getElementById("codigo-devolucaoOuTroca").value = "";
+    document.getElementById("motivo-devolucaoOuTroca").value = "";
+    document.getElementById("data-devolucaoOuTroca").value = "";
+}
+//Fim Devolução ou Troca
