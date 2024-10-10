@@ -538,3 +538,108 @@ function limparCamposDevolvido(){
     document.getElementById("pesquisar-devolucaoOuTroca").value = "";
 }
 //Fim Devolução ou Troca
+//Registro de venda
+const produto4 = {
+    id: "1",
+    nomeProduto: "notebook",
+    valorCompra:  30000,
+    modelo: "XPS (15)",
+    notaFiscal: "nf243232",
+    dataAquisicao: "12/12/2023",
+    fabricante: "Dell",
+    descricaoTecnica: "Processado i5, memória ram 8gb ssd 250gb",
+    localArmazenamento: {
+        numeroPrateleira: "1",
+        numeroLocalPrateleira: "1"
+    },
+    categoria: {
+        nome: "Dispositivos computacionais"
+    },
+    statusProduto: "Disponível"
+};
+
+const produto3 = {
+    id: "2",
+    nomeProduto: "mouse",
+    valorCompra: 30,
+    modelo: "sem fio",
+    notaFiscal: "nf545645",
+    dataAquisicao: "10/10/2023",
+    fabricante: "positivo",
+    descricaoTecnica: "Mouse sem fio cor preta",
+    localArmazenamento: {
+        numeroPrateleira: "1",
+        numeroLocalPrateleira: "2"
+    },
+    categoria: {
+        nome: "Periférico"
+    },
+    statusProduto: "Disponível"
+};
+function limparCampoRegistroVenda() {
+    document.getElementById("cpfClienteVenda").value = "";
+    document.getElementById("codigoProduto-venda").value = "";
+    document.getElementById("quantidadeProduto-venda").value = "";
+    document.getElementById("metodo-pagamento").value = "selecione um item";
+    document.getElementById("funcionario-venda").value = "selecione um item";
+    document.getElementById("codigoProduto-venda").disabled = true;
+    document.getElementById("quantidadeProduto-venda").disabled = true;
+    document.getElementById("buscar-produto").disabled = true;
+    document.getElementById("cancelar-venda").disabled = true;
+    document.getElementById("finalizar-venda").disabled = true;
+    document.getElementById("Adicionar-venda").disabled = true;
+    document.getElementById("tabela-registro").innerHTML = "";
+}
+function gerarVenda(){
+    document.getElementById("codigoProduto-venda").disabled = false;
+     document.getElementById("quantidadeProduto-venda").disabled = false;
+    document.getElementById("buscar-produto").disabled = false;
+    document.getElementById("cancelar-venda").disabled = false;
+    
+}
+function buscarprodutosRegistroVenda(){
+    document.getElementById("h6").innerHTML = `
+    <h6>Nome do produto: Teclado</h6><br>
+    <h6>Valor: R$ 30,00 reais</h6><br>
+    <h6>Cliente: João da Silva</h6><br>
+`;
+document.getElementById("Adicionar-venda").disabled = false;
+}
+function adicionar() {
+    const produto = "Teclado";
+    const quantidade = document.getElementById("quantidadeProduto-venda").value;
+    const valor = 30;
+    const subTotal = valor * quantidade;
+
+    document.getElementById("venda-numero").innerHTML = '<h2 id="venda-numero">Venda: 1</h2>';
+
+    document.getElementById("itens-Registro").innerHTML = '<h2 id="itens-Registro">R$ ' + subTotal + ',00</h2>';
+
+    const tabelaRegistro = document.getElementById('tabela-registro');
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td>${produto}</td>
+        <td>${quantidade}</td>
+        <td>${valor}</td>
+        <td>${subTotal}</td>
+    `;
+    tabelaRegistro.appendChild(row);
+    document.getElementById("finalizar-venda").disabled = false;
+}
+function registrarVenda(){
+    alert("Venda realizada com sucesso!");
+    limparCampoRegistroVenda();
+    document.getElementById("venda-numero").innerHTML = '<h2 id="venda-numero">Venda</h2>';
+    document.getElementById("itens-Registro").textContent = 'Itens';
+
+}
+function cancelarVenda(){
+    limparCampoRegistroVenda();
+    document.getElementById("venda-numero").innerHTML = '<h2 id="venda-numero">Venda</h2>';
+    document.getElementById("itens-Registro").textContent = 'Itens';
+
+    alert("Venda cancelada com sucesso!")
+}
+
+
+//Fim registro de venda

@@ -413,5 +413,86 @@ margin-top: 30px;
  .data-devolucaoOuTroca{
     margin-left: 105px;
  }
-
 /*Fim Devolução ou troca*/
+/*Registro de venda*/
+.container-registroVenda{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.formulario-registroVenda,
+.tabela-itens-venda{
+    margin-top: 30px; 
+}
+
+.formulario-registroVenda form{
+    margin-bottom: 20px;
+}
+.formulario-registroVenda select{
+    margin-bottom: 20px;
+}
+#cpf-label{
+    margin-left: 35px;
+}
+#funcionario-venda{
+    margin-left: 0px; 
+}
+#funcionario-label{
+    margin-left: 80px;
+}
+#gerar-venda{
+    margin-left: 200px;
+    margin-bottom: 30px;
+}
+#quantidadeProduto-venda{
+    margin-top: 30px;
+}
+#quantidade-label{
+    margin-left: 53px;
+}
+#buscar-produto{
+    width: 150px;
+    margin-left: 180px;
+    margin-bottom: 20px;
+}
+.botoes-formulario{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+#voltar-venda{
+    margin-right: 58px;
+    background-color: #D6C6FB;
+    color: #000;
+}
+#h6{
+    margin: -20px;
+}
+#venda-itens{
+    display: flex;
+    justify-content: space-between;
+}
+.tabela-itens-venda{
+    width: 50%;
+}
+#tabela-registro{
+height: 450px;
+border: 2px solid black;
+border-color: #000;
+}
+#itens-Registro{
+    margin-right: 100px;
+}
+#cancelar-registrar{
+    margin-top: 90px;
+}
+#cancelar-venda{
+    margin-left: 330px;
+    background-color: #D6C6FB;
+    color: #000;
+}
+#cancelar-venda:disabled {
+    background-color: #e9ecef;
+    color: white; 
+}
+/*Fim Registro de venda*/
