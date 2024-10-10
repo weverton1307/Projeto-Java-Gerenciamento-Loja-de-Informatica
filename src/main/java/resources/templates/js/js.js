@@ -485,10 +485,31 @@ function atualizarTabelaDevolucaoOuTroca() {
         tabelaDevolvidos.appendChild(row);
     });
 }
-function salvarDevolvido(){
-    alert("Salvado com sucesso!");
+function salvarDevolvido() {
+    const devolucao = document.getElementById("radioDevolucao").checked;
+    const troca = document.getElementById("radioTroca").checked;
+    const codigoProduto = document.getElementById("codigo-devolucaoOuTroca").value;
+    const motivo = document.getElementById("motivo-devolucaoOuTroca").value;
+    const data = document.getElementById("data-devolucaoOuTroca").value;
+
+    if (!devolucao && !troca) {
+        alert("Por favor, selecione Devolução ou Troca.");
+        return;
+    }
+
+    if (!codigoProduto || !motivo || !data) {
+        alert("Por favor, preencha todos os campos obrigatórios.");
+        return;
+    }
+    if (!/^\d+$/.test(codigoProduto)) {
+        alert("Por favor, digite um número inteiro válido.");
+        document.getElementById("codigo-devolucaoOuTroca").value = "";
+        return;
+    }
+    alert("Salvo com sucesso!");
     limparCamposDevolvido();
 }
+
 function alterarDevolvido(){
     alert("Atualizado com sucesso!");
     limparCamposDevolvido();
@@ -498,11 +519,22 @@ function excluirDevolvido(){
     limparCamposDevolvido();
 }
 function buscarDevolvido(){
- alert("Busca realizada do sucesso!");
+    const codigo =document.getElementById("pesquisar-devolucaoOuTroca").value;
+    if(codigo == "" ){
+        alert("Por favor, preenche o campo pesquisar com o código  do cliente");
+    }else if (!/^\d+$/.test(codigo)) { 
+        alert("Por favor, digite um número inteiro válido.");
+        document.getElementById("pesquisar-devolucaoOuTroca").value = "";
+    }else {
+        alert("Busca realizada com sucesso!"); 
+        document.getElementById("pesquisar-devolucaoOuTroca").value = "";
+    }  
+    limparCamposDevolvido();
 }
 function limparCamposDevolvido(){
     document.getElementById("codigo-devolucaoOuTroca").value = "";
     document.getElementById("motivo-devolucaoOuTroca").value = "";
     document.getElementById("data-devolucaoOuTroca").value = "";
+    document.getElementById("pesquisar-devolucaoOuTroca").value = "";
 }
 //Fim Devolução ou Troca
