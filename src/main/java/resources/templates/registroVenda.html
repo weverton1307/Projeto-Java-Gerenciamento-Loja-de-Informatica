@@ -33,19 +33,19 @@
                 <div class="formulario-registroVenda">
                     <form>
                         <label id="cpf-label">CPF do cliente:</label>
-                        <input type="text" id="cpfClienteVenda"><br>
+                        <input type="text" id="cpfClienteVenda" placeholder="xxx.xxx.xxx-xx"><br>
                     </form>
                     <label>Método de pagamento:</label>
                     <select id="metodo-pagamento"><br>
-                        <option value="selecione um item">selecione um item</option>
+                        <option value="selecione um item" required>selecione um item</option>
                         <option value="dinheiro">Dinheiro</option>
                         <option value="pix">Pix</option>
                         <option value="cartao-credito">Cartão de crédito</option>
                         <option value="cartao-debito">Cartão de débito</option>
                     </select><br>
                     <label id="funcionario-label">Funcionário:</label>
-                    <select id="funcionario-venda"><br>
-                        <option value="selecione um item">selecione um item</option>
+                    <select id="funcionario-venda" required><br>
+                        <option value="selecione um item" >selecione um item</option>
                         <option value="Gerente">Gerente</option>
                         <option value="Vendedor">Vendedor</option>
                     </select>
@@ -55,8 +55,8 @@
                     
                     <form >
                         <label>Código do produto:</label>
-                        <input type="text" id="codigoProduto-venda"><br>
-                        <label id="quantidade-label">Quantidade:</label>
+                        <input type="text" id="codigoProduto-venda" required><br>
+                        <label id="quantidade-label" required>Quantidade:</label>
                         <input type="text" id="quantidadeProduto-venda"><br>
                     </form>
                     <div class="botoes-formulario">
@@ -69,7 +69,7 @@
                     </div>
                    
                     <div class="botoes-formulario">
-                        <button type="button" class="form-control" id="voltar-venda">Voltar</button>
+                        <button type="button" class="form-control" id="voltar-venda" onclick="voltarPagina()">Voltar</button>
                         <button type="button" class="form-control" id="Adicionar-venda" onclick="adicionar()">Adicionar</button><br>
                     </div>
                 </div>

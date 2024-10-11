@@ -591,19 +591,25 @@ function limparCampoRegistroVenda() {
     document.getElementById("tabela-registro").innerHTML = "";
 }
 function gerarVenda(){
-    document.getElementById("codigoProduto-venda").disabled = false;
-     document.getElementById("quantidadeProduto-venda").disabled = false;
-    document.getElementById("buscar-produto").disabled = false;
-    document.getElementById("cancelar-venda").disabled = false;
-    
+    const metodoPagamento =document.getElementById("metodo-pagamento").value;
+    const funcionario =document.getElementById("funcionario-venda").value;
+
+    if(metodoPagamento === "selecione um item"){
+      alert("Por favor, selecione um método de pagamento")
+    } else if( funcionario ==="selecione um item"){
+        alert("Por favor, selecione um funcionário")
+    }else{
+        validarCamposRegistroVenda();  
+    }    
 }
 function buscarprodutosRegistroVenda(){
-    document.getElementById("h6").innerHTML = `
-    <h6>Nome do produto: Teclado</h6><br>
-    <h6>Valor: R$ 30,00 reais</h6><br>
-    <h6>Cliente: João da Silva</h6><br>
-`;
-document.getElementById("Adicionar-venda").disabled = false;
+    const codigo =document.getElementById("codigoProduto-venda").value;
+    const quantidade = document.getElementById("quantidadeProduto-venda").value;
+    if(codigo ==="" || quantidade === ""){
+        alert("Por favor, preenche os campos vazios")
+    }else{
+        validarProdutoBuscado();
+    }
 }
 function adicionar() {
     const produto = "Teclado";
@@ -640,6 +646,42 @@ function cancelarVenda(){
 
     alert("Venda cancelada com sucesso!")
 }
+function validarCamposRegistroVenda(){
+    const cpf = document.getElementById('cpfClienteVenda').value;
 
+const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+    if(cpf ===""){
+        document.getElementById("codigoProduto-venda").disabled = false;
+         document.getElementById("quantidadeProduto-venda").disabled = false;
+        document.getElementById("buscar-produto").disabled = false;
+        document.getElementById("cancelar-venda").disabled = false;
+    }else if(cpf != ""){
+        if (!cpfRegex.test(cpf)) {
+            alert('Por favor, insira o CPF no formato: xxx.xxx.xxx-xx');
+            return false;
+        }else{
+            document.getElementById("codigoProduto-venda").disabled = false;
+            document.getElementById("quantidadeProduto-venda").disabled = false;
+           document.getElementById("buscar-produto").disabled = false;
+           document.getElementById("cancelar-venda").disabled = false;
+        }
+    }
+}
+function validarProdutoBuscado(){
+    const codigo =document.getElementById("codigoProduto-venda").value;
+    const quantidade = document.getElementById("quantidadeProduto-venda").value;
+     if (!/^\d+$/.test(codigo)) { 
+        alert("Por favor, digite no campo código um número inteiro válido.");
+    }else if(!/^\d+$/.test(quantidade)){
+        alert("Por favor, digite no campo quantidade um número inteiro válido.")
+    }else{
+        document.getElementById("h6").innerHTML = `
+        <h6>Nome do produto: Teclado</h6><br>
+        <h6>Valor: R$ 30,00 reais</h6><br>
+        <h6>Cliente: João da Silva</h6><br>
+    `;
+    document.getElementById("Adicionar-venda").disabled = false;
+    }
+}
 
 //Fim registro de venda
