@@ -50,11 +50,11 @@
     color: #673781;
 }
 
-.formulario {
+.formulario-login {
     width: 100%;
 }
 
-.formulario h3 {
+.formulario-login h3 {
     font-size: 25px;
     font-weight: 600;
     color: #000;
@@ -62,7 +62,7 @@
     text-align: left;
 }
 
-.formulario input {
+.formulario-login input {
     width: 350px;
     height: 40px;
     margin-bottom: 15px;
@@ -72,6 +72,7 @@
     border: 2px solid #ccc;
     border-radius: 10px;
 }
+
 
 .botao-sair,
 .botao-entrar {
@@ -107,23 +108,6 @@
     background-color: #5a317b;
 }
 
-@media (max-width: 1418px) {
-    .container .login {
-        margin-right: 500px;
-    }
-}
-
-@media (max-width: 960px) {
-    .container {
-        flex-direction: column;
-        margin: 0px 0;
-    }
-
-    .container .login {
-        justify-content: center;
-        margin-right: 130px;
-    }
-}
 
 /* Fim login */
 /*menu*/
@@ -360,7 +344,7 @@
     width: 200px;
 }
 
-#senha {
+#senha-funcionario {
     margin-top: 15px;
 }
 
@@ -380,7 +364,7 @@
     margin-left: 80px;
 }
 
-#senha {
+#senha-funcionario {
     margin-left: 77px;
 }
 
@@ -600,7 +584,6 @@
     margin-top: 30px;
 }
 
-
 .container-relatorio {
     display: flex;
     justify-content: space-around;
@@ -614,6 +597,9 @@
 
 .container-relatorio form {
     display: flex;
+}
+#voltarParaVenda{
+    margin: 20px 20px;
 }
 
 .inicio,
@@ -630,7 +616,6 @@
     margin-bottom: 15px;
     margin-left: 80px;
 }
-
 
 #produtosMaisVendidos,
 #totalVendas,
@@ -649,3 +634,27 @@
 }
 
 /*Fim vendas*/
+/*Responsividade*/
+
+/*login*/
+@media (max-width: 1418px) {
+    .container .login {
+        margin-right: 500px;
+    }
+}
+
+@media (max-width: 960px) {
+    .container {
+        flex-direction: column;
+        margin: 0px 0;
+    }
+
+    .container .login {
+        justify-content: center;
+        margin-right: 130px;
+    }
+}
+
+   
+   
+  

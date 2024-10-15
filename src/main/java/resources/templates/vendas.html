@@ -70,11 +70,11 @@
                 <form>
                     <div class="inicio">
                         <label>Digite a data do período:</label>
-                        <input type="date" id="dataInicio">
+                        <input type="date" id="dataInicio" min="1950-01-01" max="2100-12-31">
                     </div>
                     <div class="final">
                         <label>Até:</label>
-                        <input type="date" id="dataFinal">
+                        <input type="date" id="dataFinal" min="1950-01-01" max="2100-12-31">
                     </div>
                     <div class="botoes-formulario" id="botao-relatorio">
                         <button type="button" class="form-control" id="botao-relatorio" onclick="gerarRelatorio()">Gerar</button>
@@ -112,7 +112,7 @@
             </div>  
             <div id="Voltar-limpar" class="botoes-formulario">
                 <button type="button" class="form-control" id="voltar-venda" onclick="voltarPagina()">voltar</button>
-                <button type="button" class="form-control" id="limpar-venda">limpar</button>
+                <button type="button" class="form-control" id="limpar-venda" onclick="limparTudo()">limpar</button>
             </div>  
             </div>
         </div>

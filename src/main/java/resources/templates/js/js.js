@@ -1,4 +1,5 @@
 //Login
+//Função para para validar usuário
 function validarUsuario() {
     const senha = document.getElementById('senha').value;
     if (document.getElementById("usuario").value == "") {
@@ -14,6 +15,7 @@ function validarUsuario() {
     }
 
 }
+//Função para sair do sistema
 function sair() {
     window.location.href = "./logout.html";
 }
@@ -96,7 +98,7 @@ function limparCamposProduto() {
     document.getElementById('localPrateleira').value = 'Selecione um item';
     document.getElementById('categoria').value = 'Selecione um item';
 }
-
+//Função para para cadastrar produto
 function salvarProduto() {
     const nome = document.getElementById('nome').value.trim();
     const valorCompra = document.getElementById('valorCompra').value.trim();
@@ -121,6 +123,7 @@ function salvarProduto() {
     }
 
 }
+////Função para validar numero
 function validarNumero(input) {
     const valor = input.value;
     if (!/^\d*\.?\d*$/.test(valor)) {
@@ -186,10 +189,9 @@ function buscarProduto() {
     } else if (document.getElementById('radio7').checked) {
         const categoria = document.getElementById('item-categoria').value;
 
-        // Validação: Verifica se o valor da categoria é válido
         if (categoria === "Selecione uma categoria" || !categoria) {
             alert('Por favor, selecione uma categoria');
-            return; // Impede a continuação da busca se a categoria não foi selecionada
+            return;
         }
 
         alert("Busca realizada com sucesso!");
@@ -201,6 +203,7 @@ function buscarProduto() {
     }
 
 }
+//Função para voltar para o menu
 function voltarPagina() {
     window.location.href = "./menu.html";
 }
@@ -252,6 +255,7 @@ function atualizarTabela() {
         tabelaFuncionario.appendChild(row);
     });
 }
+//Função para limpar os campos 
 function limparCamposFuncionario() {
     document.getElementById('nomeFuncionario').value = '';
     document.getElementById('endereço').value = '';
@@ -263,7 +267,7 @@ function limparCamposFuncionario() {
     document.getElementById('senha').value = '';
 }
 
-
+//Função para cadastrar funcionários
 function salvarFuncionario() {
     if (!validarCampos()) {
         return false;
@@ -339,6 +343,7 @@ function validarCampos() {
 }
 //Fim funcionários
 //Clientes
+//Função para atualizar tabela de clientes
 function atualizarTabelaClientes() {
     const cliente1 = {
         id: "1",
@@ -423,9 +428,8 @@ function salvarCliente() {
     }
 
     return true;
-
-
 }
+//Função para buscar cliente
 function buscarCliente() {
     const codigo = document.getElementById("pesquisar").value;
     if (codigo == "") {
@@ -439,10 +443,12 @@ function buscarCliente() {
     }
     limparCamposFuncionario();
 }
+//Função para atualizar cliente
 function alterarCliente() {
     alert("Atualização realizada com sucesso!");
     limparCamposFuncionario();
 }
+//Função para limpar campos de cliente
 function limparCamposCliente() {
     document.getElementById('nomeCliente').value = '';
     document.getElementById('endereçoCliente').value = '';
@@ -452,6 +458,7 @@ function limparCamposCliente() {
 }
 //Fim clientes
 //Devolução ou Troca
+//Função para atualizar tabela de produtos devolvidos
 function atualizarTabelaDevolucaoOuTroca() {
     const devolvido = {
         id: "1",
@@ -485,6 +492,7 @@ function atualizarTabelaDevolucaoOuTroca() {
         tabelaDevolvidos.appendChild(row);
     });
 }
+//Função para para cadastrar produto devolvido
 function salvarDevolvido() {
     const devolucao = document.getElementById("radioDevolucao").checked;
     const troca = document.getElementById("radioTroca").checked;
@@ -509,15 +517,17 @@ function salvarDevolvido() {
     alert("Salvo com sucesso!");
     limparCamposDevolvido();
 }
-
+//Função para atualizar produto devolvido
 function alterarDevolvido() {
     alert("Atualizado com sucesso!");
     limparCamposDevolvido();
 }
+//Função para excluir produto devolvido
 function excluirDevolvido() {
     alert("Exclusão realizada com sucesso!");
     limparCamposDevolvido();
 }
+//Função para buscar produto devolvido
 function buscarDevolvido() {
     const codigo = document.getElementById("pesquisar-devolucaoOuTroca").value;
     if (codigo == "") {
@@ -531,6 +541,7 @@ function buscarDevolvido() {
     }
     limparCamposDevolvido();
 }
+//Função para limpar campos de produto devolvido
 function limparCamposDevolvido() {
     document.getElementById("codigo-devolucaoOuTroca").value = "";
     document.getElementById("motivo-devolucaoOuTroca").value = "";
@@ -576,6 +587,7 @@ const produto3 = {
     },
     statusProduto: "Disponível"
 };
+//Função para limpar campos do registro de venda
 function limparCampoRegistroVenda() {
     document.getElementById("cpfClienteVenda").value = "";
     document.getElementById("codigoProduto-venda").value = "";
@@ -590,6 +602,7 @@ function limparCampoRegistroVenda() {
     document.getElementById("Adicionar-venda").disabled = true;
     document.getElementById("tabela-registro").innerHTML = "";
 }
+//Função para gerar venda
 function gerarVenda() {
     const metodoPagamento = document.getElementById("metodo-pagamento").value;
     const funcionario = document.getElementById("funcionario-venda").value;
@@ -602,6 +615,7 @@ function gerarVenda() {
         validarCamposRegistroVenda();
     }
 }
+//Função para buscar produtos para venda
 function buscarprodutosRegistroVenda() {
     const codigo = document.getElementById("codigoProduto-venda").value;
     const quantidade = document.getElementById("quantidadeProduto-venda").value;
@@ -611,6 +625,7 @@ function buscarprodutosRegistroVenda() {
         validarProdutoBuscado();
     }
 }
+//Função para adicionar um produto
 function adicionar() {
     const produto = "Teclado";
     const quantidade = document.getElementById("quantidadeProduto-venda").value;
@@ -632,6 +647,7 @@ function adicionar() {
     tabelaRegistro.appendChild(row);
     document.getElementById("finalizar-venda").disabled = false;
 }
+//Função para registrar venda
 function registrarVenda() {
     alert("Venda realizada com sucesso!");
     limparCampoRegistroVenda();
@@ -639,6 +655,7 @@ function registrarVenda() {
     document.getElementById("itens-Registro").textContent = 'Itens';
 
 }
+//Função para cancelar venda
 function cancelarVenda() {
     limparCampoRegistroVenda();
     document.getElementById("venda-numero").innerHTML = '<h2 id="venda-numero">Venda</h2>';
@@ -646,6 +663,7 @@ function cancelarVenda() {
 
     alert("Venda cancelada com sucesso!")
 }
+//Função para validar campos do registro de venda
 function validarCamposRegistroVenda() {
     const cpf = document.getElementById('cpfClienteVenda').value;
 
@@ -667,6 +685,7 @@ function validarCamposRegistroVenda() {
         }
     }
 }
+//Função para validar produto buscado
 function validarProdutoBuscado() {
     const codigo = document.getElementById("codigoProduto-venda").value;
     const quantidade = document.getElementById("quantidadeProduto-venda").value;
@@ -686,31 +705,49 @@ function validarProdutoBuscado() {
 
 //Fim registro de venda
 //vendas
+//Função para gerar relatório
 function gerarRelatorio() {
-    // Armazenar as informações no localStorage
-    let produtosMaisVendidos = "<ol><li>Teclado</li><li>Mouse</li><li>Cartucho de Impressora</li><li>Placa de Vídeo</li><li>Notebook</li></ol>";
-    let totalVendas = "<li>120 vendas</li>";
-    let mediaLucro = "<li>R$ 500,00</li>";
-    let totalProdutosDevolvido = "<li>10 produtos devolvidos</li>";
-    let metodoPagamentoMaisUsado = "<li>Cartão de crédito</li>";
-    let clientesMaisFrequentes = "<li>Sandra Pereira Sousa</li><li>Marcio Gonçalves</li><li>Aline dos Santos</li>";
-    let faturamentoTotal = "<li>R$ 35.000,00</li>";
-    let lucroTotal = "<li>R$ 4.000,00</li>";
-    localStorage.setItem('relatorioProdutosMaisVendidos', produtosMaisVendidos);
-    localStorage.setItem('relatorioTotalVendas', totalVendas);
-    localStorage.setItem('relatorioMediaLucro', mediaLucro);
-    localStorage.setItem('relatorioTotalProdutosDevolvido', totalProdutosDevolvido);
-    localStorage.setItem('relatorioMetodoPagamentoMaisUsado', metodoPagamentoMaisUsado);
-    localStorage.setItem('relatorioClientesMaisFrequentes', clientesMaisFrequentes);
-    localStorage.setItem('relatorioFaturamentoTotal', faturamentoTotal);
-    localStorage.setItem('relatorioLucroTotal', lucroTotal);
+    const dataInicio = new Date(document.getElementById('dataInicio').value);
+    const dataFinal = new Date(document.getElementById('dataFinal').value);
 
-    // Redirecionar para a página de relatório
-    window.location.href = "./relatorio.html";
+    const minDate = new Date('1950-01-01');
+    const maxDate = new Date('2100-12-31');
+
+    if (document.getElementById("dataInicio").value == "") {
+        alert("Por favor, digite uma data de início")
+    } else if (document.getElementById("dataFinal").value == "") {
+        alert("Por favor, digite uma data final")
+    } else if (dataInicio < minDate || dataInicio > maxDate || dataFinal < minDate || dataFinal > maxDate) {
+        alert("As datas devem estar entre 1950 e 2100.");
+    } else {
+        let produtosMaisVendidos = "<ol><li>Teclado</li><li>Mouse</li><li>Cartucho de Impressora</li><li>Placa de Vídeo</li><li>Notebook</li></ol>";
+        let totalVendas = "<li>120 vendas</li>";
+        let mediaLucro = "<li>R$ 500,00</li>";
+        let totalProdutosDevolvido = "<li>10 produtos devolvidos</li>";
+        let metodoPagamentoMaisUsado = "<li>Cartão de crédito</li>";
+        let clientesMaisFrequentes = "<li>Sandra Pereira Sousa</li><li>Marcio Gonçalves</li><li>Aline dos Santos</li>";
+        let faturamentoTotal = "<li>R$ 35.000,00</li>";
+        let lucroTotal = "<li>R$ 4.000,00</li>";
+        localStorage.setItem('relatorioProdutosMaisVendidos', produtosMaisVendidos);
+        localStorage.setItem('relatorioTotalVendas', totalVendas);
+        localStorage.setItem('relatorioMediaLucro', mediaLucro);
+        localStorage.setItem('relatorioTotalProdutosDevolvido', totalProdutosDevolvido);
+        localStorage.setItem('relatorioMetodoPagamentoMaisUsado', metodoPagamentoMaisUsado);
+        localStorage.setItem('relatorioClientesMaisFrequentes', clientesMaisFrequentes);
+        localStorage.setItem('relatorioFaturamentoTotal', faturamentoTotal);
+        localStorage.setItem('relatorioLucroTotal', lucroTotal);
+        window.location.href = "./relatorio.html";
+    }
 }
+//Função para buscar vendas por critério
 function pesquisarVenda() {
-
-        if (document.getElementById("criterio-selecionar").value == "id") {
+    if (document.getElementById("criterio-selecionar").value == "id") {
+        if (document.getElementById("criterio-pesquisa").value == "") {
+            alert("Por favor, preencha o campo de pesquisar.");
+        } else if (!/^\d+$/.test(document.getElementById("criterio-pesquisa").value)) {
+            alert("Por favor, digite um número inteiro válido.");
+            document.getElementById("criterio-pesquisa").value = "";
+        } else {
             document.getElementById("resultado-pesquisa-codigo").innerHTML =
                 `<h5>id: 1</h5>
                  <h5>Status: Vendido </h5>
@@ -719,10 +756,10 @@ function pesquisarVenda() {
                  <h5>Nome do vendedor: João</h5>
                  <h5>Nome do cliente:Maria</h5>
                  <h5>CPF do cliente: 545.548.541-78</h5>`;
-            
-            
+
+
             let tabelaItens = document.getElementById("tabela-pesquisa");
-            tabelaItens.innerHTML = ""; 
+            tabelaItens.innerHTML = "";
 
             let novaLinha = `
                 <tr>
@@ -731,79 +768,194 @@ function pesquisarVenda() {
                     <td>30</td>
                     <td>60</td> 
                 </tr>`;
-            
-            // Inserir a nova linha na tabela
             tabelaItens.innerHTML += novaLinha;
+            document.getElementById("criterio-pesquisa").value = "";
+        }
 
-        } else if (document.getElementById("criterio-selecionar").value == "CPF do cliente") {
+
+    } else if (document.getElementById("criterio-selecionar").value == "CPF do cliente") {
+        const cpf = document.getElementById('criterio-pesquisa').value;
+        const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+        if (document.getElementById("criterio-pesquisa").value == "") {
+            alert('Por favor, preencha o campo de pesquisar');
+        } else if (!cpfRegex.test(cpf)) {
+            alert('Por favor, insira o CPF no formato: xxx.xxx.xxx-xx');
+            document.getElementById('criterio-pesquisa').value ="";
+            return false;
+        } else {
             document.getElementById("resultado-pesquisa-codigo").innerHTML =
-            `<h5>id: 2</h5>
+                `<h5>id: 2</h5>
              <h5>Status: Cancelado </h5>
              <h5>Data e hora:14/12/2023 15:00</h5>
              <h5>Método de pagamento: Dinheiro</h5>
              <h5>Nome do vendedor: João</h5>
              <h5>Nome do cliente:Snadra</h5>
              <h5>CPF do cliente: 885.544.541-58</h5>`;
-        
-        
-        let tabelaItens = document.getElementById("tabela-pesquisa");
-        tabelaItens.innerHTML = ""; 
 
-        let novaLinha = `
+
+            let tabelaItens = document.getElementById("tabela-pesquisa");
+            tabelaItens.innerHTML = "";
+
+            let novaLinha = `
             <tr>
                 <td>mouse</td> 
                 <td>1</td> 
                 <td>20</td>
                 <td>20</td> 
             </tr>`;
-        tabelaItens.innerHTML += novaLinha; 
-        } else if (document.getElementById("criterio-selecionar").value == "Nome do vendedor") {
-            let tabelaItens = document.getElementById("tabela-busca");
-            tabelaItens.innerHTML = ""; 
-    
-            let novaLinha = `
-                <tr> 
-                    <td>4</td> 
-                    <td>placa de vídeo</td> 
-                </tr>`;
             tabelaItens.innerHTML += novaLinha;
-
-
-        }else if (document.getElementById("criterio-selecionar").value == "Data da venda"){
-            let tabelaItens = document.getElementById("tabela-busca");
-            tabelaItens.innerHTML = ""; 
-    
-            let novaLinha = `
-                <tr> 
-                    <td>5</td> 
-                    <td>mouse sem fio</td> 
-                </tr>`;
-            tabelaItens.innerHTML += novaLinha;
-        }else if (document.getElementById("criterio-selecionar").value == "Status"){
-             let tabelaItens = document.getElementById("tabela-busca");
-            tabelaItens.innerHTML = ""; 
-    
-            let novaLinha = `
-                <tr> 
-                    <td>6</td> 
-                    <td>HD</td> 
-                </tr>`;
-            tabelaItens.innerHTML += novaLinha;
-        }else if(document.getElementById("criterio-selecionar").value == "Método de pagamento"){
-            let tabelaItens = document.getElementById("tabela-busca");
-            tabelaItens.innerHTML = ""; 
-    
-            let novaLinha = `
-                <tr> 
-                    <td>7</td> 
-                    <td>Monitor</td> 
-                </tr>`;
-            tabelaItens.innerHTML += novaLinha;
-        }else{
-            alert("Por favor, selecione um critério de pesquisa")
+            document.getElementById('criterio-pesquisa').value ="";
         }
+
+    } else if (document.getElementById("criterio-selecionar").value == "Nome do vendedor") {
+        if (document.getElementById("criterio-pesquisa").value == "") {
+            alert('Por favor, preencha o campo de pesquisar');
+        } else {
+            let tabelaItens = document.getElementById("tabela-busca");
+            tabelaItens.innerHTML = "";
+
+            let novaLinha = `
+                    <tr> 
+                        <td>4</td> 
+                        <td>placa de vídeo</td> 
+                    </tr>`;
+            tabelaItens.innerHTML += novaLinha;
+        }
+
+    } else if (document.getElementById("criterio-selecionar").value == "Data da venda") {
+        const dataPesquisa = new Date(document.getElementById('criterio-pesquisa').value);
+
+        const minDate = new Date('1950-01-01');
+        const maxDate = new Date('2100-12-31');
+
+        if (document.getElementById("criterio-pesquisa").value == "") {
+            alert('Por favor, preencha o campo de pesquisar');
+        } else if (dataPesquisa < minDate || dataPesquisa > maxDate) {
+            alert("A data deve estar entre 1950 e 2100.");
+        } else {
+            let tabelaItens = document.getElementById("tabela-busca");
+            tabelaItens.innerHTML = "";
+
+            let novaLinha = `
+                    <tr> 
+                        <td>5</td> 
+                        <td>mouse sem fio</td> 
+                    </tr>`;
+            tabelaItens.innerHTML += novaLinha;
+        }
+
+
+    } else if (document.getElementById("criterio-selecionar").value == "Status") {
+        if (document.getElementById("criterio-pesquisa").value == "") {
+            alert('Por favor, preencha o campo de pesquisar');
+        } else if (document.getElementById("criterio-pesquisa").value !== "Vendido" && 
+        document.getElementById("criterio-pesquisa").value !== "Cancelada") {
+   alert('Por favor, insira o status: "Vendido" ou "Cancelada"');
+} else {
+         if(document.getElementById("criterio-pesquisa").value === "Vendido"){
+ let tabelaItens = document.getElementById("tabela-busca");
+            tabelaItens.innerHTML = "";
+
+            let novaLinha = `
+                    <tr> 
+                        <td>6</td> 
+                        <td>HD</td> 
+                    </tr>`;
+            tabelaItens.innerHTML += novaLinha;
+         }else{
+            let tabelaItens = document.getElementById("tabela-busca");
+            tabelaItens.innerHTML = "";
+
+            let novaLinha = `
+                    <tr> 
+                        <td>8</td> 
+                        <td>Monitor</td> 
+                    </tr>`;
+                    
+            tabelaItens.innerHTML += novaLinha;
+         }
+           
+        }
+
+    } else if (document.getElementById("criterio-selecionar").value == "Método de pagamento") {
+        const pesquisa = document.getElementById("criterio-pesquisa").value;
+        if (pesquisa == "") {
+            alert('Por favor, preencha o campo de pesquisar');
+        } else if (pesquisa !== "Pix" && 
+            pesquisa !== "Dinheiro" && 
+            pesquisa !== "Cartão de crédito" && 
+            pesquisa !== "Cartão de débito") {
+       alert('Por favor, insira o método de pagamento: "Pix" ou "Dinheiro" ou "Cartão de crédito" ou "Cartão de débito"');
+   } else {
+            let tabelaItens = document.getElementById("tabela-busca");
+            tabelaItens.innerHTML = "";
+
+            if (pesquisa === "Pix") {
+                let novaLinha = `
+                    <tr>
+                        <td>1</td>
+                        <td>SSD</td>
+                    </tr>`;
+                tabelaItens.innerHTML += novaLinha;
+            
+            } else if (pesquisa === "Dinheiro") {
+                let novaLinha = `
+                    <tr>
+                        <td>2</td>
+                        <td>Mouse</td>
+                    </tr>`;
+                tabelaItens.innerHTML += novaLinha;
+            
+            } else if (pesquisa === "Cartão de crédito") {
+                let novaLinha = `
+                    <tr>
+                        <td>3</td>
+                        <td>Teclado</td>
+                    </tr>`;
+                tabelaItens.innerHTML += novaLinha;
+            
+            } else if (pesquisa === "Cartão de débito") {
+                let novaLinha = `
+                    <tr>
+                        <td>4</td>
+                        <td>Notebook</td>
+                    </tr>`;
+                tabelaItens.innerHTML += novaLinha;
+            
+            } else {
+                let novaLinha = `
+                    <tr>
+                        <td>5</td>
+                        <td>Produto desconhecido</td>
+                    </tr>`;
+                tabelaItens.innerHTML += novaLinha;
+        }
+
     }
+ }else {
+        alert("Por favor, selecione um critério de pesquisa")
+    }
+}
+// Função para limpar os campos
+function limparTudo() {
 
+    document.getElementById('dataInicio').value = '';
+    document.getElementById('dataFinal').value = '';
 
+    document.getElementById('criterio-pesquisa').value = '';
+    document.getElementById('criterio-selecionar').selectedIndex = 0;
 
+    document.getElementById('tabela-pesquisa').innerHTML = '';
+    document.getElementById('tabela-busca').innerHTML = '';
+
+    document.getElementById('resultado-pesquisa-codigo').innerHTML = `
+        <h5>id:</h5>
+        <h5>Status:</h5>
+        <h5>Data e hora:</h5>
+        <h5>Método de pagamento:</h5>
+        <h5>Nome do vendedor:</h5>
+        <h5>Nome do cliente:</h5>
+        <h5>CPF do cliente:</h5>
+    `;
+}
 //Fim vendas
