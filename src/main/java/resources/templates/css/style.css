@@ -5,18 +5,20 @@
     text-decoration: none;
     list-style: none;
 }
-.body{
+
+.body {
     margin: 0;
     display: flex;
     justify-content: center;
 }
+
 /* login */
 
 .index {
     background-color: #D6C6FB;
 }
 
-.main-index{
+.main-index {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,7 +73,8 @@
     border-radius: 10px;
 }
 
-.botao-sair, .botao-entrar {
+.botao-sair,
+.botao-entrar {
     width: 120px;
     height: 40px;
     font-size: 18px;
@@ -105,46 +108,54 @@
 }
 
 @media (max-width: 1418px) {
-    .container .login{
+    .container .login {
         margin-right: 500px;
     }
 }
+
 @media (max-width: 960px) {
-  .container{
-    flex-direction: column;
-    margin: 0px 0;
-  }
-  .container .login{
-    justify-content: center;
-    margin-right: 130px;
-  }
+    .container {
+        flex-direction: column;
+        margin: 0px 0;
+    }
+
+    .container .login {
+        justify-content: center;
+        margin-right: 130px;
+    }
 }
+
 /* Fim login */
 /*menu*/
-.background{
+.background {
     background-color: #EFEFEF;
 }
-.container-menu{
+
+.container-menu {
     display: flex;
     align-items: center;
     background-color: #D6C6FB;
 }
-.titulo{
+
+.titulo {
     margin-left: 15px;
 }
-.titulo h1{
+
+.titulo h1 {
     font-size: 50px;
     margin-top: 5px;
     font-family: Arial, Helvetica, sans-serif;
     color: #673781;
 
 }
-.container-menu-section{
+
+.container-menu-section {
     display: flex;
     justify-content: center;
     padding: 50px;
 }
-.container-menu-section div{
+
+.container-menu-section div {
     margin: 10px 20px;
     text-align: center;
     padding: 0px 0px;
@@ -154,345 +165,487 @@
     width: 250px;
     height: 200px;
 }
-.container-menu-section div h1{
+
+.container-menu-section div h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 25px;
     color: white;
     margin-bottom: 10px;
 }
-.container-menu-section #sair{
-width: 50px;
-height: 50px;
-padding-top: 0px;
-margin-right: 803px;
-margin-bottom: 5px;
+
+.container-menu-section #sair {
+    width: 50px;
+    height: 50px;
+    padding-top: 0px;
+    margin-right: 803px;
+    margin-bottom: 5px;
 }
+
 /*Fim menu*/
 /*Produtos*/
 .container-produtos {
     display: flex;
     justify-content: space-around;
-    align-items: flex-start; 
+    align-items: flex-start;
 }
 
 .formulario-produtos-dois {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
 }
-.formulario-produtos-um{
+
+.formulario-produtos-um {
     padding: 15px;
 }
-.formulario-produtos-um div{
+
+.formulario-produtos-um div {
     margin: 10px;
 }
+
 .formulario-produtos-um form label,
-.formulario-produtos-um form input{
+.formulario-produtos-um form input {
     margin: 10px;
 }
-.formulario-produtos-um form input{
+
+.formulario-produtos-um form input {
     width: 200px;
 }
-#nome{
+
+#nome {
     width: 300px;
 }
-#valorCompra{
+
+#valorCompra {
     width: 228px;
 }
-#valorVenda{
+
+#valorVenda {
     width: 240px;
 }
-#modelo{
+
+#modelo {
     width: 290px;
 }
-#fiscal{
+
+#fiscal {
     width: 191px;
 }
-#data{
+
+#data {
     width: 220px;
 }
-#fabricante{
+
+#fabricante {
     width: 274px;
 }
-#descricao{
+
+#descricao {
     height: 90px;
     width: 450px;
 }
-.botoes-formulario{
+
+.botoes-formulario {
     display: flex;
     margin-right: 10px;
-    
+
 }
-.botoes-formulario button{
+
+.botoes-formulario button {
     margin: 10px;
-    width:130px;
-    text-align: center; 
+    width: 130px;
+    text-align: center;
     background-color: #5a317b;
     color: white;
 
 }
-#voltar{
+
+#voltar {
     color: #000;
     background-color: #D6C6FB;
 }
-.formulario-produtos-dois{
+
+.formulario-produtos-dois {
     padding: 15px;
 }
-.formulario-produtos-dois div{
+
+.formulario-produtos-dois div {
     margin: 10px;
 }
-#prateleira{
+
+#prateleira {
     margin-left: 60px;
-    border-radius: 15px; 
-    text-align: center; 
+    border-radius: 15px;
+    text-align: center;
 }
-#localPrateleira{
-    border-radius: 15px; 
-    text-align: center;  
+
+#localPrateleira {
+    border-radius: 15px;
+    text-align: center;
 }
-#categoria{
+
+#categoria {
     margin-left: 75px;
-    border-radius: 15px; 
-    text-align: center; 
+    border-radius: 15px;
+    text-align: center;
 }
-#item-categoria{
-    border-radius: 15px; 
-    text-align: center;  
+
+#item-categoria {
+    border-radius: 15px;
+    text-align: center;
 }
-.formulario-produtos-dois .radio{
+
+.formulario-produtos-dois .radio {
     margin: 5px 5px;
 }
-#radio3{
-   margin-left: 73px; 
+
+#radio3 {
+    margin-left: 73px;
 }
-#radio2{
+
+#radio2 {
     margin-left: 25px;
 }
-#search-button{
+
+#search-button {
     margin-top: 15px;
     width: 130px;
     background-color: #5a317b;
     color: white;
 }
-.container-tabela table th{
+
+.container-tabela table th {
     font-size: 13px;
 }
-#texto-area{
+
+#texto-area {
     margin-bottom: 20px;
     margin-top: -8px;
 }
+
 /* Fim Produtos*/
 /* Funcionário*/
-.container-Funcionario{
+.container-Funcionario {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
 }
-.formulario-funcionario-dois{
+
+.formulario-funcionario-dois {
     padding: 15px;
 }
-.formulario-funcionario-dois div{
+
+.formulario-funcionario-dois div {
     margin: 10px;
 }
+
 .formulario-funcionario-dois {
     display: flex;
     flex-direction: column;
 }
-.formulario-funcionario-um{
+
+.formulario-funcionario-um {
     padding: 15px;
 }
-.formulario-funcionario-um div{
+
+.formulario-funcionario-um div {
     margin: 10px;
 }
+
 .formulario-funcionario-um form label,
-.formulario-funcionario-um form input{
+.formulario-funcionario-um form input {
     margin: 10px;
 }
-.formulario-funcionario-um form input{
+
+.formulario-funcionario-um form input {
     width: 200px;
 }
-#senha{
+
+#senha {
     margin-top: 15px;
 }
-#nomeUsuario{
+
+#nomeUsuario {
     margin-top: 10px;
 }
-#pesquisar{
+
+#pesquisar {
     margin-top: 60px;
 }
-#botao-funcionario-buscar{
+
+#botao-funcionario-buscar {
     margin-left: 83px;
 }
-#cargo{
+
+#cargo {
     margin-left: 80px;
 }
-#senha{
+
+#senha {
     margin-left: 77px;
 }
-#nomeFuncionario{
+
+#nomeFuncionario {
     width: 222px;
 }
-#cpf{
+
+#cpf {
     width: 240px;
 }
-#telefone{
+
+#telefone {
     width: 210px;
 }
-#email{
+
+#email {
     width: 230px;
 }
+
 /*Fim funcionários*/
 /*clientes*/
-.container-cliente{
+.container-cliente {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
 }
+
 .formulario-cliente,
-.pesquisar-cliente{
+.pesquisar-cliente {
     padding: 30px;
     padding-bottom: 30px;
 }
+
 .formulario-cliente form input,
-.formulario-cliente form label{
-margin: 10px;
+.formulario-cliente form label {
+    margin: 10px;
 }
-.pesquisar-cliente div{
+
+.pesquisar-cliente div {
     margin-bottom: -50px;
 }
-#botao-pesquisar-cliente{
+
+#botao-pesquisar-cliente {
     margin-top: 65px;
 }
-#nomeCliente{
+
+#nomeCliente {
     width: 210px;
 }
-#cpfCliente{
+
+#cpfCliente {
     width: 225px;
 }
-#telefoneCliente{
+
+#telefoneCliente {
     width: 193px;
 }
-#emailCliente{
+
+#emailCliente {
     width: 215px;
 }
-.botoes-formulario{
+
+.botoes-formulario {
     margin-top: 30px;
 }
+
 /*Fim clientes*/
 /*Devolução ou troca*/
-.container-devolucaoOuTroca{
+.container-devolucaoOuTroca {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     padding-bottom: 30px;
 }
+
 .formulario-devolucaoOuTroca,
-.pesquisar-devolucaoOuTroca{
-margin-top: 30px;
+.pesquisar-devolucaoOuTroca {
+    margin-top: 30px;
 }
-.radio-devolucaoOuTroca{
+
+.radio-devolucaoOuTroca {
     margin-left: 140px;
 }
 
- .radio-devolucaoOuTroca .radio2{
+.radio-devolucaoOuTroca .radio2 {
     margin-left: 42px;
- }
- .textoArea{
+}
+
+.textoArea {
     display: flex;
     margin: 15px 50px;
-    
- }
- #motivo-devolucaoOuTroca{
+
+}
+
+#motivo-devolucaoOuTroca {
     width: 300px;
     height: 150px;
     margin-left: 4px;
-   
- }
- .textoArea label{
+
+}
+
+.textoArea label {
     margin-left: 38px;
- }
- .data-devolucaoOuTroca{
+}
+
+.data-devolucaoOuTroca {
     margin-left: 105px;
- }
+}
+
 /*Fim Devolução ou troca*/
 /*Registro de venda*/
-.container-registroVenda{
+.container-registroVenda {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
 }
+
 .formulario-registroVenda,
-.tabela-itens-venda{
-    margin-top: 30px; 
+.tabela-itens-venda {
+    margin-top: 30px;
 }
 
-.formulario-registroVenda form{
+.formulario-registroVenda form {
     margin-bottom: 20px;
 }
-.formulario-registroVenda select{
+
+.formulario-registroVenda select {
     margin-bottom: 20px;
 }
-#cpf-label{
+
+#cpf-label {
     margin-left: 35px;
 }
-#funcionario-venda{
-    margin-left: 0px; 
+
+#funcionario-venda {
+    margin-left: 0px;
 }
-#funcionario-label{
+
+#funcionario-label {
     margin-left: 80px;
 }
-#gerar-venda{
+
+#gerar-venda {
     margin-left: 200px;
     margin-bottom: 30px;
 }
-#quantidadeProduto-venda{
+
+#quantidadeProduto-venda {
     margin-top: 30px;
 }
-#quantidade-label{
+
+#quantidade-label {
     margin-left: 53px;
 }
-#buscar-produto{
+
+#buscar-produto {
     width: 150px;
     margin-left: 180px;
     margin-bottom: 20px;
 }
-.botoes-formulario{
+
+.botoes-formulario {
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
 }
-#voltar-venda{
+
+#voltar-venda {
     margin-right: 58px;
     background-color: #D6C6FB;
     color: #000;
 }
-#h6{
+
+#h6 {
     margin: -20px;
 }
-#venda-itens{
+
+#venda-itens {
     display: flex;
     justify-content: space-between;
 }
-.tabela-itens-venda{
+
+.tabela-itens-venda {
     width: 50%;
 }
-#tabela-registro{
-height: 450px;
-border: 2px solid black;
-border-color: #000;
+
+#tabela-registro {
+    height: 450px;
+    border: 2px solid black;
+    border-color: #000;
 }
-#itens-Registro{
+
+#itens-Registro {
     margin-right: 100px;
 }
-#cancelar-registrar{
+
+#cancelar-registrar {
     margin-top: 90px;
 }
-#cancelar-venda{
+
+#cancelar-venda {
     margin-left: 330px;
     background-color: #D6C6FB;
     color: #000;
 }
+
 #cancelar-venda:disabled {
     background-color: #e9ecef;
-    color: white; 
+    color: white;
 }
+
 /*Fim Registro de venda*/
+/*vendas*/
+.container-vendas{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+
+.container-relatorio {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+.container-relatorio h4 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.container-relatorio form {
+    display: flex;
+}
+
+.inicio,
+.final {
+    margin-top: 45px;
+    margin-right: 10px;
+}
+
+.pesquisar-vendas label {
+    margin-bottom: 15px;
+}
+
+#criterio-pesquisa {
+    margin-bottom: 15px;
+    margin-left: 80px;
+}
+
+
+#produtosMaisVendidos,
+#totalVendas,
+#mediaLucro,
+#totalProdutosDevolvido,
+#metodoPagamentoMaisUsado,
+#clientesMaisFrquentes,
+#faturamentoTotal,
+#lucroTotal {
+    border: 2px solid black;
+    width: 400px;
+    margin-left: 470px;
+}
+.tabela-itensVenda{
+    width: 50%;
+}
+
+/*Fim vendas*/
