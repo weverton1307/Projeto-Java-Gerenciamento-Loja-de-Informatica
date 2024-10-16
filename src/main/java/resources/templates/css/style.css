@@ -578,7 +578,7 @@
 
 /*Fim Registro de venda*/
 /*vendas*/
-.container-vendas{
+.container-vendas {
     display: flex;
     justify-content: space-around;
     margin-top: 30px;
@@ -598,7 +598,8 @@
 .container-relatorio form {
     display: flex;
 }
-#voltarParaVenda{
+
+#voltarParaVenda {
     margin: 20px 20px;
 }
 
@@ -629,7 +630,8 @@
     width: 400px;
     margin-left: 470px;
 }
-.tabela-itensVenda{
+
+.tabela-itensVenda {
     width: 50%;
 }
 
@@ -655,6 +657,333 @@
     }
 }
 
-   
-   
-  
+/*produtos*/
+@media (max-width: 1100px) {
+    .container-produtos {
+        width: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .formulario-produtos-um {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .formulario-produtos-dois {
+        width: 100%;
+    }
+}
+
+@media (max-width: 853px) {
+    .botoes-formulario {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 692px) {
+    .formulario-produtos-um {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 508px) {
+    #descricao {
+        width: 375px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 454px) {
+    .titulo h1 {
+        font-size: 30px;
+    }
+
+    #descricao {
+        width: 350px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 386px) {
+    .formulario-produtos-dois {
+        width: 100%;
+        padding: 0px;
+        margin: 0px 0px;
+    }
+
+    #descricao {
+        width: 300px;
+        height: 250px;
+    }
+
+    #LocalPrateleiraDiv {
+        width: 100%;
+        padding: 0px;
+        margin: 10px 0px;
+    }
+
+    #prateleiraDiv {
+        width: 100%;
+        padding: 0px;
+        margin: 10px 0px;
+    }
+
+    #categoriaDiv {
+        width: 100%;
+        padding: 0px;
+        margin: 10px 0px;
+    }
+}
+
+/*Cliente*/
+@media (max-width: 545px) {
+    .container-cliente {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #botao-pesquisar-cliente {
+        margin-bottom: 30px;
+    }
+}
+
+/*Registro de venda*/
+
+@media (max-width: 1002px) {
+    .container-registroVenda {
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 861px) {
+    .botoes-formulario {
+        justify-content: center;
+        flex-direction: row;
+        gap: 10px;
+        width: 100%;
+        margin: 0;
+    }
+
+    #cancelar-venda,
+    #finalizar-venda {
+        width: 150px;
+        margin: 0;
+    }
+}
+
+/*Devolução ou Troca*/
+@media (max-width: 966px) {
+    .container-devolucaoOuTroca {
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+@media (max-width: 812px) {
+    .botoes-formulario {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 966px) {
+    .pesquisar-devolucaoOuTroca {
+        margin-left: 15px;
+    }
+
+}
+
+@media (max-width: 491px) {
+    .container-menu {
+        justify-content: center;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    header {
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .logo-topo img {
+        max-width: 100%;
+
+    }
+
+    html,
+    body {
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+}
+
+@media (max-width: 491px) {
+    #motivo-devolucaoOuTroca {
+        width: 250px;
+    }
+}
+
+@media (max-width: 393px) {
+    #motivo-devolucaoOuTroca {
+        width: 200px;
+    }
+}
+
+/*Vendas*/
+@media (max-width: 1012px) {
+    .container-vendas {
+        flex-direction: column;
+    }
+
+    .tabela-resultadoPesquisa {
+        width: 250px;
+    }
+}
+
+@media (max-width: 1012px) {
+    .container-relatorio {
+        flex-direction: column;
+        margin-top: 80px;
+        justify-content: center;
+    }
+
+    #Voltar-limpar {
+        margin-top: 70px;
+        justify-content: center;
+        flex-direction: row;
+        gap: 10px;
+        width: 100%;
+        margin: 0;
+    }
+}
+
+@media (max-width: 862px) {
+    .relatorio form {
+        flex-direction: column;
+    }
+
+    #botao-relatorio {
+        margin-bottom: 50px;
+    }
+
+    #Voltar-limpar {
+        margin-top: 70px;
+        justify-content: center;
+        flex-direction: row;
+        gap: 10px;
+        width: 100%;
+        margin: 0;
+    }
+}
+
+/*funcionário*/
+@media (max-width: 1030px) {
+    .container-Funcionario {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 375px) {
+    .formulario-funcionario-dois {
+        width: 100%;
+    }
+
+    #usuarioDiv {
+        width: 100%;
+        padding: 0px;
+        margin: 10px 0px;
+    }
+
+}
+
+@media (max-width: 860px) {
+    .container-menu-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container-menu-section div {
+        margin-bottom: 20px;
+    }
+
+    #sair {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        padding-left: 650px;
+        background-color: #EFEFEF;
+    }
+}
+/*relatório*/
+@media (max-width: 984px) {
+    #relatorio-section {
+        margin-right: 400px;
+        margin: 0px;
+    }
+    .resultado-relatorio div{
+        width: 100%;
+    }
+    @media (max-width: 984px) {
+        #relatorio-section {
+            margin-right: 500px;
+        }
+        #voltarParaVenda{
+            margin-left: 60px;
+        }
+    }
+    @media (max-width: 498px) {
+        .resultado-relatorio {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: start;
+            width: 100%; 
+        }
+        
+        .resultado-relatorio div {
+            width: 100%; 
+            padding: 0px;
+            box-sizing: border-box; 
+            border: 1px solid black; 
+            margin-bottom: 20px;
+        }
+        
+        #voltarParaVenda {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+.resultado-relatorio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.resultado-relatorio div {
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+#voltarParaVenda {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+}
