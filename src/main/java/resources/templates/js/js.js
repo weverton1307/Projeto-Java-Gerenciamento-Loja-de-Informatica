@@ -123,10 +123,9 @@ function salvarProduto() {
     }
 
 }
-////Função para validar numero
 function validarNumero(input) {
     const valor = input.value;
-    if (!/^\d*\.?\d*$/.test(valor)) {
+    if (!/^\d*[.,]?\d*$/.test(valor)) {
         alert('Por favor, insira apenas números.');
         input.value = "";
     }
