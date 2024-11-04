@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>relatório</title>
+    <link rel="icon" href="./img/icon.png" type="png">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="background" id="relatorioBody">
+    <!--header-->
+    <header>
+        <div class="container-menu">
+            <div class="logo-topo">
+                <img src="./img/LogoMarca.png" alt="">
+            </div>
+            <div class="titulo">
+                <h1>Relatório</h1>
+            </div>
+        </div>
+    </header>
+    <!--Fim header-->
+    <!--main-->
+    <main>
+        <!--section-->
+        <section id="relatorio-section">
+            <div class="resultado-relatorio">
+                <div id="produtosMaisVendidos">
+                    <h3>Produtos mais vendidos</h3>
+                </div>
+                <div id="totalVendas">
+                    <h3>Total de vendas</h3>
+                </div>
+                <div id="mediaLucro">
+                    <h3>Média de lucro</h3>
+                </div>
+                <div id="totalProdutosDevolvido">
+                    <h3>Total de produtos devolvidos</h3>
+                </div>
+                <div id="metodoPagamentoMaisUsado">
+                    <h3>Método de pagamento mais usado</h3>
+                </div>
+                <div id="clientesMaisFrquentes">
+                    <h3>Clientes mais frequentes</h3>
+                </div>
+                <div id="faturamentoTotal">
+                    <h3>Faturamento total</h3>
+                </div>
+                <div id="lucroTotal">
+                    <h3>Lucro total</h3>
+                </div>
+
+            </div>
+            <div  id="voltarParaVenda">
+                <a href="./vendas.html">
+                    <img src="./img/voltar.png" alt="registro de venda" width="50" height="">
+                </a>
+            </div>
+        </section>
+         
+        <!--Fim section-->
+    </main>
+
+    <!--Fim main-->
+    <script>
+        window.onload = function () {
+
+            let produtosMaisVendidos = localStorage.getItem('relatorioProdutosMaisVendidos');
+            let totalVendas = localStorage.getItem('relatorioTotalVendas');
+            let mediaLucro = localStorage.getItem('relatorioMediaLucro');
+            let totalProdutosDevolvido = localStorage.getItem('relatorioTotalProdutosDevolvido');
+            let metodoPagamentoMaisUsado = localStorage.getItem('relatorioMetodoPagamentoMaisUsado');
+            let clientesMaisFrequentes = localStorage.getItem('relatorioClientesMaisFrequentes');
+            let faturamentoTotal = localStorage.getItem('relatorioFaturamentoTotal');
+            let lucroTotal = localStorage.getItem('relatorioLucroTotal');
+            document.getElementById("produtosMaisVendidos").innerHTML += produtosMaisVendidos;
+            document.getElementById("totalVendas").innerHTML += totalVendas;
+            document.getElementById("mediaLucro").innerHTML += mediaLucro;
+            document.getElementById("totalProdutosDevolvido").innerHTML += totalProdutosDevolvido;
+            document.getElementById("metodoPagamentoMaisUsado").innerHTML += metodoPagamentoMaisUsado;
+            document.getElementById("clientesMaisFrquentes").innerHTML += clientesMaisFrequentes;
+            document.getElementById("faturamentoTotal").innerHTML += faturamentoTotal;
+            document.getElementById("lucroTotal").innerHTML += lucroTotal;
+        };
+    </script>
+
+    </script>
+</body>
+
+</html>
