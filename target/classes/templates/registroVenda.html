@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de venda</title>
+    <link rel="icon" href="./img/icon.png" type="png">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="background">
+    <!--header-->
+    <header>
+        <div class="container-menu">
+            <div class="logo-topo">
+                <img src="./img/LogoMarca.png" alt="">
+            </div>
+            <div class="titulo">
+                <h1>Registro de venda</h1>
+            </div>
+        </div>
+    </header>
+    <!--Fim header-->
+    <!--main-->
+    <main>
+        <!--section-->
+        <section>
+            <!--container-->
+            <div class="container-registroVenda">
+                <!--formulário-registroVenda-->
+                <div class="formulario-registroVenda">
+                    <form>
+                        <label id="cpf-label">CPF do cliente:</label>
+                        <input type="text" id="cpfClienteVenda" placeholder="xxx.xxx.xxx-xx"><br>
+                    </form>
+                    <label>Método de pagamento:</label>
+                    <select id="metodo-pagamento"><br>
+                        <option value="selecione um item" required>selecione um item</option>
+                        <option value="dinheiro">Dinheiro</option>
+                        <option value="pix">Pix</option>
+                        <option value="cartao-credito">Cartão de crédito</option>
+                        <option value="cartao-debito">Cartão de débito</option>
+                    </select><br>
+                    <label id="funcionario-label">Funcionário:</label>
+                    <select id="funcionario-venda" required><br>
+                        <option value="selecione um item" >selecione um item</option>
+                        <option value="Gerente">Gerente</option>
+                        <option value="Vendedor">Vendedor</option>
+                    </select>
+                    <div class="botoes-formulario">
+                        <button type="button" class="form-control" id="gerar-venda" onclick="gerarVenda()">Gerar venda</button><br>
+                    </div>
+                    
+                    <form >
+                        <label>Código do produto:</label>
+                        <input type="text" id="codigoProduto-venda" required><br>
+                        <label id="quantidade-label" required>Quantidade:</label>
+                        <input type="text" id="quantidadeProduto-venda"><br>
+                    </form>
+                    <div class="botoes-formulario">
+                        <button type="button" class="form-control" id="buscar-produto" onclick="buscarprodutosRegistroVenda()">Buscar produto</button><br>
+                    </div>
+                    <div id="h6">
+                        <h6>Nome do produto:</h6><br>
+                        <h6>Valor:</h6><br>
+                        <h6>Cliente:</h6><br>
+                    </div>
+                   
+                    <div class="botoes-formulario">
+                        <button type="button" class="form-control" id="voltar-venda" onclick="voltarPagina()">Voltar</button>
+                        <button type="button" class="form-control" id="Adicionar-venda" onclick="adicionar()">Adicionar</button><br>
+                    </div>
+                </div>
+                <!--Fim formulário-registroVenda-->
+                <!--tabela-itens-venda-->
+                <div class="tabela-itens-venda">
+                    <div id="venda-itens">
+                        <h2 id="venda-numero">Venda</h2>
+                        <h2 id="itens-Registro">Itens</h2>
+                    </div>
+                    <div class="tabela-itens">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Quantidade</th>
+                                    <th>Valor</th>
+                                    <th>Sub Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabela-registro">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="cancelar-registrar" class="botoes-formulario">
+                        <button type="button" class="form-control" id="cancelar-venda" onclick="cancelarVenda()">Cancelar</button>
+                        <button type="button" class="form-control" id="finalizar-venda" onclick="registrarVenda()">Registrar</button>
+                    </div>
+                </div>
+                <!--Fim tabela-itens-venda-->
+            </div>
+            <!--Fim container-->
+        </section>
+        <!--Fim section-->
+    </main>
+    <!--Fim main-->
+    <script>
+        window.onload = function() {
+     document.getElementById("codigoProduto-venda").disabled = true;
+     document.getElementById("quantidadeProduto-venda").disabled = true;
+    document.getElementById("buscar-produto").disabled = true;
+    document.getElementById("cancelar-venda").disabled = true;
+    document.getElementById("finalizar-venda").disabled = true;
+    document.getElementById("Adicionar-venda").disabled = true;
+};
+    </script>
+    <script type="text/javascript" src="./js/js.js"></script>
+</body>
+
+</html>
