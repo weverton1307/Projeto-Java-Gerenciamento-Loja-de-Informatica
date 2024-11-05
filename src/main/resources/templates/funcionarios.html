@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionários</title>
+    <link rel="icon" href="./img/icon.png" type="png">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="background">
+    <!--header-->
+    <header>
+        <div class="container-menu">
+            <div class="logo-topo">
+                <img src="./img/LogoMarca.png" alt="">
+            </div>
+            <div class="titulo">
+                <h1>Funcionários</h1>
+            </div>
+        </div>
+    </header>
+    <!--Fim header-->
+
+    <!--main-->
+    <main>
+        <!--section-->
+        <section>
+            <!--container-funcionarios-->
+            <div class="container-Funcionario">
+                <div class="formulario-funcionario-um">
+                    <form onsubmit="return salvarFuncionario()">
+                        <label>Nome:</label>
+                        <input id="nomeFuncionario" type="text" required><br>
+                        <label>Endereço:</label>
+                        <input id="endereço" type="text" required><br>
+                        <label>CPF:</label>
+                        <input id="cpf" type="text" required placeholder="xxx.xxx.xxx-xx"><br>
+                        <label>Telefone:</label>
+                        <input id="telefone" type="text" required placeholder="(xx) xxxx-xxxx"><br>
+                        <label>Email:</label>
+                        <input id="email" type="email" required placeholder="exemplo@dominio.com"><br>
+
+
+                    </form>
+
+                    <div class="botoes-formulario">
+                        <button type="button" class="form-control voltar" onclick="voltarPagina()" id="voltar" >Voltar</button>
+                        <button type="button" class="form-control" onclick="salvarFuncionario()" id="salvar">Salvar</button>
+                        <button type="submit" class="form-control" onclick="alterarFuncionario()" id="alterar">Alterar</button>
+                        <button type="submit" class="form-control" onclick="limparCamposProduto()">Limpar</button>
+                    </div>
+                </div>
+
+                <div class="formulario-funcionario-dois">
+                    <form>
+                        <div>
+                            <label for="Cargo" required>Cargo:</label>
+                            <select id="cargo" required>
+                                <option>Selecione um item</option>
+                                <option value="Gerente">Gerente</option>
+                                <option value="Vendedor">Vendedor</option>
+                            </select><br>
+                        </div>
+                        <div id="usuarioDiv">
+                            <label>Nome de usuário:</label>
+                            <input id="nomeUsuario" type="text" required><br>
+                            <label>Senha:</label>
+                            <input id="senha-funcionario" type="text" required><br>
+                        </div>
+                        <div>
+                            <label>Pesquisar:</label>
+                            <input id="pesquisar" type="text"><br>
+                        </div>
+                        <div id="botao-funcionario-buscar">
+                            <button id="search-button" class="form-control" onclick="buscarFuncionario()">Buscar</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+            <!--Fim container-funcionarios-->
+
+            <!--container-tabela-->
+            <div class="container-tabela">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Nome</th>
+                            <th>Endereço</th>
+                            <th>E-mail</th>
+                            <th>Cargo</th>
+                            <th>Telefone</th>
+                            <th>CPF</th>
+                            <th>Tipo de usuário</th>
+                            <th>Data último login</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-funcionario">
+                    </tbody>
+                </table>
+            </div>
+            <!--Fim container-tabela-->
+        </section>
+        <!--Fim section-->
+    </main>
+    <!--Fim main-->
+
+    <script>
+        window.onload = function () {
+            atualizarTabela();
+        };
+    </script>
+    <script type="text/javascript" src="./js/js.js"></script>
+</body>
+
+</html>

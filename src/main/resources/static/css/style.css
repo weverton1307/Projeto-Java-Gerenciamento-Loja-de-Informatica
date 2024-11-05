@@ -1,0 +1,989 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+.body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* login */
+
+.index {
+    background-color: #D6C6FB;
+}
+
+.main-index {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 1440px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.container .login {
+    justify-content: center;
+    align-items: center;
+    margin-left: 15%;
+    margin-bottom: 10%;
+}
+
+.container .login img {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.container .login h1 {
+    font-size: 80px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #673781;
+}
+
+.formulario-login {
+    width: 100%;
+}
+
+.formulario-login h3 {
+    font-size: 25px;
+    font-weight: 600;
+    color: #000;
+    margin-top: 8px;
+    text-align: left;
+}
+
+.formulario-login input {
+    width: 350px;
+    height: 40px;
+    margin-bottom: 15px;
+    margin-top: -8px;
+    padding: 5px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+
+
+.botao-sair,
+.botao-entrar {
+    width: 120px;
+    height: 40px;
+    font-size: 18px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.botao-sair {
+    background-color: #f2f2f2;
+    color: #000;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    margin-right: 75px;
+}
+
+.botao-entrar {
+    background-color: #673781;
+    color: #fff;
+    border: 2px solid #5a317b;
+    border-radius: 10px;
+}
+
+.botao-sair:hover {
+    background-color: #e0e0e0;
+}
+
+.botao-entrar:hover {
+    background-color: #5a317b;
+}
+
+
+/* Fim login */
+/*menu*/
+.background {
+    background-color: #EFEFEF;
+}
+
+.container-menu {
+    display: flex;
+    align-items: center;
+    background-color: #D6C6FB;
+}
+
+.titulo {
+    margin-left: 15px;
+}
+
+.titulo h1 {
+    font-size: 50px;
+    margin-top: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #673781;
+
+}
+
+.container-menu-section {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+
+.container-menu-section div {
+    margin: 10px 20px;
+    text-align: center;
+    padding: 0px 0px;
+    padding-top: 15px;
+    padding-bottom: 0px;
+    background-color: #5a317b;
+    width: 250px;
+    height: 200px;
+}
+
+.container-menu-section div h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.container-menu-section #sair {
+    width: 50px;
+    height: 50px;
+    padding-top: 0px;
+    margin-right: 803px;
+    margin-bottom: 5px;
+}
+
+/*Fim menu*/
+/*Produtos*/
+.container-produtos {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.formulario-produtos-dois {
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario-produtos-um {
+    padding: 15px;
+}
+
+.formulario-produtos-um div {
+    margin: 10px;
+}
+
+.formulario-produtos-um form label,
+.formulario-produtos-um form input {
+    margin: 10px;
+}
+
+.formulario-produtos-um form input {
+    width: 200px;
+}
+
+#nome {
+    width: 300px;
+}
+
+#valorCompra {
+    width: 228px;
+}
+
+#valorVenda {
+    width: 240px;
+}
+
+#modelo {
+    width: 290px;
+}
+
+#fiscal {
+    width: 191px;
+}
+
+#data {
+    width: 220px;
+}
+
+#fabricante {
+    width: 274px;
+}
+
+#descricao {
+    height: 90px;
+    width: 450px;
+}
+
+.botoes-formulario {
+    display: flex;
+    margin-right: 10px;
+
+}
+
+.botoes-formulario button {
+    margin: 10px;
+    width: 130px;
+    text-align: center;
+    background-color: #5a317b;
+    color: white;
+
+}
+
+#voltar {
+    color: #000;
+    background-color: #D6C6FB;
+}
+
+.formulario-produtos-dois {
+    padding: 15px;
+}
+
+.formulario-produtos-dois div {
+    margin: 10px;
+}
+
+#prateleira {
+    margin-left: 60px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+#localPrateleira {
+    border-radius: 15px;
+    text-align: center;
+}
+
+#categoria {
+    margin-left: 75px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+#item-categoria {
+    border-radius: 15px;
+    text-align: center;
+}
+
+.formulario-produtos-dois .radio {
+    margin: 5px 5px;
+}
+
+#radio3 {
+    margin-left: 73px;
+}
+
+#radio2 {
+    margin-left: 25px;
+}
+
+#search-button {
+    margin-top: 15px;
+    width: 130px;
+    background-color: #5a317b;
+    color: white;
+}
+
+.container-tabela table th {
+    font-size: 13px;
+}
+
+#texto-area {
+    margin-bottom: 20px;
+    margin-top: -8px;
+}
+
+/* Fim Produtos*/
+/* Funcionário*/
+.container-Funcionario {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.formulario-funcionario-dois {
+    padding: 15px;
+}
+
+.formulario-funcionario-dois div {
+    margin: 10px;
+}
+
+.formulario-funcionario-dois {
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario-funcionario-um {
+    padding: 15px;
+}
+
+.formulario-funcionario-um div {
+    margin: 10px;
+}
+
+.formulario-funcionario-um form label,
+.formulario-funcionario-um form input {
+    margin: 10px;
+}
+
+.formulario-funcionario-um form input {
+    width: 200px;
+}
+
+#senha-funcionario {
+    margin-top: 15px;
+}
+
+#nomeUsuario {
+    margin-top: 10px;
+}
+
+#pesquisar {
+    margin-top: 60px;
+}
+
+#botao-funcionario-buscar {
+    margin-left: 83px;
+}
+
+#cargo {
+    margin-left: 80px;
+}
+
+#senha-funcionario {
+    margin-left: 77px;
+}
+
+#nomeFuncionario {
+    width: 222px;
+}
+
+#cpf {
+    width: 240px;
+}
+
+#telefone {
+    width: 210px;
+}
+
+#email {
+    width: 230px;
+}
+
+/*Fim funcionários*/
+/*clientes*/
+.container-cliente {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.formulario-cliente,
+.pesquisar-cliente {
+    padding: 30px;
+    padding-bottom: 30px;
+}
+
+.formulario-cliente form input,
+.formulario-cliente form label {
+    margin: 10px;
+}
+
+.pesquisar-cliente div {
+    margin-bottom: -50px;
+}
+
+#botao-pesquisar-cliente {
+    margin-top: 65px;
+}
+
+#nomeCliente {
+    width: 210px;
+}
+
+#cpfCliente {
+    width: 225px;
+}
+
+#telefoneCliente {
+    width: 193px;
+}
+
+#emailCliente {
+    width: 215px;
+}
+
+.botoes-formulario {
+    margin-top: 30px;
+}
+
+/*Fim clientes*/
+/*Devolução ou troca*/
+.container-devolucaoOuTroca {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding-bottom: 30px;
+}
+
+.formulario-devolucaoOuTroca,
+.pesquisar-devolucaoOuTroca {
+    margin-top: 30px;
+}
+
+.radio-devolucaoOuTroca {
+    margin-left: 140px;
+}
+
+.radio-devolucaoOuTroca .radio2 {
+    margin-left: 42px;
+}
+
+.textoArea {
+    display: flex;
+    margin: 15px 50px;
+
+}
+
+#motivo-devolucaoOuTroca {
+    width: 300px;
+    height: 150px;
+    margin-left: 4px;
+
+}
+
+.textoArea label {
+    margin-left: 38px;
+}
+
+.data-devolucaoOuTroca {
+    margin-left: 105px;
+}
+
+/*Fim Devolução ou troca*/
+/*Registro de venda*/
+.container-registroVenda {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.formulario-registroVenda,
+.tabela-itens-venda {
+    margin-top: 30px;
+}
+
+.formulario-registroVenda form {
+    margin-bottom: 20px;
+}
+
+.formulario-registroVenda select {
+    margin-bottom: 20px;
+}
+
+#cpf-label {
+    margin-left: 35px;
+}
+
+#funcionario-venda {
+    margin-left: 0px;
+}
+
+#funcionario-label {
+    margin-left: 80px;
+}
+
+#gerar-venda {
+    margin-left: 200px;
+    margin-bottom: 30px;
+}
+
+#quantidadeProduto-venda {
+    margin-top: 30px;
+}
+
+#quantidade-label {
+    margin-left: 53px;
+}
+
+#buscar-produto {
+    width: 150px;
+    margin-left: 180px;
+    margin-bottom: 20px;
+}
+
+.botoes-formulario {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+#voltar-venda {
+    margin-right: 58px;
+    background-color: #D6C6FB;
+    color: #000;
+}
+
+#h6 {
+    margin: -20px;
+}
+
+#venda-itens {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tabela-itens-venda {
+    width: 50%;
+}
+
+#tabela-registro {
+    height: 450px;
+    border: 2px solid black;
+    border-color: #000;
+}
+
+#itens-Registro {
+    margin-right: 100px;
+}
+
+#cancelar-registrar {
+    margin-top: 90px;
+}
+
+#cancelar-venda {
+    margin-left: 330px;
+    background-color: #D6C6FB;
+    color: #000;
+}
+
+#cancelar-venda:disabled {
+    background-color: #e9ecef;
+    color: white;
+}
+
+/*Fim Registro de venda*/
+/*vendas*/
+.container-vendas {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.container-relatorio {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+.container-relatorio h4 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.container-relatorio form {
+    display: flex;
+}
+
+#voltarParaVenda {
+    margin: 20px 20px;
+}
+
+.inicio,
+.final {
+    margin-top: 45px;
+    margin-right: 10px;
+}
+
+.pesquisar-vendas label {
+    margin-bottom: 15px;
+}
+
+#criterio-pesquisa {
+    margin-bottom: 15px;
+    margin-left: 80px;
+}
+
+#produtosMaisVendidos,
+#totalVendas,
+#mediaLucro,
+#totalProdutosDevolvido,
+#metodoPagamentoMaisUsado,
+#clientesMaisFrquentes,
+#faturamentoTotal,
+#lucroTotal {
+    border: 2px solid black;
+    width: 400px;
+    margin-left: 470px;
+}
+
+.tabela-itensVenda {
+    width: 50%;
+}
+
+/*Fim vendas*/
+/*Responsividade*/
+
+/*login*/
+@media (max-width: 1418px) {
+    .container .login {
+        margin-right: 500px;
+    }
+}
+
+@media (max-width: 960px) {
+    .container {
+        flex-direction: column;
+        margin: 0px 0;
+    }
+
+    .container .login {
+        justify-content: center;
+        margin-right: 130px;
+    }
+}
+
+/*produtos*/
+@media (max-width: 1100px) {
+    .container-produtos {
+        width: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .formulario-produtos-um {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .formulario-produtos-dois {
+        width: 100%;
+    }
+}
+
+@media (max-width: 853px) {
+    .botoes-formulario {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 692px) {
+    .formulario-produtos-um {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 508px) {
+    #descricao {
+        width: 375px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 454px) {
+    .titulo h1 {
+        font-size: 30px;
+    }
+
+    #descricao {
+        width: 350px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 386px) {
+    .formulario-produtos-dois {
+        width: 100%;
+        padding: 0px;
+        margin: 0px 0px;
+    }
+
+    #descricao {
+        width: 300px;
+        height: 250px;
+    }
+
+    #LocalPrateleiraDiv {
+        width: 100%;
+        padding: 0px;
+        margin: 10px 0px;
+    }
+
+    #prateleiraDiv {
+        width: 100%;
+        padding: 0px;
+        margin: 10px 0px;
+    }
+
+    #categoriaDiv {
+        width: 100%;
+        padding: 0px;
+        margin: 10px 0px;
+    }
+}
+
+/*Cliente*/
+@media (max-width: 545px) {
+    .container-cliente {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #botao-pesquisar-cliente {
+        margin-bottom: 30px;
+    }
+}
+
+/*Registro de venda*/
+
+@media (max-width: 1002px) {
+    .container-registroVenda {
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 861px) {
+    .botoes-formulario {
+        justify-content: center;
+        flex-direction: row;
+        gap: 10px;
+        width: 100%;
+        margin: 0;
+    }
+
+    #cancelar-venda,
+    #finalizar-venda {
+        width: 150px;
+        margin: 0;
+    }
+}
+
+/*Devolução ou Troca*/
+@media (max-width: 966px) {
+    .container-devolucaoOuTroca {
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+@media (max-width: 812px) {
+    .botoes-formulario {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 966px) {
+    .pesquisar-devolucaoOuTroca {
+        margin-left: 15px;
+    }
+
+}
+
+@media (max-width: 491px) {
+    .container-menu {
+        justify-content: center;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    header {
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .logo-topo img {
+        max-width: 100%;
+
+    }
+
+    html,
+    body {
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+}
+
+@media (max-width: 491px) {
+    #motivo-devolucaoOuTroca {
+        width: 250px;
+    }
+}
+
+@media (max-width: 393px) {
+    #motivo-devolucaoOuTroca {
+        width: 200px;
+    }
+}
+
+/*Vendas*/
+@media (max-width: 1012px) {
+    .container-vendas {
+        flex-direction: column;
+    }
+
+    .tabela-resultadoPesquisa {
+        width: 250px;
+    }
+}
+
+@media (max-width: 1012px) {
+    .container-relatorio {
+        flex-direction: column;
+        margin-top: 80px;
+        justify-content: center;
+    }
+
+    #Voltar-limpar {
+        margin-top: 70px;
+        justify-content: center;
+        flex-direction: row;
+        gap: 10px;
+        width: 100%;
+        margin: 0;
+    }
+}
+
+@media (max-width: 862px) {
+    .relatorio form {
+        flex-direction: column;
+    }
+
+    #botao-relatorio {
+        margin-bottom: 50px;
+    }
+
+    #Voltar-limpar {
+        margin-top: 70px;
+        justify-content: center;
+        flex-direction: row;
+        gap: 10px;
+        width: 100%;
+        margin: 0;
+    }
+}
+
+/*funcionário*/
+@media (max-width: 1030px) {
+    .container-Funcionario {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 375px) {
+    .formulario-funcionario-dois {
+        width: 100%;
+    }
+
+    #usuarioDiv {
+        width: 100%;
+        padding: 0px;
+        margin: 10px 0px;
+    }
+
+}
+
+@media (max-width: 860px) {
+    .container-menu-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container-menu-section div {
+        margin-bottom: 20px;
+    }
+
+    #sair {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        padding-left: 650px;
+        background-color: #EFEFEF;
+    }
+}
+/*relatório*/
+@media (max-width: 984px) {
+    #relatorio-section {
+        margin-right: 400px;
+        margin: 0px;
+    }
+    .resultado-relatorio div{
+        width: 100%;
+    }
+    @media (max-width: 984px) {
+        #relatorio-section {
+            margin-right: 500px;
+        }
+        #voltarParaVenda{
+            margin-left: 60px;
+        }
+    }
+    @media (max-width: 498px) {
+        .resultado-relatorio {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: start;
+            width: 100%; 
+        }
+        
+        .resultado-relatorio div {
+            width: 100%; 
+            padding: 0px;
+            box-sizing: border-box; 
+            border: 1px solid black; 
+            margin-bottom: 20px;
+        }
+        
+        #voltarParaVenda {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+.resultado-relatorio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.resultado-relatorio div {
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+#voltarParaVenda {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+}
