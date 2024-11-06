@@ -3,6 +3,7 @@ package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Controller;
 
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Troca;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceTroca;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,5 +30,11 @@ public class ControllerAPITroca {
     public ResponseEntity<Troca> criar(@RequestBody Troca troca){
        Troca novaTroca = serviceTroca.criarTroca(troca);
        return new ResponseEntity<>(novaTroca, HttpStatus.CREATED);
+    }
+    
+       @GetMapping("listar-troca")
+    public ResponseEntity<List> listar(){
+        List<Troca> listaTroca = serviceTroca.listarTroca();
+        return new ResponseEntity<>(listaTroca, HttpStatus.OK);
     }
 }

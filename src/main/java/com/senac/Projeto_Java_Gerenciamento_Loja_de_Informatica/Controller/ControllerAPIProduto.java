@@ -3,6 +3,7 @@ package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Controller;
 
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Produto;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceProduto;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,5 +30,11 @@ public class ControllerAPIProduto {
     public ResponseEntity<Produto> criar(@RequestBody Produto produto){
        Produto novoProduto = serviceProduto.criarProduto(produto);
        return new ResponseEntity<>(novoProduto, HttpStatus.CREATED);
+    }
+    
+       @GetMapping("listar-produto")
+    public ResponseEntity<List> listar(){
+        List<Produto> listaProduto = serviceProduto.listarProduto();
+        return new ResponseEntity<>(listaProduto, HttpStatus.OK);
     }
 }

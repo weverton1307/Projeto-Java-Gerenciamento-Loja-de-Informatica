@@ -3,6 +3,7 @@ package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Controller;
 
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Cliente;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceCliente;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,5 +30,11 @@ public class ControllerAPICliente {
     public ResponseEntity<Cliente> criar(@RequestBody Cliente cliente){
        Cliente novoCliente = serviceCliente.criarCliente(cliente);
        return new ResponseEntity<>(novoCliente, HttpStatus.CREATED);
+    }
+    
+       @GetMapping("listar-cliente")
+    public ResponseEntity<List> listar(){
+        List<Cliente> listaCliente = serviceCliente.listarCliente();
+        return new ResponseEntity<>(listaCliente, HttpStatus.OK);
     }
 }

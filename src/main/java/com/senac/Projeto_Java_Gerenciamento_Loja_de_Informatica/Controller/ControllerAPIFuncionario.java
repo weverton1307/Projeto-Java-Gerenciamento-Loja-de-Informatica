@@ -2,6 +2,7 @@
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Controller;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Funcionario;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceFuncionario;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,5 +29,11 @@ public class ControllerAPIFuncionario {
     public ResponseEntity<Funcionario> criar(@RequestBody Funcionario funcionario){
        Funcionario novofuncionario = serviceFuncionario.criarFuncionario(funcionario);
        return new ResponseEntity<>(novofuncionario, HttpStatus.CREATED);
+    }
+    
+       @GetMapping("listar-funcionario")
+    public ResponseEntity<List> listar(){
+        List<Funcionario> listaFuncionario = serviceFuncionario.listarFuncionario();
+        return new ResponseEntity<>(listaFuncionario, HttpStatus.OK);
     }
 }

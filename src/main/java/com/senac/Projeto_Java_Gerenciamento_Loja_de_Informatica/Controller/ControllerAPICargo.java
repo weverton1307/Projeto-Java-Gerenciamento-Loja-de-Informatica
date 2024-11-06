@@ -3,6 +3,7 @@ package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Controller;
 
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Cargo;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceCargo;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,5 +29,11 @@ public class ControllerAPICargo {
     public ResponseEntity<Cargo> criar(@RequestBody Cargo cargo){
        Cargo novaCargo = serviceCargo.criarCargo(cargo);
        return new ResponseEntity<>(novaCargo, HttpStatus.CREATED);
+    }
+    
+       @GetMapping("listar-cargo")
+    public ResponseEntity<List> listar(){
+        List<Cargo> listaCargo = serviceCargo.listarCargo();
+        return new ResponseEntity<>(listaCargo, HttpStatus.OK);
     }
 }

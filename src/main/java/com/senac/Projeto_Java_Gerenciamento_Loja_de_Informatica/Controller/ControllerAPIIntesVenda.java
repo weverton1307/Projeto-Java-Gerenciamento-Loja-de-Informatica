@@ -5,6 +5,7 @@ package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Controller;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.ItensVenda;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceItensVenda;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceVenda;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,5 +32,11 @@ public class ControllerAPIIntesVenda {
     public ResponseEntity<ItensVenda> criar(@RequestBody ItensVenda itensVenda){
        ItensVenda novaItensVenda = serviceItensVenda.criarItensVenda(itensVenda);
        return new ResponseEntity<>(novaItensVenda, HttpStatus.CREATED);
+    }
+    
+       @GetMapping("listar-itensVenda")
+    public ResponseEntity<List> listar(){
+        List<ItensVenda> listaItensVenda = serviceItensVenda.listarItensVenda();
+        return new ResponseEntity<>(listaItensVenda, HttpStatus.OK);
     }
 }

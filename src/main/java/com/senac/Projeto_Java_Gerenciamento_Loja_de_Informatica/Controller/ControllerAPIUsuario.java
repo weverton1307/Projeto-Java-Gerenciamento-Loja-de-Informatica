@@ -3,6 +3,7 @@ package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Controller;
 
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Usuario;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceUsuario;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,5 +30,11 @@ public class ControllerAPIUsuario {
     public ResponseEntity<Usuario> criar(@RequestBody Usuario usuario){
        Usuario novoUsuario = serviceUsuario.criarUsuario(usuario);
        return new ResponseEntity<>(novoUsuario, HttpStatus.CREATED);
+    }
+    
+       @GetMapping("listar-usuario")
+    public ResponseEntity<List> listar(){
+        List<Usuario> listaUsuario = serviceUsuario.listarUsuario();
+        return new ResponseEntity<>(listaUsuario, HttpStatus.OK);
     }
 }

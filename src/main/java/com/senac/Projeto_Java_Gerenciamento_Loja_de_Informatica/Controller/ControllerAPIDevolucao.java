@@ -2,6 +2,7 @@
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Controller;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Devolucao;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceDevolucao;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,5 +29,11 @@ public class ControllerAPIDevolucao {
     public ResponseEntity<Devolucao> criar(@RequestBody Devolucao devolucao){
        Devolucao novaDevolucao = serviceDevolucao.criarDevolucao(devolucao);
        return new ResponseEntity<>(novaDevolucao, HttpStatus.CREATED);
+    }
+    
+       @GetMapping("listar-devolucao")
+    public ResponseEntity<List> listar(){
+        List<Devolucao> listaDevolucao = serviceDevolucao.listarDevolucao();
+        return new ResponseEntity<>(listaDevolucao, HttpStatus.OK);
     }
 }
