@@ -25,4 +25,17 @@ public class ServiceFuncionario {
           public List<Funcionario> listarFuncionario() {
         return reposoitoryFuncionario.findAll();
     }
+          
+             public Funcionario atualizar(Integer id, Funcionario funcionario){
+        Funcionario funcionarioEncontrado = buscarId(id);
+        funcionarioEncontrado.setCargo(funcionario.getCargo());
+        funcionarioEncontrado.setCpf(funcionario.getCpf());
+        funcionarioEncontrado.setEmail(funcionario.getEmail());
+        funcionarioEncontrado.setEndereco(funcionario.getEndereco());
+        funcionarioEncontrado.setNome(funcionario.getNome());
+        funcionarioEncontrado.setTelefone(funcionario.getTelefone());
+        funcionarioEncontrado.setUsuario(funcionario.getUsuario());
+        return reposoitoryFuncionario.save(funcionarioEncontrado);
+    }
+
 }

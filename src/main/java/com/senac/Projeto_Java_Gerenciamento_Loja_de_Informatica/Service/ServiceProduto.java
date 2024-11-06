@@ -25,4 +25,25 @@ public class ServiceProduto {
           public List<Produto> listarProduto() {
         return reposoitoryProduto.findAll();
     }
+          
+             public Produto atualizar(Integer id, Produto produto){
+        Produto vendaEncontrado = buscarId(id);
+        vendaEncontrado.setCategoria(produto.getCategoria());
+        vendaEncontrado.setCpf_cliente_devolucao(produto.getCpf_cliente_devolucao());
+        vendaEncontrado.setDataAquisicao(produto.getDataAquisicao());
+        vendaEncontrado.setDescricaoTecnica(produto.getDescricaoTecnica());
+        vendaEncontrado.setDevolucao(produto.getDevolucao());
+        vendaEncontrado.setFabricante(produto.getFabricante());
+        vendaEncontrado.setLocalArmazenamento(produto.getLocalArmazenamento());
+        vendaEncontrado.setModelo(produto.getModelo());
+        vendaEncontrado.setNomeProduto(produto.getNomeProduto());
+        vendaEncontrado.setNotaFiscal(produto.getNotaFiscal());
+        vendaEncontrado.setQuantidadeProduto(produto.getQuantidadeProduto());
+        vendaEncontrado.setStatusProduto(produto.getStatusProduto());
+        vendaEncontrado.setTroca(produto.getTroca());
+        vendaEncontrado.setValorCompra(produto.getValorCompra());
+        vendaEncontrado.setValorVenda(produto.getValorVenda());
+        return reposoitoryProduto.save(vendaEncontrado);
+    }
+
 }

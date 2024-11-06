@@ -25,4 +25,11 @@ public class ServiceCargo {
            public List<Cargo> listarCargo() {
         return reposoitoryCargo.findAll();
     }
+           
+              public Cargo atualizar(Integer id, Cargo cargo){
+        Cargo cargoEncontrado = buscarId(id);
+        cargoEncontrado.setNome(cargo.getNome());
+        return reposoitoryCargo.save(cargoEncontrado);
+    }
+
 }

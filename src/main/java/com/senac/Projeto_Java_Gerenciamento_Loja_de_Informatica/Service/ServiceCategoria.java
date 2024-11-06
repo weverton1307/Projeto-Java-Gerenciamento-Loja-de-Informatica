@@ -25,4 +25,10 @@ public class ServiceCategoria {
            public List<Categoria> listarCategoria() {
         return reposoitoryCategoria.findAll();
     }
+              public Categoria atualizar(Integer id, Categoria categoria){
+        Categoria categoriaEncontrada = buscarId(id);
+        categoriaEncontrada.setNome(categoria.getNome());
+        return reposoitoryCategoria.save(categoriaEncontrada);
+    }
+
 }

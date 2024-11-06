@@ -25,4 +25,12 @@ public class ServiceLocalArmazenamento {
           public List<LocalArmazenamento> listarLocalArmazenamento() {
         return reposoitoryLocalArmazenamento.findAll();
     }
+          
+             public LocalArmazenamento atualizar(Integer id, LocalArmazenamento localArmazenamento){
+        LocalArmazenamento localArmazenamentoEncontrado = buscarId(id);
+        localArmazenamentoEncontrado.setNumeroLocalPrateleira(localArmazenamento.getNumeroLocaPrateleira());
+        localArmazenamentoEncontrado.setNumeroPrateleira(localArmazenamento.getNumeroPrateleira());
+        return reposoitoryLocalArmazenamento.save(localArmazenamentoEncontrado);
+    }
+
 }

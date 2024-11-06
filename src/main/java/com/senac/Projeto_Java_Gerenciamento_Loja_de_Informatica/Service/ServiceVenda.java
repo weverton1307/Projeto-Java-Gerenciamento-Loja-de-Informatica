@@ -25,5 +25,15 @@ public class ServiceVenda {
     public List<Venda> listarVenda() {
         return reposoitoryVenda.findAll();
     }
+    
+      public Venda atualizar(Integer id, Venda venda){
+        Venda vendaEncontrada = buscarId(id);
+        vendaEncontrada.setCliente(venda.getCliente());
+        vendaEncontrada.setDataHora(venda.getDataHora());
+        vendaEncontrada.setMetodoPagamento(venda.getMetodoPagamento());
+        vendaEncontrada.setStatusVenda(venda.getStatusVenda());
+        vendaEncontrada.setVendedor(venda.getVendedor());
+        return reposoitoryVenda.save(vendaEncontrada);
+    }
 
 }

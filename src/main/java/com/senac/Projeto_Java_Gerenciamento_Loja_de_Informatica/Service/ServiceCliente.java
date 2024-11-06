@@ -25,4 +25,16 @@ public class ServiceCliente {
            public List<Cliente> listarCliente() {
         return reposoitoryCliente.findAll();
     }
+           
+              public Cliente atualizar(Integer id, Cliente cliente){
+        Cliente clienteEncontrado = buscarId(id);
+        clienteEncontrado.setCpf(cliente.getCpf());
+        clienteEncontrado.setEmail(cliente.getEmail());
+        clienteEncontrado.setEndereco(cliente.getEndereco());
+        clienteEncontrado.setNome(cliente.getNome());
+        clienteEncontrado.setTelefone(cliente.getTelefone());
+        clienteEncontrado.setTotal_compras(cliente.getTotal_compras());
+        return reposoitoryCliente.save(clienteEncontrado);
+    }
+
 }

@@ -25,4 +25,13 @@ public class ServiceItensVenda {
           public List<ItensVenda> listarItensVenda() {
         return reposoitoryItensVenda.findAll();
     }
+          
+             public ItensVenda atualizar(Integer id, ItensVenda itensVenda){
+        ItensVenda itensVendaEncontrada = buscarId(id);
+       itensVendaEncontrada.setProduto(itensVenda.getProduto());
+       itensVendaEncontrada.setQuantidade(itensVenda.getQuantidade());
+       itensVendaEncontrada.setVenda(itensVenda.getVenda());
+        return reposoitoryItensVenda.save(itensVendaEncontrada);
+    }
+
 }

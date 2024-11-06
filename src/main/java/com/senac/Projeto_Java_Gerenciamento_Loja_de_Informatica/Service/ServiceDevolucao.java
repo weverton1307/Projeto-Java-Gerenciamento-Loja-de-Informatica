@@ -25,4 +25,14 @@ public class ServiceDevolucao {
            public List<Devolucao> listarDevolucao() {
         return reposoitoryDevolucao.findAll();
     }
+           
+              public Devolucao atualizar(Integer id, Devolucao devolucao){
+        Devolucao devolucaoEncontrada = buscarId(id);
+        devolucaoEncontrada.setCodigoProduto(devolucao.getCodigoProduto());
+        devolucaoEncontrada.setData(devolucao.getData());
+        devolucaoEncontrada.setMotivo(devolucao.getMotivo());
+        devolucaoEncontrada.setTipo(devolucao.getTipo());
+        return reposoitoryDevolucao.save(devolucaoEncontrada);
+    }
+
 }
