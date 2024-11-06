@@ -10,7 +10,7 @@ public class LocalArmazenamento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String numeroPrateleira;
     private String numeroLocalPrateleira;
 
@@ -25,7 +25,7 @@ public class LocalArmazenamento {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

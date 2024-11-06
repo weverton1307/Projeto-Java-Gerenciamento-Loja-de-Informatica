@@ -14,4 +14,10 @@ public class ServiceFuncionario {
      public Funcionario buscarId(Integer id){
         return reposoitoryFuncionario.findById(id).orElseThrow();
     }
+     
+          public Funcionario criarFuncionario(Funcionario funcionario){
+        funcionario.setId(null);
+         reposoitoryFuncionario.save(funcionario);
+         return funcionario;
+    }
 }

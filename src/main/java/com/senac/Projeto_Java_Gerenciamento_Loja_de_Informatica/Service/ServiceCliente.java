@@ -14,4 +14,10 @@ public class ServiceCliente {
       public Cliente buscarId(Integer id){
         return reposoitoryCliente.findById(id).orElseThrow();
     }
+      
+           public Cliente criarCliente(Cliente cliente){
+        cliente.setId(null);
+         reposoitoryCliente.save(cliente);
+         return cliente;
+    }
 }

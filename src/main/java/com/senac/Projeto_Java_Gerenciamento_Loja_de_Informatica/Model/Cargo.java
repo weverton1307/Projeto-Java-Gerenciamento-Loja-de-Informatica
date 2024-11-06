@@ -10,7 +10,7 @@ public class Cargo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     String nome;
 
     public Cargo() {
@@ -25,7 +25,7 @@ public class Cargo {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -14,4 +14,10 @@ public class ServiceCargo {
       public Cargo buscarId(Integer id){
         return reposoitoryCargo.findById(id).orElseThrow();
     }
+      
+           public Cargo criarCargo(Cargo cargo){
+        cargo.setId(null);
+         reposoitoryCargo.save(cargo);
+         return cargo;
+    }
 }

@@ -14,4 +14,10 @@ public class ServiceTroca {
       public Troca buscarId(Integer id){
         return reposoitoryTroca.findById(id).orElseThrow();
     }
+      
+           public Troca criarTroca(Troca troca){
+        troca.setId(null);
+         reposoitoryTroca.save(troca);
+         return troca;
+    }
 }

@@ -14,4 +14,10 @@ public class ServiceLocalArmazenamento {
      public LocalArmazenamento buscarId(Integer id){
         return reposoitoryLocalArmazenamento.findById(id).orElseThrow();
     }
+     
+          public LocalArmazenamento criarLocalArmazenamento(LocalArmazenamento localArmazenamento){
+        localArmazenamento.setId(null);
+         reposoitoryLocalArmazenamento.save(localArmazenamento);
+         return localArmazenamento;
+    }
 }

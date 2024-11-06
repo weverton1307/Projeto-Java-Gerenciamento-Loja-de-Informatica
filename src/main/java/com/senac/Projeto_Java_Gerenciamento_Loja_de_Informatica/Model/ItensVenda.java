@@ -13,7 +13,7 @@ public class ItensVenda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private int quantidade;
     @ManyToOne
     @JoinColumn(name = "produto_id")
@@ -33,7 +33,7 @@ public class ItensVenda {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

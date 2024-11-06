@@ -14,4 +14,10 @@ public class ServiceProduto {
      public Produto buscarId(Integer id){
         return reposoitoryProduto.findById(id).orElseThrow();
     }
+     
+          public Produto criarProduto(Produto produto){
+        produto.setId(null);
+         reposoitoryProduto.save(produto);
+         return produto;
+    }
 }

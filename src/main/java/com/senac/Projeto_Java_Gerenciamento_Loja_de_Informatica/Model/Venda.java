@@ -13,7 +13,7 @@ public class Venda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private LocalDateTime dataHora;
     private String metodoPagamento;
     private String statusVenda;
@@ -37,7 +37,7 @@ public class Venda {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

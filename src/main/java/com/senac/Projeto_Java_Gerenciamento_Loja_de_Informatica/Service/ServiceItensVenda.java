@@ -14,4 +14,10 @@ public class ServiceItensVenda {
      public ItensVenda buscarId(Integer id){
         return reposoitoryItensVenda.findById(id).orElseThrow();
     }
+     
+          public ItensVenda criarItensVenda(ItensVenda itensVenda){
+        itensVenda.setId(null);
+         reposoitoryItensVenda.save(itensVenda);
+         return itensVenda;
+    }
 }

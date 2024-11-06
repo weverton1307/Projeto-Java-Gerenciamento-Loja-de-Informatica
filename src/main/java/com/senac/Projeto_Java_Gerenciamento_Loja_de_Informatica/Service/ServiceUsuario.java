@@ -14,4 +14,10 @@ public class ServiceUsuario {
      public Usuario buscarId(Integer id){
         return reposoitoryUsuario.findById(id).orElseThrow();
     }
+     
+          public Usuario criarUsuario(Usuario usuario){
+        usuario.setId(null);
+         reposoitoryUsuario.save(usuario);
+         return usuario;
+    }
 }

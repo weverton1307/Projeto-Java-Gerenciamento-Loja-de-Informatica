@@ -11,7 +11,7 @@ public class Troca {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private int codigoProduto;
     private String motivo;
     private String tipo;
@@ -38,7 +38,7 @@ public class Troca {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

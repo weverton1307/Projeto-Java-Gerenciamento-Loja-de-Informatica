@@ -14,4 +14,10 @@ public class ServiceDevolucao {
       public Devolucao buscarId(Integer id){
         return reposoitoryDevolucao.findById(id).orElseThrow();
     }
+      
+           public Devolucao criarDevolucao(Devolucao devolucao){
+        devolucao.setId(null);
+         reposoitoryDevolucao.save(devolucao);
+         return devolucao;
+    }
 }

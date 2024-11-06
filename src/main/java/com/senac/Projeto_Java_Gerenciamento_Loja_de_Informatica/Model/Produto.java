@@ -13,7 +13,7 @@ public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String nomeProduto;
     private double valorCompra;
     private double valorVenda;
@@ -67,7 +67,7 @@ public class Produto {
         this.cpf_cliente_devolucao = cpf_cliente_devolucao;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -14,4 +14,10 @@ public class ServiceVenda {
       public Venda buscarId(Integer id){
         return reposoitoryVenda.findById(id).orElseThrow();
     }
+      
+        public Venda criarVenda(Venda venda){
+        venda.setId(null);
+         reposoitoryVenda.save(venda);
+         return venda;
+    }
 }

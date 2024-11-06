@@ -14,4 +14,10 @@ public class ServiceCategoria {
       public Categoria buscarId(Integer id){
         return reposoitoryCategoria.findById(id).orElseThrow();
     }
+      
+           public Categoria criarCategoria(Categoria categoria){
+        categoria.setId(null);
+         reposoitoryCategoria.save(categoria);
+         return categoria;
+    }
 }
