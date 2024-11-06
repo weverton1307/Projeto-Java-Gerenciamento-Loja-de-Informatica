@@ -36,5 +36,9 @@ public class ServiceCliente {
         clienteEncontrado.setTotal_compras(cliente.getTotal_compras());
         return reposoitoryCliente.save(clienteEncontrado);
     }
-
+  
+                  public void excluir(Integer id){
+        Cliente clienteEncontrado = buscarId(id);
+        reposoitoryCliente.deleteById(clienteEncontrado.getId());
+    }
 }

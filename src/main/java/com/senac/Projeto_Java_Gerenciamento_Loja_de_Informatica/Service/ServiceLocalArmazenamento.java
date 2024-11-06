@@ -32,5 +32,10 @@ public class ServiceLocalArmazenamento {
         localArmazenamentoEncontrado.setNumeroPrateleira(localArmazenamento.getNumeroPrateleira());
         return reposoitoryLocalArmazenamento.save(localArmazenamentoEncontrado);
     }
+             
+                 public void excluir(Integer id){
+        LocalArmazenamento localArmazenamentoEncontrado = buscarId(id);
+        reposoitoryLocalArmazenamento.deleteById(localArmazenamentoEncontrado.getId());
+    }
 
 }

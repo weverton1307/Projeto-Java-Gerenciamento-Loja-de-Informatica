@@ -34,5 +34,10 @@ public class ServiceDevolucao {
         devolucaoEncontrada.setTipo(devolucao.getTipo());
         return reposoitoryDevolucao.save(devolucaoEncontrada);
     }
+              
+                  public void excluir(Integer id){
+        Devolucao devolucaoEncontrada = buscarId(id);
+        reposoitoryDevolucao.deleteById(devolucaoEncontrada.getId());
+    }
 
 }

@@ -33,5 +33,10 @@ public class ServiceItensVenda {
        itensVendaEncontrada.setVenda(itensVenda.getVenda());
         return reposoitoryItensVenda.save(itensVendaEncontrada);
     }
+             
+                 public void excluir(Integer id){
+        ItensVenda itensVendaEncontrada = buscarId(id);
+        reposoitoryItensVenda.deleteById(itensVendaEncontrada.getId());
+    }
 
 }

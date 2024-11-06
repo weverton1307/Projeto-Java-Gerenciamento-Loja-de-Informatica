@@ -34,4 +34,9 @@ public class ServiceTroca {
         trocaEncontrada.setTipo(troca.getTipo());
         return reposoitoryTroca.save(trocaEncontrada);
     }
+    
+        public void excluir(Integer id){
+        Troca trocaEncontrado = buscarId(id);
+        reposoitoryTroca.deleteById(trocaEncontrado.getId());
+    }
 }

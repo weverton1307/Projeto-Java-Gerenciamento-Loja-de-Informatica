@@ -30,5 +30,10 @@ public class ServiceCategoria {
         categoriaEncontrada.setNome(categoria.getNome());
         return reposoitoryCategoria.save(categoriaEncontrada);
     }
+              
+                  public void excluir(Integer id){
+        Categoria categoriaEncontrada = buscarId(id);
+        reposoitoryCategoria.deleteById(categoriaEncontrada.getId());
+    }
 
 }

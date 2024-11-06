@@ -35,5 +35,10 @@ public class ServiceVenda {
         vendaEncontrada.setVendedor(venda.getVendedor());
         return reposoitoryVenda.save(vendaEncontrada);
     }
+      
+       public void excluir(Integer id){
+        Venda vendaEncontrado = buscarId(id);
+        reposoitoryVenda.deleteById(vendaEncontrado.getId());
+    }
 
 }

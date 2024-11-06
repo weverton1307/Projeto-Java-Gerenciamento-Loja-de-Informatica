@@ -35,4 +35,9 @@ public class ServiceUsuario {
         usuarioEncontrado.setUltimo_login(usuario.getUltimo_login());
         return reposoitoryUsuario.save(usuarioEncontrado);
     }
+    
+   public void excluir(Integer id){
+        Usuario usuarioEncontrado = buscarId(id);
+        reposoitoryUsuario.deleteById(usuarioEncontrado.getId());
+    }
 }

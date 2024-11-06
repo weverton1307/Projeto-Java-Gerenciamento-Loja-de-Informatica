@@ -31,5 +31,10 @@ public class ServiceCargo {
         cargoEncontrado.setNome(cargo.getNome());
         return reposoitoryCargo.save(cargoEncontrado);
     }
+              
+                  public void excluir(Integer id){
+        Cargo cargoEncontrado = buscarId(id);
+        reposoitoryCargo.deleteById(cargoEncontrado.getId());
+    }
 
 }

@@ -37,5 +37,10 @@ public class ServiceFuncionario {
         funcionarioEncontrado.setUsuario(funcionario.getUsuario());
         return reposoitoryFuncionario.save(funcionarioEncontrado);
     }
+             
+                 public void excluir(Integer id){
+        Funcionario funcionarioEncontrado = buscarId(id);
+        reposoitoryFuncionario.deleteById(funcionarioEncontrado.getId());
+    }
 
 }
