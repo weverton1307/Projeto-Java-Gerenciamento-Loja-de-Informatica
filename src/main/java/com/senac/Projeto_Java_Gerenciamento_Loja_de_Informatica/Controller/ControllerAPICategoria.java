@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,5 +44,11 @@ public class ControllerAPICategoria {
     public ResponseEntity<Categoria> atualizar(@PathVariable Integer id, @RequestBody Categoria categoria){
         Categoria CategoriaAtualizado = serviceCategoria.atualizar(id, categoria);
         return new ResponseEntity<>(CategoriaAtualizado, HttpStatus.OK);
+    }
+    
+     @DeleteMapping("excluir-categoria/{id}")
+    public ResponseEntity<?> deletar(@PathVariable Integer id){
+        serviceCategoria.excluir(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

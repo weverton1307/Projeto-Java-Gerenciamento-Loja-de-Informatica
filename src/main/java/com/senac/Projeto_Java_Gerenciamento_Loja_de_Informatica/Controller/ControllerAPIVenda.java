@@ -46,5 +46,9 @@ public class ControllerAPIVenda {
         return new ResponseEntity<>(vendaAtualizada, HttpStatus.OK);
     }
     
-
+    @DeleteMapping("excluir-venda/{id}")
+    public ResponseEntity<?> deletar(@PathVariable Integer id){
+        serviceVenda.excluir(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

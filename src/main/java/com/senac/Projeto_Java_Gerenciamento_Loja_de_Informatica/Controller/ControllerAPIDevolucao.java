@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,5 +43,11 @@ public class ControllerAPIDevolucao {
     public ResponseEntity<Devolucao> atualizar(@PathVariable Integer id, @RequestBody Devolucao devolucao){
         Devolucao DevolucaoAtualizado = serviceDevolucao.atualizar(id, devolucao);
         return new ResponseEntity<>(DevolucaoAtualizado, HttpStatus.OK);
+    }
+    
+     @DeleteMapping("excluir-devolucao/{id}")
+    public ResponseEntity<?> deletar(@PathVariable Integer id){
+        serviceDevolucao.excluir(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

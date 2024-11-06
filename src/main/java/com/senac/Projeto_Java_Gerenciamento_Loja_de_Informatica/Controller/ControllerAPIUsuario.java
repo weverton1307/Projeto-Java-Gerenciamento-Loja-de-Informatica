@@ -46,4 +46,9 @@ public class ControllerAPIUsuario {
         return new ResponseEntity<>(usuarioAtualizado, HttpStatus.OK);
     }
  
+     @DeleteMapping("excluir-usuario/{id}")
+    public ResponseEntity<?> deletar(@PathVariable Integer id){
+        serviceUsuario.excluir(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

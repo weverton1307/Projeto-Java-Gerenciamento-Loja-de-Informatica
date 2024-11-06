@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,5 +43,11 @@ public class ControllerAPICargo {
     public ResponseEntity<Cargo> atualizar(@PathVariable Integer id, @RequestBody Cargo cargo){
         Cargo CargoAtualizado = serviceCargo.atualizar(id, cargo);
         return new ResponseEntity<>(CargoAtualizado, HttpStatus.OK);
+    }
+    
+     @DeleteMapping("excluir-cargo/{id}")
+    public ResponseEntity<?> deletar(@PathVariable Integer id){
+        serviceCargo.excluir(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
