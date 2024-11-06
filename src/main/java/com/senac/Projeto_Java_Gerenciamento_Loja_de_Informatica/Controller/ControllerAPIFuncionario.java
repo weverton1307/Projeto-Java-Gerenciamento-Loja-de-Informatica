@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,5 +36,11 @@ public class ControllerAPIFuncionario {
     public ResponseEntity<List> listar(){
         List<Funcionario> listaFuncionario = serviceFuncionario.listarFuncionario();
         return new ResponseEntity<>(listaFuncionario, HttpStatus.OK);
+    }
+    
+    @PutMapping("/atualizar-funcionario/{id}")
+    public ResponseEntity<Funcionario> atualizar(@PathVariable Integer id, @RequestBody Funcionario funcionario){
+        Funcionario filmeAtualizado = serviceFuncionario.atualizar(id, funcionario);
+        return new ResponseEntity<>(filmeAtualizado, HttpStatus.OK);
     }
 }

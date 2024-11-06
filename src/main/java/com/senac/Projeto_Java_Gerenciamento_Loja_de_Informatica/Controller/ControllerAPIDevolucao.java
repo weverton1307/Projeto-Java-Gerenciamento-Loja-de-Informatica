@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,5 +36,11 @@ public class ControllerAPIDevolucao {
     public ResponseEntity<List> listar(){
         List<Devolucao> listaDevolucao = serviceDevolucao.listarDevolucao();
         return new ResponseEntity<>(listaDevolucao, HttpStatus.OK);
+    }
+    
+    @PutMapping("/atualizar-devolucao/{id}")
+    public ResponseEntity<Devolucao> atualizar(@PathVariable Integer id, @RequestBody Devolucao devolucao){
+        Devolucao DevolucaoAtualizado = serviceDevolucao.atualizar(id, devolucao);
+        return new ResponseEntity<>(DevolucaoAtualizado, HttpStatus.OK);
     }
 }

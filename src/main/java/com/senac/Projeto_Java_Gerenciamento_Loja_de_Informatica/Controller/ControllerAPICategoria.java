@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,5 +37,11 @@ public class ControllerAPICategoria {
     public ResponseEntity<List> listar(){
         List<Categoria> listaCategoria = serviceCategoria.listarCategoria();
         return new ResponseEntity<>(listaCategoria, HttpStatus.OK);
+    }
+    
+    @PutMapping("/atualizar-categoria/{id}")
+    public ResponseEntity<Categoria> atualizar(@PathVariable Integer id, @RequestBody Categoria categoria){
+        Categoria CategoriaAtualizado = serviceCategoria.atualizar(id, categoria);
+        return new ResponseEntity<>(CategoriaAtualizado, HttpStatus.OK);
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,5 +37,11 @@ public class ControllerAPITroca {
     public ResponseEntity<List> listar(){
         List<Troca> listaTroca = serviceTroca.listarTroca();
         return new ResponseEntity<>(listaTroca, HttpStatus.OK);
+    }
+    
+    @PutMapping("/atualizar-troca/{id}")
+    public ResponseEntity<Troca> atualizar(@PathVariable Integer id, @RequestBody Troca troca){
+        Troca trocaAtualizada = serviceTroca.atualizar(id, troca);
+        return new ResponseEntity<>(trocaAtualizada, HttpStatus.OK);
     }
 }

@@ -7,9 +7,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,11 +34,17 @@ public class ControllerAPIVenda {
        return new ResponseEntity<>(novaVenda, HttpStatus.CREATED);
     }
     
-       @GetMapping("listar-Venda")
+       @GetMapping("listar-venda")
     public ResponseEntity<List> listar(){
         List<Venda> listaVenda = serviceVenda.listarVenda();
         return new ResponseEntity<>(listaVenda, HttpStatus.OK);
     }
   
+    @PutMapping("/atualizar-venda/{id}")
+    public ResponseEntity<Venda> atualizar(@PathVariable Integer id, @RequestBody Venda venda){
+        Venda vendaAtualizada = serviceVenda.atualizar(id, venda);
+        return new ResponseEntity<>(vendaAtualizada, HttpStatus.OK);
+    }
+    
 
 }
