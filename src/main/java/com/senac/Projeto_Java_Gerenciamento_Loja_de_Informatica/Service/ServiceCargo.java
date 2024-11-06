@@ -3,6 +3,7 @@ package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service;
 
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Cargo;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Repository.RepositoryCargo;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +20,9 @@ public class ServiceCargo {
         cargo.setId(null);
          reposoitoryCargo.save(cargo);
          return cargo;
+    }
+           
+           public List<Cargo> listarCargo() {
+        return reposoitoryCargo.findAll();
     }
 }

@@ -3,6 +3,7 @@ package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service;
 
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Usuario;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Repository.RepositoryUsuario;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +20,9 @@ public class ServiceUsuario {
         usuario.setId(null);
          reposoitoryUsuario.save(usuario);
          return usuario;
+    }
+          
+          public List<Usuario> listarUsuario() {
+        return reposoitoryUsuario.findAll();
     }
 }

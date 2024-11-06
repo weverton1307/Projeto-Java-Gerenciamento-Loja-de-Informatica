@@ -3,6 +3,7 @@ package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service;
 
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Funcionario;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Repository.RepositoryFuncionario;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +20,9 @@ public class ServiceFuncionario {
         funcionario.setId(null);
          reposoitoryFuncionario.save(funcionario);
          return funcionario;
+    }
+          
+          public List<Funcionario> listarFuncionario() {
+        return reposoitoryFuncionario.findAll();
     }
 }
