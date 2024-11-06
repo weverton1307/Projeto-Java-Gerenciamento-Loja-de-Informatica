@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
  
@@ -22,4 +24,10 @@ public class ControllerAPITroca {
      Troca trocaEncontrado = serviceTroca.buscarId(id);
      return new ResponseEntity<>(trocaEncontrado, HttpStatus.OK);
   }
+  
+       @PostMapping("/adicionar-troca")
+    public ResponseEntity<Troca> criar(@RequestBody Troca troca){
+       Troca novaTroca = serviceTroca.criarTroca(troca);
+       return new ResponseEntity<>(novaTroca, HttpStatus.CREATED);
+    }
 }

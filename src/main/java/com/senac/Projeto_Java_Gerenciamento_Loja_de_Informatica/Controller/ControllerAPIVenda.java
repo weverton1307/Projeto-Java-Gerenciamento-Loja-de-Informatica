@@ -25,5 +25,11 @@ public class ControllerAPIVenda {
      return new ResponseEntity<>(VendaEncontrada, HttpStatus.OK);
   }
   
+       @PostMapping("/adicionar-venda")
+    public ResponseEntity<Venda> criar(@RequestBody Venda venda){
+       Venda novaVenda = serviceVenda.criarVenda(venda);
+       return new ResponseEntity<>(novaVenda, HttpStatus.CREATED);
+    }
+  
 
 }

@@ -1,25 +1,35 @@
 
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Controller;
 
-import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Venda;
+
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.ItensVenda;
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceItensVenda;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceVenda;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/venda")
+@RequestMapping("/itensVenda")
 public class ControllerAPIIntesVenda {
      @Autowired
-   ServiceVenda serviceVenda;
+   ServiceItensVenda serviceItensVenda;
     
-     @GetMapping("/buscar-venda/{id}")
-  public ResponseEntity<Venda> pesquisar(@PathVariable Integer id){
-     Venda VendaEncontrado = serviceVenda.buscarId(id);
-     return new ResponseEntity<>(VendaEncontrado, HttpStatus.OK);
+     @GetMapping("/buscar-itensVenda/{id}")
+  public ResponseEntity<ItensVenda> pesquisar(@PathVariable Integer id){
+     ItensVenda itensVendaEncontrada = serviceItensVenda.buscarId(id);
+     return new ResponseEntity<>(itensVendaEncontrada, HttpStatus.OK);
   } 
+  
+       @PostMapping("/adicionar-itensVenda")
+    public ResponseEntity<ItensVenda> criar(@RequestBody ItensVenda itensVenda){
+       ItensVenda novaItensVenda = serviceItensVenda.criarItensVenda(itensVenda);
+       return new ResponseEntity<>(novaItensVenda, HttpStatus.CREATED);
+    }
 }
