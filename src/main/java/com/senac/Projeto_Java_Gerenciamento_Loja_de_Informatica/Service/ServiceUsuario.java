@@ -40,4 +40,6 @@ public class ServiceUsuario {
         Usuario usuarioEncontrado = buscarId(id);
         reposoitoryUsuario.deleteById(usuarioEncontrado.getId());
     }
+   
+ 
 }
