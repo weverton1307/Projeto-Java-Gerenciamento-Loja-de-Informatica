@@ -1,5 +1,6 @@
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,8 +15,11 @@ public class Venda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+     @Column(name = "data_hora")
     private LocalDateTime dataHora;
+      @Column(name = "metodo_pagamento")
     private String metodoPagamento;
+       @Column(name = "status_venda")
     private String statusVenda;
     @ManyToOne
     @JoinColumn(name = "cliente_id")

@@ -1,5 +1,6 @@
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,6 +15,7 @@ public class Usuario {
     private Integer id;
     private String login;
     private String senha;
+    @Column(name = "tipo_usuario")
     private String tipoUsuario;
     private LocalDate ultimo_login;
 
@@ -33,7 +35,7 @@ public class Usuario {
     public void setId(Integer id) {
         this.id = id;
     }
-
+    
     public String getTipoUsuario() {
         return tipoUsuario;
     }

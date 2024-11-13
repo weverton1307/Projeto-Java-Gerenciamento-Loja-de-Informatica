@@ -107,6 +107,12 @@
 .botao-entrar:hover {
     background-color: #5a317b;
 }
+.mensagem-boas-vindas {
+    color: purple;    
+    text-align: center; 
+    font-size: 1.5em;    
+    margin-top: 20px;  
+}
 
 
 /* Fim login */

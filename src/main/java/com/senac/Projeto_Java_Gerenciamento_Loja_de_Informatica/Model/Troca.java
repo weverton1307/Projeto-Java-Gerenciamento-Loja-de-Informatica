@@ -1,5 +1,6 @@
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model;
 
+import jakarta.persistence.Column;
 import java.time.LocalDate;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,6 +13,7 @@ public class Troca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+     @Column(name = "codigo_produto")
     private int codigoProduto;
     private String motivo;
     private String tipo;

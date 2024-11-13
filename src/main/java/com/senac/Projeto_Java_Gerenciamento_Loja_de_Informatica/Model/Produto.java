@@ -1,5 +1,6 @@
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model;
 
+import jakarta.persistence.Column;
 import java.time.LocalDate;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,15 +15,23 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+     @Column(name = "nome_produto")
     private String nomeProduto;
+      @Column(name = "valor_compra")
     private double valorCompra;
+       @Column(name = "valor_venda")
     private double valorVenda;
     private String modelo;
+     @Column(name = "descricao_tecnica")
     private String descricaoTecnica;
+      @Column(name = "data_aquisicao")
     private LocalDate dataAquisicao;
     private String fabricante;
+     @Column(name = "nota_fiscal")
     private String notaFiscal;
+      @Column(name = "status_produto")
     private String statusProduto;
+       @Column(name = "quantidade_produto")
     private int quantidadeProduto;
     private String cpf_cliente_devolucao;
     @ManyToOne

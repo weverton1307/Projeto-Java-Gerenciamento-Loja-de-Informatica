@@ -1,43 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>LojaiInfo</title>
-        <link rel="icon" th:href="@{/img/icon.png}" type="image/png">
-        <link rel="stylesheet" th:href="@{/css/style.css}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LojaiInfo</title>
+    <link rel="icon" th:href="@{/img/icon.png}" type="image/png">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .mensagem-erro {
+            color: red;
+            text-align: left;
+            margin: 5px 0;
+        }
+    </style>
+</head>
 
-    </head>
+<body class="index">
+    <!--main login-->
+    <main class="main-index">
+        <div class="container">
+            <div class="imagem">
+                <img th:src="@{/img/mac.jpg}" alt="note book" width="850" height="">
+            </div>
+            <div class="login">
+                <img th:src="@{/img/LogoMarca.png}" alt="" width="320px" height="">
+                <h1>LojaInfo</h1>
+                <div class="formulario-login">
+                    <form id="formulario-login" th:action="@{/login}" method="post">
+                        <label>
+                            <h3>Usuário</h3>
+                        </label><br>
+                        <input class="formulario-usuario" type="text" id="usuario" name="login" required><br>
 
-    <body class="index">
-        <!--main login-->
-        <main class="main-index">
-            <div class="container">
-                <div class="imagem">
-                    <img th:src="@{/img/mac.jpg}" alt="note book" width="850" height="">
-                </div>
-                <div class="login">
-                    <img th:src="@{/img/LogoMarca.png}" alt="" width="320px" height="">
-                    <h1>LojaInfo</h1>
-                    <div class="formulario-login">
-                        <form th:action="@{/login}" method="POST" th:object="${usuario}" id="formulario-login">
-                            <label>
-                                <h3>Usuário</h3>
-                            </label><br>
-                            <input class="formulario-usuario"  type="text" th:field="${usuario.login}" id="usuario" required><br>
-                            <label>
-                                <h3>Senha</h3>
-                            </label><br>
-                            <input class="formulario-senha" type="password" th:field="${usuario.senha}" id="senha" required><br>
-                        </form>
-                        <button class="botao-sair" type="submit" onclick="sair()">Sair</button>
+                        <!-- Exibe a mensagem de erro, se houver -->
+                        <h4 id="mensagem-erro" class="mensagem-erro" th:text="${erro}"></h4>
+
+                        <label>
+                            <h3>Senha</h3>
+                        </label><br>
+                        <input class="formulario-senha" type="password" id="senha" name="senha" required><br>
+
+                        <button class="botao-sair" type="button" onclick="window.location.href = '/sair'">Sair</button>
                         <button class="botao-entrar" type="submit">Entrar</button>
-                    </div>
+                    </form>
                 </div>
             </div>
-        </main>
-        <!--Fim main-->
-    </body>
+        </div>
+    </main>
+    <!-- Fim main -->
+
+</body>
 
 </html>
