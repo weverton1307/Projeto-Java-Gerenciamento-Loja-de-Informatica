@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos</title>
     <link rel="icon" href="./img/icon.png" type="png">
-    <link rel="stylesheet" href="./css/style.css">
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" th:href="@{/img/icon.png}" type="image/png">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 </head>
 
 <body class="background">
@@ -15,7 +16,7 @@
     <header>
         <div class="container-menu">
             <div class="logo-topo">
-                <img src="./img/LogoMarca.png" alt="">
+                <img th:src="@{/img/LogoMarca.png}" alt="logo marca">
             </div>
             <div class="titulo">
                 <h1>Produtos</h1>
@@ -55,7 +56,7 @@
                     </div>
                         <div class="botoes-formulario">
                     
-                            <button type="button" class="form-control voltar" id="voltar" onclick="voltarPagina()">Voltar</button>
+                            <button type="button" class="form-control voltar" id="voltar" onclick="window.location.href = '/menu'">Voltar</button>
                             <button type="button" class="form-control" onclick="salvarProduto()" id="salvar">Salvar</button>
                         <button type="submit" class="form-control" onclick="alterarProduto()" id="alterar" >Alterar</button>
                         <button type="submit" class="form-control" onclick="limparCamposProduto()">Limpar</button>
@@ -155,9 +156,9 @@
     </main>
     <!--Fim main-->
     <script>
-        window.onload = function () {
-    atualizarTabela();
-};
+      // window.onload = function () {
+   // atualizarTabela();
+///};
 document.getElementById("codigo").hidden =true;
 
     </script>

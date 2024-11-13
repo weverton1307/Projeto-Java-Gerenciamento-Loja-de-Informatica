@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de venda</title>
-    <link rel="icon" href="./img/icon.png" type="png">
-    <link rel="stylesheet" href="./css/style.css">
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" th:href="@{/img/icon.png}" type="image/png">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 </head>
 
 <body class="background">
@@ -15,7 +15,7 @@
     <header>
         <div class="container-menu">
             <div class="logo-topo">
-                <img src="./img/LogoMarca.png" alt="">
+                <img th:src="@{/img/LogoMarca.png}" alt="logo marca">
             </div>
             <div class="titulo">
                 <h1>Registro de venda</h1>
@@ -69,7 +69,7 @@
                     </div>
                    
                     <div class="botoes-formulario">
-                        <button type="button" class="form-control" id="voltar-venda" onclick="voltarPagina()">Voltar</button>
+                        <button type="button" class="form-control" id="voltar-venda" onclick="window.location.href = '/menu'">Voltar</button>
                         <button type="button" class="form-control" id="Adicionar-venda" onclick="adicionar()">Adicionar</button><br>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                         </table>
                     </div>
                     <div id="cancelar-registrar" class="botoes-formulario">
-                        <button type="button" class="form-control" id="cancelar-venda" onclick="cancelarVenda()">Cancelar</button>
+                        <button type="button" class="form-control" id="cancelar-venda" >Cancelar</button>
                         <button type="button" class="form-control" id="finalizar-venda" onclick="registrarVenda()">Registrar</button>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
         <!--Fim section-->
     </main>
     <!--Fim main-->
-    <script>
+    <!-- <script>
         window.onload = function() {
      document.getElementById("codigoProduto-venda").disabled = true;
      document.getElementById("quantidadeProduto-venda").disabled = true;
@@ -115,8 +115,9 @@
     document.getElementById("finalizar-venda").disabled = true;
     document.getElementById("Adicionar-venda").disabled = true;
 };
-    </script>
-    <script type="text/javascript" src="./js/js.js"></script>
+    </script>-->
+    <script th:src="@{/js/js.js}"></script>
+
 </body>
 
 </html>

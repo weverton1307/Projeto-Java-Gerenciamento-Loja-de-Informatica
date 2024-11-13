@@ -1,106 +1,104 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>LojaiInfo</title>
-        <link rel="icon" th:href="@{/img/icon.png}" type="image/png">
-        <link rel="stylesheet" th:href="@{/css/style.css}">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LojaiInfo</title>
+    <link rel="icon" th:href="@{/img/icon.png}" type="image/png">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
 
-    <body class="background">
-        <!--header-->
-        <header>
-            <div class="container-menu">
-                <div class="logo-topo">
-                    <img th:src="@{/img/LogoMarca.png}" alt="">
+<body class="background">
+    <!--header-->
+    <header>
+        <div class="container-menu">
+            <div class="logo-topo">
+                <img th:src="@{/img/LogoMarca.png}" alt="logo marca">
+            </div>
+            <div class="titulo">
+                <h1>Início</h1>
+            </div>
+        </div>
+    </header>
+    <!--Fim header-->
+    <!--main-->
+    <main>
+
+        <input type="hidden" id="boasVindasNome" th:value="${usuarioNome}">
+        <input type="hidden" id="boasVindasTipo" th:value="${tipoUsuario}">
+        <!--section-->
+        <section>
+            <!--container-menu-section-->
+            <div class="container-menu-section">
+                <!--registro-venda-menu-->
+                <div>
+                    <a th:href="@{/registroVenda}">
+                        <h1>Registro de venda</h1>
+                        <img th:src="@{/img/registro-venda.png}" alt="registro de venda" width="250" height="200">
+                    </a>
                 </div>
-                <div class="titulo">
-                    <h1>Início</h1>
+                <!--Fim registro-venda-menu-->
+                <!--Produtos-menu-->
+                <div>
+                    <a th:href="@{/produtos}">
+                        <h1>Produtos</h1>
+                        <img th:src="@{/img/produtos.png}" alt="produtos" width="250" height="200">
+                    </a>
+                </div>
+                <!--Fim produtos-menu-->
+                <!--clientes-menu-->
+                <div>
+                    <a th:href="@{/clientes}">
+                        <h1>Clientes</h1>
+                        <img th:src="@{/img/clientes.png}" alt="clientes" width="250" height="200">
+                    </a>
+                </div>
+                <!--Fim clientes-menu-->
+            </div>
+            <!--Fim container-menu-section-->
+        </section>
+        <!--Fim section-->
+        <section>
+            <div class="container-menu-section">
+                <!--devolucao-troca-->
+                <div>
+                    <a th:href="@{/devolucaoOuTroca}">
+                        <h1>Devolução ou troca</h1>
+                        <img th:src="@{/img/devolucao-troca.png}" alt="devolução ou troca" width="250" height="200">
+                    </a>
+                </div>
+                <!--Fim devolucao-troca-->
+                <!--vendas-->
+                <div>
+                    <a th:href="@{/vendas}">
+                        <h1>Vendas</h1>
+                        <img th:src="@{/img/venda.png}" alt="vendas" width="250" height="200">
+                    </a>
+                </div>
+                <!--Fim vendas-->
+                <!--funcionários-->
+                <div>
+                    <a th:href="@{/funcionarios}">
+                        <h1>Funcionários</h1>
+                        <img th:src="@{/img/funcionarios.png}" alt="funcionários" width="250" height="200">
+                    </a>
+                </div>
+                <!--Fim Funcionários-->
+            </div>
+            <!--Container para o botão de sair-->
+            <div class="container-menu-section">
+                <div id="sair">
+                    <a th:href="@{/inicio}">
+                        <img th:src="@{/img/sair.png}" alt="sair" width="100" height="80">
+                    </a>
                 </div>
             </div>
-        </header>
-        <!--Fim header-->
-        <!--main-->
-        <main>
-            <div class="mensagem-boas-vindas">
-                <h2>
-                    Olá, <span th:text="${usuarioNome}"></span>! Sua permissão é de <span th:text="${tipoUsuario}"></span>. Seja bem-vindo!
-                </h2>
-            </div>
-            <!--section-->
-            <section>
-                <!--container-menu-section-->
-                <div class="container-menu-section">
-                    <!--registro-venda-menu-->
-                    <div>
-                        <a th:href="@{/registroVenda}">
-                            <h1>Registro de venda</h1>
-                            <img th:src="@{/img/registro-venda.png}" alt="registro de venda" width="250" height="200">
-                        </a>
-                    </div>
-                    <!--Fim registro-venda-menu-->
-                    <!--Produtos-menu-->
-                    <div>
-                        <a th:href="@{/produtos}">
-                            <h1>Produtos</h1>
-                            <img th:src="@{/img/produtos.png}" alt="produtos" width="250" height="200">
-                        </a>
-                    </div>
-                    <!--Fim produtos-menu-->
-                    <!--clientes-menu-->
-                    <div>
-                        <a th:href="@{/clientes}">
-                            <h1>Clientes</h1>
-                            <img th:src="@{/img/clientes.png}" alt="clientes" width="250" height="200">
-                        </a>
-                    </div>
-                    <!--Fim clientes-menu-->
-                </div>
-                <!--Fim container-menu-section-->
-            </section>
-            <!--Fim section-->
-            <section>
-                <div class="container-menu-section">
-                    <!--devolucao-troca-->
-                    <div>
-                        <a th:href="@{/devolucaoOuTroca}">
-                            <h1>Devolução ou troca</h1>
-                            <img th:src="@{/img/devolucao-troca.png}" alt="devolução ou troca" width="250" height="200">
-                        </a>
-                    </div>
-                    <!--Fim devolucao-troca-->
-                    <!--vendas-->
-                    <div>
-                        <a th:href="@{/vendas}">
-                            <h1>Vendas</h1>
-                            <img th:src="@{/img/venda.png}" alt="vendas" width="250" height="200">
-                        </a>
-                    </div>
-                    <!--Fim vendas-->
-                    <!--funcionários-->
-                    <div>
-                        <a th:href="@{/funcionarios}">
-                            <h1>Funcionários</h1>
-                            <img th:src="@{/img/funcionarios.png}" alt="funcionários" width="250" height="200">
-                        </a>
-                    </div>
-                    <!--Fim Funcionários-->
-                </div>
-                <!--Container para o botão de sair-->
-                <div class="container-menu-section">
-                    <div id="sair">
-                        <a th:href="@{/index}">
-                            <img th:src="@{/img/sair.png}" alt="sair" width="100" height="80">
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </main>
+        </section>
+    </main>
 
-        <script th:src="@{/js/js.js}"></script>
-        
-    </body>
+    <script th:src="@{/js/js.js}"></script>
+
+</body>
 
 </html>

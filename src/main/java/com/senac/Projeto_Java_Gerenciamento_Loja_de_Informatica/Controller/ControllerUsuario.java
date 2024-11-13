@@ -22,9 +22,6 @@ public class ControllerUsuario {
     @GetMapping("/inicio")
     public String inicio(Model model, @ModelAttribute Usuario usuario) {
         model.addAttribute("usuario", new Usuario());
-        
-        
-
         return "index";
     }
 

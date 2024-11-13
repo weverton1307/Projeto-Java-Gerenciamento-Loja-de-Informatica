@@ -5,7 +5,9 @@
     text-decoration: none;
     list-style: none;
 }
-
+.esconder {
+    display: none;
+}
 .body {
     margin: 0;
     display: flex;
@@ -312,6 +314,83 @@
     margin-top: -8px;
 }
 
+.container-tabela.table-responsive {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+.table thead th {
+    background-color: #5a317b;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+    white-space: nowrap; 
+}
+
+.table tbody tr {
+    transition: background-color 0.3s;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table tbody tr:hover {
+    background-color: #e6f7ff;
+}
+
+.table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+@media (max-width: 768px) {
+    .table thead {
+        display: none;
+    }
+    
+    .table tbody tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+    }
+    
+    .table tbody td {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+    
+    .table tbody td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #4a90e2;
+        flex: 1;
+        margin-right: 10px;
+    }
+}
+
+
 /* Fim Produtos*/
 /* Funcionário*/
 .container-Funcionario {
@@ -437,6 +516,52 @@
     margin-top: 30px;
 }
 
+
+.container-tabela-Cliente {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+.table thead th {
+    background-color: #5a317b;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+}
+
+.table tbody tr {
+    transition: background-color 0.3s;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table tbody tr:hover {
+    background-color: #e6f7ff;
+}
+
+.table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+
+.table-striped thead th {
+    border-top: 2px solid #ddd;
+}
+
 /*Fim clientes*/
 /*Devolução ou troca*/
 .container-devolucaoOuTroca {
@@ -479,6 +604,84 @@
 .data-devolucaoOuTroca {
     margin-left: 105px;
 }
+
+.container-tabela-devolucaoOuTroca {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; 
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.table thead th {
+    background-color: #5a317b;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+    white-space: nowrap; 
+}
+
+.table tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table tbody tr:hover {
+    background-color: #e6f7ff;
+}
+
+.table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+@media (max-width: 768px) {
+    .table thead {
+        display: none;
+    }
+    
+    .table tbody tr {
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+    }
+    
+    .table tbody td {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+    
+    .table tbody td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #4a90e2;
+        margin-right: 10px;
+        flex: 1;
+    }
+}
+
 
 /*Fim Devolução ou troca*/
 /*Registro de venda*/

@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clientes</title>
     <link rel="icon" href="./img/icon.png" type="png">
-    <link rel="stylesheet" href="./css/style.css">
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" th:href="@{/img/icon.png}" type="image/png">
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 </head>
 
 <body class="background">
@@ -15,7 +16,7 @@
     <header>
         <div class="container-menu">
             <div class="logo-topo">
-                <img src="./img/LogoMarca.png" alt="">
+                <img th:src="@{/img/LogoMarca.png}" alt="logo marca">
             </div>
             <div class="titulo">
                 <h1>Clientes</h1>
@@ -43,7 +44,7 @@
                     <input id="emailCliente" type="email"><br>
                 </form>
                 <div class="botoes-formulario">
-                    <button type="button" class="form-control voltar" onclick="voltarPagina()" id="voltar" >Voltar</button>
+                    <button type="button" class="form-control voltar" onclick="window.location.href = '/menu'" id="voltar" >Voltar</button>
                     <button type="button" class="form-control" onclick="salvarCliente()" id="salvar">Salvar</button>
                     <button type="submit" class="form-control" onclick="alterarCliente()" id="alterar">Alterar</button>
                     <button type="submit" class="form-control" onclick="limparCamposCliente()">Limpar</button>
@@ -80,9 +81,9 @@
     <!--Fim section-->
 
     <script>
-        window.onload = function () {
-            atualizarTabelaClientes();
-        };
+       // window.onload = function () {
+       //     atualizarTabelaClientes();
+      //  };
     </script>
     <script type="text/javascript" src="./js/js.js"></script>
 </body>

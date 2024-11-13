@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vendas</title>
-    <link rel="icon" href="./img/icon.png" type="png">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" th:href="@{/img/icon.png}" type="image/png">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
     <link href="./css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -15,7 +15,7 @@
     <header>
         <div class="container-menu">
             <div class="logo-topo">
-                <img src="./img/LogoMarca.png" alt="">
+                <img th:src="@{/img/LogoMarca.png}" alt="logo marca">
             </div>
             <div class="titulo">
                 <h1>Vendas</h1>
@@ -111,7 +111,7 @@
                     </table>
             </div>  
             <div id="Voltar-limpar" class="botoes-formulario">
-                <button type="button" class="form-control" id="voltar-venda" onclick="voltarPagina()">voltar</button>
+                <button type="button" class="form-control" id="voltar-venda" onclick="window.location.href = '/menu'">voltar</button>
                 <button type="button" class="form-control" id="limpar-venda" onclick="limparTudo()">limpar</button>
             </div>  
             </div>
@@ -121,10 +121,7 @@
         <!--Fim section-->
     </main>
     <!--Fim main-->
-    <script>
-        window.onload = function() {
-};
-    </script>
+   
     <script type="text/javascript" src="./js/js.js"></script>
 </body>
 
