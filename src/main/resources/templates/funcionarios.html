@@ -9,6 +9,7 @@
     <link rel="icon" th:href="@{/img/icon.png}" type="image/png">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="background">
@@ -32,24 +33,25 @@
             <!--container-funcionarios-->
             <div class="container-Funcionario">
                 <div class="formulario-funcionario-um">
-                    <form onsubmit="return salvarFuncionario()">
+                    <form id="formularioFuncionario">
                         <label>Nome:</label>
-                        <input id="nomeFuncionario" type="text" required><br>
+                        <input id="nomeFuncionario" type="text" th:field="${funcionario.nome}" required><br>
                         <label>Endereço:</label>
-                        <input id="endereço" type="text" required><br>
+                        <input id="endereço" type="text" th:field="${funcionario.endereco}" required><br>
                         <label>CPF:</label>
-                        <input id="cpf" type="text" required placeholder="xxx.xxx.xxx-xx"><br>
+                        <input id="cpf" type="text" th:field="${funcionario.cpf}" required placeholder="xxx.xxx.xxx-xx"><br>
                         <label>Telefone:</label>
-                        <input id="telefone" type="text" required placeholder="(xx) xxxx-xxxx"><br>
+                        <input id="telefone" type="text" th:field="${funcionario.telefone}" required placeholder="(xx) xxxx-xxxx"><br>
                         <label>Email:</label>
-                        <input id="email" type="email" required placeholder="exemplo@dominio.com"><br>
+                        <input id="email" type="email" th:field="${funcionario.email}" required placeholder="exemplo@dominio.com"><br>
+                        <input type="hidden" id="funcionarioId" name="id" value="${funcionario.id != null ? funcionario.id : ''}" />
 
 
                     </form>
 
                     <div class="botoes-formulario">
                         <button type="button" class="form-control voltar" onclick="window.location.href = '/menu'" id="voltar" >Voltar</button>
-                        <button type="button" class="form-control" onclick="salvarFuncionario()" id="salvar">Salvar</button>
+                        <button type="button" class="form-control" id="salvarFuncionario">Salvar</button>
                         <button type="submit" class="form-control" onclick="alterarFuncionario()" id="alterar">Alterar</button>
                         <button type="submit" class="form-control" onclick="limparCamposProduto()">Limpar</button>
                     </div>
@@ -59,17 +61,17 @@
                     <form>
                         <div>
                             <label for="Cargo" required>Cargo:</label>
-                            <select id="cargo" required>
+                            <select id="cargoFuncionario" required>
                                 <option>Selecione um item</option>
-                                <option value="Gerente">Gerente</option>
-                                <option value="Vendedor">Vendedor</option>
+                                <option value="Gerente" th:field="${funcionario.cargo.nome}">Gerente</option>
+                                <option value="Vendedor" th:field="${funcionario.cargo.nome}">Vendedor</option>
                             </select><br>
                         </div>
                         <div id="usuarioDiv">
                             <label>Nome de usuário:</label>
-                            <input id="nomeUsuario" type="text" required><br>
+                            <input id="nomeUsuario" type="text" th:field="${funcionario.usuario.login}" required><br>
                             <label>Senha:</label>
-                            <input id="senha-funcionario" type="text" required><br>
+                            <input id="senha-funcionario" type="text" th:field="${funcionario.usuario.senha}" required><br>
                         </div>
                         <div>
                             <label>Pesquisar:</label>
@@ -111,11 +113,11 @@
     <!--Fim main-->
 
     <script>
-        window.onload = function () {
-            atualizarTabela();
-        };
+       // window.onload = function () {
+        ///    atualizarTabela();
+      //  };
     </script>
-    <script type="text/javascript" src="./js/js.js"></script>
+    <script th:src="@{/js/js.js}"></script>
 </body>
 
 </html>
