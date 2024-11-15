@@ -36,7 +36,7 @@ public class Funcionario {
         this.email = email;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

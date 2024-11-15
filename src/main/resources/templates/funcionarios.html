@@ -52,8 +52,8 @@
                     <div class="botoes-formulario">
                         <button type="button" class="form-control voltar" onclick="window.location.href = '/menu'" id="voltar" >Voltar</button>
                         <button type="button" class="form-control" id="salvarFuncionario">Salvar</button>
-                        <button type="submit" class="form-control" onclick="alterarFuncionario()" id="alterar">Alterar</button>
-                        <button type="submit" class="form-control" onclick="limparCamposProduto()">Limpar</button>
+                        <button type="submit" class="form-control"  id="alterarFuncionario">Alterar</button>
+                        <button type="button" class="form-control" id="limpar" >Limpar</button>
                     </div>
                 </div>
 
@@ -78,7 +78,8 @@
                             <input id="pesquisar" type="text"><br>
                         </div>
                         <div id="botao-funcionario-buscar">
-                            <button id="search-button" class="form-control" onclick="buscarFuncionario()">Buscar</button>
+                            <button id="search-button" class="form-control" onclick="buscarFuncionario(event)">Buscar</button>
+
                         </div>
                         
                     </form>

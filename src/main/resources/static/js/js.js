@@ -45,3 +45,62 @@ $(document).ready(function () {
         });
     });
 });
+
+
+function buscarFuncionario(event) {
+    event.preventDefault();
+
+    var id = $("#pesquisar").val().trim();
+
+    if (id && !isNaN(id)) {
+        $.ajax({
+            url: "/buscar-funcionario",
+            method: "GET",
+            data: { id: id },
+            dataType: "json", // Garantir que o retorno seja interpretado como JSON
+            success: function(data) {
+                // Preenche o formulário com os dados do funcionário
+                $("#nomeFuncionario").val(data.nome);
+                $("#endereço").val(data.endereco);
+                $("#cpf").val(data.cpf);
+                $("#telefone").val(data.telefone);
+                $("#email").val(data.email);
+                $("#cargoFuncionario").val(data.cargo.nome);
+                $("#nomeUsuario").val(data.usuario.login);
+                $("#senha-funcionario").val(data.usuario.senha);
+                $("#funcionarioId").val(data.id);
+            },
+            error: function(xhr) {
+                var errorMessage = "Erro ao buscar funcionário.";
+                if (xhr.status === 404) {
+                    errorMessage = "Funcionário não encontrado.";
+                }
+                alert(errorMessage);
+            }
+        });
+    } else {
+        alert("Por favor, insira um ID válido para o funcionário.");
+    }
+}
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    function limparCampos() {
+        document.getElementById('nomeFuncionario').value = '';
+        document.getElementById('endereço').value = '';
+        document.getElementById('cpf').value = '';
+        document.getElementById('telefone').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('nomeUsuario').value = '';
+        document.getElementById('senha-funcionario').value = '';
+        document.getElementById('funcionarioId').value = '';
+        document.getElementById('cargoFuncionario').value = 'Selecione um item';
+        
+        // NÃO limpar o campo de pesquisa para permitir busca consecutiva
+    }
+
+    document.getElementById('limpar').addEventListener('click', limparCampos);
+});
+
+
