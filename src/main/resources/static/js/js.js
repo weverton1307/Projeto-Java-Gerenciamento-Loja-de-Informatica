@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Olá, " + nomeUsuario + "! Sua permissão é de " + tipoUsuario + ". Seja bem-vindo!");
     }
 });
+$("#alterarFuncionario").prop("disabled", true);
 
 $(document).ready(function () {
     $("#salvarFuncionario").click(function (event) {
@@ -51,14 +52,15 @@ function buscarFuncionario(event) {
     event.preventDefault();
 
     var id = $("#pesquisar").val().trim();
-
+    $("#alterarFuncionario").prop("disabled", false);
+    $("#salvarFuncionario").prop("disabled", true);
     if (id && !isNaN(id)) {
         $.ajax({
             url: "/buscar-funcionario",
             method: "GET",
             data: { id: id },
             dataType: "json", // Garantir que o retorno seja interpretado como JSON
-            success: function(data) {
+            success: function (data) {
                 // Preenche o formulário com os dados do funcionário
                 $("#nomeFuncionario").val(data.nome);
                 $("#endereço").val(data.endereco);
@@ -70,7 +72,7 @@ function buscarFuncionario(event) {
                 $("#senha-funcionario").val(data.usuario.senha);
                 $("#funcionarioId").val(data.id);
             },
-            error: function(xhr) {
+            error: function (xhr) {
                 var errorMessage = "Erro ao buscar funcionário.";
                 if (xhr.status === 404) {
                     errorMessage = "Funcionário não encontrado.";
@@ -87,6 +89,8 @@ function buscarFuncionario(event) {
 
 document.addEventListener('DOMContentLoaded', function () {
     function limparCampos() {
+        $("#alterarFuncionario").prop("disabled", true);
+        $("#salvarFuncionario").prop("disabled", false);
         document.getElementById('nomeFuncionario').value = '';
         document.getElementById('endereço').value = '';
         document.getElementById('cpf').value = '';
@@ -96,11 +100,55 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('senha-funcionario').value = '';
         document.getElementById('funcionarioId').value = '';
         document.getElementById('cargoFuncionario').value = 'Selecione um item';
-        
+
         // NÃO limpar o campo de pesquisa para permitir busca consecutiva
     }
 
     document.getElementById('limpar').addEventListener('click', limparCampos);
+   
 });
+
+$(document).ready(function () {
+    $("#alterarFuncionario").click(function (event) {
+        event.preventDefault();
+        const formData = {
+            nome: $("#nomeFuncionario").val().trim(),
+            endereco: $("#endereço").val().trim(),
+            cpf: $("#cpf").val().trim(),
+            telefone: $("#telefone").val(),
+            email: $("#email").val(),
+            cargo: {
+                nome: $("#cargoFuncionario").val(),
+            },
+            usuario: {
+                login: $("#nomeUsuario").val(),
+                senha: $("#senha-funcionario").val(),
+                tipoUsuario: $("#cargoFuncionario").val()
+            },
+            id: $("#funcionarioId").val() ? parseInt($("#funcionarioId").val()) : null
+        };
+
+
+        console.log("Form Data:", formData);
+
+        $.ajax({
+            type: "PUT",
+            url: "/atualizar-fubcionario",
+            contentType: "application/json",
+            data: JSON.stringify(formData),
+            success: function (response) {
+                alert("Funcionário atualizado com sucesso!");
+                window.location.href = "/funcionarios";
+            },
+            error: function (xhr, status, error) {
+                alert("Ocorreu um erro: " + xhr.responseText);
+            }
+        });
+    });
+});
+
+
+
+
 
 

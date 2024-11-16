@@ -73,6 +73,41 @@ public ResponseEntity<?> buscarFuncionario(@RequestParam("id") Integer id) {
 
     return ResponseEntity.ok(funcEncontrado); // Retorna JSON do funcionário
 }
+  @PutMapping("/atualizar-fubcionario")
+    public String atualizarFuncionario(Model model, @RequestBody Funcionario funcionario) {
+        if (serviceCargo == null) {
+            System.out.println("serviceCargo está nulo!");
+            return "erro";
+        }
+        Cargo cargoEncontrado = null;
+        List<Cargo> listaCargo = serviceCargo.listarCargo();
+        for (Cargo c : listaCargo) {
+            if (c.getNome().equalsIgnoreCase(funcionario.getCargo().getNome())) {
+                cargoEncontrado = c;
+            }
+        }
+        System.out.println("nome " + cargoEncontrado.getNome());
+        Usuario usuario = serviceUsuario.criarUsuario(funcionario.getUsuario());
+        funcionario.setCargo(cargoEncontrado);
+        funcionario.setUsuario(usuario);
+        serviceFuncionario.atualizar(funcionario.getId(), funcionario);
+
+        return "funcionarios";
+    }
+    
+    @Controller
+public class FuncionarioController {
+
+    @Autowired
+    private ServiceFuncionario serviceFuncionario;
+
+ 
+    @GetMapping("/listar-funcionarios")
+    @ResponseBody
+    public List<Funcionario> listarFuncionarios() {
+        return serviceFuncionario.listarFuncionario();  
+    }
+}
 
 
 
