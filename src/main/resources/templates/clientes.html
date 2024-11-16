@@ -9,6 +9,7 @@
     <link rel="icon" th:href="@{/img/icon.png}" type="image/png">
         <link rel="stylesheet" th:href="@{/css/style.css}">
         <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="background">
@@ -31,21 +32,23 @@
         <!--container-cliente-->
         <div class="container-cliente">
             <div class="formulario-cliente">
-                <form>
+                <form id="formularioCliente">
                     <label>Nome:</label>
-                    <input id="nomeCliente" type="text"><br>
+                    <input id="nomeCliente" type="text" th:field="${cliente.nome}"><br>
                     <label>Endereço:</label>
-                    <input id="endereçoCliente" type="text"><br>
+                    <input id="endereçoCliente" type="text" th:field="${cliente.endereco}"><br>
                     <label>CPF:</label>
-                    <input id="cpfCliente" type="text" ><br>
+                    <input id="cpfCliente" type="text" th:field="${cliente.cpf}"><br>
                     <label>Telefone:</label>
-                    <input id="telefoneCliente" type="text"><br>
+                    <input id="telefoneCliente" type="text" th:field="${cliente.telefone}"><br>
                     <label>Email:</label>
-                    <input id="emailCliente" type="email"><br>
+                    <input id="emailCliente" type="email" th:field="${cliente.email}"><br>
+                    <input type="hidden" id="clienteId" name="id"
+                            value="${cliente.id != null ? cliente.id : ''}" />
                 </form>
                 <div class="botoes-formulario">
                     <button type="button" class="form-control voltar" onclick="window.location.href = '/menu'" id="voltar" >Voltar</button>
-                    <button type="button" class="form-control" onclick="salvarCliente()" id="salvar">Salvar</button>
+                    <button type="button" class="form-control"  id="salvarCliente">Salvar</button>
                     <button type="submit" class="form-control" onclick="alterarCliente()" id="alterar">Alterar</button>
                     <button type="submit" class="form-control" onclick="limparCamposCliente()">Limpar</button>
                 </div>
@@ -85,7 +88,7 @@
        //     atualizarTabelaClientes();
       //  };
     </script>
-    <script type="text/javascript" src="./js/js.js"></script>
+    <script th:src="@{/js/js.js}"></script>
 </body>
 
 </html>

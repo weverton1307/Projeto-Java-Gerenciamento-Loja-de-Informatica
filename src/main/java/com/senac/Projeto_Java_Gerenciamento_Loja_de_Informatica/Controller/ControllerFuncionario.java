@@ -1,6 +1,7 @@
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Controller;
 
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Cargo;
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.CriptografarSenha;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Funcionario;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Usuario;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceCargo;
@@ -53,6 +54,9 @@ public class ControllerFuncionario {
         }
         System.out.println("nome " + cargoEncontrado.getNome());
         Usuario usuario = serviceUsuario.criarUsuario(funcionario.getUsuario());
+        CriptografarSenha  criptografarSenha = new CriptografarSenha();
+        String senhaCriptografada = criptografarSenha.convertToMD5(usuario.getSenha());
+        usuario.setSenha(senhaCriptografada);
         funcionario.setCargo(cargoEncontrado);
         funcionario.setUsuario(usuario);
         serviceFuncionario.criarFuncionario(funcionario);

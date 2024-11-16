@@ -1,5 +1,6 @@
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service;
 
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.CriptografarSenha;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Usuario;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Repository.RepositoryUsuario;
 import java.security.MessageDigest;
@@ -44,23 +45,11 @@ public class ServiceUsuario {
         reposoitoryUsuario.deleteById(usuarioEncontrado.getId());
     }
 
-    public static String convertToMD5(String senha) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] hashBytes = md.digest(senha.getBytes());
-            StringBuilder sb = new StringBuilder();
-            for (byte b : hashBytes) {
-                sb.append(String.format("%02x", b));
-            }
-            return sb.toString();
-        } catch (NoSuchAlgorithmException ex) {
-            System.err.println("Erro ao converter para MD5: " + ex.getMessage());
-            return null;
-        }
-    }
+    
 
     public boolean autenticarUsuario(Usuario usuario, Model model) {
-        String senhaCriptografada = convertToMD5(usuario.getSenha());
+        CriptografarSenha  criptografarSenha = new CriptografarSenha();
+        String senhaCriptografada = criptografarSenha.convertToMD5(usuario.getSenha());
         boolean usuarioEncontrado = false;
         List<Usuario> listaUsuario = listarUsuario();
 

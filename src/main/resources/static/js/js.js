@@ -146,7 +146,37 @@ $(document).ready(function () {
         });
     });
 });
+//clientes
+$(document).ready(function () {
+    $("#salvarCliente").click(function (event) {
+        event.preventDefault();
+        const formData = {
+            nome: $("#nomeCliente").val().trim(),
+            endereco: $("#endereçoCliente").val().trim(),
+            cpf: $("#cpfCliente").val().trim(),
+            telefone: $("#telefoneCliente").val(),
+            email: $("#emailCliente").val(),
+            id: $("#clienteId").val() ? parseInt($("#clienteId").val()) : null
+        };
 
+
+        console.log("Form Data:", formData);
+
+        $.ajax({
+            type: "POST",
+            url: "/cadastro-cliente",
+            contentType: "application/json",
+            data: JSON.stringify(formData),
+            success: function (response) {
+                alert("Cliente cadastrado com sucesso!");
+                window.location.href = "/clientes";
+            },
+            error: function (xhr, status, error) {
+                alert("Ocorreu um erro: " + xhr.responseText);
+            }
+        });
+    });
+});
 
 
 
