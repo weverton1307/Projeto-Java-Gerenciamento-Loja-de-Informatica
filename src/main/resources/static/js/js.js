@@ -176,7 +176,7 @@ $(document).ready(function () {
         });
     });
 });
-
+// Função para buscar um cliente
 function buscarCliente(event) {
     event.preventDefault();
 
