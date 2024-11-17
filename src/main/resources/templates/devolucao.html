@@ -52,8 +52,7 @@
                         <button type="button" class="form-control voltar" onclick="window.location.href = '/menu'"
                             id="voltar">Voltar</button>
                         <button type="button" class="form-control" id="salvarDevolucaoOuTroca">Salvar</button>
-                        <button type="submit" class="form-control" onclick="alterarDevolvido()"
-                            id="alterar">Alterar</button>
+                        <button type="button" class="form-control" id="alterarDevolucao">Alterar</button>
                         <button type="submit" class="form-control" onclick="excluirDevolvido()">Excluir</button>
                         <button type="submit" class="form-control" onclick="limparCamposDevolucao()">Limpar</button>
                     </div>
@@ -96,11 +95,11 @@
                         success: function (devolucao) {
                             // Limpa a tabela
                             $("#tabela-devolucaoOuTroca").empty();
-        
+
                             // Adiciona as linhas à tabela
                             devolucao.forEach(function (item) {
                                 var dataFormatada = "";
-        
+
                                 if (item.data) {
                                     var data = new Date(item.data);
                                     dataFormatada = data.toLocaleDateString('pt-BR', {
@@ -109,7 +108,7 @@
                                         year: 'numeric'
                                     });
                                 }
-        
+
                                 var linha = `
                                     <tr class='linha-devolucao' data-id='${item.id}'>
                                         <td>${item.id}</td>
@@ -127,10 +126,10 @@
                         }
                     });
                 }
-        
+
                 // Chama a função para listar devoluções ao carregar a página
                 listarDevolucao();
-        
+
                 // Evento de clique na tabela
                 $("#tabela-devolucaoOuTroca").on("click", "tr.linha-devolucao", function () {
                     var id = $(this).find("td").eq(0).text();
@@ -138,18 +137,24 @@
                     var motivo = $(this).find("td").eq(2).text();
                     var tipo = $(this).find("td").eq(3).text();
                     var data = $(this).find("td").eq(4).text();
-        
+
+                    // Convertendo a data para o formato yyyy-mm-dd
+                    var dataConvertida = data.split('/').reverse().join('-'); // Converte dd/mm/yyyy para yyyy-mm-dd
+
+                    // Preenche os campos com os dados da linha selecionada
                     $("#devolucaoId").val(id);
                     $("#codigo-devolucao").val(codigoProduto);
                     $("#motivo-devolucao").val(motivo);
-                    $("#data-devolucao").val(data);
-        
+                    $("#data-devolucao").val(dataConvertida); // Atribui a data convertida
+
+                    // Desabilita e habilita os botões conforme necessário
                     $("#alterarCliente").prop("disabled", true);
                     $("#salvarCliente").prop("disabled", false);
                 });
+
             });
         </script>
-        
+
         <script th:src="@{/js/js.js}"></script>
     </main>
     <!--Fim main-->
