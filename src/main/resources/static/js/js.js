@@ -198,7 +198,7 @@ function buscarCliente(event) {
                 $("#emailCliente").val(data.email);
             },
             error: function (xhr) {
-                var errorMessage = "Erro ao buscar funcionário.";
+                var errorMessage = "Erro ao buscar cliente.";
                 if (xhr.status === 404) {
                     errorMessage = "Cliente não encontrado.";
                 }
@@ -250,10 +250,8 @@ function buscarCliente(event) {
             });
         });
     });
-//Devolução ou troca
-
-
-
+//Devolução
+$("#alterar").prop("disabled", true);
 $(document).ready(function () {
     $("#salvarDevolucaoOuTroca").click(function (event) {
         event.preventDefault();
@@ -284,6 +282,44 @@ $(document).ready(function () {
     });
 });
 
+function buscarDevolucao(event) {
+    event.preventDefault();
+
+    var id = $("#pesquisar-devolucaoOuTroca").val().trim();
+    $("#alterar").prop("disabled", false);
+    $("#salvarDevolucaoOuTroca").prop("disabled", true);
+    if (id && !isNaN(id)) {
+        $.ajax({
+            url: "/buscar-devolucao",
+            method: "GET",
+            data: { id: id },
+            dataType: "json", 
+            success: function (data) {
+
+                $("#codigo-devolucao").val(data.codigoProduto);
+                $("#motivo-devolucao").val(data.motivo);
+                $("#data-devolucao").val(data.data);
+            },
+            error: function (xhr) {
+                var errorMessage = "Erro ao buscar devolucao.";
+                if (xhr.status === 404) {
+                    errorMessage = "Devolução não encontrada.";
+                }
+                alert(errorMessage);
+            }
+        });
+    } else {
+        alert("Por favor, insira um ID válido para a devolução.");
+    }
+}
+
+function limparCamposDevolucao() {
+    $("#alterar").prop("disabled", true);
+    $("#salvarDevolucaoOuTroca").prop("disabled", false);
+    document.getElementById('codigo-devolucao').value = '';
+    document.getElementById('motivo-devolucao').value = '';
+    document.getElementById('data-devolucao').value = '';
+}
 
 
 

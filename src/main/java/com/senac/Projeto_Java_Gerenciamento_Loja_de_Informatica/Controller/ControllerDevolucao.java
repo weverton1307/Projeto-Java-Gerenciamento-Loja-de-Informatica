@@ -4,13 +4,18 @@ import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Devolucao;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Troca;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceDevolucao;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceTroca;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class ControllerDevolucao {
@@ -33,5 +38,26 @@ public String cadastrarDevolucao(Model model, @RequestBody Devolucao devolucao) 
 
     return "devolucao";
 }
+
+ @GetMapping("/buscar-devolucao")
+    @ResponseBody
+    public ResponseEntity<?> buscarFuncionario(@RequestParam("id") Integer id) {
+        if (id == null || id <= 0) {
+            return ResponseEntity.badRequest().body("ID inválido.");
+        }
+
+        Devolucao devolucaoEncontrado = serviceDevolucao.buscarId(id);
+        if (devolucaoEncontrado == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado.");
+        }
+
+        return ResponseEntity.ok(devolucaoEncontrado);
+    }
+    
+     @GetMapping("/listar-devolucao")
+    @ResponseBody
+    public List<Devolucao> listarDevolucao() {
+        return serviceDevolucao.listarDevolucao();  
+    }
 
 }

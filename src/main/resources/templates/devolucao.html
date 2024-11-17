@@ -37,15 +37,17 @@
                         <input type="number" id="codigo-devolucao" th:field="${devolucao.codigoProduto}"><br>
                         <div class="textoArea">
                             <label>Motivo:</label>
-                            <textarea id="motivo-devolucao" class="form-control" th:field="${devolucao.motivo}"></textarea><br>
+                            <textarea id="motivo-devolucao" class="form-control"
+                                th:field="${devolucao.motivo}"></textarea><br>
                         </div>
                         <div class="data-devolucaoOuTroca">
                             <label>Data:</label>
                             <input type="date" id="data-devolucao" th:field="${devolucao.data}">
                         </div>
-                        <input type="hidden" id="devolucaoId" name="id" value="${devolucao.id != null ? devolucao.id : ''}" />
+                        <input type="hidden" id="devolucaoId" name="id"
+                            value="${devolucao.id != null ? devolucao.id : ''}" />
                     </form>
-                    
+
                     <div class="botoes-formulario">
                         <button type="button" class="form-control voltar" onclick="window.location.href = '/menu'"
                             id="voltar">Voltar</button>
@@ -53,14 +55,14 @@
                         <button type="submit" class="form-control" onclick="alterarDevolvido()"
                             id="alterar">Alterar</button>
                         <button type="submit" class="form-control" onclick="excluirDevolvido()">Excluir</button>
-                        <button type="submit" class="form-control" onclick="limparCamposDevolvido()">Limpar</button>
+                        <button type="submit" class="form-control" onclick="limparCamposDevolucao()">Limpar</button>
                     </div>
                 </div>
                 <div class="pesquisar-devolucaoOuTroca">
                     <div><label>Pesquisar:</label></div>
                     <div><input id="pesquisar-devolucaoOuTroca" type="text"></div>
                     <div id="botao-pesquisar-devolucaoOuTroca"><button id="search-button" class="form-control"
-                            onclick="buscarDevolvido()">Buscar</button></div>
+                            onclick="buscarDevolucao(event)">Buscar</button></div>
                 </div>
             </div>
             <!--Fim container-devolucaoOuTroca-->
@@ -84,10 +86,70 @@
         </section>
         <!--Fim section-->
         <script>
-            window.onload = function () {
-                atualizarTabelaDevolucaoOuTroca();
-            };
+            $(document).ready(function () {
+                // Função para listar devoluções
+                function listarDevolucao() {
+                    $.ajax({
+                        type: "GET",
+                        url: "/listar-devolucao",
+                        dataType: "json",
+                        success: function (devolucao) {
+                            // Limpa a tabela
+                            $("#tabela-devolucaoOuTroca").empty();
+        
+                            // Adiciona as linhas à tabela
+                            devolucao.forEach(function (item) {
+                                var dataFormatada = "";
+        
+                                if (item.data) {
+                                    var data = new Date(item.data);
+                                    dataFormatada = data.toLocaleDateString('pt-BR', {
+                                        day: '2-digit',
+                                        month: '2-digit',
+                                        year: 'numeric'
+                                    });
+                                }
+        
+                                var linha = `
+                                    <tr class='linha-devolucao' data-id='${item.id}'>
+                                        <td>${item.id}</td>
+                                        <td>${item.codigoProduto}</td>
+                                        <td>${item.motivo}</td>
+                                        <td>${item.tipo}</td>
+                                        <td>${dataFormatada}</td> <!-- Usando dataFormatada aqui -->
+                                    </tr>
+                                `;
+                                $("#tabela-devolucaoOuTroca").append(linha);
+                            });
+                        },
+                        error: function (xhr, status, error) {
+                            alert("Erro ao carregar dados das devoluções: " + error);
+                        }
+                    });
+                }
+        
+                // Chama a função para listar devoluções ao carregar a página
+                listarDevolucao();
+        
+                // Evento de clique na tabela
+                $("#tabela-devolucaoOuTroca").on("click", "tr.linha-devolucao", function () {
+                    var id = $(this).find("td").eq(0).text();
+                    var codigoProduto = $(this).find("td").eq(1).text();
+                    var motivo = $(this).find("td").eq(2).text();
+                    var tipo = $(this).find("td").eq(3).text();
+                    var data = $(this).find("td").eq(4).text();
+        
+                    $("#devolucaoId").val(id);
+                    $("#codigo-devolucao").val(codigoProduto);
+                    $("#motivo-devolucao").val(motivo);
+                    $("#data-devolucao").val(data);
+        
+                    $("#alterarCliente").prop("disabled", true);
+                    $("#salvarCliente").prop("disabled", false);
+                });
+            });
         </script>
+        
         <script th:src="@{/js/js.js}"></script>
     </main>
     <!--Fim main-->
