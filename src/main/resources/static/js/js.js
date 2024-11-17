@@ -350,5 +350,39 @@ $(document).ready(function () {
     });
 });
 
+$(document).ready(function () {
+    // Evento de clique para excluir a devolução
+    $("#excluirDevolucao").click(function (event) {
+        event.preventDefault();
+
+        // Pega o ID da devolução a ser excluída
+        const devolucaoId = $("#devolucaoId").val();
+
+        if (devolucaoId) {
+            // Confirmação de exclusão
+            if (confirm("Você tem certeza que deseja excluir esta devolução?")) {
+                // Realiza a requisição AJAX para excluir a devolução
+                $.ajax({
+                    type: "DELETE",
+                    url: "/buscar-excuir",
+                    contentType: "application/json",
+                    data: JSON.stringify({ id: devolucaoId }),
+                    success: function (response) {
+                        alert("Devolução excluída com sucesso!");
+                        location.reload();
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Ocorreu um erro ao excluir a devolução: " + xhr.responseText);
+                    }
+                });
+            }
+        } else {
+            alert("Nenhuma devolução selecionada para exclusão.");
+        }
+    });
+});
+
+
+
 
 
