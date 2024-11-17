@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devolução ou troca</title>
+    <title>Troca</title>
     <link rel="icon" href="./img/icon.png" type="png">
     <link rel="icon" th:href="@{/img/icon.png}" type="image/png">
     <link rel="stylesheet" th:href="@{/css/style.css}">
@@ -34,14 +34,14 @@
                 <div class="formulario-devolucaoOuTroca">
                     <form class="formulario-devolucaoOuTroca" id="formulario-devolucao">
                         <label>Código do produto:</label>
-                        <input type="number" id="codigo-devolucao" th:field="${troca.codigoProduto}"><br>
+                        <input type="number" id="codigo-troca" th:field="${troca.codigoProduto}"><br>
                         <div class="textoArea">
                             <label>Motivo:</label>
-                            <textarea id="motivo-devolucao" class="form-control" th:field="${troca.motivo}"></textarea><br>
+                            <textarea id="motivo-troca" class="form-control" th:field="${troca.motivo}"></textarea><br>
                         </div>
                         <div class="data-devolucaoOuTroca">
                             <label>Data:</label>
-                            <input type="date" id="data-devolucao" th:field="${troca.data}">
+                            <input type="date" id="data-troca" th:field="${troca.data}">
                         </div>
                         <input type="hidden" id="trocaId" name="id" value="${troca.id != null ? troca.id : ''}" />
                     </form>
@@ -49,11 +49,10 @@
                     <div class="botoes-formulario">
                         <button type="button" class="form-control voltar" onclick="window.location.href = '/menu'"
                             id="voltar">Voltar</button>
-                        <button type="button" class="form-control" id="salvarDevolucaoOuTroca">Salvar</button>
-                        <button type="submit" class="form-control" onclick="alterarDevolvido()"
-                            id="alterar">Alterar</button>
-                        <button type="submit" class="form-control" onclick="excluirDevolvido()">Excluir</button>
-                        <button type="submit" class="form-control" onclick="limparCamposDevolvido()">Limpar</button>
+                        <button type="button" class="form-control" id="salvarTroca">Salvar</button>
+                        <button type="submit" class="form-control" id="alterarTroca">Alterar</button>
+                        <button type="submit" class="form-control" id="excluirTroca">Excluir</button>
+                        <button type="submit" class="form-control" >Limpar</button>
                     </div>
                 </div>
                 <div class="pesquisar-devolucaoOuTroca">
@@ -84,7 +83,7 @@
         </section>
         <!--Fim section-->
 
-        <script th:src="@{/js/js.js}"></script>
+      <script th:src="@{/js/trocaScript.js}"></script>
     </main>
     <!--Fim main-->
 </body>

@@ -251,7 +251,9 @@ function buscarCliente(event) {
         });
     });
 //Devolução
-$("#alterar").prop("disabled", true);
+limparCamposDevolucao();
+$("#alterarDevolucao").prop("disabled", true);
+$("#excluirDevolucao").prop("disabled", true);
 $(document).ready(function () {
     $("#salvarDevolucaoOuTroca").click(function (event) {
         event.preventDefault();
@@ -286,7 +288,8 @@ function buscarDevolucao(event) {
     event.preventDefault();
 
     var id = $("#pesquisar-devolucaoOuTroca").val().trim();
-    $("#alterar").prop("disabled", false);
+    $("#alterarDevolucao").prop("disabled", false);
+    $("#excluirDevolucao").prop("disabled", false);
     $("#salvarDevolucaoOuTroca").prop("disabled", true);
     if (id && !isNaN(id)) {
         $.ajax({
@@ -314,7 +317,8 @@ function buscarDevolucao(event) {
 }
 
 function limparCamposDevolucao() {
-    $("#alterar").prop("disabled", true);
+    $("#alterarDevolucao").prop("disabled", true);
+    $("#excluirDevolucao").prop("disabled", true);
     $("#salvarDevolucaoOuTroca").prop("disabled", false);
     document.getElementById('codigo-devolucao').value = '';
     document.getElementById('motivo-devolucao').value = '';
@@ -351,17 +355,16 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    // Evento de clique para excluir a devolução
+
     $("#excluirDevolucao").click(function (event) {
         event.preventDefault();
 
-        // Pega o ID da devolução a ser excluída
         const devolucaoId = $("#devolucaoId").val();
 
         if (devolucaoId) {
-            // Confirmação de exclusão
+    
             if (confirm("Você tem certeza que deseja excluir esta devolução?")) {
-                // Realiza a requisição AJAX para excluir a devolução
+
                 $.ajax({
                     type: "DELETE",
                     url: "/buscar-excuir",
@@ -380,6 +383,13 @@ $(document).ready(function () {
             alert("Nenhuma devolução selecionada para exclusão.");
         }
     });
+});
+//troca
+
+
+
+$("#salvarTroca").click(function () {
+    alert("Teste do console");
 });
 
 

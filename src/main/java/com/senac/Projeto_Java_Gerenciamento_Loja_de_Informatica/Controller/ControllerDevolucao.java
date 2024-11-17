@@ -34,10 +34,7 @@ public class ControllerDevolucao {
     
   @PostMapping("/cadastro-devolucao")
 public String cadastrarDevolucao(Model model, @RequestBody Devolucao devolucao) {
-
     serviceDevolucao.criarDevolucao(devolucao);
-
-
     return "devolucao";
 }
 

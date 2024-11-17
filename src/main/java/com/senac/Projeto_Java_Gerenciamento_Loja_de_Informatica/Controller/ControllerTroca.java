@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class ControllerTroca {
@@ -21,4 +22,10 @@ public class ControllerTroca {
         model.addAttribute("troca", new Troca());
         return "troca";
     }
+    
+      @PostMapping("/cadastro-troca")
+public String cadastrarTroca(Model model, @RequestBody Troca troca) {
+    serviceTroca.criarTroca(troca);
+    return "troca";
+}
 }
