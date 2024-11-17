@@ -64,7 +64,7 @@ public class ControllerFuncionario {
         return "funcionarios";
     }
 @GetMapping("/buscar-funcionario")
-@ResponseBody // Adiciona isso para retornar JSON
+@ResponseBody 
 public ResponseEntity<?> buscarFuncionario(@RequestParam("id") Integer id) {
     if (id == null || id <= 0) {
         return ResponseEntity.badRequest().body("ID inválido.");
@@ -75,7 +75,7 @@ public ResponseEntity<?> buscarFuncionario(@RequestParam("id") Integer id) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Funcionário não encontrado.");
     }
 
-    return ResponseEntity.ok(funcEncontrado); // Retorna JSON do funcionário
+    return ResponseEntity.ok(funcEncontrado);
 }
   @PutMapping("/atualizar-fubcionario")
     public String atualizarFuncionario(Model model, @RequestBody Funcionario funcionario) {

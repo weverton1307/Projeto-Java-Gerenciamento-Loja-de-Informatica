@@ -59,9 +59,9 @@ function buscarFuncionario(event) {
             url: "/buscar-funcionario",
             method: "GET",
             data: { id: id },
-            dataType: "json", // Garantir que o retorno seja interpretado como JSON
+            dataType: "json", 
             success: function (data) {
-                // Preenche o formulário com os dados do funcionário
+
                 $("#nomeFuncionario").val(data.nome);
                 $("#endereço").val(data.endereco);
                 $("#cpf").val(data.cpf);
@@ -100,8 +100,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('senha-funcionario').value = '';
         document.getElementById('funcionarioId').value = '';
         document.getElementById('cargoFuncionario').value = 'Selecione um item';
-
-        // NÃO limpar o campo de pesquisa para permitir busca consecutiva
     }
 
     document.getElementById('limpar').addEventListener('click', limparCampos);
@@ -147,12 +145,13 @@ $(document).ready(function () {
     });
 });
 //clientes
+$("#alterarCliente").prop("disabled", true);
 $(document).ready(function () {
     $("#salvarCliente").click(function (event) {
         event.preventDefault();
         const formData = {
             nome: $("#nomeCliente").val().trim(),
-            endereco: $("#endereçoCliente").val().trim(),
+            endereco: $("#enderecoCliente").val().trim(),
             cpf: $("#cpfCliente").val().trim(),
             telefone: $("#telefoneCliente").val(),
             email: $("#emailCliente").val(),
@@ -177,6 +176,81 @@ $(document).ready(function () {
         });
     });
 });
+
+function buscarCliente(event) {
+    event.preventDefault();
+
+    var id = $("#pesquisar").val().trim();
+    $("#alterarCliente").prop("disabled", false);
+    $("#salvarCliente").prop("disabled", true);
+    if (id && !isNaN(id)) {
+        $.ajax({
+            url: "/buscar-cliente",
+            method: "GET",
+            data: { id: id },
+            dataType: "json", 
+            success: function (data) {
+
+                $("#nomeCliente").val(data.nome);
+                $("#enderecoCliente").val(data.endereco);
+                $("#cpfCliente").val(data.cpf);
+                $("#telefoneCliente").val(data.telefone);
+                $("#emailCliente").val(data.email);
+            },
+            error: function (xhr) {
+                var errorMessage = "Erro ao buscar funcionário.";
+                if (xhr.status === 404) {
+                    errorMessage = "Cliente não encontrado.";
+                }
+                alert(errorMessage);
+            }
+        });
+    } else {
+        alert("Por favor, insira um ID válido para o funcionário.");
+    }
+}
+
+
+    function limparCamposCliente() {
+        $("#alterarCliente").prop("disabled", true);
+        $("#salvarCliente").prop("disabled", false);
+        document.getElementById('nomeCliente').value = '';
+        document.getElementById('enderecoCliente').value = '';
+        document.getElementById('cpfCliente').value = '';
+        document.getElementById('telefoneCliente').value = '';
+        document.getElementById('emailCliente').value = '';
+    }
+
+    $(document).ready(function () {
+        $("#alterarCliente").click(function (event) {
+            event.preventDefault();
+            const formData = {
+                nome: $("#nomeCliente").val().trim(),
+                endereco: $("#enderecoCliente").val().trim(),
+                cpf: $("#cpfCliente").val().trim(),
+                telefone: $("#telefoneCliente").val(),
+                email: $("#emailCliente").val(),
+                id: $("#clienteId").val() ? parseInt($("#clienteId").val()) : null
+            };
+    
+            console.log("Form Data:", formData);
+    
+            $.ajax({
+                type: "PUT",
+                url: "/atualizar-Cliente",
+                contentType: "application/json",
+                data: JSON.stringify(formData),
+                success: function (response) {
+                    alert("Cliente atualizado com sucesso!");
+                    window.location.href = "/clientes";
+                },
+                error: function (xhr, status, error) {
+                    alert("Ocorreu um erro: " + xhr.responseText);
+                }
+            });
+        });
+    });
+
 
 
 
