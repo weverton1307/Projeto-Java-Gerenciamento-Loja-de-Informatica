@@ -250,7 +250,39 @@ function buscarCliente(event) {
             });
         });
     });
+//Devolução ou troca
 
+
+
+$(document).ready(function () {
+    $("#salvarDevolucaoOuTroca").click(function (event) {
+        event.preventDefault();
+        const formData = {
+            codigoProduto: $("#codigo-devolucao").val().trim(),
+            motivo: $("#motivo-devolucao").val().trim(),
+            tipo: "Devolução",
+            data: $("#data-devolucao").val().trim(),
+            id: $("#devolucaoId").val() ? parseInt($("#devolucaoId").val()) : null
+        };
+
+
+        console.log("Form Data:", formData);
+
+        $.ajax({
+            type: "POST",
+            url: "/cadastro-devolucao",
+            contentType: "application/json",
+            data: JSON.stringify(formData),
+            success: function (response) {
+                alert("Devolução realizada com sucesso!");
+                window.location.href = "/devolucao";
+            },
+            error: function (xhr, status, error) {
+                alert("Ocorreu um erro: " + xhr.responseText);
+            }
+        });
+    });
+});
 
 
 

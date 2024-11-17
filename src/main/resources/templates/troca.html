@@ -9,6 +9,7 @@
     <link rel="icon" th:href="@{/img/icon.png}" type="image/png">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="background">
@@ -19,7 +20,7 @@
                 <img th:src="@{/img/LogoMarca.png}" alt="logo marca">
             </div>
             <div class="titulo">
-                <h1>Devolução ou Troca</h1>
+                <h1>Troca</h1>
             </div>
         </div>
     </header>
@@ -31,31 +32,24 @@
             <!--container-devolucaoOuTroca-->
             <div class="container-devolucaoOuTroca">
                 <div class="formulario-devolucaoOuTroca">
-                    <div class="radio-devolucaoOuTroca">
-                        <label><input id="radioDevolucao" class="radio1" type="radio" name="Devolução"
-                                value="Devolução"> Devolução</label>
-                        <label><input id="radioTroca" class="radio2" type="radio" name="troca" value="troca">
-                            Troca</label><br>
-                    </div>
-
-                    <form class="formulario-devolucaoOuTroca">
+                    <form class="formulario-devolucaoOuTroca" id="formulario-devolucao">
                         <label>Código do produto:</label>
-                        <input type="text" id="codigo-devolucaoOuTroca"><br>
+                        <input type="number" id="codigo-devolucao" th:field="${troca.codigoProduto}"><br>
                         <div class="textoArea">
                             <label>Motivo:</label>
-                            <textarea id="motivo-devolucaoOuTroca" class="form-control"></textarea><br>
+                            <textarea id="motivo-devolucao" class="form-control" th:field="${troca.motivo}"></textarea><br>
                         </div>
                         <div class="data-devolucaoOuTroca">
                             <label>Data:</label>
-                            <input type="date" id="data-devolucaoOuTroca">
+                            <input type="date" id="data-devolucao" th:field="${troca.data}">
                         </div>
-                        
+                        <input type="hidden" id="trocaId" name="id" value="${troca.id != null ? troca.id : ''}" />
                     </form>
+                    
                     <div class="botoes-formulario">
                         <button type="button" class="form-control voltar" onclick="window.location.href = '/menu'"
                             id="voltar">Voltar</button>
-                        <button type="button" class="form-control" onclick="salvarDevolvido()"
-                            id="salvar">Salvar</button>
+                        <button type="button" class="form-control" id="salvarDevolucaoOuTroca">Salvar</button>
                         <button type="submit" class="form-control" onclick="alterarDevolvido()"
                             id="alterar">Alterar</button>
                         <button type="submit" class="form-control" onclick="excluirDevolvido()">Excluir</button>
@@ -89,12 +83,8 @@
             <!--Fim container-tabela-->
         </section>
         <!--Fim section-->
-        <script>
-            window.onload = function () {
-                atualizarTabelaDevolucaoOuTroca();
-            };
-        </script>
-        <script type="text/javascript" src="./js/js.js"></script>
+
+        <script th:src="@{/js/js.js}"></script>
     </main>
     <!--Fim main-->
 </body>

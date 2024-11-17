@@ -61,14 +61,22 @@
         <!--Fim section-->
         <section>
             <div class="container-menu-section">
-                <!--devolucao-troca-->
+                <!--devolucao-->
                 <div>
-                    <a th:href="@{/devolucaoOuTroca}">
-                        <h1>Devolução ou troca</h1>
-                        <img th:src="@{/img/devolucao-troca.png}" alt="devolução ou troca" width="250" height="200">
+                    <a th:href="@{/devolucao}">
+                        <h1>Devolução</h1>
+                        <img th:src="@{/img/devolucao.png}" alt="devolução" width="250" height="200">
                     </a>
                 </div>
-                <!--Fim devolucao-troca-->
+                <!--Fim devolucao-->
+                <!--troca-->
+                <div>
+                    <a th:href="@{/troca}">
+                        <h1>Troca</h1>
+                        <img th:src="@{/img/troca.png}" alt="troca" width="250" height="200">
+                    </a>
+                </div>
+                <!--Fim troca-->
                 <!--vendas-->
                 <div>
                     <a th:href="@{/vendas}">
@@ -77,6 +85,10 @@
                     </a>
                 </div>
                 <!--Fim vendas-->
+
+            </div>
+            <!--Container para o botão de sair-->
+            <div class="container-menu-section">
                 <!--funcionários-->
                 <div>
                     <a th:href="@{/funcionarios}">
@@ -86,8 +98,8 @@
                 </div>
                 <!--Fim Funcionários-->
             </div>
-            <!--Container para o botão de sair-->
             <div class="container-menu-section">
+
                 <div id="sair">
                     <a th:href="@{/inicio}">
                         <img th:src="@{/img/sair.png}" alt="sair" width="100" height="80">

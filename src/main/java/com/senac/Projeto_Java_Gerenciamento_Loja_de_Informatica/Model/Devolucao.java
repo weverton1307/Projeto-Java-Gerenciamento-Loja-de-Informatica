@@ -17,7 +17,7 @@ public class Devolucao {
     private int codigoProduto;
     private String motivo;
     private String tipo;
-
+    private LocalDate data;
     public Devolucao() {
     }
 
@@ -34,7 +34,7 @@ public class Devolucao {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    private LocalDate data;
+    
 
     public int getId() {
         return id;
