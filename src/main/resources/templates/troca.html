@@ -59,7 +59,7 @@
                     <div><label>Pesquisar:</label></div>
                     <div><input id="pesquisar-devolucaoOuTroca" type="text"></div>
                     <div id="botao-pesquisar-devolucaoOuTroca"><button id="search-button" class="form-control"
-                            onclick="buscarDevolvido()">Buscar</button></div>
+                            onclick="buscarTroca(event)">Buscar</button></div>
                 </div>
             </div>
             <!--Fim container-devolucaoOuTroca-->
@@ -86,6 +86,71 @@
       <script th:src="@{/js/trocaScript.js}"></script>
     </main>
     <!--Fim main-->
+    <script>
+        $(document).ready(function () {
+            // Função para listar devoluções
+            function listarTroca() {
+                $.ajax({
+                    type: "GET",
+                    url: "/listar-troca",
+                    dataType: "json",
+                    success: function (troca) {
+
+                        $("#tabela-devolucaoOuTroca").empty();
+
+                        troca.forEach(function (item) {
+                            var dataFormatada = "";
+
+                            if (item.data) {
+                                var data = new Date(item.data);
+                                dataFormatada = data.toLocaleDateString('pt-BR', {
+                                    day: '2-digit',
+                                    month: '2-digit',
+                                    year: 'numeric'
+                                });
+                            }
+
+                            var linha = `
+                                <tr class='linha-troca' data-id='${item.id}'>
+                                    <td>${item.id}</td>
+                                    <td>${item.codigoProduto}</td>
+                                    <td>${item.motivo}</td>
+                                    <td>${item.tipo}</td>
+                                    <td>${dataFormatada}</td>
+                                </tr>
+                            `;
+                            $("#tabela-devolucaoOuTroca").append(linha);
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Erro ao carregar dados das trocas: " + error);
+                    }
+                });
+            }
+
+            listarTroca();
+
+            $("#tabela-devolucaoOuTroca").on("click", "tr.linha-troca", function () {
+                var id = $(this).find("td").eq(0).text();
+                var codigoProduto = $(this).find("td").eq(1).text();
+                var motivo = $(this).find("td").eq(2).text();
+                var tipo = $(this).find("td").eq(3).text();
+                var data = $(this).find("td").eq(4).text();
+
+                var dataConvertida = data.split('/').reverse().join('-');
+
+                $("#trocaId").val(id);
+                $("#codigo-troca").val(codigoProduto);
+                $("#motivo-troca").val(motivo);
+                $("#data-troca").val(dataConvertida);
+
+                $("#alterarTroca").prop("disabled", false);
+                $("#excluirTroca").prop("disabled", false);
+                $("#salvarTroca").prop("disabled", true);
+            });
+
+        });
+    </script>
 </body>
 
 </html>

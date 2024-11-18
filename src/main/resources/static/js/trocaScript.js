@@ -27,3 +27,35 @@ $(document).ready(function () {
         });
     });
 });
+
+function buscarTroca(event) {
+    event.preventDefault();
+
+    var id = $("#pesquisar-devolucaoOuTroca").val().trim();
+    $("#alterarTroca").prop("disabled", false);
+    $("#excluirTroca").prop("disabled", false);
+    $("#salvarTroca").prop("disabled", true);
+    if (id && !isNaN(id)) {
+        $.ajax({
+            url: "/buscar-troca",
+            method: "GET",
+            data: { id: id },
+            dataType: "json", 
+            success: function (data) {
+
+                $("#codigo-troca").val(data.codigoProduto);
+                $("#motivo-troca").val(data.motivo);
+                $("#data-troca").val(data.data);
+            },
+            error: function (xhr) {
+                var errorMessage = "Erro ao buscar troca.";
+                if (xhr.status === 404) {
+                    errorMessage = "Troca não encontrada.";
+                }
+                alert(errorMessage);
+            }
+        });
+    } else {
+        alert("Por favor, insira um ID válido para a troca.");
+    }
+}

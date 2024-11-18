@@ -40,14 +40,14 @@ public String cadastrarDevolucao(Model model, @RequestBody Devolucao devolucao) 
 
  @GetMapping("/buscar-devolucao")
     @ResponseBody
-    public ResponseEntity<?> buscarFuncionario(@RequestParam("id") Integer id) {
+    public ResponseEntity<?> buscarDevolucao(@RequestParam("id") Integer id) {
         if (id == null || id <= 0) {
             return ResponseEntity.badRequest().body("ID inválido.");
         }
 
         Devolucao devolucaoEncontrado = serviceDevolucao.buscarId(id);
         if (devolucaoEncontrado == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Devolução não encontrado.");
         }
 
         return ResponseEntity.ok(devolucaoEncontrado);
