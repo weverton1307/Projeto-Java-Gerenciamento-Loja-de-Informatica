@@ -60,7 +60,7 @@ public String cadastrarDevolucao(Model model, @RequestBody Devolucao devolucao) 
     }
     
      @PutMapping("/atualizar-devolucao")
-    public String atualizardevolucao(Model model, @RequestBody Devolucao devolucao) {
+    public String atualizarDevolucao(Model model, @RequestBody Devolucao devolucao) {
         serviceDevolucao.atualizar(devolucao.getId(), devolucao);
 
         return "devolucao";

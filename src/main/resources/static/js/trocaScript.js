@@ -59,3 +59,41 @@ function buscarTroca(event) {
         alert("Por favor, insira um ID válido para a troca.");
     }
 }
+
+function limparCamposTrocao() {
+    $("#alterarTroca").prop("disabled", true);
+    $("#excluirTroca").prop("disabled", true);
+    $("#salvarTroca").prop("disabled", false);
+    document.getElementById('codigo-troca').value = '';
+    document.getElementById('motivo-troca').value = '';
+    document.getElementById('data-troca').value = '';
+}
+
+$(document).ready(function () {
+    $("#alterarTroca").click(function (event) {
+        event.preventDefault();
+        const formData = {
+            codigoProduto: $("#codigo-troca").val().trim(),
+            motivo: $("#motivo-troca").val().trim(),
+            tipo: "Troca",
+            data: $("#data-troca").val().trim(),
+            id: $("#trocaId").val() ? parseInt($("#trocaId").val()) : null
+        };
+
+        console.log("Form Data:", formData);
+
+        $.ajax({
+            type: "PUT",
+            url: "/atualizar-troca",
+            contentType: "application/json",
+            data: JSON.stringify(formData),
+            success: function (response) {
+                alert("Troca atualizada com sucesso!");
+                window.location.href = "/troca";
+            },
+            error: function (xhr, status, error) {
+                alert("Ocorreu um erro: " + xhr.responseText);
+            }
+        });
+    });
+});

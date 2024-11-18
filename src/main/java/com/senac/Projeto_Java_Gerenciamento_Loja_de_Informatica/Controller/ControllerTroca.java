@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -53,5 +54,12 @@ public String cadastrarTroca(Model model, @RequestBody Troca troca) {
     @ResponseBody
     public List<Troca> listarTroca() {
         return serviceTroca.listarTroca();  
+    }
+    
+      @PutMapping("/atualizar-troca")
+    public String atualizarTroca(Model model, @RequestBody Troca troca) {
+        serviceTroca.atualizar(troca.getId(), troca);
+
+        return "troca";
     }
 }
