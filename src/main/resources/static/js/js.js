@@ -367,7 +367,7 @@ $(document).ready(function () {
 
                 $.ajax({
                     type: "DELETE",
-                    url: "/buscar-excuir",
+                    url: "/devolucao-excluir",
                     contentType: "application/json",
                     data: JSON.stringify({ id: devolucaoId }),
                     success: function (response) {
@@ -384,13 +384,7 @@ $(document).ready(function () {
         }
     });
 });
-//troca
 
-
-
-$("#salvarTroca").click(function () {
-    alert("Teste do console");
-});
 
 
 

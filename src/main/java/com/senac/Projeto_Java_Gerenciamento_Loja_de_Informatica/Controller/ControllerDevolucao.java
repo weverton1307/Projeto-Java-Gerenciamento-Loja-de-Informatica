@@ -66,9 +66,9 @@ public String cadastrarDevolucao(Model model, @RequestBody Devolucao devolucao) 
         return "devolucao";
     }
 
-     @DeleteMapping("/buscar-excuir")
+     @DeleteMapping("/devolucao-excluir")
     @ResponseBody
-    public String excuirDevolucao(@RequestBody Devolucao devolucao) {
+    public String excluirDevolucao(@RequestBody Devolucao devolucao) {
       serviceDevolucao.excluir(devolucao.getId());
         return "devolucao";
     }

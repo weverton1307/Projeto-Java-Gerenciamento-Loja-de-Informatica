@@ -97,3 +97,34 @@ $(document).ready(function () {
         });
     });
 });
+
+$(document).ready(function () {
+
+    $("#excluirTroca").click(function (event) {
+        event.preventDefault();
+
+        const trocaId = $("#trocaId").val();
+
+        if (trocaId) {
+    
+            if (confirm("Você tem certeza que deseja excluir esta troca?")) {
+
+                $.ajax({
+                    type: "DELETE",
+                    url: "/troca-excluir",
+                    contentType: "application/json",
+                    data: JSON.stringify({ id: trocaId }),
+                    success: function (response) {
+                        alert("Troca excluída com sucesso!");
+                        location.reload();
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Ocorreu um erro ao excluir a troca: " + xhr.responseText);
+                    }
+                });
+            }
+        } else {
+            alert("Nenhuma troca selecionada para exclusão.");
+        }
+    });
+});
