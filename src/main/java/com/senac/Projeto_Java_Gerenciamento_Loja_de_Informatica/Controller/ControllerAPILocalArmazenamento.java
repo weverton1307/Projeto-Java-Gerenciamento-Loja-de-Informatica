@@ -1,7 +1,7 @@
 
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Controller;
 
-import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.LocalArmazenamento;
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Local_armazenamento;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceLocalArmazenamento;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,26 +23,26 @@ public class ControllerAPILocalArmazenamento {
    ServiceLocalArmazenamento serviceLocalArmazenamento;
     
      @GetMapping("/buscar-localArmazenamento/{id}")
-  public ResponseEntity<LocalArmazenamento> pesquisar(@PathVariable Integer id){
-     LocalArmazenamento localArmazenamentoEncontrado = serviceLocalArmazenamento.buscarId(id);
+  public ResponseEntity<Local_armazenamento> pesquisar(@PathVariable Integer id){
+     Local_armazenamento localArmazenamentoEncontrado = serviceLocalArmazenamento.buscarId(id);
      return new ResponseEntity<>(localArmazenamentoEncontrado, HttpStatus.OK);
   }
   
        @PostMapping("/adicionar-localArmazenamento")
-    public ResponseEntity<LocalArmazenamento> criar(@RequestBody LocalArmazenamento localArmazenamento){
-       LocalArmazenamento novaLocalArmazenamento = serviceLocalArmazenamento.criarLocalArmazenamento(localArmazenamento);
+    public ResponseEntity<Local_armazenamento> criar(@RequestBody Local_armazenamento localArmazenamento){
+       Local_armazenamento novaLocalArmazenamento = serviceLocalArmazenamento.criarLocalArmazenamento(localArmazenamento);
        return new ResponseEntity<>(novaLocalArmazenamento, HttpStatus.CREATED);
     }
     
        @GetMapping("listar-localArmazenamento")
     public ResponseEntity<List> listar(){
-        List<LocalArmazenamento> listaLocalArmazenamento = serviceLocalArmazenamento.listarLocalArmazenamento();
+        List<Local_armazenamento> listaLocalArmazenamento = serviceLocalArmazenamento.listarLocalArmazenamento();
         return new ResponseEntity<>(listaLocalArmazenamento, HttpStatus.OK);
     }
     
     @PutMapping("/atualizar-localArmazenamento/{id}")
-    public ResponseEntity<LocalArmazenamento> atualizar(@PathVariable Integer id, @RequestBody LocalArmazenamento localArmazenamento){
-        LocalArmazenamento localArmazenamentoAtualizado = serviceLocalArmazenamento.atualizar(id, localArmazenamento);
+    public ResponseEntity<Local_armazenamento> atualizar(@PathVariable Integer id, @RequestBody Local_armazenamento localArmazenamento){
+        Local_armazenamento localArmazenamentoAtualizado = serviceLocalArmazenamento.atualizar(id, localArmazenamento);
         return new ResponseEntity<>(localArmazenamentoAtualizado, HttpStatus.OK);
     }
     

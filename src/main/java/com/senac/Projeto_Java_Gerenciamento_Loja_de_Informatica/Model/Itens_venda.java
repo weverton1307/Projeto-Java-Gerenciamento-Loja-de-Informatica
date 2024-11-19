@@ -9,7 +9,7 @@ import jakarta.persistence.ManyToOne;
 
 
 @Entity
-public class ItensVenda {
+public class Itens_venda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,10 +22,10 @@ public class ItensVenda {
     @JoinColumn(name = "venda_id")
     private Venda venda;
 
-    public ItensVenda() {
+    public Itens_venda() {
     }
 
-    public ItensVenda(int quantidade) {
+    public Itens_venda(int quantidade) {
         this.quantidade = quantidade;
     }
 

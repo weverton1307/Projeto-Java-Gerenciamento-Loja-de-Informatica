@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 public class GeradorRelatorio_TotalVendas implements GeradorRelatorioVendas {
 
     @Override
-    public void gerarRelatorio(String inicioString, String fimString, List<ItensVenda> listaItens) {
+    public void gerarRelatorio(String inicioString, String fimString, List<Itens_venda> listaItens) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate inicio = LocalDate.parse(inicioString, formatter);
         LocalDate fim = LocalDate.parse(fimString, formatter);

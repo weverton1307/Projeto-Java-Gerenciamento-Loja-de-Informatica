@@ -1,7 +1,7 @@
 
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service;
 
-import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.ItensVenda;
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Itens_venda;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Repository.RepositoryItensVenda;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,22 +12,22 @@ public class ServiceItensVenda {
     @Autowired
      RepositoryItensVenda reposoitoryItensVenda;
     
-     public ItensVenda buscarId(Integer id){
+     public Itens_venda buscarId(Integer id){
         return reposoitoryItensVenda.findById(id).orElseThrow();
     }
      
-          public ItensVenda criarItensVenda(ItensVenda itensVenda){
+          public Itens_venda criarItensVenda(Itens_venda itensVenda){
         itensVenda.setId(null);
          reposoitoryItensVenda.save(itensVenda);
          return itensVenda;
     }
           
-          public List<ItensVenda> listarItensVenda() {
+          public List<Itens_venda> listarItensVenda() {
         return reposoitoryItensVenda.findAll();
     }
           
-             public ItensVenda atualizar(Integer id, ItensVenda itensVenda){
-        ItensVenda itensVendaEncontrada = buscarId(id);
+             public Itens_venda atualizar(Integer id, Itens_venda itensVenda){
+        Itens_venda itensVendaEncontrada = buscarId(id);
        itensVendaEncontrada.setProduto(itensVenda.getProduto());
        itensVendaEncontrada.setQuantidade(itensVenda.getQuantidade());
        itensVendaEncontrada.setVenda(itensVenda.getVenda());
@@ -35,7 +35,7 @@ public class ServiceItensVenda {
     }
              
                  public void excluir(Integer id){
-        ItensVenda itensVendaEncontrada = buscarId(id);
+        Itens_venda itensVendaEncontrada = buscarId(id);
         reposoitoryItensVenda.deleteById(itensVendaEncontrada.getId());
     }
 

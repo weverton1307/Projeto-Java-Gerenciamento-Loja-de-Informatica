@@ -30,11 +30,11 @@ public class ControllerTroca {
         return "troca";
     }
     
-      @PostMapping("/cadastro-troca")
-public String cadastrarTroca(Model model, @RequestBody Troca troca) {
-    serviceTroca.criarTroca(troca);
-    return "troca";
-}
+    @PostMapping("/cadastro-troca")
+    public String cadastrarTroca(Model model, @RequestBody Troca troca) {
+        serviceTroca.criarTroca(troca);
+        return "troca";
+    }
 
  @GetMapping("/buscar-troca")
     @ResponseBody

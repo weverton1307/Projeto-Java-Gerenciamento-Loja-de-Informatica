@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 public class GeradorRelatorioVendas_MetodoPagamento implements GeradorRelatorioVendas {
 
     @Override
-    public void gerarRelatorio(String inicioString, String fimString, List<ItensVenda> listaItens) {
+    public void gerarRelatorio(String inicioString, String fimString, List<Itens_venda> listaItens) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate inicio = LocalDate.parse(inicioString, formatter);
         LocalDate fim = LocalDate.parse(fimString, formatter);
@@ -39,7 +39,7 @@ public class GeradorRelatorioVendas_MetodoPagamento implements GeradorRelatorioV
 
                     Map<String, Integer> contagemMetodos = new HashMap<>();
 
-                    for (ItensVenda item : listaItens) {
+                    for (Itens_venda item : listaItens) {
                         String metodo = item.getVenda().getMetodoPagamento();
                         contagemMetodos.put(metodo, contagemMetodos.getOrDefault(metodo, 0) + 1);
 

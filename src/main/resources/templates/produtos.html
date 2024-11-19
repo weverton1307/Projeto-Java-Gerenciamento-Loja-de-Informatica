@@ -9,6 +9,7 @@
     <link rel="icon" th:href="@{/img/icon.png}" type="image/png">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="background">
@@ -32,34 +33,35 @@
             <div class="container-produtos">
                 <div class="formulario-produtos-um">
                     <div id="quantidade">Quantidade do produto:</div>
-                    <form>
+                    <form id="formularioProduto">
                         <input id="codigo" type="text"><br>
                         <label>Nome:</label>
-                        <input id="nome" type="text" required><br>
+                        <input id="nome" type="text" th:field="${produto.nomeProduto}" required><br>
                         <label >Valor de compra:</label>
-                        <input id="valorCompra" type="text" required oninput="validarNumero(this)"><br>
+                        <input id="valorCompra" type="text"  th:field="${produto.valorCompra}" required><br>
                         <label >Valor de venda:</label>
-                        <input id="valorVenda" type="text" required oninput="validarNumero(this)"><br>
+                        <input id="valorVenda" type="text" th:field="${produto.valorVenda}" required><br>
                         <label>Modelo:</label>
-                        <input id="modelo" type="text" required><br>
+                        <input id="modelo" type="text" th:field="${produto.modelo}" required><br>
                         <label>número da nota fiscal:</label>
-                        <input id="fiscal" type="text" required><br>
+                        <input id="fiscal" type="text" th:field="${produto.notaFiscal}" required><br>
                         <label>Data de aquisição:</label>
-                        <input id="data" type="date" required min="1900-01-01" max="2100-12-31"><br>
+                        <input id="data" type="date" required min="1900-01-01" max="2100-12-31" th:field="${produto.dataAquisicao}"><br>
                         <label>Fabricante:</label>
-                        <input id="fabricante" type="text" required><br>
-                        <div id="status">Status:</div>
+                        <input id="fabricante" type="text" th:field="${produto.fabricante}" required><br>
+                        <div id="status" >Status:</div>
                         <br>
+                        <input type="hidden" id="produtoId" name="id" value="${produto.id != null ? produto.id : ''}" />
                     </form>
                     <div id="texto-area"><label>Descrição técnica:</label>
-                        <textarea id="descricao" class="form-control" required></textarea>
+                        <textarea id="descricao" class="form-control" th:field="${produto.descricaoTecnica}" required></textarea>
                     </div>
                         <div class="botoes-formulario">
                     
                             <button type="button" class="form-control voltar" id="voltar" onclick="window.location.href = '/menu'">Voltar</button>
-                            <button type="button" class="form-control" onclick="salvarProduto()" id="salvar">Salvar</button>
-                        <button type="submit" class="form-control" onclick="alterarProduto()" id="alterar" >Alterar</button>
-                        <button type="submit" class="form-control" onclick="limparCamposProduto()">Limpar</button>
+                            <button type="button" class="form-control"  id="salvarProduto">Salvar</button>
+                        <button type="submit" class="form-control"  id="alterarProduto" >Alterar</button>
+                        <button type="submit" class="form-control" >Limpar</button>
                     </div>
 
                 </div>
@@ -67,20 +69,20 @@
                     <div id="prateleiraDiv"><label id="label-prateleira" for="prateleira" required>Número da prateleira:</label>
                         <select id="prateleira" required>
                             <option>Selecione um item</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
+                            <option value="1" th:field="${produto.localArmazenamento.numeroPrateleira}">1</option>
+                            <option value="2" th:field="${produto.localArmazenamento.numeroPrateleira}">2</option>
+                            <option value="3" th:field="${produto.localArmazenamento.numeroPrateleira}">3</option>
+                            <option value="4" th:field="${produto.localArmazenamento.numeroPrateleira}" >4</option>
                         </select><br>
                     </div>
     
                     <div id="LocalPrateleiraDiv"><label for="localPrateleira" required>Número do local da prateleira:</label>
                         <select id="localPrateleira" required>
                             <option>Selecione um item</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
+                            <option value="1" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">1</option>
+                            <option value="2" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">2</option>
+                            <option value="3" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">3</option>
+                            <option value="4" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">4</option>
                         </select><br>
                     </div>
     
@@ -88,14 +90,13 @@
                     <div id="categoriaDiv"><label for="categoria">Categoria:</label>
                         <select id="categoria" required>
                             <option>Selecione um item</option>
-                            <option value="Componentes de hardware">Componentes de hardware</option>
-                            <option value="Conectividade e redes">Conectividade e redes</option>
-                            <option value="Dispositivos computacionais">Dispositivos computacionais</option>
-                            <option value="periferico">Periférico</option>
-                            <option value="Suprimento de impressora">Suprimentos de impressora</option>
+                            <option value="Componentes de hardware" th:field="${produto.categoria.nome}">Componentes de hardware</option>
+                            <option value="Conectividade e redes" th:field="${produto.categoria.nome}">Conectividade e redes</option>
+                            <option value="Dispositivos computacionais" th:field="${produto.categoria.nome}">Dispositivos computacionais</option>
+                            <option value="Periférico" th:field="${produto.categoria.nome}">Periférico</option>
+                            <option value="Suprimentos de impressora" th:field="${produto.categoria.nome}">Suprimentos de impressora</option>
                         </select><br>
                     </div>
-    
                     <div><label>Pesquisar:</label>
                         <div class="radio-group">
                             <label><input id="radio1" class="radio" type="radio" name="pesquisar" value="codigo" onclick="digitarCodigo()"> Código</label>
@@ -162,7 +163,7 @@
 document.getElementById("codigo").hidden =true;
 
     </script>
-    <script type="text/javascript" src="./js/js.js"></script>
+   <script th:src="@{/js/produtoScript.js}"></script>
 
 </body>
 

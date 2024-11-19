@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface GeradorRelatorioVendas {
 
-    public abstract void gerarRelatorio(String inicioString, String fimString, List<ItensVenda> listaItens);
+    public abstract void gerarRelatorio(String inicioString, String fimString, List<Itens_venda> listaItens);
 }

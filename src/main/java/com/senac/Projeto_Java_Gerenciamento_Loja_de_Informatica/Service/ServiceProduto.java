@@ -1,4 +1,3 @@
-
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service;
 
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Produto;
@@ -9,24 +8,25 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ServiceProduto {
+
     @Autowired
-     RepositoryProduto reposoitoryProduto;
-    
-     public Produto buscarId(Integer id){
+    RepositoryProduto reposoitoryProduto;
+
+    public Produto buscarId(Integer id) {
         return reposoitoryProduto.findById(id).orElseThrow();
     }
-     
-          public Produto criarProduto(Produto produto){
+
+    public Produto criarProduto(Produto produto) {
         produto.setId(null);
-         reposoitoryProduto.save(produto);
-         return produto;
+        reposoitoryProduto.save(produto);
+        return produto;
     }
-          
-          public List<Produto> listarProduto() {
+
+    public List<Produto> listarProduto() {
         return reposoitoryProduto.findAll();
     }
-          
-             public Produto atualizar(Integer id, Produto produto){
+
+    public Produto atualizar(Integer id, Produto produto) {
         Produto vendaEncontrado = buscarId(id);
         vendaEncontrado.setCategoria(produto.getCategoria());
         vendaEncontrado.setCpf_cliente_devolucao(produto.getCpf_cliente_devolucao());
@@ -45,10 +45,24 @@ public class ServiceProduto {
         vendaEncontrado.setValorVenda(produto.getValorVenda());
         return reposoitoryProduto.save(vendaEncontrado);
     }
-             
-                 public void excluir(Integer id){
+
+    public void excluir(Integer id) {
         Produto produtoEncontrado = buscarId(id);
         reposoitoryProduto.deleteById(produtoEncontrado.getId());
     }
-
+      public void atualizarQuantidadeproduto(Produto produto){
+          int quantidadeProduto = 0;
+        List<Produto> listaprodutos = listarProduto();
+        for(Produto p:listaprodutos){
+            if(p.getNomeProduto().equalsIgnoreCase(produto.getNomeProduto())){
+                quantidadeProduto = quantidadeProduto +1;
+            }
+        }
+         for(Produto p:listaprodutos){
+            if(p.getNomeProduto().equalsIgnoreCase(produto.getNomeProduto())){
+               p.setQuantidadeProduto(quantidadeProduto);
+               atualizar(p.getId(), p);
+            }
+        }
+      }
 }

@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 public class GeradorRelatorio_FaturamentoTotal implements GeradorRelatorioVendas {
 
     @Override
-    public void gerarRelatorio(String inicioString, String fimString, List<ItensVenda> listaItens) {
+    public void gerarRelatorio(String inicioString, String fimString, List<Itens_venda> listaItens) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate inicio = LocalDate.parse(inicioString, formatter);
         LocalDate fim = LocalDate.parse(fimString, formatter);
@@ -30,7 +30,7 @@ public class GeradorRelatorio_FaturamentoTotal implements GeradorRelatorioVendas
 
             } else {
                 double faturamentoTotal = 0;
-                for (ItensVenda item : listaItens) {
+                for (Itens_venda item : listaItens) {
                     LocalDate dataVenda = item.getVenda().getDataHora().toLocalDate();
                     if (!dataVenda.isBefore(inicio) && !dataVenda.isAfter(fim)) {
                         faturamentoTotal += item.totalItens();

@@ -7,7 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class LocalArmazenamento {
+public class Local_armazenamento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,14 +17,15 @@ public class LocalArmazenamento {
         @Column(name = "numero_local_prateleira")
     private String numeroLocalPrateleira;
 
-    public LocalArmazenamento() {
+    public Local_armazenamento() {
     }
 
-    public String getNumeroPrateleira() {
-        return numeroPrateleira;
+    public Local_armazenamento(String numeroPrateleira, String numeroLocalPrateleira) {
+        this.numeroPrateleira = numeroPrateleira;
+        this.numeroLocalPrateleira = numeroLocalPrateleira;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -32,16 +33,23 @@ public class LocalArmazenamento {
         this.id = id;
     }
 
+    public String getNumeroPrateleira() {
+        return numeroPrateleira;
+    }
+
     public void setNumeroPrateleira(String numeroPrateleira) {
         this.numeroPrateleira = numeroPrateleira;
     }
 
-    public String getNumeroLocaPrateleira() {
+    public String getNumeroLocalPrateleira() {
         return numeroLocalPrateleira;
     }
 
-    public void setNumeroLocalPrateleira(String numeroLocaPrateleira) {
-        this.numeroLocalPrateleira = numeroLocaPrateleira;
+    public void setNumeroLocalPrateleira(String numeroLocalPrateleira) {
+        this.numeroLocalPrateleira = numeroLocalPrateleira;
     }
+
+  
+   
 
 }

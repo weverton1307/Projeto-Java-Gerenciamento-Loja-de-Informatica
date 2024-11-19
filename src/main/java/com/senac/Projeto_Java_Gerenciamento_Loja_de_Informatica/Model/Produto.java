@@ -45,7 +45,7 @@ public class Produto {
     private Devolucao devolucao;
     @ManyToOne
     @JoinColumn(name = "local_de_armazenamento_id")
-    private LocalArmazenamento localArmazenamento;
+    private Local_armazenamento localArmazenamento;
 
     public Produto() {
 
@@ -176,11 +176,11 @@ public class Produto {
         this.categoria = categoria;
     }
 
-    public LocalArmazenamento getLocalArmazenamento() {
+    public Local_armazenamento getLocalArmazenamento() {
         return localArmazenamento;
     }
 
-    public void setLocalArmazenamento(LocalArmazenamento localArmazenamento) {
+    public void setLocalArmazenamento(Local_armazenamento localArmazenamento) {
         this.localArmazenamento = localArmazenamento;
     }
 

@@ -2,7 +2,7 @@
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Controller;
 
 
-import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.ItensVenda;
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Itens_venda;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceItensVenda;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceVenda;
 import java.util.List;
@@ -25,26 +25,26 @@ public class ControllerAPIIntesVenda {
    ServiceItensVenda serviceItensVenda;
     
      @GetMapping("/buscar-itensVenda/{id}")
-  public ResponseEntity<ItensVenda> pesquisar(@PathVariable Integer id){
-     ItensVenda itensVendaEncontrada = serviceItensVenda.buscarId(id);
+  public ResponseEntity<Itens_venda> pesquisar(@PathVariable Integer id){
+     Itens_venda itensVendaEncontrada = serviceItensVenda.buscarId(id);
      return new ResponseEntity<>(itensVendaEncontrada, HttpStatus.OK);
   } 
   
        @PostMapping("/adicionar-itensVenda")
-    public ResponseEntity<ItensVenda> criar(@RequestBody ItensVenda itensVenda){
-       ItensVenda novaItensVenda = serviceItensVenda.criarItensVenda(itensVenda);
+    public ResponseEntity<Itens_venda> criar(@RequestBody Itens_venda itensVenda){
+       Itens_venda novaItensVenda = serviceItensVenda.criarItensVenda(itensVenda);
        return new ResponseEntity<>(novaItensVenda, HttpStatus.CREATED);
     }
     
        @GetMapping("listar-itensVenda")
     public ResponseEntity<List> listar(){
-        List<ItensVenda> listaItensVenda = serviceItensVenda.listarItensVenda();
+        List<Itens_venda> listaItensVenda = serviceItensVenda.listarItensVenda();
         return new ResponseEntity<>(listaItensVenda, HttpStatus.OK);
     }
     
     @PutMapping("/atualizar-itensVenda/{id}")
-    public ResponseEntity<ItensVenda> atualizar(@PathVariable Integer id, @RequestBody ItensVenda itensVenda){
-        ItensVenda itensVendaAtualizado = serviceItensVenda.atualizar(id, itensVenda);
+    public ResponseEntity<Itens_venda> atualizar(@PathVariable Integer id, @RequestBody Itens_venda itensVenda){
+        Itens_venda itensVendaAtualizado = serviceItensVenda.atualizar(id, itensVenda);
         return new ResponseEntity<>(itensVendaAtualizado, HttpStatus.OK);
     }
     

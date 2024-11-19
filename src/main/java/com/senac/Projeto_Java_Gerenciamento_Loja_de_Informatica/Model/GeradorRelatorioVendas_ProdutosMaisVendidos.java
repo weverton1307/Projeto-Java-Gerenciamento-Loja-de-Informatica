@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 public class GeradorRelatorioVendas_ProdutosMaisVendidos {
 
-    public static Map<String, Integer> gerarRelatório(String inicioString, String fimString, List<ItensVenda> ListaItens) {
+    public static Map<String, Integer> gerarRelatório(String inicioString, String fimString, List<Itens_venda> ListaItens) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate inicio = LocalDate.parse(inicioString, formatter);
         LocalDate fim = LocalDate.parse(fimString, formatter);
@@ -23,9 +23,9 @@ public class GeradorRelatorioVendas_ProdutosMaisVendidos {
             return null;
         }
 
-        List<ItensVenda> itensNoPeriodo = new ArrayList<>();
+        List<Itens_venda> itensNoPeriodo = new ArrayList<>();
 
-        for (ItensVenda item : ListaItens) {
+        for (Itens_venda item : ListaItens) {
             LocalDate dataVenda = item.getVenda().getDataHora().toLocalDate();
             if (!dataVenda.isBefore(inicio) && !dataVenda.isAfter(fim)) {
                 itensNoPeriodo.add(item);
@@ -34,7 +34,7 @@ public class GeradorRelatorioVendas_ProdutosMaisVendidos {
 
         Map<String, Integer> produtosQuantidade = new HashMap<>();
 
-        for (ItensVenda item : itensNoPeriodo) {
+        for (Itens_venda item : itensNoPeriodo) {
             produtosQuantidade.put(item.getProduto().getNomeProduto(),
                     produtosQuantidade.getOrDefault(item.getProduto().getNomeProduto(), 0) + item.getQuantidade());
         }

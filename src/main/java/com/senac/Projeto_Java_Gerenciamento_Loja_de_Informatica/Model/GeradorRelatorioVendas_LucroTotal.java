@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 public class GeradorRelatorioVendas_LucroTotal implements GeradorRelatorioVendas {
 
     @Override
-    public void gerarRelatorio(String inicioString, String fimString, List<ItensVenda> listaItens) {
+    public void gerarRelatorio(String inicioString, String fimString, List<Itens_venda> listaItens) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate inicio = LocalDate.parse(inicioString, formatter);
         LocalDate fim = LocalDate.parse(fimString, formatter);
@@ -33,11 +33,11 @@ public class GeradorRelatorioVendas_LucroTotal implements GeradorRelatorioVendas
                     JOptionPane.showMessageDialog(null, "Não há vendas durante o período especificado");
                 } else {
                     double faturamentoTotal = 0;
-                    for (ItensVenda item : listaItens) {
+                    for (Itens_venda item : listaItens) {
                         faturamentoTotal += item.totalItens();
                     }
                     double totalValorCompra = 0;
-                    for (ItensVenda item : listaItens) {
+                    for (Itens_venda item : listaItens) {
                         totalValorCompra += item.getProduto().getValorCompra();
                     }
                     double lucroTotal = faturamentoTotal - totalValorCompra;
