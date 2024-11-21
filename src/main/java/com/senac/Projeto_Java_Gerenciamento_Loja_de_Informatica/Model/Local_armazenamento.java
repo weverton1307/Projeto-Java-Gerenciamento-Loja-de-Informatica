@@ -20,21 +20,16 @@ public class Local_armazenamento {
     public Local_armazenamento() {
     }
 
-    public Local_armazenamento(String numeroPrateleira, String numeroLocalPrateleira) {
-        this.numeroPrateleira = numeroPrateleira;
-        this.numeroLocalPrateleira = numeroLocalPrateleira;
+    public String getNumeroPrateleira() {
+        return numeroPrateleira;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getNumeroPrateleira() {
-        return numeroPrateleira;
     }
 
     public void setNumeroPrateleira(String numeroPrateleira) {
@@ -49,7 +44,6 @@ public class Local_armazenamento {
         this.numeroLocalPrateleira = numeroLocalPrateleira;
     }
 
-  
    
 
 }

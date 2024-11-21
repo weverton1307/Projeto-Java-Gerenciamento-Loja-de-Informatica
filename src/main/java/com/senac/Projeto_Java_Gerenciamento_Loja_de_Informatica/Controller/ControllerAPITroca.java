@@ -1,7 +1,9 @@
 
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Controller;
 
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Produto;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Troca;
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceProduto;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceTroca;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class ControllerAPITroca {
     @Autowired
    ServiceTroca serviceTroca;
+    
+    @Autowired
+    ServiceProduto serviceProduto;
     
      @GetMapping("/buscar-troca/{id}")
   public ResponseEntity<Troca> pesquisar(@PathVariable Integer id){

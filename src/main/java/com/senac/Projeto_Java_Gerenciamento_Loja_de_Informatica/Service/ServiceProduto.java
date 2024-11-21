@@ -1,7 +1,10 @@
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service;
 
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Devolucao;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Produto;
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Troca;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Repository.RepositoryProduto;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,19 +53,104 @@ public class ServiceProduto {
         Produto produtoEncontrado = buscarId(id);
         reposoitoryProduto.deleteById(produtoEncontrado.getId());
     }
-      public void atualizarQuantidadeproduto(Produto produto){
-          int quantidadeProduto = 0;
+
+    public void atualizarQuantidadeproduto(Produto produto) {
+        int quantidadeProduto = 0;
         List<Produto> listaprodutos = listarProduto();
-        for(Produto p:listaprodutos){
-            if(p.getNomeProduto().equalsIgnoreCase(produto.getNomeProduto())){
-                quantidadeProduto = quantidadeProduto +1;
+        for (Produto p : listaprodutos) {
+            if (p.getNomeProduto().equalsIgnoreCase(produto.getNomeProduto())) {
+                quantidadeProduto = quantidadeProduto + 1;
             }
         }
-         for(Produto p:listaprodutos){
-            if(p.getNomeProduto().equalsIgnoreCase(produto.getNomeProduto())){
-               p.setQuantidadeProduto(quantidadeProduto);
-               atualizar(p.getId(), p);
+        for (Produto p : listaprodutos) {
+            if (p.getNomeProduto().equalsIgnoreCase(produto.getNomeProduto())) {
+                p.setQuantidadeProduto(quantidadeProduto);
+                atualizar(p.getId(), p);
             }
         }
-      }
+    }
+
+    public List<Produto> buscarProdutoNome(String nome) {
+        List<Produto> produtosEncontrados = new ArrayList<>();
+        List<Produto> listaProduto = listarProduto();
+        for (Produto p : listaProduto) {
+            if (p.getNomeProduto().equalsIgnoreCase(nome)) {
+                produtosEncontrados.add(p);
+            }
+        }
+        return produtosEncontrados;
+    }
+
+    public List<Produto> buscarProdutoModelo(String modelo) {
+        List<Produto> produtosEncontrados = new ArrayList<>();
+        List<Produto> listaProduto = listarProduto();
+
+        for (Produto p : listaProduto) {
+            if (modelo != null && modelo.equalsIgnoreCase(p.getModelo())) {
+                produtosEncontrados.add(p);
+            }
+        }
+
+        // Log de depuração para verificar os produtos filtrados
+        produtosEncontrados.forEach(produto
+                -> System.out.println("Produto encontrado: " + produto.getModelo()));
+
+        return produtosEncontrados;
+    }
+
+    public List<Produto> buscarProdutoFabricante(String fabricante) {
+        List<Produto> produtosEncontrados = new ArrayList<>();
+        List<Produto> listaProduto = listarProduto();
+        for (Produto p : listaProduto) {
+            if (p.getFabricante().equalsIgnoreCase(fabricante)) {
+                produtosEncontrados.add(p);
+
+            }
+        }
+        return produtosEncontrados;
+    }
+
+    public List<Produto> buscarProdutoDisponibilidade(String disponivel) {
+        List<Produto> produtosEncontrados = new ArrayList<>();
+        List<Produto> listaProduto = listarProduto();
+        for (Produto p : listaProduto) {
+            if (p.getStatusProduto().equalsIgnoreCase(disponivel)) {
+                produtosEncontrados.add(p);
+            }
+        }
+        return produtosEncontrados;
+    }
+
+    public List<Produto> buscarProdutoDevolvido(int codigoDevolvido) {
+        List<Produto> produtosEncontrados = new ArrayList<>();
+        List<Produto> listaProduto = listarProduto();
+        for (Produto p : listaProduto) {
+            if (p.getTroca() != null && p.getTroca().getTipo().equalsIgnoreCase("Troca") || p.getDevolucao() != null && p.getDevolucao().getTipo().equalsIgnoreCase("Devolução")) {
+                produtosEncontrados.add(p);
+            }
+        }
+        return produtosEncontrados;
+    }
+
+    public List<Produto> buscarProdutoCategoria(String categoria) {
+        List<Produto> produtosEncontrados = new ArrayList<>();
+        List<Produto> listaProduto = listarProduto();
+        for (Produto p : listaProduto) {
+            if (p.getCategoria().getNome().equalsIgnoreCase(categoria)) {
+                produtosEncontrados.add(p);
+            }
+        }
+        return produtosEncontrados;
+    }
+
+    public void atualizarTroca(Troca troca) {
+        Produto produto = buscarId(troca.getCodigoProduto());
+        produto.setTroca(troca);
+        atualizar(produto.getId(), produto);
+    }
+     public void atualizarDevolucao(Devolucao devolucao) {
+        Produto produto = buscarId(devolucao.getCodigoProduto());
+        produto.setDevolucao(devolucao);
+        atualizar(produto.getId(), produto);
+    }
 }

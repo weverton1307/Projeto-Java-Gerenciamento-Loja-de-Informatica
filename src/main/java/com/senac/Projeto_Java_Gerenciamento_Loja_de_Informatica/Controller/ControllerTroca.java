@@ -2,6 +2,7 @@
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Controller;
 
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Troca;
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceProduto;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceTroca;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ControllerTroca {
        @Autowired
    ServiceTroca serviceTroca;
+       
+ @Autowired
+    ServiceProduto serviceProduto;
    
  @GetMapping("/troca")
     public String inicio(Model model) {
@@ -33,6 +37,7 @@ public class ControllerTroca {
     @PostMapping("/cadastro-troca")
     public String cadastrarTroca(Model model, @RequestBody Troca troca) {
         serviceTroca.criarTroca(troca);
+        serviceProduto.atualizarTroca(troca);
         return "troca";
     }
 
@@ -70,4 +75,5 @@ public class ControllerTroca {
       serviceTroca.excluir(troca.getId());
         return "troca";
     }
+    
 }

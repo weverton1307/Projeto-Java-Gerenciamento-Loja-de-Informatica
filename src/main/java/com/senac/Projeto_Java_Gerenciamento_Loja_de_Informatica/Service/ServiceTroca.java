@@ -1,5 +1,6 @@
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service;
 
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Produto;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Troca;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Repository.RepositoryTroca;
 import java.util.List;
@@ -11,6 +12,8 @@ public class ServiceTroca {
 
     @Autowired
     RepositoryTroca reposoitoryTroca;
+    
+   
 
     public Troca buscarId(Integer id) {
         return reposoitoryTroca.findById(id).orElseThrow();
@@ -39,4 +42,5 @@ public class ServiceTroca {
         Troca trocaEncontrado = buscarId(id);
         reposoitoryTroca.deleteById(trocaEncontrado.getId());
     }
+    
 }
