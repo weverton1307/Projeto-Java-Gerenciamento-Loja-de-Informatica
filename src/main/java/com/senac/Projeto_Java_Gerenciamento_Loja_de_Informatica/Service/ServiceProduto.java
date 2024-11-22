@@ -2,10 +2,14 @@ package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service;
 
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Devolucao;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Produto;
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.ProdutosContado;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Troca;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Repository.RepositoryProduto;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -153,4 +157,34 @@ public class ServiceProduto {
         produto.setDevolucao(devolucao);
         atualizar(produto.getId(), produto);
     }
+     
+public List<ProdutosContado> contarProdutosPorCategoria() {
+    // Supondo que você tenha um repositório de produtos que retorna todos os produtos
+    List<Produto> produtos = listarProduto();
+
+    // Lista para armazenar os objetos com nome e quantidade de produto
+    List<ProdutosContado> resultado = new ArrayList<>();
+
+    // Contador de produtos
+    Map<String, Long> contagemProdutos = new HashMap<>();
+
+    // Contando a quantidade de cada produto
+    for (Produto produto : produtos) {
+        String nome = produto.getNomeProduto();
+        contagemProdutos.put(nome, contagemProdutos.getOrDefault(nome, 0L) + 1);
+    }
+
+    // Criando os objetos Produto para retorno
+    for (Map.Entry<String, Long> entry : contagemProdutos.entrySet()) {
+        String nomeProduto = entry.getKey();
+        Long quantidadeProduto = entry.getValue();
+
+        // Adicionando à lista de resultado
+        resultado.add(new ProdutosContado(nomeProduto, quantidadeProduto));
+    }
+
+    return resultado;
+  
+}
+
 }

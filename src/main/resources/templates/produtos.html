@@ -289,6 +289,37 @@
 
         document.getElementById("codigo").hidden = true;
 
+        $(document).ready(function() {
+    $.ajax({
+        url: '/quantidade-produto', // URL do controller
+        method: 'GET',
+        success: function(data) {
+    console.log("Dados retornados:", data);  // Verifique o que está sendo retornado
+    console.log("Tipo de dados:", typeof data);  // Isso deve retornar "object" se for um JSON válido
+    
+    if (Array.isArray(data)) {
+        data.forEach(function(produto) {
+            let quantidade = produto.quantidadeProduto;
+            let nomeProduto = produto.nomeProduto;
+
+            if (quantidade < 5) {
+                alert('O produto "' + nomeProduto + '" tem apenas ' + quantidade + ' unidades em estoque!');
+            }
+        });
+    } else {
+        console.error("Estrutura de dados inesperada:", data);
+    }
+
+        },
+        error: function(xhr, status, error) {
+            console.error("Erro ao carregar os produtos: " + error);
+        }
+    });
+});
+
+
+
+
     </script>
 
     <script th:src="@{/js/produtoScript.js}"></script>

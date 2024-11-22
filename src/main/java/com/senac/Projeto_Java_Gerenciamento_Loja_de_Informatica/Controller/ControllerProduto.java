@@ -3,10 +3,12 @@ package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Controller;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Categoria;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Local_armazenamento;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Produto;
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.ProdutosContado;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceCategoria;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceLocalArmazenamento;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceProduto;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 import org.springframework.http.HttpStatus;
@@ -163,5 +165,10 @@ public String atualizarProduto(@RequestBody Produto produto) {
     return "produtos";
 }
 
-
+@GetMapping("/quantidade-produto")
+@ResponseBody
+public List<ProdutosContado> quantidadeCadaProduto() {
+    List<ProdutosContado> produtosContados = serviceProduto.contarProdutosPorCategoria();
+    return produtosContados;  // Isso retorna a lista como JSON
+}
 }
