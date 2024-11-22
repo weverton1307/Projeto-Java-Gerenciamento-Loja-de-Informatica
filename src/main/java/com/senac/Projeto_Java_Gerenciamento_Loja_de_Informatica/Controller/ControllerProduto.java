@@ -8,6 +8,7 @@ import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceL
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceProduto;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -133,5 +135,33 @@ public ResponseEntity<?> buscarProduto(
     public List<Produto> listarProduto() {
         return serviceProduto.listarProduto();  
     }
+    
+   @PutMapping("/atualizar-produto")
+public String atualizarProduto(@RequestBody Produto produto) {
+    Categoria categoriaEncontrada = null;
+    List<Categoria> listaCategoria = serviceCategoria.listarCategoria();
+    for (Categoria c : listaCategoria) {
+        if (c.getNome().equalsIgnoreCase(produto.getCategoria().getNome())) {
+            categoriaEncontrada = c;
+        }
+    }
+    Local_armazenamento localArmazenamentoEncontrado = null;
+    List<Local_armazenamento> listaLocalArmazenamento = serviceLocalArmazenamento.listarLocalArmazenamento();
+    for (Local_armazenamento l : listaLocalArmazenamento) {
+        if (l.getNumeroLocalPrateleira().equalsIgnoreCase(produto.getLocalArmazenamento().getNumeroLocalPrateleira())
+            && l.getNumeroPrateleira().equalsIgnoreCase(produto.getLocalArmazenamento().getNumeroPrateleira())) {
+            localArmazenamentoEncontrado = l;
+        }
+    }
+    produto.setCategoria(categoriaEncontrada);
+    produto.setLocalArmazenamento(localArmazenamentoEncontrado);
+       System.out.println("id do produto: "+produto.getId());
+    serviceProduto.atualizar(produto.getId(), produto);
+    serviceProduto.atualizarQuantidadeproduto(produto);
+
+    // Retornar uma mensagem de sucesso com status HTTP 200 (OK)
+    return "produtos";
+}
+
 
 }

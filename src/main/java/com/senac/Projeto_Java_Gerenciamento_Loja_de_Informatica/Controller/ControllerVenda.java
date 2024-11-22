@@ -14,11 +14,7 @@ public class ControllerVenda {
      @Autowired
      ServiceVenda serviceVenda;
      
-      @GetMapping("/registroVenda")
-    public String inicio() {
-
-        return "registroVenda";
-    }
+ 
     
      @GetMapping("/vendas")
     public String inicioVendas() {

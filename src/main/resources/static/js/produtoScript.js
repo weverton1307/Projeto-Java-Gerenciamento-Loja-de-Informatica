@@ -1,4 +1,4 @@
-$("#alterarProduto").prop("disabled", true);
+$("#atualizarProduto").prop("disabled", true);
 $(document).ready(function () {
     $("#salvarProduto").click(function (event) {
         event.preventDefault();
@@ -13,19 +13,19 @@ $(document).ready(function () {
             notaFiscal: $("#fiscal").val().trim(),
             statusProduto: "Disponível",
             cpf_cliente_devolucao: null,
-            categoria:{
-              nome: $("#categoria").val().trim()
+            categoria: {
+                nome: $("#categoria").val().trim()
             },
             troca: null,
             devolucao: null,
-            localArmazenamento:{
+            localArmazenamento: {
                 numeroPrateleira: $("#prateleira").val().trim(),
                 numeroLocalPrateleira: $("#localPrateleira").val().trim(),
             },
             id: $("#produtoId").val() ? parseInt($("#produtoId").val()) : null
         };
         console.log($("#prateleira").val());
-console.log($("#localPrateleira").val());
+        console.log($("#localPrateleira").val());
 
 
         console.log("Form Data:", formData);
@@ -46,9 +46,11 @@ console.log($("#localPrateleira").val());
     });
 });
 $(document).ready(function () {
+   
     $("#search-button").click(function (event) {
         event.preventDefault();
-
+        $("#atualizarProduto").prop("disabled", false);
+        $("#salvarProduto").prop("disabled", true);
         var criterio = $("input[name='pesquisar']:checked").val();
         var valor = $("#campo").val().trim();
         var categoria = $("#item-categoria").val();
@@ -119,6 +121,7 @@ $(document).ready(function () {
                     $("#categoria").val(response.categoria?.nome || "");
                     $("#status").text("Status: " + (response.statusProduto || "Desconhecido"));
                     $("#quantidade").text("Quantidade do produto: " + (response.quantidadeProduto || "Desconhecido"));
+                    $("#produtoId").val(data.id);
                 }
 
                 // Limpa a tabela antes de inserir os resultados
@@ -147,40 +150,7 @@ $(document).ready(function () {
                     $("#tabela-reservas").append(linha);
                 });
 
-                // Função para carregar os dados da linha clicada na tabela
-                $("#tabela-reservas").on("click", "tr.linha-produto", function () {
-                    // Seleciona as células da linha
-                    var id = $(this).find("td").eq(0).text();
-                    var nomeProduto = $(this).find("td").eq(1).text();
-                    var valorCompra = $(this).find("td").eq(2).text();
-                    var valorVenda = $(this).find("td").eq(3).text();
-                    var quantidadeProduto = $(this).find("td").eq(4).text();
-                    var modelo = $(this).find("td").eq(5).text();
-                    var notaFiscal = $(this).find("td").eq(6).text();
-                    var dataAquisicao = $(this).find("td").eq(7).text();
-                    var fabricante = $(this).find("td").eq(8).text();
-                    var descricaoTecnica = $(this).find("td").eq(9).text();
-                    var categoria = $(this).find("td").eq(10).text();
-                    var numeroPrateleira = $(this).find("td").eq(11).text();
-                    var numeroLocalPrateleira = $(this).find("td").eq(12).text();
-                    var statusProduto = $(this).find("td").eq(13).text();
-
-                    // Preenche os campos do formulário com os dados da linha
-                    $("#codigo").val(id);
-                    $("#nome").val(nomeProduto);
-                    $("#valorCompra").val(valorCompra);
-                    $("#valorVenda").val(valorVenda);
-                    $("#quantidade").text("Quantidade do produto: " + quantidadeProduto);
-                    $("#modelo").val(modelo);
-                    $("#fiscal").val(notaFiscal);
-                    $("#data").val(dataAquisicao);
-                    $("#fabricante").val(fabricante);
-                    $("#descricao").val(descricaoTecnica);
-                    $("#prateleira").val(numeroPrateleira);
-                    $("#localPrateleira").val(numeroLocalPrateleira);
-                    $("#categoria").val(categoria);
-                    $("#status").text("Status: " + statusProduto);
-                });
+         
             },
             error: function (xhr) {
                 alert("Erro ao buscar produto.");
@@ -190,6 +160,8 @@ $(document).ready(function () {
 });
 //Função para limpar os campos
 function limparCampos() {
+    $("#salvarProduto").prop("disabled", false);
+    $("#atualizarProduto").prop("disabled", true);
     // Limpa todos os inputs de texto
     $("input[type='text'], input[type='number'], input[type='date']").val("");
 
@@ -199,8 +171,8 @@ function limparCampos() {
     });
 
     // Limpa os textos de quantidade e status
-    $("#quantidade").text("");
-    $("#status").text("");
+    $("#quantidade").text("Quantidade do produto:");
+    $("#status").text("Status:");
     $("#descricao").val("");
     listarProdutos();
 }
@@ -213,6 +185,55 @@ $(document).ready(function () {
     // Adiciona evento de mudança nos radios para limpar os campos
     $("input[type='radio'][name='pesquisar']").change(function () {
         limparCampos();
+
+    });
+});
+//Função para atualizar produto
+$(document).ready(function () {
+    $("#atualizarProduto").click(function (event) {
+        event.preventDefault();
+        const formData = {
+            id: $("#produtoId").val() ? parseInt($("#produtoId").val()) : null,
+            nomeProduto: $("#nome").val().trim(),
+            valorCompra: $("#valorCompra").val().trim(),
+            valorVenda: $("#valorVenda").val().trim(),
+            descricaoTecnica: $("#descricao").val().trim(),
+            dataAquisicao: $("#data").val().trim(),
+            fabricante: $("#fabricante").val().trim(),
+            modelo: $("#modelo").val().trim(),
+            notaFiscal: $("#fiscal").val().trim(),
+            statusProduto: "Disponível",
+            cpf_cliente_devolucao: null,
+            categoria: {
+                nome: $("#categoria").val().trim()
+            },
+            troca: null,
+            devolucao: null,
+            localArmazenamento: {
+                numeroPrateleira: $("#prateleira").val().trim(),
+                numeroLocalPrateleira: $("#localPrateleira").val().trim(),
+            },
+            id: $("#produtoId").val() ? parseInt($("#produtoId").val()) : null
+        };
+        console.log($("#prateleira").val());
+        console.log($("#localPrateleira").val());
+
+
+        console.log("Form Data:", formData);
+
+        $.ajax({
+            type: "PUT",
+            url: "/atualizar-produto",
+            contentType: "application/json",
+            data: JSON.stringify(formData),
+            success: function (response) {
+                alert("produto atualizado com sucesso!");
+                window.location.href = "/produtos";
+            },
+            error: function (xhr, status, error) {
+                alert("Ocorreu um erro: " + xhr.responseText);
+            }
+        });
     });
 });
 
