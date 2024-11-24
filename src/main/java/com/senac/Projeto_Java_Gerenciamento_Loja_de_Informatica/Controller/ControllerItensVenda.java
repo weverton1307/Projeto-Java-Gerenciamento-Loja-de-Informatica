@@ -43,7 +43,6 @@ public class ControllerItensVenda {
     ServiceProduto serviceproduto;
 
     Venda venda = new Venda(LocalDateTime.now(), "Realizada");
-     Itens_venda itensVenda = new Itens_venda();
      List<Itens_venda> listaItensVenda = new ArrayList<>();
 
     @GetMapping("/registroVenda")
@@ -85,7 +84,40 @@ public class ControllerItensVenda {
         return "registroVenda";
     }
 
+@PostMapping("/procurar-produto")
+@ResponseBody
+public Itens_venda buscarProduto(@RequestBody ProdutoRequest produtoRequest) {
+    Produto produtoEncontrado = serviceproduto.buscarId(produtoRequest.getCodigoProduto());
 
 
+    Itens_venda itensVenda = new Itens_venda();
+    int count = 1;
+    itensVenda.setId(count); 
+    itensVenda.setProduto(produtoEncontrado);
+    itensVenda.setQuantidade(produtoRequest.getQuantidade());
+
+    listaItensVenda.add(itensVenda);
+    
+    System.out.println("Produto encontrado: " + itensVenda.getProduto().getNomeProduto());
+    count++;
+    return itensVenda; 
+}
+
+
+ @GetMapping("/listar-itens")
+ @ResponseBody
+    public List<Itens_venda> listarItensVenda(Model model) {
+         System.out.println("Itens de venda: " + listaItensVenda);
+         int count = 0;
+         for(Itens_venda iv: listaItensVenda ){
+             System.out.println("quantidade: " +iv.getQuantidade());
+             System.out.println("produto: "+ iv.getProduto().getNomeProduto());
+             System.out.println("valor: "+ iv.getProduto().getValorVenda());
+             count++;
+
+         }
+         System.out.println("itens:" +count );
+        return listaItensVenda;
+    }
 
 }
