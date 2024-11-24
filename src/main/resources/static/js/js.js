@@ -384,6 +384,7 @@ $(document).ready(function () {
         }
     });
 });
+//Registro de vendas
 
 
 

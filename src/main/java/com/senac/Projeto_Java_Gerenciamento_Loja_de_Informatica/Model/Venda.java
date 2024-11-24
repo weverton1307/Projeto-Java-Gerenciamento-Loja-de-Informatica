@@ -31,9 +31,8 @@ public class Venda {
     public Venda() {
     }
 
-    public Venda(String metodoPagamento) {
+    public Venda(LocalDateTime dataHora, String  statusVenda ) {
         this.dataHora = LocalDateTime.now();
-        this.metodoPagamento = metodoPagamento;
         this.statusVenda = "Realizada";
     }
 

@@ -34,23 +34,22 @@
                 <div class="formulario-registroVenda">
                     <form>
                         <label id="cpf-label">CPF do cliente:</label>
-                        <input type="text" id="cpfClienteVenda" placeholder="xxx.xxx.xxx-xx"th:field="${venda.cliente.cpf}"><br>
-                        <input type="hidden" id="vendaId" name="id" value="${vendaId.id != null ? vendaId.id : ''}" />
+                        <input type="text" id="cpfClienteVenda" placeholder="xxx.xxx.xxx-xx"><br>
                     </form>
                     <label>Método de pagamento:</label>
                     <select id="metodo-pagamento"><br>
-                        <option value="selecione um item" th:field="${venda.metodoPagamento}" required>selecione um item
+                        <option value="selecione um item"  required>selecione um item
                         </option>
-                        <option value="dinheiro" th:field="${venda.metodoPagamento}">Dinheiro </option>
-                        <option value="pix" th:field="${venda.metodoPagamento}">Pix</option>
-                        <option value="cartao-credito" th:field="${venda.metodoPagamento}">Cartão de crédito</option>
-                        <option value="cartao-debito" th:field="${venda.metodoPagamento}">Cartão de débito</option>
+                        <option value="dinheiro" >Dinheiro </option>
+                        <option value="pix" >Pix</option>
+                        <option value="cartao-credito" >Cartão de crédito</option>
+                        <option value="cartao-debito" >Cartão de débito</option>
                     </select><br>
                     <label id="funcionario-label">Funcionário:</label>
                     <select id="funcionario-venda" required><br>
                         <option value="selecione um item">selecione um item</option>
-                        <option value="Gerente" th:field="${venda.vendedor.nome}">Gerente</option>
-                        <option value="Vendedor" th:field="${venda.vendedor.nome}">Vendedor</option>
+                        <option value="Gerente">Gerente</option>
+                        <option value="Vendedor" >Vendedor</option>
                     </select>
                     <div class="botoes-formulario">
                         <button type="button" class="form-control" id="gerar-venda">Gerar venda</button><br>
@@ -58,18 +57,18 @@
 
                     <form >
                         <label>Código do produto:</label>
-                        <input type="number" id="codigoProduto-venda" required><br>
+                        <input type="number" id="codigoProduto-venda" th:field="${produtoRequest.codigoProduto}"required><br>
                         <label id="quantidade-label" required>Quantidade:</label>
-                        <input type="number" id="quantidadeProduto-venda"><br>
+                        <input type="number" id="quantidadeProduto-venda" th:field="${produtoRequest.quantidade}"><br>
                     </form>
                         <div class="botoes-formulario">
-                            <button type="submit" class="form-control" id="buscar-produto">Buscar produto</button><br>
+                            <button type="button" class="form-control" id="buscar-produto">Buscar produto</button><br>
                         </div>
                     
-                    <div id="h6">
-                        <h6>Nome do produto:</h6><br>
-                        <h6>Valor:</h6><br>
-                    </div>
+                        <div id="h6">
+                            <h6>Nome do produto:</h6><br>
+                            <h6>Valor:</h6><br>
+                        </div>
 
                     <div class="botoes-formulario">
                         <button type="button" class="form-control" id="voltar-venda"
@@ -113,9 +112,8 @@
     </main>
     <!--Fim main-->
     <script>
-        $("#codigoProduto-venda").prop("disabled", true);
-        $("#quantidadeProduto-venda").prop("disabled", true);
-        $("#buscar-produto").prop("disabled", true);
+        $("#gerar-venda").prop("disabled", true);
+       
     </script>
     <script th:src="@{/js/registroVendaScript.js}"></script>
 
