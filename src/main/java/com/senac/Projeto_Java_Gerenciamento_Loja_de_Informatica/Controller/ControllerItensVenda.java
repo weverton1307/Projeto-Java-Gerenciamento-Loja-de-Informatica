@@ -11,6 +11,7 @@ import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceF
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceItensVenda;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceProduto;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceVenda;
+import jakarta.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ControllerItensVenda {
 
     @Autowired
-    ServiceItensVenda serviceitensVenda;
+    ServiceItensVenda serviceItensVenda;
 
     @Autowired
     ServiceVenda serviceVenda;
@@ -40,7 +41,8 @@ public class ControllerItensVenda {
     ServiceFuncionario serviceFuncionario;
 
     @Autowired
-    ServiceProduto serviceproduto;
+    ServiceProduto serviceProduto;
+
 
     Venda venda = new Venda(LocalDateTime.now(), "Realizada");
      List<Itens_venda> listaItensVenda = new ArrayList<>();
@@ -53,7 +55,7 @@ public class ControllerItensVenda {
 
         return "registroVenda";
     }
-
+    
     @GetMapping("/registroVendaProduto")
     public String inicioItensVenda(Model model) {
         model.addAttribute("produtoRequest", new ProdutoRequest());
@@ -61,33 +63,36 @@ public class ControllerItensVenda {
         return "registroVendaProduto";
     }
 
-    @PostMapping("/cadastra-venda")
-    public String criarVenda(Model model, @RequestBody Venda vendaFormulario) {
-        Cliente clienteEncontrado = null;
-        List<Cliente> listaCliente = serviceCliente.listarCliente();
-        for (Cliente c : listaCliente) {
-            if (c.getCpf().equalsIgnoreCase(vendaFormulario.getCliente().getCpf())) {
-                clienteEncontrado = c;
-            }
+   @PostMapping("/cadastra-venda")
+public String criarVenda(Model model, @RequestBody Venda vendaFormulario) {
+    Cliente clienteEncontrado = null;
+    List<Cliente> listaCliente = serviceCliente.listarCliente();
+    for (Cliente c : listaCliente) {
+        if (c.getCpf().equalsIgnoreCase(vendaFormulario.getCliente().getCpf())) {
+            clienteEncontrado = c;
         }
-        venda.setCliente(clienteEncontrado);
-        Funcionario funcionarioEncontrado = null;
-        List<Funcionario> listaFuncionario = serviceFuncionario.listarFuncionario();
-        for (Funcionario f : listaFuncionario) {
-            if (f.getNome().equalsIgnoreCase(vendaFormulario.getVendedor().getNome())) {
-                funcionarioEncontrado = f;
-            }
-        }
-        venda.setVendedor(funcionarioEncontrado);
-        venda.setMetodoPagamento(vendaFormulario.getMetodoPagamento());
-        System.out.println("teste: " + venda.getVendedor().getNome() + venda.getMetodoPagamento());
-        return "registroVenda";
     }
+    venda.setCliente(clienteEncontrado);
+    
+    Funcionario funcionarioEncontrado = null;
+    List<Funcionario> listaFuncionario = serviceFuncionario.listarFuncionario();
+    for (Funcionario f : listaFuncionario) {
+        if (f.getNome().equalsIgnoreCase(vendaFormulario.getVendedor().getNome())) {
+            funcionarioEncontrado = f;
+        }
+    }
+    venda.setVendedor(funcionarioEncontrado);
+    venda.setMetodoPagamento(vendaFormulario.getMetodoPagamento());
+    // O JPA agora irá gerar o id automaticamente, sem necessidade de atribuição manual
+    serviceVenda.criarVenda(venda);  // Não é necessário setar o ID manualmente
+    return "registroVenda";
+}
+
 
 @PostMapping("/procurar-produto")
 @ResponseBody
 public Itens_venda buscarProduto(@RequestBody ProdutoRequest produtoRequest) {
-    Produto produtoEncontrado = serviceproduto.buscarId(produtoRequest.getCodigoProduto());
+    Produto produtoEncontrado = serviceProduto.buscarId(produtoRequest.getCodigoProduto());
 
 
     Itens_venda itensVenda = new Itens_venda();
@@ -95,7 +100,7 @@ public Itens_venda buscarProduto(@RequestBody ProdutoRequest produtoRequest) {
     itensVenda.setId(count); 
     itensVenda.setProduto(produtoEncontrado);
     itensVenda.setQuantidade(produtoRequest.getQuantidade());
-
+    itensVenda.setVenda(venda);
     listaItensVenda.add(itensVenda);
     
     System.out.println("Produto encontrado: " + itensVenda.getProduto().getNomeProduto());
@@ -119,5 +124,23 @@ public Itens_venda buscarProduto(@RequestBody ProdutoRequest produtoRequest) {
          System.out.println("itens:" +count );
         return listaItensVenda;
     }
+    
+
+
+@PostMapping("/registrar-venda")
+public String registrarVenda() {
+    for (Itens_venda iv : listaItensVenda) {
+        iv.setVenda(venda);  
+        Produto produtoVendido = serviceProduto.atualizarStatusVendido(iv.getProduto());
+        serviceProduto.atualizar(produtoVendido.getId(), produtoVendido);
+    }
+
+    // Limpar a lista depois de salvar os itens
+    listaItensVenda.clear();
+
+    return "menu";
+}
+
+
 
 }

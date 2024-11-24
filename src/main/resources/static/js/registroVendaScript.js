@@ -115,6 +115,47 @@ $(document).ready(function () {
         });
     });
 });
+//registrar venda
+$(document).ready(function () {
+    // Ao clicar no botão "Registrar"
+    $("#finalizar-venda").click(function () {
+        $.ajax({
+            type: "POST",  // Método HTTP
+            url: "/registrar-venda",  // Atualize o URL para /registrar-venda
+            success: function (response) {
+               
+                alert("Venda realizada com sucesso!");
+                window.location.href = "/menu";  // Redireciona para a página do menu, se necessário
+            },
+            error: function (xhr, status, error) {
+                // Caso ocorra um erro, exibe uma mensagem de erro
+                console.error("Erro ao registrar a venda:", xhr.responseText);
+                alert("Ocorreu um erro ao registrar a venda. Tente novamente.");
+            }
+        });
+    });
+});
+//cancelar venda
+$(document).ready(function () {
+    // Ao clicar no botão "Cancelar"
+    $("#cancelar-venda").click(function () {
+        $.ajax({
+            type: "POST",
+            url: "/cancelar-venda", // A URL que vai acionar o método no controller
+            success: function (response) {
+                // Exibe a mensagem de venda cancelada
+                alert("Venda cancelada com sucesso!");
+
+                // Redireciona para o menu
+                window.location.href = "/menu"; // Redireciona para o menu
+            },
+            error: function (xhr, status, error) {
+                console.error("Erro ao cancelar a venda:", xhr.responseText);
+                alert("Ocorreu um erro ao cancelar a venda. Tente novamente.");
+            }
+        });
+    });
+});
 
 
 

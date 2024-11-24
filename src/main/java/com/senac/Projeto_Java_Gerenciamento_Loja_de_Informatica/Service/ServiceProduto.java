@@ -150,11 +150,13 @@ public class ServiceProduto {
     public void atualizarTroca(Troca troca) {
         Produto produto = buscarId(troca.getCodigoProduto());
         produto.setTroca(troca);
+        produto.setStatusProduto("Devolvido");
         atualizar(produto.getId(), produto);
     }
      public void atualizarDevolucao(Devolucao devolucao) {
         Produto produto = buscarId(devolucao.getCodigoProduto());
         produto.setDevolucao(devolucao);
+        produto.setStatusProduto("Devolvido");
         atualizar(produto.getId(), produto);
     }
      
@@ -184,7 +186,11 @@ public List<ProdutosContado> contarProdutosPorCategoria() {
     }
 
     return resultado;
-  
+}
+public Produto atualizarStatusVendido(Produto produto){
+    produto.setStatusProduto("Vendido");
+    atualizar(produto.getId(), produto);
+    return produto;
 }
 
 }
