@@ -8,6 +8,7 @@
     <link rel="icon" th:href="@{/img/icon.png}" type="image/png">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="background">
@@ -34,26 +35,16 @@
                 <h5>Status:</h5>
                 <h5>Data e hora:</h5>
                 <h5>Método de pagamento:</h5>
-                <h5>Nome do vendedor:</h5>
+                <h5>Vendedor:</h5>
                 <h5>Nome do cliente:</h5>
                 <h5>CPF do cliente:</h5>
                </div>
-               <div class="tabela-itensVenda">
+               
                 <div id="itens-tabelaVenda">
-                    <h5>Itens</h5>
+                    
                 </div>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Produto</th>
-                            <th>Quantidade</th>
-                            <th>Valor</th>
-                            <th>Sub total</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabela-pesquisa">
-                    </tbody>
-                </table>
+                
+                
                </div>
                 
             </div>
@@ -77,52 +68,72 @@
                         <input type="date" id="dataFinal" min="1950-01-01" max="2100-12-31">
                     </div>
                     <div class="botoes-formulario" id="botao-relatorio">
-                        <button type="button" class="form-control" id="botao-relatorio" onclick="gerarRelatorio()">Gerar</button>
+                        <button type="button" class="form-control" id="botao-relatorio">Gerar</button>
                     </div>
                 </form>
+                <div class="resultado-pesquisa" id="relatorio">
+                    <h5 id="lucro-total">Lucro total:</h5>
+                    <h5 id="media">Média de lucro:</h5>
+                    <h5 id="metodo">Método de pagamento mais usado:</h5>
+                    <h5 id="produto">Produto mais vendido:</h5>
+                    <h5 id="devol">Total de produtos devolvidos:</h5>
+                    <h5 id="cliente">Cliente mais frequente:</h5>
+                    <h5 id="fatura">Faturamento total:</h5>
+                    <h5 id="vendas">Total de vendas:</h5>
+                   </div>
             </div>
             <div class="pesquisar-vendas">
                 <label>Pesquisar:</label>
                 <select class="criterio" id="criterio-selecionar">
-                    <option>Selecione um item</option>
-                    <option>id</option>
-                    <option>CPF do cliente</option>
-                    <option>Nome do vendedor</option>
-                    <option>Data da venda</option>
-                    <option>Status</option>
-                    <option>Método de pagamento</option>
+                    <option value="">Selecione um item</option>
+                    <option value="id">id</option>
+                    <option value="cpfCliente">CPF do cliente</option>
+                    <option value="vendedor">Nome do vendedor</option>
+                    <option value="data">Data da venda</option>
+                    <option value="status">Status</option>
+                    <option value="metodoPagamento">Método de pagamento</option>
                 </select>
                 <form>
                     <input type="text" id="criterio-pesquisa">
                 </form>
                 <div id="buscar" class="botoes-formulario">
-                    <button type="button" class="form-control" id="buscar-venda" onclick="pesquisarVenda()" >Buscar</button>
+                    <button type="button" class="form-control" id="buscar-venda" >Buscar</button>
                 </div>
-                <div class="tabela-resultadoPesquisa">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>id</th>
-                                <th>Produto</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tabela-busca">
-                        </tbody>
-                    </table>
-            </div>  
+             
             <div id="Voltar-limpar" class="botoes-formulario">
                 <button type="button" class="form-control" id="voltar-venda" onclick="window.location.href = '/menu'">voltar</button>
-                <button type="button" class="form-control" id="limpar-venda" onclick="limparTudo()">limpar</button>
+                <button type="button" class="form-control" id="limpar-venda" >limpar</button>
             </div>  
             </div>
         </div>
         <!--Fim container-relatório-->
         </section>
+        <section>
+            <!--container-tabela-->
+            <div class="container-tabela table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Status</th>
+                            <th>Data e hora</th>
+                            <th>Método de pagamento</th>
+                            <th>Vendedor</th>
+                            <th>CPF do cliente</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-reservas">
+                    </tbody>
+                </table>
+
+            </div>
+            <!--Fim container-tabela-->
+        </section>
         <!--Fim section-->
     </main>
     <!--Fim main-->
    
-    <script type="text/javascript" src="./js/js.js"></script>
+    <script th:src="@{/js/vendaScript.js}"></script>
 </body>
 
 </html>

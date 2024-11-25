@@ -7,11 +7,10 @@ import java.util.List;
 import java.util.Map;
 import javax.swing.JOptionPane;
 
-public class GeradorRelatorioVendas_MetodoPagamento implements GeradorRelatorioVendas {
+public class GeradorRelatorioVendas_MetodoPagamento  {
 
-    @Override
-    public void gerarRelatorio(String inicioString, String fimString, List<Itens_venda> listaItens) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    public String gerarRelatorioMetodoPagamento(String inicioString, String fimString, List<Itens_venda> listaItens) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate inicio = LocalDate.parse(inicioString, formatter);
         LocalDate fim = LocalDate.parse(fimString, formatter);
         LocalDate dataMinima = LocalDate.of(1000, 1, 1);
@@ -51,10 +50,11 @@ public class GeradorRelatorioVendas_MetodoPagamento implements GeradorRelatorioV
                     if (metodoMaisUtilizado.equalsIgnoreCase("")) {
                         JOptionPane.showMessageDialog(null, "Não há vendas durante o período especificado");
                     } else {
-                        JOptionPane.showMessageDialog(null, "O método de pagamento mais utilizado é o " + metodoMaisUtilizado + ". ");
+                      return metodoMaisUtilizado;
                     }
                 }
             }
         }
+        return "";
     }
 }

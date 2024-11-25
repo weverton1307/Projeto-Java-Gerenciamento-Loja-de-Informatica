@@ -72,103 +72,103 @@ public class ControllerProduto {
         return "produtos";
     }
 
-@GetMapping("/buscar-produto")
-@ResponseBody
-public ResponseEntity<?> buscarProduto(
-    @RequestParam(required = false) Integer id, 
-    @RequestParam(required = false) String nome,
-    @RequestParam(required = false) String modelo,
-    @RequestParam(required = false) String fabricante,
-    @RequestParam(required = false) String disponibilidade,
-    @RequestParam(required = false) Integer devolvido,
-    @RequestParam(required = false) String categoria
-) {
-    System.out.println("Modelo pesquisado: " + modelo);
+    @GetMapping("/buscar-produto")
+    @ResponseBody
+    public ResponseEntity<?> buscarProduto(
+            @RequestParam(required = false) Integer id,
+            @RequestParam(required = false) String nome,
+            @RequestParam(required = false) String modelo,
+            @RequestParam(required = false) String fabricante,
+            @RequestParam(required = false) String disponibilidade,
+            @RequestParam(required = false) Integer devolvido,
+            @RequestParam(required = false) String categoria
+    ) {
+        System.out.println("Modelo pesquisado: " + modelo);
 
-    if (id != null) { 
-        if (id <= 0) {
-            return ResponseEntity.badRequest().body("ID inválido.");
-        }
-         System.out.println(modelo);
-        Produto produtoEncontrado = serviceProduto.buscarId(id);
-        if (produtoEncontrado == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto não encontrado.");
-        }
+        if (id != null) {
+            if (id <= 0) {
+                return ResponseEntity.badRequest().body("ID inválido.");
+            }
+            System.out.println(modelo);
+            Produto produtoEncontrado = serviceProduto.buscarId(id);
+            if (produtoEncontrado == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto não encontrado.");
+            }
 
-        return ResponseEntity.ok(produtoEncontrado);
-    } else if (nome != null && !nome.trim().isEmpty()) {
-        List<Produto> produtosEncontrados = serviceProduto.buscarProdutoNome(nome);
-        return produtosEncontrados.isEmpty()
-                ? ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum produto encontrado.")
-                : ResponseEntity.ok(produtosEncontrados);
-    } else if (modelo != null && !modelo.trim().isEmpty()) {
-        List<Produto> produtosEncontrados = serviceProduto.buscarProdutoModelo(modelo);
-        System.out.println("Produto encontrado: "+ produtosEncontrados);
-        return produtosEncontrados.isEmpty()
-                ? ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum produto encontrado para o modelo informado.")
-                : ResponseEntity.ok(produtosEncontrados);
-    } else if (fabricante != null && !fabricante.trim().isEmpty()) {
-        List<Produto> produtosEncontrados = serviceProduto.buscarProdutoFabricante(fabricante);
-        return produtosEncontrados.isEmpty()
-                ? ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum produto encontrado para o fabricante informado.")
-                : ResponseEntity.ok(produtosEncontrados);
-    } else if (disponibilidade != null && !disponibilidade.trim().isEmpty()) {
-        List<Produto> produtosEncontrados = serviceProduto.buscarProdutoDisponibilidade(disponibilidade);
-        return produtosEncontrados.isEmpty()
-                ? ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum produto disponível.")
-                : ResponseEntity.ok(produtosEncontrados);
-    } else if (devolvido != null) {
-        List<Produto> produtosEncontrados = serviceProduto.buscarProdutoDevolvido(devolvido);
-        return produtosEncontrados.isEmpty()
-                ? ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum produto devolvido encontrado.")
-                : ResponseEntity.ok(produtosEncontrados);
-    } else if (categoria != null && !categoria.trim().isEmpty()) {
-        List<Produto> produtosEncontrados = serviceProduto.buscarProdutoCategoria(categoria);
-        return produtosEncontrados.isEmpty()
-                ? ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum produto encontrado para a categoria informada.")
-                : ResponseEntity.ok(produtosEncontrados);
-    } else {
-        return ResponseEntity.badRequest().body("Informe um critério de busca válido.");
+            return ResponseEntity.ok(produtoEncontrado);
+        } else if (nome != null && !nome.trim().isEmpty()) {
+            List<Produto> produtosEncontrados = serviceProduto.buscarProdutoNome(nome);
+            return produtosEncontrados.isEmpty()
+                    ? ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum produto encontrado.")
+                    : ResponseEntity.ok(produtosEncontrados);
+        } else if (modelo != null && !modelo.trim().isEmpty()) {
+            List<Produto> produtosEncontrados = serviceProduto.buscarProdutoModelo(modelo);
+            System.out.println("Produto encontrado: " + produtosEncontrados);
+            return produtosEncontrados.isEmpty()
+                    ? ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum produto encontrado para o modelo informado.")
+                    : ResponseEntity.ok(produtosEncontrados);
+        } else if (fabricante != null && !fabricante.trim().isEmpty()) {
+            List<Produto> produtosEncontrados = serviceProduto.buscarProdutoFabricante(fabricante);
+            return produtosEncontrados.isEmpty()
+                    ? ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum produto encontrado para o fabricante informado.")
+                    : ResponseEntity.ok(produtosEncontrados);
+        } else if (disponibilidade != null && !disponibilidade.trim().isEmpty()) {
+            List<Produto> produtosEncontrados = serviceProduto.buscarProdutoDisponibilidade(disponibilidade);
+            return produtosEncontrados.isEmpty()
+                    ? ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum produto disponível.")
+                    : ResponseEntity.ok(produtosEncontrados);
+        } else if (devolvido != null) {
+            List<Produto> produtosEncontrados = serviceProduto.buscarProdutoDevolvido(devolvido);
+            return produtosEncontrados.isEmpty()
+                    ? ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum produto devolvido encontrado.")
+                    : ResponseEntity.ok(produtosEncontrados);
+        } else if (categoria != null && !categoria.trim().isEmpty()) {
+            List<Produto> produtosEncontrados = serviceProduto.buscarProdutoCategoria(categoria);
+            return produtosEncontrados.isEmpty()
+                    ? ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum produto encontrado para a categoria informada.")
+                    : ResponseEntity.ok(produtosEncontrados);
+        } else {
+            return ResponseEntity.badRequest().body("Informe um critério de busca válido.");
+        }
     }
-}
 
-  @GetMapping("/listar-produtos")
+    @GetMapping("/listar-produtos")
     @ResponseBody
     public List<Produto> listarProduto() {
-        return serviceProduto.listarProduto();  
+        return serviceProduto.listarProduto();
     }
-    
-   @PutMapping("/atualizar-produto")
-public String atualizarProduto(@RequestBody Produto produto) {
-    Categoria categoriaEncontrada = null;
-    List<Categoria> listaCategoria = serviceCategoria.listarCategoria();
-    for (Categoria c : listaCategoria) {
-        if (c.getNome().equalsIgnoreCase(produto.getCategoria().getNome())) {
-            categoriaEncontrada = c;
-        }
-    }
-    Local_armazenamento localArmazenamentoEncontrado = null;
-    List<Local_armazenamento> listaLocalArmazenamento = serviceLocalArmazenamento.listarLocalArmazenamento();
-    for (Local_armazenamento l : listaLocalArmazenamento) {
-        if (l.getNumeroLocalPrateleira().equalsIgnoreCase(produto.getLocalArmazenamento().getNumeroLocalPrateleira())
-            && l.getNumeroPrateleira().equalsIgnoreCase(produto.getLocalArmazenamento().getNumeroPrateleira())) {
-            localArmazenamentoEncontrado = l;
-        }
-    }
-    produto.setCategoria(categoriaEncontrada);
-    produto.setLocalArmazenamento(localArmazenamentoEncontrado);
-       System.out.println("id do produto: "+produto.getId());
-    serviceProduto.atualizar(produto.getId(), produto);
-    serviceProduto.atualizarQuantidadeproduto(produto);
 
-    // Retornar uma mensagem de sucesso com status HTTP 200 (OK)
-    return "produtos";
-}
+    @PutMapping("/atualizar-produto")
+    public String atualizarProduto(@RequestBody Produto produto) {
+        Categoria categoriaEncontrada = null;
+        List<Categoria> listaCategoria = serviceCategoria.listarCategoria();
+        for (Categoria c : listaCategoria) {
+            if (c.getNome().equalsIgnoreCase(produto.getCategoria().getNome())) {
+                categoriaEncontrada = c;
+            }
+        }
+        Local_armazenamento localArmazenamentoEncontrado = null;
+        List<Local_armazenamento> listaLocalArmazenamento = serviceLocalArmazenamento.listarLocalArmazenamento();
+        for (Local_armazenamento l : listaLocalArmazenamento) {
+            if (l.getNumeroLocalPrateleira().equalsIgnoreCase(produto.getLocalArmazenamento().getNumeroLocalPrateleira())
+                    && l.getNumeroPrateleira().equalsIgnoreCase(produto.getLocalArmazenamento().getNumeroPrateleira())) {
+                localArmazenamentoEncontrado = l;
+            }
+        }
+        produto.setCategoria(categoriaEncontrada);
+        produto.setLocalArmazenamento(localArmazenamentoEncontrado);
+        System.out.println("id do produto: " + produto.getId());
+        serviceProduto.atualizar(produto.getId(), produto);
+        serviceProduto.atualizarQuantidadeproduto(produto);
 
-@GetMapping("/quantidade-produto")
-@ResponseBody
-public List<ProdutosContado> quantidadeCadaProduto() {
-    List<ProdutosContado> produtosContados = serviceProduto.contarProdutosPorCategoria();
-    return produtosContados;  // Isso retorna a lista como JSON
-}
+        // Retornar uma mensagem de sucesso com status HTTP 200 (OK)
+        return "produtos";
+    }
+
+    @GetMapping("/quantidade-produto")
+    @ResponseBody
+    public List<ProdutosContado> quantidadeCadaProduto() {
+        List<ProdutosContado> produtosContados = serviceProduto.contarProdutosPorCategoria();
+        return produtosContados;  // Isso retorna a lista como JSON
+    }
 }

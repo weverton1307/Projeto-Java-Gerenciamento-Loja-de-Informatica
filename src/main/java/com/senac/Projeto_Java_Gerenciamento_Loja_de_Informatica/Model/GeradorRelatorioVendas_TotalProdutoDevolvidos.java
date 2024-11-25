@@ -7,8 +7,8 @@ import javax.swing.JOptionPane;
 
 public class GeradorRelatorioVendas_TotalProdutoDevolvidos {
 
-    public void gerarRelatorio(String inicioString, String fimString, List<Devolucao> devolucoes) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    public Integer gerarRelatorio(String inicioString, String fimString, List<Devolucao> devolucoes) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate inicio = LocalDate.parse(inicioString, formatter);
         LocalDate fim = LocalDate.parse(fimString, formatter);
         LocalDate dataMinima = LocalDate.of(1000, 1, 1);
@@ -34,8 +34,9 @@ public class GeradorRelatorioVendas_TotalProdutoDevolvidos {
             if (count == 0) {
                 JOptionPane.showMessageDialog(null, "Não há produtos devolvidos durante o período especificado");
             } else {
-                JOptionPane.showMessageDialog(null, "Total de produtos devolvidos: " + count);
+               return count;
             }
         }
+        return 0;
     }
 }

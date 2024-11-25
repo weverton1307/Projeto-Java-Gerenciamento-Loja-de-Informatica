@@ -5,11 +5,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-public class GeradorRelatorio_FaturamentoTotal implements GeradorRelatorioVendas {
+public class GeradorRelatorio_FaturamentoTotal  {
 
-    @Override
-    public void gerarRelatorio(String inicioString, String fimString, List<Itens_venda> listaItens) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    public Double gerarRelatorio(String inicioString, String fimString, List<Itens_venda> listaItens) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate inicio = LocalDate.parse(inicioString, formatter);
         LocalDate fim = LocalDate.parse(fimString, formatter);
         LocalDate dataMinima = LocalDate.of(1000, 1, 1);
@@ -39,10 +38,10 @@ public class GeradorRelatorio_FaturamentoTotal implements GeradorRelatorioVendas
                 if (faturamentoTotal == 0.0) {
                     JOptionPane.showMessageDialog(null, "Não há vendas durante o período especificado");
                 } else {
-                    /*Util util = new Util();
-                    JOptionPane.showMessageDialog(null, "Faturamento total: " + "R$ " + util.formatarValor(faturamentoTotal));*/
+                    return faturamentoTotal;
                 }
             }
         }
+        return 0.0;
     }
 }

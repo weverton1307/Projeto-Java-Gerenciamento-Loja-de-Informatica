@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let tipoUsuario = document.getElementById("boasVindasTipo").value;
 
     if (nomeUsuario && tipoUsuario) {
-        alert("Olá, " + nomeUsuario + "! Sua permissão é de " + tipoUsuario + ". Seja bem-vindo!");
+        alert("Olá, " + nomeUsuario +" Seja bem-vindo!");
     }
 });
 $("#alterarFuncionario").prop("disabled", true);
@@ -145,10 +145,11 @@ $(document).ready(function () {
     });
 });
 //clientes
-$("#alterarCliente").prop("disabled", true);
 $(document).ready(function () {
     $("#salvarCliente").click(function (event) {
         event.preventDefault();
+
+        // Coleta os dados do formulário
         const formData = {
             nome: $("#nomeCliente").val().trim(),
             endereco: $("#enderecoCliente").val().trim(),
@@ -158,9 +159,12 @@ $(document).ready(function () {
             id: $("#clienteId").val() ? parseInt($("#clienteId").val()) : null
         };
 
-
-        console.log("Form Data:", formData);
-
+        // Validação dos campos
+        if (formData.nome === "") {
+            alert("Por favor, preencha o campo nome.");
+            return;  // Interrompe a execução, não envia a requisição
+        }      
+        // Se passou em todas as validações, faz a requisição AJAX
         $.ajax({
             type: "POST",
             url: "/cadastro-cliente",
@@ -168,7 +172,7 @@ $(document).ready(function () {
             data: JSON.stringify(formData),
             success: function (response) {
                 alert("Cliente cadastrado com sucesso!");
-                window.location.href = "/clientes";
+                window.location.href = "/clientes";  // Redireciona para a página de clientes após sucesso
             },
             error: function (xhr, status, error) {
                 alert("Ocorreu um erro: " + xhr.responseText);
@@ -176,6 +180,7 @@ $(document).ready(function () {
         });
     });
 });
+
 // Função para buscar um cliente
 function buscarCliente(event) {
     event.preventDefault();

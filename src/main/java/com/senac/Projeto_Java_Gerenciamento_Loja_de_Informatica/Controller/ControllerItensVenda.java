@@ -128,9 +128,9 @@ public class ControllerItensVenda {
             iv.setVenda(venda);
             Produto produtoVendido = serviceProduto.atualizarStatusVendido(iv.getProduto());
             serviceProduto.atualizar(produtoVendido.getId(), produtoVendido);
+            serviceItensVenda.criarItensVenda(iv);
         }
 
-        // Limpar a lista depois de salvar os itens
         listaItensVenda.clear();
 
         return "menu";

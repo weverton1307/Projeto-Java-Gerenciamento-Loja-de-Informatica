@@ -2,6 +2,7 @@ package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Controller;
 
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Cliente;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceCliente;
+import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +30,7 @@ public class ControllerCliente {
     }
 
     @PostMapping("/cadastro-cliente")
-    public String cadastrarCliente(Model model, @RequestBody Cliente cliente) {
+    public String cadastrarCliente(Model model,  @Valid@RequestBody Cliente cliente) {
 
         serviceCliente.criarCliente(cliente);
 

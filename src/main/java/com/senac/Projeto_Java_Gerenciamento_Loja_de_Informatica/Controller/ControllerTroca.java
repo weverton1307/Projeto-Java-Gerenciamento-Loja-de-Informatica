@@ -1,7 +1,9 @@
 
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Controller;
 
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Produto;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Troca;
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceItensVenda;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceProduto;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceTroca;
 import java.util.List;
@@ -26,6 +28,9 @@ public class ControllerTroca {
        
  @Autowired
     ServiceProduto serviceProduto;
+ 
+  @Autowired
+  ServiceItensVenda serviceItensVenda;
    
  @GetMapping("/troca")
     public String inicio(Model model) {
@@ -38,6 +43,9 @@ public class ControllerTroca {
     public String cadastrarTroca(Model model, @RequestBody Troca troca) {
         serviceTroca.criarTroca(troca);
         serviceProduto.atualizarTroca(troca);
+        List<Produto> listaProduto = serviceProduto.listarProduto();
+        Produto produto = serviceProduto.buscarId(troca.getCodigoProduto());
+        serviceItensVenda.atualizarTroca(troca, listaProduto, produto);
         return "troca";
     }
 

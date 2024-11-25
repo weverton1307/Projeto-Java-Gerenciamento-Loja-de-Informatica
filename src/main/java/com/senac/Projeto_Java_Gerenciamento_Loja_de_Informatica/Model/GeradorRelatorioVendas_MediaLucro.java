@@ -5,11 +5,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-public class GeradorRelatorioVendas_MediaLucro implements GeradorRelatorioVendas {
+public class GeradorRelatorioVendas_MediaLucro  {
 
-    @Override
-    public void gerarRelatorio(String inicioString, String fimString, List<Itens_venda> listaItens) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    public Double gerarRelatorio(String inicioString, String fimString, List<Itens_venda> listaItens) {
+       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate inicio = LocalDate.parse(inicioString, formatter);
         LocalDate fim = LocalDate.parse(fimString, formatter);
         LocalDate dataMinima = LocalDate.of(1000, 1, 1);
@@ -41,18 +40,18 @@ public class GeradorRelatorioVendas_MediaLucro implements GeradorRelatorioVendas
                         totalValorCompra += item.getProduto().getValorCompra();
                     }
                     double lucroTotal = faturamentoTotal - totalValorCompra;
-                    double mediaLucro;
-                    /*Util util = new Util();
+                    Double mediaLucro;
 
                     if (!listaItens.isEmpty()) {
                         mediaLucro = lucroTotal / listaItens.size();
 
-                        JOptionPane.showMessageDialog(null, "Média de lucro por venda: R$ " + util.formatarValor(mediaLucro));
+                     return mediaLucro;
                     } else {
                         JOptionPane.showMessageDialog(null, "Não há vendas durante o período especificado");
-                    }*/
+                    }
                 }
             }
         }
+        return 0.0;
     }
 }

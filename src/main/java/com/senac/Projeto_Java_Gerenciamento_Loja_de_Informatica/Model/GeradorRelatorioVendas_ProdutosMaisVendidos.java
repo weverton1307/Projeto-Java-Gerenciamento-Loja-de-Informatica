@@ -11,50 +11,49 @@ import javax.swing.JOptionPane;
 
 public class GeradorRelatorioVendas_ProdutosMaisVendidos {
 
-    public static Map<String, Integer> gerarRelatório(String inicioString, String fimString, List<Itens_venda> ListaItens) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    public String gerarRelatorio(String inicioString, String fimString, List<Itens_venda> listaItens) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate inicio = LocalDate.parse(inicioString, formatter);
         LocalDate fim = LocalDate.parse(fimString, formatter);
+
+        // Validar datas
         LocalDate dataMinima = LocalDate.of(1000, 1, 1);
         LocalDate dataMaxima = LocalDate.of(2100, 1, 1);
 
         if (inicio.equals(fim) || inicio.isBefore(dataMinima) || inicio.isAfter(dataMaxima)
                 || fim.isBefore(dataMinima) || fim.isAfter(dataMaxima) || fim.isBefore(inicio)) {
-            return null;
+            return "Intervalo de datas inválido.";
         }
 
-        List<Itens_venda> itensNoPeriodo = new ArrayList<>();
+        // Filtrar itens vendidos no período
+        List<Itens_venda> itensNoPeriodo = listaItens.stream()
+                .filter(item -> {
+                    LocalDate dataVenda = item.getVenda().getDataHora().toLocalDate();
+                    return !dataVenda.isBefore(inicio) && !dataVenda.isAfter(fim);
+                })
+                .collect(Collectors.toList());
 
-        for (Itens_venda item : ListaItens) {
-            LocalDate dataVenda = item.getVenda().getDataHora().toLocalDate();
-            if (!dataVenda.isBefore(inicio) && !dataVenda.isAfter(fim)) {
-                itensNoPeriodo.add(item);
-            }
+        if (itensNoPeriodo.isEmpty()) {
+            return "Não há vendas durante o período especificado.";
         }
 
+        // Mapear produtos e suas quantidades totais
         Map<String, Integer> produtosQuantidade = new HashMap<>();
 
         for (Itens_venda item : itensNoPeriodo) {
-            produtosQuantidade.put(item.getProduto().getNomeProduto(),
-                    produtosQuantidade.getOrDefault(item.getProduto().getNomeProduto(), 0) + item.getQuantidade());
+            String nomeProduto = item.getProduto().getNomeProduto();
+            produtosQuantidade.put(nomeProduto,
+                    produtosQuantidade.getOrDefault(nomeProduto, 0) + item.getQuantidade());
         }
 
-        List<Map.Entry<String, Integer>> produtosOrdenados = produtosQuantidade.entrySet()
+        // Encontrar o produto mais vendido
+        Map.Entry<String, Integer> produtoMaisVendido = produtosQuantidade.entrySet()
                 .stream()
-                .sorted((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()))
-                .collect(Collectors.toList());
+                .max(Map.Entry.comparingByValue())
+                .orElse(null);
 
-        Map<String, Integer> produtosOrden = new HashMap<>();
-
-        for (Map.Entry<String, Integer> entry : produtosOrdenados) {
-            produtosOrden.put(entry.getKey(), entry.getValue());
-        }
-
-        if (itensNoPeriodo.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Não há vendas durante o período especificado.");
-        }
-
-        return produtosOrden;
+        // Retornar o nome do produto mais vendido
+        return "Produto mais vendido: " + produtoMaisVendido.getKey();
     }
 
 }

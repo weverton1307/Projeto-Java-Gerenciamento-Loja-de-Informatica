@@ -11,54 +11,54 @@ import javax.swing.JOptionPane;
 
 public class GeradorRelatorio_ClientesMaisFrequentes {
 
-     public static Map<String, Integer> gerarRelatório(String inicioString, String fimString, List<Itens_venda> listaItens) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate inicio = LocalDate.parse(inicioString, formatter);
-        LocalDate fim = LocalDate.parse(fimString, formatter);
-        LocalDate dataMinima = LocalDate.of(1000, 1, 1);
-        LocalDate dataMaxima = LocalDate.of(2100, 1, 1);
-        if (inicio.equals(fim)) {
-            return null;
-        } else {
-            if ((inicio.isBefore(dataMinima) || inicio.isAfter(dataMaxima))
-                    || (fim.isBefore(dataMinima) || fim.isAfter(dataMaxima))) {
-                return null;
-            } else if (fim.isBefore(inicio)) {
-                return null;
-            } else {
-                List<Venda> vendasNoPeriodo = new ArrayList<>();
-                for (Itens_venda item : listaItens) {
-                    LocalDate dataVenda = item.getVenda().getDataHora().toLocalDate();
-                    if (!dataVenda.isBefore(inicio) && !dataVenda.isAfter(fim)) {
-                        vendasNoPeriodo.add(item.getVenda());
-                    }
-                }
+public  String gerarRelatorio(String inicioString, String fimString, List<Itens_venda> listaItens) {
+   DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    LocalDate inicio = LocalDate.parse(inicioString, formatter);
+    LocalDate fim = LocalDate.parse(fimString, formatter);
+    LocalDate dataMinima = LocalDate.of(1000, 1, 1);
+    LocalDate dataMaxima = LocalDate.of(2100, 1, 1);
 
-                Map<String, Integer> clientesCompras = new HashMap<>();
+    // Validação do período
+    if (inicio.equals(fim) || inicio.isBefore(dataMinima) || inicio.isAfter(dataMaxima) 
+        || fim.isBefore(dataMinima) || fim.isAfter(dataMaxima) || fim.isBefore(inicio)) {
+        JOptionPane.showMessageDialog(null, "Período inválido. Por favor, insira datas válidas.");
+        return null;
+    }
 
-                for (Venda venda : vendasNoPeriodo) {
-                    Cliente cliente = venda.getCliente();
-                    String nomeCliente = cliente.getNome();
-                    int quantidadeCompras = cliente.getTotal_compras();
-
-                    clientesCompras.put(nomeCliente, quantidadeCompras);
-                }
-
-                List<Map.Entry<String, Integer>> clientesOrdenados = clientesCompras.entrySet()
-                        .stream()
-                        .sorted((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue())) 
-                        .collect(Collectors.toList());
-
-                Map<String, Integer> clientesOrden = new HashMap<>();
-                for (Map.Entry<String, Integer> entry : clientesOrdenados) {
-                    clientesOrden.put(entry.getKey(), entry.getValue());
-                    System.out.println(entry.getKey() + " " + entry.getValue());
-                }
-                 if (vendasNoPeriodo.isEmpty()) {
-                   JOptionPane.showMessageDialog(null, "Não há vendas durante o período especificado.");
-                }
-                return clientesOrden;
-            }
+    // Filtrar vendas no período
+    List<Venda> vendasNoPeriodo = new ArrayList<>();
+    for (Itens_venda item : listaItens) {
+        LocalDate dataVenda = item.getVenda().getDataHora().toLocalDate();
+        if (!dataVenda.isBefore(inicio) && !dataVenda.isAfter(fim)) {
+            vendasNoPeriodo.add(item.getVenda());
         }
     }
+
+    if (vendasNoPeriodo.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Não há vendas durante o período especificado.");
+        return null;
+    }
+
+    // Contabilizar frequência de compras por cliente
+    Map<String, Integer> clientesCompras = new HashMap<>();
+    for (Venda venda : vendasNoPeriodo) {
+        Cliente cliente = venda.getCliente();
+        String nomeCliente = cliente.getNome();
+        clientesCompras.put(nomeCliente, clientesCompras.getOrDefault(nomeCliente, 0) + 1);
+    }
+
+    // Encontrar o cliente mais frequente
+    String clienteMaisFrequente = null;
+    int maxCompras = 0;
+
+    for (Map.Entry<String, Integer> entry : clientesCompras.entrySet()) {
+        if (entry.getValue() > maxCompras) {
+            clienteMaisFrequente = entry.getKey();
+            maxCompras = entry.getValue();
+        }
+    }
+
+    return clienteMaisFrequente;
+}
+
 }
