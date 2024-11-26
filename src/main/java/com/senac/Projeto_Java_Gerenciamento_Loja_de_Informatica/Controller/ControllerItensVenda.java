@@ -44,6 +44,7 @@ public class ControllerItensVenda {
     @Autowired
     ServiceProduto serviceProduto;
 
+
     Venda venda = new Venda(LocalDateTime.now(), "Realizada");
     List<Itens_venda> listaItensVenda = new ArrayList<>();
 
@@ -129,6 +130,12 @@ public class ControllerItensVenda {
             Produto produtoVendido = serviceProduto.atualizarStatusVendido(iv.getProduto());
             serviceProduto.atualizar(produtoVendido.getId(), produtoVendido);
             serviceItensVenda.criarItensVenda(iv);
+            Cliente cliente =   serviceCliente.buscarId(venda.getCliente().getId());
+           if(cliente !=null){
+               cliente.setTotal_compras(cliente.getTotal_compras() +1);
+               serviceCliente.atualizar(cliente.getId(), cliente);
+           }
+            
         }
 
         listaItensVenda.clear();

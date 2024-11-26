@@ -102,39 +102,13 @@
 
                 <div id="sair">
                     <a th:href="@{/inicio}">
-                        <img th:src="@{/img/sair.png}" onclick="logout()" alt="sair" width="100" height="80">
+                        <img th:src="@{/img/sair.png}"  alt="sair" width="100" height="80">
                     </a>
                 </div>
             </div>
         </section>
     </main>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-    var tipoUsuario = document.getElementById("boasVindasTipo").value; // Obtém o tipo do usuário
-
-    // Armazena o tipo de usuário no sessionStorage
-    sessionStorage.setItem("tipoUsuario", tipoUsuario);
-    
-    // Verifica se o tipo de usuário é "Vendedor"
-    if (tipoUsuario === "Vendedor") {
-        // Esconde as divs de vendas e funcionários
-        var vendasDiv = document.querySelector("a[href='/vendas']").parentElement;
-        var funcionariosDiv = document.querySelector("a[href='/funcionarios']").parentElement;
-
-        if (vendasDiv) {
-            vendasDiv.style.display = "none";
-        }
-        if (funcionariosDiv) {
-            funcionariosDiv.style.display = "none";
-        }
-    }
-});
-function logout() {
-        // Remove o tipo de usuário do sessionStorage ao sair
-        sessionStorage.removeItem("tipoUsuario");
-    }
-
-    </script>
+ 
     
     <script th:src="@{/js/js.js}"></script>
 
