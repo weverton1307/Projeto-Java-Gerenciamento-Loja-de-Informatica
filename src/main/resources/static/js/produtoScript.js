@@ -1,5 +1,6 @@
 
 $("#atualizarProduto").prop("disabled", true);
+limparCampos();
 $(document).ready(function () {
     $("#salvarProduto").click(function (event) {
         event.preventDefault();
@@ -27,10 +28,72 @@ $(document).ready(function () {
         };
         console.log($("#prateleira").val());
         console.log($("#localPrateleira").val());
-
-
         console.log("Form Data:", formData);
+         // Validações dos campos
+         if (formData.nomeProduto === "") {
+            alert("Por favor, preencha o nome do produto.");
+            return;
+        }
 
+        if (formData.valorCompra === "" || isNaN(formData.valorCompra)) {
+            alert("Por favor, preencha um valor de compra válido.");
+            return;
+        }
+
+        if (formData.valorVenda === "" || isNaN(formData.valorVenda)) {
+            alert("Por favor, preencha um valor de venda válido.");
+            return;
+        }
+
+        if (formData.descricaoTecnica === "") {
+            alert("Por favor, preencha a descrição técnica do produto.");
+            return;
+        }
+
+        if (formData.dataAquisicao === "") {
+            alert("Por favor, preencha a data de aquisição.");
+            return;
+        }
+
+        if (formData.fabricante === "") {
+            alert("Por favor, preencha o fabricante.");
+            return;
+        }
+
+        if (formData.modelo === "") {
+            alert("Por favor, preencha o modelo.");
+            return;
+        }
+
+        if (formData.notaFiscal === "") {
+            alert("Por favor, preencha a nota fiscal.");
+            return;
+        }
+       
+        const numeroRegex = /^[+]?\d+(\.\d+)?$/;
+
+
+        if (!numeroRegex.test(formData.valorCompra) || parseFloat(formData.valorCompra) <= 0) {
+            alert("O valor da compra deve ser um número positivo maior que zero e não pode conter letras.");
+            return;
+        }
+
+        if (!numeroRegex.test(formData.valorVenda) || parseFloat(formData.valorVenda) <= 0) {
+            alert("O valor da venda deve ser um número positivo maior que zero e não pode conter letras.");
+            return;
+        }
+         if (formData.categoria.nome === "Selecione um item") {
+            alert("Por favor, selecione uma categoria.");
+            return;
+         }
+         if (formData.localArmazenamento.numeroPrateleira === "Selecione um item") {
+            alert("Por favor, selecione uma prateleira.");
+            return;
+         }
+         if (formData.localArmazenamento.numeroLocalPrateleira === "Selecione um item") {
+            alert("Por favor, selecione um local da prateleira.");
+            return;
+         }
         $.ajax({
             type: "POST",
             url: "/cadastro-produto",
@@ -59,12 +122,14 @@ $(document).ready(function () {
         // Validação de seleção de critério
         if (!criterio) {
             alert("Por favor, selecione um critério de busca.");
+            limparCampos();
             return;
         }
 
         // Validação específica para o critério "categoria"
         if (criterio === "categoria" && categoria === "Selecione uma categoria") {
             alert("Por favor, selecione uma categoria válida.");
+            limparCampos();
             return;
         }
 
@@ -74,6 +139,7 @@ $(document).ready(function () {
         if (criterio === "codigo") {
             if (isNaN(valor)) {
                 alert("Por favor, insira um código válido.");
+                limparCampos();
                 return;
             }
             data.id = valor;
@@ -84,6 +150,7 @@ $(document).ready(function () {
         } else if (criterio === "modelo") {
             if (!valor) {
                 alert("Por favor, insira um modelo válido.");
+                limparCampos();
                 return;
             }
             data.modelo = valor;
@@ -155,6 +222,7 @@ $(document).ready(function () {
             },
             error: function (xhr) {
                 alert("Erro ao buscar produto.");
+                limparCampos();
             }
         });
     });

@@ -15,6 +15,32 @@ $(document).ready(function () {
             },
             id: $("#vendaId").val() ? parseInt($("#vendaId").val()) : null
         };
+        const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/; // Formato esperado: xxx.xxx.xxx-xx
+
+        // Validação do CPF
+        if (!cpfRegex.test(formData.cliente.cpf)) {
+            alert("Por favor, insira um CPF válido no formato xxx.xxx.xxx-xx.");
+            return; // Interrompe a execução
+        }
+
+        // Validação de CPF vazio
+        if (formData.cliente.cpf === "") {
+            alert("Por favor, preencha o campo CPF.");
+            return;
+        }
+
+        // Validação de método de pagamento
+        if (formData.metodoPagamento === "selecione um item") {
+            alert("Por favor, selecione um método de pagamento.");
+            return;
+        }
+
+        // Validação de vendedor
+        if (formData.vendedor.nome === "selecione um item") {
+            alert("Por favor, selecione um vendedor.");
+            return;
+        }
+       
 
         $.ajax({
             type: "POST",
@@ -49,6 +75,22 @@ $(document).ready(function () {
             codigoProduto: $("#codigoProduto-venda").val().trim(),
             quantidade: $("#quantidadeProduto-venda").val().trim()
         };
+        if(formData.codigoProduto == ""){
+            alert("Por favor, preenche o campo código do produto");
+            return;  
+        }
+        if(formData.quantidade == ""){
+            alert("Por favor, preenche o campo quantidade");
+            return;  
+        }
+        if (!/^\d+$/.test(formData.codigoProduto) || parseInt(formData.codigoProduto) === 0) {
+            alert("O código do produto deve conter apenas números inteiros positivos maiores que zero.");
+            return;
+        }
+        if (!/^\d+$/.test(formData.quantidade) || parseInt(formData.quantidade) === 0) {
+            alert("A quantidade deve conter apenas números inteiros positivos maiores que zero.");
+            return;
+        }
 
         $.ajax({
             type: "POST",

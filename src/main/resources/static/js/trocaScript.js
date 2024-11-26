@@ -1,3 +1,4 @@
+limparCamposTrocao();
 $("#alterarTroca").prop("disabled", true);
 $("#excluirTroca").prop("disabled", true);
 $(document).ready(function () {
@@ -11,6 +12,26 @@ $(document).ready(function () {
             id: $("#trocaId").val() ? parseInt($("#trocaId").val()) : null
         };
         console.log("Form Data:", formData);
+        // Validações
+        if (formData.codigoProduto === "") {
+            alert("Por favor, preencha o campo código do produto.");
+            return;
+        }
+
+        if (!/^\d+$/.test(formData.codigoProduto) || parseInt(formData.codigoProduto) === 0) {
+            alert("O código do produto deve conter apenas números inteiros positivos maiores que zero.");
+            return;
+        }
+
+        if (formData.motivo === "") {
+            alert("Por favor, preencha o campo motivo.");
+            return;
+        }
+
+        if (formData.data === "") {
+            alert("Por favor, preencha o campo data.");
+            return;
+        }
         $.ajax({
             type: "POST",
             url: "/cadastro-troca",
@@ -42,21 +63,25 @@ function buscarTroca(event) {
             data: { id: id },
             dataType: "json", 
             success: function (data) {
-
+                $("#trocaId").val(data.id);
                 $("#codigo-troca").val(data.codigoProduto);
                 $("#motivo-troca").val(data.motivo);
                 $("#data-troca").val(data.data);
             },
             error: function (xhr) {
                 var errorMessage = "Erro ao buscar troca.";
+                limparCamposTrocao()
                 if (xhr.status === 404) {
                     errorMessage = "Troca não encontrada.";
+                    limparCamposTrocao()
                 }
                 alert(errorMessage);
+                limparCamposTrocao()
             }
         });
     } else {
         alert("Por favor, insira um ID válido para a troca.");
+        limparCamposTrocao()
     }
 }
 
@@ -81,6 +106,26 @@ $(document).ready(function () {
         };
 
         console.log("Form Data:", formData);
+        // Validações
+        if (formData.codigoProduto === "") {
+            alert("Por favor, preencha o campo código do produto.");
+            return;
+        }
+
+        if (!/^\d+$/.test(formData.codigoProduto)) { // Verifica se contém apenas números inteiros positivos
+            alert("O código do produto deve conter apenas números inteiros positivos.");
+            return;
+        }
+
+        if (formData.motivo === "") {
+            alert("Por favor, preencha o campo motivo.");
+            return;
+        }
+
+        if (formData.data === "") {
+            alert("Por favor, preencha o campo data.");
+            return;
+        }
 
         $.ajax({
             type: "PUT",
@@ -106,7 +151,7 @@ $(document).ready(function () {
         const trocaId = $("#trocaId").val();
 
         if (trocaId) {
-    
+    alert("Primeiro exclua o produto relacionado a essa troca");
             if (confirm("Você tem certeza que deseja excluir esta troca?")) {
 
                 $.ajax({

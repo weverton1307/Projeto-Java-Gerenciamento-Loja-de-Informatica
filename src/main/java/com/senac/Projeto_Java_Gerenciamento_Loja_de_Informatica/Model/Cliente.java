@@ -23,6 +23,7 @@ public class Cliente {
     }
 
     public Cliente(String nome, String endereco, String cpf, String telefone, String email) {
+        
         this.nome = nome;
         this.endereco = endereco;
         this.cpf = cpf;
@@ -43,6 +44,7 @@ public class Cliente {
     }
 
     public void setNome(String nome) {
+        
         this.nome = nome;
     }
 

@@ -3,9 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let tipoUsuario = document.getElementById("boasVindasTipo").value;
 
     if (nomeUsuario && tipoUsuario) {
-        alert("Olá, " + nomeUsuario +" Seja bem-vindo!");
+        alert("Olá, " + nomeUsuario + " Seja bem-vindo!");
     }
 });
+//Funcionário
 $("#alterarFuncionario").prop("disabled", true);
 
 $(document).ready(function () {
@@ -30,7 +31,52 @@ $(document).ready(function () {
 
 
         console.log("Form Data:", formData);
+        // Validação dos campos
+        if (formData.nome === "") {
+            alert("Por favor, preencha o campo nome.");
+            return;  // Interrompe a execução, não envia a requisição
+        }
+        if (formData.endereco === "") {
+            alert("Por favor, preencha o campo endereço.");
+            return;  // Interrompe a execução
+        }
+        if (formData.cpf === "") {
+            alert("Por favor, preencha o campo CPF.");
+            return;  // Interrompe a execução
+        }
+        if (formData.telefone === "") {
+            alert("Por favor, preencha o campo Telefone.");
+            return;
+        }
+        if(formData.usuario.login ===""){
+            alert("Por favor, preencha o campo nome de usuário.");
+            return; 
+        }
+        if(formData.usuario.senha ===""){
+            alert("Por favor, preencha o campo senha.");
+            return; 
+        }
+        const telefoneRegex = /^\(\d{2}\)\d{4}-\d{4}$/; // Formato esperado: (xx)xxxx-xxxx
+        if (!telefoneRegex.test(formData.telefone)) {
+            alert("Por favor, insira um telefone válido no formato (xx)xxxx-xxxx.");
+            return;  // Interrompe a execução
+        }
 
+        const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/; // Formato esperado: xxx.xxx.xxx-xx
+        if (!cpfRegex.test(formData.cpf)) {
+            alert("Por favor, insira um CPF válido no formato xxx.xxx.xxx-xx.");
+            return; // Interrompe a execução
+        }
+        // Validação do e-mail (caso preenchido)
+        if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+            alert("Por favor, insira um e-mail válido.");
+            return;  // Interrompe a execução
+        }
+        if(formData.cargo.nome === "Selecione um item"){
+            alert("Por favor, selecione um cargo.");
+            return;   
+        }
+        
         $.ajax({
             type: "POST",
             url: "/funcionarios",
@@ -46,6 +92,23 @@ $(document).ready(function () {
         });
     });
 });
+document.addEventListener('DOMContentLoaded', function () {
+    window.limparCampos = function limparCampos() {
+        $("#alterarFuncionario").prop("disabled", true);
+        $("#salvarFuncionario").prop("disabled", false);
+        document.getElementById('nomeFuncionario').value = '';
+        document.getElementById('endereço').value = '';
+        document.getElementById('cpf').value = '';
+        document.getElementById('telefone').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('nomeUsuario').value = '';
+        document.getElementById('senha-funcionario').value = '';
+        document.getElementById('funcionarioId').value = '';
+        document.getElementById('cargoFuncionario').value = 'Selecione um item';
+    };
+
+    document.getElementById('limpar').addEventListener('click', limparCampos);
+});
 
 
 function buscarFuncionario(event) {
@@ -59,7 +122,7 @@ function buscarFuncionario(event) {
             url: "/buscar-funcionario",
             method: "GET",
             data: { id: id },
-            dataType: "json", 
+            dataType: "json",
             success: function (data) {
 
                 $("#nomeFuncionario").val(data.nome);
@@ -74,37 +137,23 @@ function buscarFuncionario(event) {
             },
             error: function (xhr) {
                 var errorMessage = "Erro ao buscar funcionário.";
+                limparCampos();
                 if (xhr.status === 404) {
                     errorMessage = "Funcionário não encontrado.";
+                    limparCampos();
                 }
                 alert(errorMessage);
             }
         });
     } else {
         alert("Por favor, insira um ID válido para o funcionário.");
+        limparCampos();
     }
 }
 
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    function limparCampos() {
-        $("#alterarFuncionario").prop("disabled", true);
-        $("#salvarFuncionario").prop("disabled", false);
-        document.getElementById('nomeFuncionario').value = '';
-        document.getElementById('endereço').value = '';
-        document.getElementById('cpf').value = '';
-        document.getElementById('telefone').value = '';
-        document.getElementById('email').value = '';
-        document.getElementById('nomeUsuario').value = '';
-        document.getElementById('senha-funcionario').value = '';
-        document.getElementById('funcionarioId').value = '';
-        document.getElementById('cargoFuncionario').value = 'Selecione um item';
-    }
 
-    document.getElementById('limpar').addEventListener('click', limparCampos);
-   
-});
 
 $(document).ready(function () {
     $("#alterarFuncionario").click(function (event) {
@@ -145,6 +194,7 @@ $(document).ready(function () {
     });
 });
 //clientes
+$("#alterarCliente").prop("disabled", true);
 $(document).ready(function () {
     $("#salvarCliente").click(function (event) {
         event.preventDefault();
@@ -163,7 +213,36 @@ $(document).ready(function () {
         if (formData.nome === "") {
             alert("Por favor, preencha o campo nome.");
             return;  // Interrompe a execução, não envia a requisição
-        }      
+        }
+        if (formData.endereco === "") {
+            alert("Por favor, preencha o campo endereço.");
+            return;  // Interrompe a execução
+        }
+        if (formData.cpf === "") {
+            alert("Por favor, preencha o campo CPF.");
+            return;  // Interrompe a execução
+        }
+        if (formData.telefone === "") {
+            alert("Por favor, preencha o campo Telefone.");
+            return;
+        }
+        const telefoneRegex = /^\(\d{2}\)\d{4}-\d{4}$/; // Formato esperado: (xx)xxxx-xxxx
+        if (!telefoneRegex.test(formData.telefone)) {
+            alert("Por favor, insira um telefone válido no formato (xx)xxxx-xxxx.");
+            return;  // Interrompe a execução
+        }
+
+        const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/; // Formato esperado: xxx.xxx.xxx-xx
+        if (!cpfRegex.test(formData.cpf)) {
+            alert("Por favor, insira um CPF válido no formato xxx.xxx.xxx-xx.");
+            return; // Interrompe a execução
+        }
+        // Validação do e-mail (caso preenchido)
+        if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+            alert("Por favor, insira um e-mail válido.");
+            return;  // Interrompe a execução
+        }
+
         // Se passou em todas as validações, faz a requisição AJAX
         $.ajax({
             type: "POST",
@@ -181,6 +260,7 @@ $(document).ready(function () {
     });
 });
 
+
 // Função para buscar um cliente
 function buscarCliente(event) {
     event.preventDefault();
@@ -193,9 +273,9 @@ function buscarCliente(event) {
             url: "/buscar-cliente",
             method: "GET",
             data: { id: id },
-            dataType: "json", 
+            dataType: "json",
             success: function (data) {
-
+                $("#clienteId").val(data.id);
                 $("#nomeCliente").val(data.nome);
                 $("#enderecoCliente").val(data.endereco);
                 $("#cpfCliente").val(data.cpf);
@@ -204,57 +284,93 @@ function buscarCliente(event) {
             },
             error: function (xhr) {
                 var errorMessage = "Erro ao buscar cliente.";
+                limparCamposCliente();
                 if (xhr.status === 404) {
                     errorMessage = "Cliente não encontrado.";
                 }
                 alert(errorMessage);
+                limparCamposCliente();
             }
         });
     } else {
         alert("Por favor, insira um ID válido para o funcionário.");
+        limparCamposCliente();
     }
 }
 
 
-    function limparCamposCliente() {
-        $("#alterarCliente").prop("disabled", true);
-        $("#salvarCliente").prop("disabled", false);
-        document.getElementById('nomeCliente').value = '';
-        document.getElementById('enderecoCliente').value = '';
-        document.getElementById('cpfCliente').value = '';
-        document.getElementById('telefoneCliente').value = '';
-        document.getElementById('emailCliente').value = '';
-    }
+function limparCamposCliente() {
+    $("#alterarCliente").prop("disabled", true);
+    $("#salvarCliente").prop("disabled", false);
+    document.getElementById('nomeCliente').value = '';
+    document.getElementById('enderecoCliente').value = '';
+    document.getElementById('cpfCliente').value = '';
+    document.getElementById('telefoneCliente').value = '';
+    document.getElementById('emailCliente').value = '';
+}
 
-    $(document).ready(function () {
-        $("#alterarCliente").click(function (event) {
-            event.preventDefault();
-            const formData = {
-                nome: $("#nomeCliente").val().trim(),
-                endereco: $("#enderecoCliente").val().trim(),
-                cpf: $("#cpfCliente").val().trim(),
-                telefone: $("#telefoneCliente").val(),
-                email: $("#emailCliente").val(),
-                id: $("#clienteId").val() ? parseInt($("#clienteId").val()) : null
-            };
-    
-            console.log("Form Data:", formData);
-    
-            $.ajax({
-                type: "PUT",
-                url: "/atualizar-Cliente",
-                contentType: "application/json",
-                data: JSON.stringify(formData),
-                success: function (response) {
-                    alert("Cliente atualizado com sucesso!");
-                    window.location.href = "/clientes";
-                },
-                error: function (xhr, status, error) {
-                    alert("Ocorreu um erro: " + xhr.responseText);
-                }
-            });
+$(document).ready(function () {
+    $("#alterarCliente").click(function (event) {
+        event.preventDefault();
+        const formData = {
+            nome: $("#nomeCliente").val().trim(),
+            endereco: $("#enderecoCliente").val().trim(),
+            cpf: $("#cpfCliente").val().trim(),
+            telefone: $("#telefoneCliente").val(),
+            email: $("#emailCliente").val(),
+            id: $("#clienteId").val() ? parseInt($("#clienteId").val()) : null
+        };
+
+        console.log("Form Data:", formData);
+        // Validação dos campos
+        if (formData.nome === "") {
+            alert("Por favor, preencha o campo nome.");
+            return;  // Interrompe a execução, não envia a requisição
+        }
+        if (formData.endereco === "") {
+            alert("Por favor, preencha o campo endereço.");
+            return;  // Interrompe a execução
+        }
+        if (formData.cpf === "") {
+            alert("Por favor, preencha o campo CPF.");
+            return;  // Interrompe a execução
+        }
+        if (formData.telefone === "") {
+            alert("Por favor, preencha o campo Telefone.");
+            return;
+        }
+        const telefoneRegex = /^\(\d{2}\)\d{4}-\d{4}$/; // Formato esperado: (xx)xxxx-xxxx
+        if (!telefoneRegex.test(formData.telefone)) {
+            alert("Por favor, insira um telefone válido no formato (xx)xxxx-xxxx.");
+            return;  // Interrompe a execução
+        }
+
+        const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/; // Formato esperado: xxx.xxx.xxx-xx
+        if (!cpfRegex.test(formData.cpf)) {
+            alert("Por favor, insira um CPF válido no formato xxx.xxx.xxx-xx.");
+            return; // Interrompe a execução
+        }
+        // Validação do e-mail (caso preenchido)
+        if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+            alert("Por favor, insira um e-mail válido.");
+            return;  // Interrompe a execução
+        }
+
+        $.ajax({
+            type: "PUT",
+            url: "/atualizar-Cliente",
+            contentType: "application/json",
+            data: JSON.stringify(formData),
+            success: function (response) {
+                alert("Cliente atualizado com sucesso!");
+                window.location.href = "/clientes";
+            },
+            error: function (xhr, status, error) {
+                alert("Ocorreu um erro: " + xhr.responseText);
+            }
         });
     });
+});
 //Devolução
 limparCamposDevolucao();
 $("#alterarDevolucao").prop("disabled", true);
@@ -262,6 +378,7 @@ $("#excluirDevolucao").prop("disabled", true);
 $(document).ready(function () {
     $("#salvarDevolucaoOuTroca").click(function (event) {
         event.preventDefault();
+
         const formData = {
             codigoProduto: $("#codigo-devolucao").val().trim(),
             motivo: $("#motivo-devolucao").val().trim(),
@@ -270,9 +387,30 @@ $(document).ready(function () {
             id: $("#devolucaoId").val() ? parseInt($("#devolucaoId").val()) : null
         };
 
-
         console.log("Form Data:", formData);
 
+        // Validações
+        if (formData.codigoProduto === "") {
+            alert("Por favor, preencha o campo código do produto.");
+            return;
+        }
+
+        if (!/^\d+$/.test(formData.codigoProduto) || parseInt(formData.codigoProduto) === 0) {
+            alert("O código do produto deve conter apenas números inteiros positivos maiores que zero.");
+            return;
+        }
+
+        if (formData.motivo === "") {
+            alert("Por favor, preencha o campo motivo.");
+            return;
+        }
+
+        if (formData.data === "") {
+            alert("Por favor, preencha o campo data.");
+            return;
+        }
+
+        // Envia a requisição AJAX
         $.ajax({
             type: "POST",
             url: "/cadastro-devolucao",
@@ -289,6 +427,7 @@ $(document).ready(function () {
     });
 });
 
+
 function buscarDevolucao(event) {
     event.preventDefault();
 
@@ -301,23 +440,26 @@ function buscarDevolucao(event) {
             url: "/buscar-devolucao",
             method: "GET",
             data: { id: id },
-            dataType: "json", 
+            dataType: "json",
             success: function (data) {
-
+                $("#devolucaoId").val(data.id);
                 $("#codigo-devolucao").val(data.codigoProduto);
                 $("#motivo-devolucao").val(data.motivo);
                 $("#data-devolucao").val(data.data);
             },
             error: function (xhr) {
                 var errorMessage = "Erro ao buscar devolucao.";
+                limparCamposDevolucao();
                 if (xhr.status === 404) {
                     errorMessage = "Devolução não encontrada.";
+                    limparCamposDevolucao();
                 }
                 alert(errorMessage);
             }
         });
     } else {
         alert("Por favor, insira um ID válido para a devolução.");
+        limparCamposDevolucao();
     }
 }
 
@@ -342,6 +484,26 @@ $(document).ready(function () {
         };
 
         console.log("Form Data:", formData);
+         // Validações
+         if (formData.codigoProduto === "") {
+            alert("Por favor, preencha o campo código do produto.");
+            return;
+        }
+
+        if (!/^\d+$/.test(formData.codigoProduto) || parseInt(formData.codigoProduto) === 0) {
+            alert("O código do produto deve conter apenas números inteiros positivos maiores que zero.");
+            return;
+        }
+
+        if (formData.motivo === "") {
+            alert("Por favor, preencha o campo motivo.");
+            return;
+        }
+
+        if (formData.data === "") {
+            alert("Por favor, preencha o campo data.");
+            return;
+        }
 
         $.ajax({
             type: "PUT",
@@ -367,7 +529,7 @@ $(document).ready(function () {
         const devolucaoId = $("#devolucaoId").val();
 
         if (devolucaoId) {
-    
+            alert("Primeiro exclua o produto relacionado a essa devolução");
             if (confirm("Você tem certeza que deseja excluir esta devolução?")) {
 
                 $.ajax({

@@ -63,6 +63,7 @@ $(document).ready(function () {
             alert("Por favor, preencha as datas corretamente.");
             return;
         }
+        
         //lucro total
         $.ajax({
             url: "/gerar-relatorio",
