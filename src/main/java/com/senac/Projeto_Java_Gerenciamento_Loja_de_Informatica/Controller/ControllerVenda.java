@@ -46,7 +46,31 @@ public class ControllerVenda {
         return "vendas";
     }
 
-    
+    @GetMapping("/buscar-vendas")
+    @ResponseBody
+    public ResponseEntity<?> buscarVendas(
+            @RequestParam(required = false) Integer id
+    ) {
+
+        System.out.println("teste:" + id);
+
+        if (id != null) {
+            if (id == null || id <= 0) {
+                return ResponseEntity.badRequest().body("ID inválido.");
+            }
+
+            Itens_venda ItensVendaEncontrada = serviceItensVenda.buscarId(id);
+            System.out.println("intens venda" + ItensVendaEncontrada.getProduto().getNomeProduto());
+            if (ItensVendaEncontrada == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Venda não encontrada.");
+            }
+
+            return ResponseEntity.ok(ItensVendaEncontrada);
+        } else {
+            return ResponseEntity.badRequest().body("Nenhum critério de busca fornecido.");
+        }
+
+    }
 
     @PostMapping("/gerar-relatorio")
     @ResponseBody
