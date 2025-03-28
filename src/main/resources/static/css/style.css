@@ -1,1198 +1,1401 @@
+/* Estilo geral */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-decoration: none;
-    list-style: none;
+    font-family: "Poppins", sans-serif;
 }
-.esconder {
-    display: none;
+
+body {
+    background-color: #D6C7FB;
+    height: 100vh;
+
 }
-.body {
-    margin: 0;
+
+.interface {
+    max-width: 1280px;
+    margin: 0 auto;
+    gap: 150px;
+}
+
+.flex {
     display: flex;
-    justify-content: center;
 }
 
-/* login */
-
-.index {
-    background-color: #D6C6FB;
-}
-
-.main-index {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container {
-    max-width: 1440px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.container .login {
-    justify-content: center;
-    align-items: center;
-    margin-left: 15%;
-    margin-bottom: 10%;
-}
-
-.container .login img {
-    width: 200px;
-    margin-bottom: 20px;
-}
-
-.container .login h1 {
-    font-size: 80px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #673781;
-}
-
-.formulario-login {
-    width: 100%;
-}
-
-.formulario-login h3 {
-    font-size: 25px;
+.btn-verde {
+    padding: 8px 30px;
+    font-size: 15px;
     font-weight: 600;
-    color: #000;
-    margin-top: 8px;
-    text-align: left;
-}
-
-.formulario-login input {
-    width: 350px;
-    height: 40px;
-    margin-bottom: 15px;
-    margin-top: -8px;
-    padding: 5px;
-    font-size: 16px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-}
-
-
-.botao-sair,
-.botao-entrar {
-    width: 120px;
-    height: 40px;
-    font-size: 18px;
-    margin: 10px;
-    border: none;
-    border-radius: 5px;
+    border-radius: 15px;
+    background-color: #683781;
+    color: #fff;
+    border: 0;
     cursor: pointer;
 }
 
-.botao-sair {
-    background-color: #f2f2f2;
-    color: #000;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    margin-right: 75px;
-}
-
-.botao-entrar {
-    background-color: #673781;
-    color: #fff;
-    border: 2px solid #5a317b;
-    border-radius: 10px;
-}
-
-.botao-sair:hover {
-    background-color: #e0e0e0;
-}
-
-.botao-entrar:hover {
-    background-color: #5a317b;
-}
-.mensagem-boas-vindas {
-    color: purple;    
-    text-align: center; 
-    font-size: 1.5em;    
-    margin-top: 20px;  
-}
-
-
-/* Fim login */
-/*menu*/
-.background {
-    background-color: #EFEFEF;
-}
-
-.container-menu {
-    display: flex;
-    align-items: center;
-    background-color: #D6C6FB;
-}
-
-.titulo {
-    margin-left: 15px;
-}
-
-.titulo h1 {
-    font-size: 50px;
-    margin-top: 5px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #673781;
-
-}
-
-.container-menu-section {
-    display: flex;
-    justify-content: center;
-    padding: 50px;
-}
-
-.container-menu-section div {
-    margin: 10px 20px;
-    text-align: center;
-    padding: 0px 0px;
-    padding-top: 15px;
-    padding-bottom: 0px;
-    background-color: #5a317b;
-    width: 250px;
-    height: 200px;
-}
-
-.container-menu-section div h1 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 25px;
-    color: white;
-    margin-bottom: 10px;
-}
-
-.container-menu-section #sair {
-    width: 50px;
-    height: 50px;
-    padding-top: 0px;
-    margin-right: 803px;
-    margin-bottom: 5px;
-}
-
-/*Fim menu*/
-/*Produtos*/
-.container-produtos {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-}
-
-.formulario-produtos-dois {
-    display: flex;
-    flex-direction: column;
-}
-
-.formulario-produtos-um {
-    padding: 15px;
-}
-
-.formulario-produtos-um div {
-    margin: 10px;
-}
-
-.formulario-produtos-um form label,
-.formulario-produtos-um form input {
-    margin: 10px;
-}
-
-.formulario-produtos-um form input {
-    width: 200px;
-}
-
-#nome {
-    width: 300px;
-}
-
-#valorCompra {
-    width: 228px;
-}
-
-#valorVenda {
-    width: 240px;
-}
-
-#modelo {
-    width: 290px;
-}
-
-#fiscal {
-    width: 191px;
-}
-
-#data {
-    width: 220px;
-}
-
-#fabricante {
-    width: 274px;
-}
-
-#descricao {
-    height: 90px;
-    width: 450px;
-}
-
-.botoes-formulario {
-    display: flex;
-    margin-right: 10px;
-
-}
-
-.botoes-formulario button {
-    margin: 10px;
-    width: 130px;
-    text-align: center;
-    background-color: #5a317b;
-    color: white;
-
-}
-
-#voltar {
-    color: #000;
-    background-color: #D6C6FB;
-}
-
-.formulario-produtos-dois {
-    padding: 15px;
-}
-
-.formulario-produtos-dois div {
-    margin: 10px;
-}
-
-#prateleira {
-    margin-left: 60px;
+.btn-branco {
+    padding: 8px 30px;
+    font-size: 15px;
+    font-weight: 600;
     border-radius: 15px;
-    text-align: center;
+    background-color: #fff;
+    color: #D6C7FB;
+    border: 0;
+    cursor: pointer;
 }
 
-#localPrateleira {
-    border-radius: 15px;
-    text-align: center;
-}
-
-#categoria {
-    margin-left: 75px;
-    border-radius: 15px;
-    text-align: center;
-}
-
-#item-categoria {
-    border-radius: 15px;
-    text-align: center;
-}
-
-.formulario-produtos-dois .radio {
-    margin: 5px 5px;
-}
-
-#radio3 {
-    margin-left: 73px;
-}
-
-#radio2 {
-    margin-left: 25px;
-}
-
-#search-button {
-    margin-top: 15px;
-    width: 130px;
-    background-color: #5a317b;
-    color: white;
-}
-
-.container-tabela table th {
-    font-size: 13px;
-}
-
-#texto-area {
-    margin-bottom: 20px;
-    margin-top: -8px;
-}
-
-.container-tabela.table-responsive {
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    overflow-x: auto;
-}
-
-
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: Arial, sans-serif;
-}
-
-.table thead th {
-    background-color: #5a317b;
-    color: #ffffff;
-    font-weight: bold;
-    padding: 12px;
-    text-align: left;
-    border-bottom: 2px solid #ddd;
-    white-space: nowrap; 
-}
-
-.table tbody tr {
-    transition: background-color 0.3s;
-}
-
-.table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.table tbody tr:hover {
-    background-color: #e6f7ff;
-}
-
-.table td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    color: #333;
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: ellipsis; 
-}
-
-@media (max-width: 768px) {
-    .table thead {
-        display: none;
-    }
-    
-    .table tbody tr {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 10px;
-        background-color: #ffffff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-    }
-    
-    .table tbody td {
-        display: flex;
-        justify-content: space-between;
-        padding: 8px 10px;
-        font-size: 0.9em;
-    }
-    
-    .table tbody td::before {
-        content: attr(data-label);
-        font-weight: bold;
-        color: #4a90e2;
-        flex: 1;
-        margin-right: 10px;
-    }
-}
-
-
-/* Fim Produtos*/
-/* Funcionário*/
-.container-Funcionario {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-}
-
-.formulario-funcionario-dois {
-    padding: 15px;
-}
-
-.formulario-funcionario-dois div {
-    margin: 10px;
-}
-
-.formulario-funcionario-dois {
-    display: flex;
-    flex-direction: column;
-}
-
-.formulario-funcionario-um {
-    padding: 15px;
-}
-
-.formulario-funcionario-um div {
-    margin: 10px;
-}
-
-.formulario-funcionario-um form label,
-.formulario-funcionario-um form input {
-    margin: 10px;
-}
-
-.formulario-funcionario-um form input {
-    width: 200px;
-}
-
-#senha-funcionario {
-    margin-top: 15px;
-}
-
-#nomeUsuario {
-    margin-top: 10px;
-}
-
-#pesquisar {
-    margin-top: 60px;
-}
-
-#botao-funcionario-buscar {
-    margin-left: 83px;
-}
-
-#cargo {
-    margin-left: 80px;
-}
-
-#senha-funcionario {
-    margin-left: 77px;
-}
-
-#nomeFuncionario {
-    width: 222px;
-}
-
-#cpf {
-    width: 240px;
-}
-
-#telefone {
-    width: 210px;
-}
-
-#email {
-    width: 230px;
-}
-
-/*Fim funcionários*/
-/*clientes*/
-.container-cliente {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-}
-
-.formulario-cliente,
-.pesquisar-cliente {
-    padding: 30px;
-    padding-bottom: 30px;
-}
-
-.formulario-cliente form input,
-.formulario-cliente form label {
-    margin: 10px;
-}
-
-.pesquisar-cliente div {
-    margin-bottom: -50px;
-}
-
-#botao-pesquisar-cliente {
-    margin-top: 65px;
-}
-
-#nomeCliente {
-    width: 210px;
-}
-
-#cpfCliente {
-    width: 225px;
-}
-
-#telefoneCliente {
-    width: 193px;
-}
-
-#emailCliente {
-    width: 215px;
-}
-
-.botoes-formulario {
-    margin-top: 30px;
-}
-
-
-.container-tabela-Cliente {
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: Arial, sans-serif;
-}
-
-.table thead th {
-    background-color: #5a317b;
-    color: #ffffff;
-    font-weight: bold;
-    padding: 12px;
-    text-align: left;
-    border-bottom: 2px solid #ddd;
-}
-
-.table tbody tr {
-    transition: background-color 0.3s;
-}
-
-.table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.table tbody tr:hover {
-    background-color: #e6f7ff;
-}
-
-.table td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    color: #333;
-}
-
-.table-striped thead th {
-    border-top: 2px solid #ddd;
-}
-
-/*Fim clientes*/
-/*Devolução ou troca*/
-.container-devolucaoOuTroca {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    padding-bottom: 30px;
-}
-
-.formulario-devolucaoOuTroca,
-.pesquisar-devolucaoOuTroca {
-    margin-top: 30px;
-}
-
-.radio-devolucaoOuTroca {
-    margin-left: 140px;
-}
-
-.radio-devolucaoOuTroca .radio2 {
-    margin-left: 42px;
-}
-
-.textoArea {
-    display: flex;
-    margin: 15px 50px;
-
-}
-
-#motivo-devolucao {
-    width: 300px;
-    height: 150px;
-    margin-left: 4px;
-
-}
-
-.textoArea label {
-    margin-left: 38px;
-}
-
-.data-devolucaoOuTroca {
-    margin-left: 105px;
-}
-
-.container-tabela-devolucaoOuTroca {
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    overflow-x: auto; 
-}
-
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: Arial, sans-serif;
+.btn-registro-venda .btn-verde {
+    padding: 15px 20px;
+    transition: .3s;
     font-size: 14px;
 }
 
-.table thead th {
-    background-color: #5a317b;
-    color: #ffffff;
-    font-weight: bold;
-    padding: 12px;
-    text-align: left;
-    border-bottom: 2px solid #ddd;
-    white-space: nowrap; 
+.btn-registro-venda .btn-verde:hover {
+    box-shadow: 0px 0px 8px #6837819b;
+    transform: scale(1.05);
+    transition: .3s;
 }
 
-.table tbody tr {
-    transition: background-color 0.3s ease;
+/* estilo do cabeçalho */
+.interface-header {
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
-.table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+header {
+    width: 100%;
+    background-color: #683781;
 }
 
-.table tbody tr:hover {
-    background-color: #e6f7ff;
+.top-header {
+    background-color: #D6C7FB;
+    padding: 5px 4%;
 }
 
-.table td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    color: #333;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-
-@media (max-width: 768px) {
-    .table thead {
-        display: none;
-    }
-    
-    .table tbody tr {
-        display: flex;
-        flex-direction: column;
-        background-color: #ffffff;
-        margin-bottom: 10px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-    }
-    
-    .table tbody td {
-        display: flex;
-        justify-content: space-between;
-        padding: 8px 10px;
-        font-size: 0.9em;
-    }
-    
-    .table tbody td::before {
-        content: attr(data-label);
-        font-weight: bold;
-        color: #4a90e2;
-        margin-right: 10px;
-        flex: 1;
-    }
-}
-
-
-/*Fim Devolução ou troca*/
-/*Registro de venda*/
-.container-registroVenda {
+.top-header>.interface-header {
     display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-}
-
-.formulario-registroVenda,
-.tabela-itens-venda {
-    margin-top: 30px;
-}
-
-.formulario-registroVenda form {
-    margin-bottom: 20px;
-}
-
-.formulario-registroVenda select {
-    margin-bottom: 20px;
-}
-
-#cpf-label {
-    margin-left: 35px;
-}
-
-#funcionario-venda {
-    margin-left: 0px;
-}
-
-#funcionario-label {
-    margin-left: 80px;
-}
-
-#gerar-venda {
-    margin-left: 200px;
-    margin-bottom: 30px;
-}
-
-#quantidadeProduto-venda {
-    margin-top: 30px;
-}
-
-#quantidade-label {
-    margin-left: 53px;
-}
-
-#buscar-produto {
-    width: 150px;
-    margin-left: 180px;
-    margin-bottom: 20px;
-}
-
-.botoes-formulario {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
-}
-
-#voltar-venda {
-    margin-right: 58px;
-    background-color: #D6C6FB;
-    color: #000;
-}
-
-#h6 {
-    margin: -20px;
-}
-
-#venda-itens {
-    display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
-.tabela-itens-venda {
-    width: 50%;
-}
-
-#tabela-registro {
-    height: 450px;
-    border: 2px solid black;
-    border-color: #000;
-}
-
-#itens-Registro {
-    margin-right: 100px;
-}
-
-#cancelar-registrar {
-    margin-top: 90px;
-}
-
-#cancelar-venda {
-    margin-left: 330px;
-    background-color: #D6C6FB;
-    color: #000;
-}
-
-#cancelar-venda:disabled {
-    background-color: #e9ecef;
-    color: white;
-}
-
-/*Fim Registro de venda*/
-/*vendas*/
-.container-vendas {
+.top-header .logo {
     display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
+    align-items: center;
+    gap: 30px;
 }
 
-.container-relatorio {
+.top-header .logo a img {
+    width: 65px;
+}
+
+.top-header .top-titulo {
+    font-size: 25px;
+    color: #683781;
+}
+
+.botton-header nav ul {
     display: flex;
-    justify-content: space-around;
-    margin-top: 40px;
-}
-
-.container-relatorio h4 {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.container-relatorio form {
-    display: flex;
-}
-
-#voltarParaVenda {
-    margin: 20px 20px;
-}
-
-.inicio,
-.final {
-    margin-top: 45px;
-    margin-right: 10px;
-}
-
-.pesquisar-vendas label {
-    margin-bottom: 15px;
-}
-
-#criterio-pesquisa {
-    margin-bottom: 15px;
-    margin-left: 80px;
-}
-
-#produtosMaisVendidos,
-#totalVendas,
-#mediaLucro,
-#totalProdutosDevolvido,
-#metodoPagamentoMaisUsado,
-#clientesMaisFrquentes,
-#faturamentoTotal,
-#lucroTotal {
-    border: 2px solid black;
-    width: 400px;
-    margin-left: 470px;
-}
-
-.tabela-itensVenda {
-    width: 50%;
-}
-
-/*Fim vendas*/
-/*Responsividade*/
-
-/*login*/
-@media (max-width: 1418px) {
-    .container .login {
-        margin-right: 500px;
-    }
-}
-
-@media (max-width: 960px) {
-    .container {
-        flex-direction: column;
-        margin: 0px 0;
-    }
-
-    .container .login {
-        justify-content: center;
-        margin-right: 130px;
-    }
-}
-
-/*produtos*/
-@media (max-width: 1100px) {
-    .container-produtos {
-        width: 100%;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .formulario-produtos-um {
-        margin-left: 0;
-        width: 100%;
-    }
-
-    .formulario-produtos-dois {
-        width: 100%;
-    }
-}
-
-@media (max-width: 853px) {
-    .botoes-formulario {
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 692px) {
-    .formulario-produtos-um {
-        margin-right: 0;
-    }
-}
-
-@media (max-width: 508px) {
-    #descricao {
-        width: 375px;
-        height: 250px;
-    }
-}
-
-@media (max-width: 454px) {
-    .titulo h1 {
-        font-size: 30px;
-    }
-
-    #descricao {
-        width: 350px;
-        height: 250px;
-    }
-}
-
-@media (max-width: 386px) {
-    .formulario-produtos-dois {
-        width: 100%;
-        padding: 0px;
-        margin: 0px 0px;
-    }
-
-    #descricao {
-        width: 300px;
-        height: 250px;
-    }
-
-    #LocalPrateleiraDiv {
-        width: 100%;
-        padding: 0px;
-        margin: 10px 0px;
-    }
-
-    #prateleiraDiv {
-        width: 100%;
-        padding: 0px;
-        margin: 10px 0px;
-    }
-
-    #categoriaDiv {
-        width: 100%;
-        padding: 0px;
-        margin: 10px 0px;
-    }
-}
-
-/*Cliente*/
-@media (max-width: 545px) {
-    .container-cliente {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    #botao-pesquisar-cliente {
-        margin-bottom: 30px;
-    }
-}
-
-/*Registro de venda*/
-
-@media (max-width: 1002px) {
-    .container-registroVenda {
-        flex-direction: column;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-    }
-}
-
-@media (max-width: 861px) {
-    .botoes-formulario {
-        justify-content: center;
-        flex-direction: row;
-        gap: 10px;
-        width: 100%;
-        margin: 0;
-    }
-
-    #cancelar-venda,
-    #finalizar-venda {
-        width: 150px;
-        margin: 0;
-    }
-}
-
-/*Devolução ou Troca*/
-@media (max-width: 966px) {
-    .container-devolucaoOuTroca {
-        flex-direction: column;
-        width: 100%;
-    }
-}
-
-@media (max-width: 812px) {
-    .botoes-formulario {
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 966px) {
-    .pesquisar-devolucaoOuTroca {
-        margin-left: 15px;
-    }
-
-}
-
-@media (max-width: 491px) {
-    .container-menu {
-        justify-content: center;
-        width: 100%;
-        padding: 0px;
-        margin: 0px;
-    }
-
-    header {
-        width: 100%;
-        margin: 0px;
-        padding: 0px;
-    }
-
-    .logo-topo img {
-        max-width: 100%;
-
-    }
-
-    html,
-    body {
-        margin: 0px;
-        padding: 0px;
-        width: 100%;
-        overflow-x: hidden;
-    }
-
-}
-
-@media (max-width: 491px) {
-    #motivo-devolucaoOuTroca {
-        width: 250px;
-    }
-}
-
-@media (max-width: 393px) {
-    #motivo-devolucaoOuTroca {
-        width: 200px;
-    }
-}
-
-/*Vendas*/
-@media (max-width: 1012px) {
-    .container-vendas {
-        flex-direction: column;
-    }
-
-    .tabela-resultadoPesquisa {
-        width: 250px;
-    }
-}
-
-@media (max-width: 1012px) {
-    .container-relatorio {
-        flex-direction: column;
-        margin-top: 80px;
-        justify-content: center;
-    }
-
-    #Voltar-limpar {
-        margin-top: 70px;
-        justify-content: center;
-        flex-direction: row;
-        gap: 10px;
-        width: 100%;
-        margin: 0;
-    }
-}
-
-@media (max-width: 862px) {
-    .relatorio form {
-        flex-direction: column;
-    }
-
-    #botao-relatorio {
-        margin-bottom: 50px;
-    }
-
-    #Voltar-limpar {
-        margin-top: 70px;
-        justify-content: center;
-        flex-direction: row;
-        gap: 10px;
-        width: 100%;
-        margin: 0;
-    }
-}
-
-/*funcionário*/
-@media (max-width: 1030px) {
-    .container-Funcionario {
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 375px) {
-    .formulario-funcionario-dois {
-        width: 100%;
-    }
-
-    #usuarioDiv {
-        width: 100%;
-        padding: 0px;
-        margin: 10px 0px;
-    }
-
-}
-
-@media (max-width: 860px) {
-    .container-menu-section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .container-menu-section div {
-        margin-bottom: 20px;
-    }
-
-    #sair {
-        width: 100%;
-        display: flex;
-        justify-content: flex-start;
-        padding-left: 650px;
-        background-color: #EFEFEF;
-    }
-}
-/*relatório*/
-@media (max-width: 984px) {
-    #relatorio-section {
-        margin-right: 400px;
-        margin: 0px;
-    }
-    .resultado-relatorio div{
-        width: 100%;
-    }
-    @media (max-width: 984px) {
-        #relatorio-section {
-            margin-right: 500px;
-        }
-        #voltarParaVenda{
-            margin-left: 60px;
-        }
-    }
-    @media (max-width: 498px) {
-        .resultado-relatorio {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: start;
-            width: 100%; 
-        }
-        
-        .resultado-relatorio div {
-            width: 100%; 
-            padding: 0px;
-            box-sizing: border-box; 
-            border: 1px solid black; 
-            margin-bottom: 20px;
-        }
-        
-        #voltarParaVenda {
-            margin-top: 40px;
-            display: flex;
-            justify-content: center;
-        }
-    }
-
-.resultado-relatorio {
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    list-style-type: none;
+}
+
+.botton-header nav ul li a {
+    color: #D6C7FB;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px 30px;
+    text-decoration: none;
+    display: block;
+    transition: .5s;
+
+}
+
+.botton-header nav ul li a:hover {
+    background-color: #D97BF9;
+    font-weight: 600;
+    color: #683781;
+    box-shadow: inset 0 0 8px #683781c7;
+
+}
+
+.drop-hover {
+    position: relative;
+}
+
+.drop-hover .drop {
+    position: absolute;
+    background-color: #714089;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.drop-hover .drop a {
+    padding: 15px;
+}
+
+.drop-hover:hover .drop {
+    height: 315px;
+}
+
+/* Estilo do menu mobile */
+.btn-abrir-menu {
+    display: none;
+}
+
+.btn-abrir-menu i {
+    color: #683781;
+    font-size: 40px;
+}
+
+.menu-mobile {
+    background-color: #683781;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9999999;
+    width: 0%;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.menu-mobile.abrir-menu {
+    width: 70%;
+}
+
+.menu-mobile.abrir-menu~.overlay-menu {
+    display: block;
+}
+
+.menu-mobile nav ul {
+    text-align: right;
+    list-style-type: none;
+}
+
+.menu-mobile nav ul li a {
+    display: block;
+    color: #D6C7FB;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 5px 8%;
+    text-decoration: none;
+
+}
+
+.menu-mobile nav ul li a:hover {
+    background-color: #D97BF9;
+    color: #D6C7FB;
+    font-weight: 600;
+}
+
+.menu-mobile .btn-fechar i {
+    color: #D6C7FB;
+    font-size: 30px;
+}
+
+.menu-mobile .btn-fechar {
+    padding: 20px 5%;
+}
+
+.overlay-menu {
+    background-color: #000000a9;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 8999999;
+    display: none;
+}
+
+/* Fim do estilo geral */
+/* Estilo da sessão login */
+section.inicio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section.inicio .interface {
+    display: flex;
+    align-items: center;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    margin-top: -60px;
+}
+
+.login .login-formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+.login img {
+    width: 95px;
+}
+
+.login h1 {
+    font-size: 65px;
+    color: #683781;
+}
+
+.login h3 {
+    color: #683781;
+}
+
+#senha-login {
+    margin-top: 8px;
+}
+
+.login input {
+    padding: 6px 47px;
+    border-radius: 15px;
+    margin-top: 0px;
+}
+
+.inicio .btn-branco {
+    padding: 8px 35px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 15px;
+    background-color: #ffffff;
+    color: #D6C7FB;
+    border: 0;
+    cursor: pointer;
+}
+
+.btn {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Estilo da sessão início */
+.img-inicio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.img-inicio img {
+    width: 530px;
+    height: 530px;
+}
+
+/* Estilo da página cadastrar produto */
+section.formulario-produto {
+    padding: 20px 4%;
+}
+
+section.formulario-produto .interface-form {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+section.formulario-produto .flex {
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+section.formulario-produto .flex h3 {
+    margin-top: 10px;
+    color: #683781;
+}
+
+section.formulario-produto .flex .form-left {
+    display: flex;
+    flex-direction: column;
+}
+
+section.formulario-produto .flex .form-right {
+    display: flex;
+    flex-direction: column;
+}
+
+section.formulario-produto .flex input,
+section.formulario-produto .flex select {
+    width: 300px;
+    padding: 5px;
+    border-radius: 8px;
+
+}
+
+section.formulario-produto .flex textarea {
+    width: 300px;
+    height: 110px;
+    border-radius: 8px;
+}
+
+.form-btn {
+    display: flex;
+    justify-content: right;
+}
+
+.form-btn button {
+    margin-right: 268px;
+    margin-top: 40px;
+}
+
+/* Estilo da página pesquisar produtos */
+section.pesquisar-produto .interface-pesquisar {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+section.pesquisar-produto .interface-pesquisar .flex {
+    justify-content: space-around;
+}
+
+section.pesquisar-produto .interface-pesquisar .flex .form-pesquisar {
+    display: flex;
+    flex-direction: column;
+    margin-top: 33px;
+}
+
+section.pesquisar-produto .interface-pesquisar .flex .form-pesquisar input,
+section.pesquisar-produto .interface-pesquisar .flex .form-pesquisar select {
+    margin: 10px;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+section.pesquisar-produto .btn-pesquisar-produto {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+section.pesquisar-produto .flex .resultado-pesquisa-produto {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+
+}
+
+section.pesquisar-produto .interface-pesquisar .flex h3 {
+    color: #683781;
+    font-size: 15px;
+}
+
+section.pesquisar-produto .interface-pesquisar .flex .form-left {
+    display: flex;
+    flex-direction: column;
+
+}
+
+section.pesquisar-produto .interface-pesquisar .flex .form-right {
+    display: flex;
+    flex-direction: column;
+}
+
+section.pesquisar-produto .interface-pesquisar .flex input,
+section.pesquisar-produto .interface-pesquisar .flex select {
+    width: 280px;
+    padding: 3px;
+    border-radius: 8px;
+
+}
+
+section.pesquisar-produto .interface-pesquisar .flex textarea {
+    width: 280px;
+    height: 90px;
+    border-radius: 8px;
+}
+
+.form-btn {
+    display: flex;
+    justify-content: right;
+}
+
+.form-btn-atualizar button {
+    margin-right: 5px;
+    margin-top: 20px;
+}
+
+.form-btn-atualizar {
+    display: flex;
+    justify-content: right;
+    margin-right: 95px;
+    margin-top: 10px;
+}
+
+/* Estilo da tabela produtos */
+section.tabela-produto-pesquisar .interface-pesquisar {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+section.tabela-produto-pesquisar .table-produto {
+    margin-top: 15px;
+    background-color: #683781;
+    border-radius: 8px;
+    padding: 5px 5px;
+    margin-left: 56px;
+}
+
+section.tabela-produto-pesquisar th {
+    font-size: 10px;
+    color: #D6C7FB;
+    padding: 5px 6px;
+}
+
+/* Estilo da página cadastrar funcionário */
+section.formulario-funcionario {
+    padding: 20px 4%;
+}
+
+section.formulario-funcionario .interface-form-func {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+section.formulario-funcionario .flex {
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+section.formulario-funcionario .flex h3 {
+    margin-top: 10px;
+    color: #683781;
+}
+
+section.formulario-funcionario .flex .form-left-func {
+    display: flex;
+    flex-direction: column;
+}
+
+section.formulario-funcionario .flex .form-right-func {
+    display: flex;
+    flex-direction: column;
+}
+
+section.formulario-funcionario .flex input,
+section.formulario-funcionario .flex select {
+    width: 300px;
+    padding: 5px;
+    border-radius: 8px;
+
+}
+
+/* Estilo da página de pesquisar funcionários */
+section.pesquisar-func .interface-pesquisar-func {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+section.pesquisar-func .interface-pesquisar-func .flex {
+    justify-content: space-around;
+}
+
+section.pesquisar-func .interface-pesquisar-func .flex .form-pesquisar-func {
+    display: flex;
+    flex-direction: column;
+    margin-top: 33px;
+}
+
+section.pesquisar-func .interface-pesquisar-func .flex .form-pesquisar-func input,
+section.pesquisar-func .interface-pesquisar-func .flex .form-pesquisar-func select {
+    padding: 5px;
+    border-radius: 8px;
+}
+
+section.pesquisar-func .btn-pesquisar-func {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.section.pesquisar-func .btn-pesquisar-func .btn-verde button {
+    width: 15px;
+}
+
+section.pesquisar-func .flex .resultado-pesquisa-func {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+
+}
+
+section.pesquisar-func .interface-pesquisar-func .flex h3 {
+    color: #683781;
+    font-size: 15px;
+}
+
+section.pesquisar-func .interface-pesquisar-func .flex .form-left-func-pesquisa {
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+section.pesquisar-func .interface-pesquisar-func .flex .form-right-func-pesquisa {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-btn-atualizar-func {
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+}
+
+
+section.pesquisar-func .interface-pesquisar-func .flex input,
+section.pesquisar-func .interface-pesquisar-func .flex select {
+    width: 280px;
+    padding: 3px;
+    border-radius: 8px;
+
+}
+
+section.pesquisar-func .interface-pesquisar-func .flex textarea {
+    width: 280px;
+    height: 90px;
+    border-radius: 8px;
+}
+
+
+
+/* Estilo da tabela funcionários */
+section.tabela-func-pesquisar .interface-pesquisar-func {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+section.tabela-func-pesquisar .table-func {
+    margin-top: 20px;
+    background-color: #683781;
+    border-radius: 8px;
+    padding: 5px 5px;
+
+}
+
+section.tabela-func-pesquisar th {
+    font-size: 14px;
+    color: #D6C7FB;
+    padding: 5px 29px;
+}
+
+section.tabela-func-pesquisar .flex {
+    justify-content: center;
+}
+
+/* Estilo da página cadastrar clientes */
+section.formulario-cliente {
+    padding: 20px 4%;
+}
+
+section.formulario-cliente .interface-form-cliente {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+section.formulario-cliente .flex {
+    justify-content: center;
+    align-items: center;
+}
+
+section.formulario-cliente .flex h3 {
+    margin-top: 10px;
+    color: #683781;
+}
+
+section.formulario-cliente .flex {
+    display: flex;
+    flex-direction: column;
+}
+
+section.formulario-cliente .flex input,
+section.formulario-cliente .flex select {
+    width: 300px;
+    padding: 5px;
+    border-radius: 8px;
+
+}
+
+.form-btn-cliente {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 150px;
+
+}
+
+.form-btn button {
+    margin-right: 489px;
+    margin-top: 30px;
+}
+
+/* Estilo da página pesquisar clientes */
+section.pesquisar-cliente .interface-pesquisar-cliente {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+section.pesquisar-cliente .interface-pesquisar-cliente .flex {
+    justify-content: center;
+    gap: 150px;
+}
+
+section.pesquisar-cliente .interface-pesquisar-cliente .flex .form-pesquisar-cliente {
+    display: flex;
+    flex-direction: column;
+    margin-top: 33px;
+}
+
+section.pesquisar-cliente .interface-pesquisar-cliente .flex .form-pesquisar-cliente input,
+section.pesquisar-cliente .interface-pesquisar-cliente .flex .form-pesquisar-cliente select {
+    padding: 5px;
+    border-radius: 8px;
+}
+
+section.pesquisar-cliente .btn-pesquisar-cliente {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.section.pesquisar-cliente .btn-pesquisar-cliente .btn-verde button {
+    width: 15px;
+}
+
+section.pesquisar-cliente .flex .resultado-pesquisa-cliente {
+    display: flex;
+    flex-direction: column;
+}
+
+section.pesquisar-cliente .interface-pesquisar-cliente .flex h3 {
+    color: #683781;
+    font-size: 15px;
+    padding-top: 5px;
+}
+
+section.pesquisar-cliente .interface-pesquisar-func .flex .resultado-pesquisa-cliente {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: end;
+
+}
+
+section.pesquisar-cliente .interface-pesquisar-cliente .flex input,
+section.pesquisar-cliente .interface-pesquisar-cliente .flex select {
+    width: 280px;
+    padding: 3px;
+    border-radius: 8px;
+
+}
+
+.form-btn-atualizar-cliente {
+
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+}
+
+
+
+
+/* Estilo da tabela clientes */
+section.tabela-cliente-pesquisar .interface-pesquisar-cliente {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+section.tabela-cliente-pesquisar .table-cliente {
+    background-color: #683781;
+    border-radius: 8px;
+    padding: 5px 5px;
+
+}
+
+section.tabela-cliente-pesquisar th {
+    font-size: 14px;
+    color: #D6C7FB;
+    padding: 5px 30px;
+}
+
+section.tabela-cliente-pesquisar .flex {
+    justify-content: center;
+}
+
+/* Estilo da página devolução */
+section.formulario-devolucao .flex {
+    justify-content: center;
+    margin-top: 30px;
+}
+
+section.formulario-devolucao .flex h3 {
+    margin-top: 15px;
+    color: #683781;
+}
+
+section.formulario-devolucao .flex input {
+    width: 300px;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+section.formulario-devolucao .flex textarea {
+    width: 300px;
+    height: 150px;
+    border-radius: 8px;
+    resize: none;
+    max-height: 200px;
+}
+
+section.formulario-devolucao .form-btn-devolucao {
+    display: flex;
+    justify-content: space-around;
+}
+
+section.formulario-devolucao .form-btn-devolucao button {
+    margin-top: 30px;
+    margin-left: 155px;
+}
+
+/* Estilo da página registrar troca */
+section.formulario-troca .flex {
+    justify-content: center;
+    margin-top: 30px;
+}
+
+section.formulario-troca .flex h3 {
+    margin-top: 15px;
+    color: #683781;
+}
+
+section.formulario-troca .flex input {
+    width: 300px;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+section.formulario-troca .flex textarea {
+    width: 300px;
+    height: 150px;
+    border-radius: 8px;
+    resize: none;
+    max-height: 200px;
+}
+
+section.formulario-troca .form-btn-troca {
+    display: flex;
+    justify-content: space-around;
+}
+
+section.formulario-troca .form-btn-troca button {
+    margin-top: 30px;
+    margin-left: 155px;
+}
+
+/* Estilo da página pesquisar devolução */
+.interface-form-devolucao {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 20px;
+
+}
+
+section.formulario-pesquisar-devolucao .flex {
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+section.formulario-pesquisar-devolucao .flex h3 {
+    margin-top: 15px;
+    color: #683781;
+}
+
+section.formulario-pesquisar-devolucao .flex input {
+    width: 300px;
+    height: 35px;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+section.formulario-pesquisar-devolucao .flex textarea {
+    width: 300px;
+    height: 150px;
+    border-radius: 8px;
+    resize: none;
+    max-height: 200px;
+}
+
+section.formulario-pesquisar-devolucao .form-btn-troca {
+    display: flex;
+    justify-content: space-around;
+}
+
+section.formulario-pesquisar-devolucao .form-btn-troca button {
+    margin-top: 30px;
+    margin-left: 155px;
+}
+
+section.formulario-pesquisar-devolucao .flex .form-pesq-devolucao {
+    display: flex;
+    flex-direction: column;
+}
+
+section.formulario-pesquisar-devolucao .flex .form-pesq-devolucao .btn-pesquisar-devolucao {
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+section.formulario-pesquisar-devolucao .form-btn-pesquisar-devolucao {
+    display: flex;
+    justify-content: end;
+}
+
+section.formulario-pesquisar-devolucao .form-btn-pesquisar-devolucao button {
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+}
+
+/* Estilo da tabela pesquisar devolução */
+section.tabela-devolucao-pesquisar .interface-pesquisar-devolucao {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+section.tabela-devolucao-pesquisar .table-devolucao {
+    margin-top: 20px;
+    background-color: #683781;
+    border-radius: 8px;
+    padding: 5px 5px;
+
+}
+
+section.tabela-devolucao-pesquisar th {
+    font-size: 14px;
+    color: #D6C7FB;
+    padding: 5px 90px;
+}
+
+section.tabela-devolucao-pesquisar .flex {
+    justify-content: center;
+}
+
+/* Estilo da página pesquisar troca */
+section.formulario-pesquisar-troca .flex {
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+section.formulario-pesquisar-troca .flex h3 {
+    margin-top: 15px;
+    color: #683781;
+}
+
+section.formulario-pesquisar-troca .flex .form-pesq-troca .btn-pesquisar-troca {
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+section.formulario-pesquisar-troca .flex input {
+    width: 300px;
+    height: 35px;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+section.formulario-pesquisar-troca .flex textarea {
+    width: 300px;
+    height: 150px;
+    border-radius: 8px;
+    resize: none;
+    max-height: 200px;
+}
+
+
+/* Estilo da tabela pesquisar troca */
+section.tabela-troca-pesquisar .interface-pesquisar-troca {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+section.tabela-troca-pesquisar .table-troca {
+    margin-top: 20px;
+    background-color: #683781;
+    border-radius: 8px;
+    padding: 5px 5px;
+
+}
+
+section.tabela-troca-pesquisar th {
+    font-size: 14px;
+    color: #D6C7FB;
+    padding: 5px 90px;
+}
+
+section.tabela-troca-pesquisar .flex {
+    justify-content: center;
+}
+
+.form-btn-pesquisar-troca {
+    display: flex;
+    justify-content: end;
+    margin-right: 187px;
+    margin-top: 20px;
+}
+
+/* Estilo da página registrar Venda */
+.registrar-venda .interface-registroVenda {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.registrar-venda .interface-registroVenda .flex {
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.registrar-venda .interface-registroVenda .flex .form-registroVenda input {
+    margin-bottom: 20px;
+    width: 300px;
+    padding: 5px 0;
+    border-radius: 8px;
+}
+
+.registrar-venda .interface-registroVenda .flex .form-registroVenda h3 {
+    color: #683781;
+    font-size: 18px;
+}
+
+.registrar-venda .interface-registroVenda .flex .form-registroVenda .btn-buscarProdutoVenda {
+    display: flex;
+    justify-content: end;
+}
+
+.registrar-venda .btn-adicionar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.registrar-venda .interface-registroVenda .flex .form-registroVenda .resultado-busca {
+    background-color: #fff;
+    width: 300px;
+    height: 70px;
+    margin: 15px 0;
+    border-radius: 8px;
+}
+
+.registrar-venda .Itens-selecionados {
+    background-color: #fff;
+    height: 100%;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.registrar-venda .Itens-selecionados h1 {
+    font-size: 30px;
+    color: #683781;
+    border-radius: 8px;
+    padding: 8px 8px;
+}
+
+.table-regitroVenda th,
+.table-regitroVenda td {
+    padding: 12px;
     text-align: center;
 }
 
-.resultado-relatorio div {
-    margin-bottom: 20px;
-    justify-content: center;
+.table-regitroVenda td:last-child a i {
+    color: #060606;
+    margin-right: 14px;
+
 }
 
-#voltarParaVenda {
-    margin-top: 40px;
+.table-regitroVenda td button {
+    background-color: white;
+    border-radius: 10px;
+    width: 17px;
+    font-size: 15px;
+    border: none;
+    font-weight: 500;
+
+
+}
+
+.table-regitroVenda td button:active {
+    color: #fff !important;
+    background-color: #683781 !important;
+}
+
+
+.table-regitroVenda td:last-child a i:hover {
+    color: red;
+}
+
+.box-itens {
+    width: 100%;
+    max-width: 800px;
+    padding: 15px;
+    overflow-x: auto;
+}
+
+.Itens-selecionados {
+    text-align: center;
+}
+
+.box-itens .table-regitroVenda {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.box-itens table td {
+    padding: 10px;
+    border-top: 2px solid #060606;
+    font-size: 16px;
+    text-align: right;
+    color: #333;
+}
+
+.table-regitroVenda td:nth-child(4) button {
+    text-align: center;
+    margin: 8px;
+}
+
+.box-itens thead th {
+    color: #683781;
+    padding: 8px 8px;
+}
+
+.table-regitroVenda tbody tr:hover {
+    background: #D6C7FB;
+}
+
+.table-regitroVenda tbody tr:hover button {
+    background: transparent;
+    border: none;
+    color: inherit;
+    box-shadow: none;
+}
+
+.box-info {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    border-top: 2px solid #060606;
+    padding-top: 5px;
+}
+
+.box-info h5 {
+    font-size: 15px;
+
+}
+
+.box-info h5 span {
+    color: #683781;
+}
+
+.table-regitroVenda {
+    margin-bottom: 80px;
+}
+
+.btn-finalizarVenda {
+    margin-top: 15px;
     display: flex;
     justify-content: center;
+    gap: 18px;
 }
+
+.btn-finalizarVenda .btn-branco {
+    border: 1px solid #683781;
+}
+
+.btn-finalizarVenda {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.Itens-selecionados {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Estilo para telas menores que 784px */
+@media screen and (max-width: 882px) {
+
+    /* Classes gerais */
+    .flex {
+        flex-direction: column;
+    }
+
+    section.top-header .top-titulo h1 {
+        font-size: 18px;
+    }
+
+    /* Cabeçalho */
+    section.top-header .btn-registro-venda .btn-verde {
+        display: none;
+    }
+
+    section.botton-header nav {
+        display: none;
+    }
+
+    section.img-inicio {
+        margin-top: 30px;
+    }
+
+    section.img-inicio img {
+        width: 100%;
+    }
+
+    .btn-abrir-menu {
+        display: contents;
+    }
+
+    /* cadastrar cliente */
+    section.formulario-cliente .form-center-cliente h3 {
+        margin-top: 25px;
+
+    }
+
+    section.formulario-cliente .form-center-cliente {
+        margin-top: -30px;
+    }
+
+    .form-btn-cliente button {
+        margin-top: 20px;
+
+    }
+
+    .form-btn-cliente {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        margin-left: 0;
+
+    }
+
+    /* Cadastrar funcionário */
+    section.formulario-funcionario .flex {
+        gap: 10px;
+        margin-top: -20px;
+    }
+
+    /* cadastrar produto */
+    section.formulario-produto .flex {
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: -20px;
+    }
+
+    .form-btn-atualizar-produto {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    /* login */
+    section.inicio .interface {
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 200px;
+    }
+
+    .mac {
+        display: none;
+    }
+
+    /* pesquisar cliente */
+    section.pesquisar-cliente .interface-pesquisar-cliente .flex {
+        margin-top: -50px;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .form-btn-atualizar-cliente {
+
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .tabela-cliente-pesquisar .table-cliente .linha {
+        display: none;
+    }
+
+    /* pesquisar devolução */
+    section.formulario-pesquisar-devolucao .interface-form-devolucao .form-pesquisar-devolucao .flex {
+        margin-top: -10px;
+        align-items: center;
+        gap: 30px;
+    }
+
+    section.formulario-pesquisar-devolucao .form-btn-pesquisar-devolucao {
+        display: flex;
+        justify-content: center;
+    }
+
+    section.tabela-devolucao-pesquisar .table-devolucao th {
+        color: #D6C7FB;
+        padding: 0px 0px;
+    }
+
+    .tabela-devolucao-pesquisar .table-devolucao .linha {
+        display: none;
+    }
+
+    /* pesquisar funcionários */
+    section.pesquisar-func .interface-pesquisar-func .flex {
+        margin-top: -50px;
+        align-items: center;
+        gap: 30px;
+    }
+
+    section.pesquisar-func .flex .resultado-pesquisa-func {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    section.formulario-pesquisar-devolucao .form-btn-troca button {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .form-btn-atualizar-func {
+
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .form-btn-atualizar-func button {
+        margin-right: 0px;
+    }
+
+    .tabela-func-pesquisar .table-func .linha {
+        display: none;
+    }
+
+    /* Pesquisar produto */
+    section.pesquisar-produto .interface-pesquisar .flex {
+        margin-top: -50px;
+        align-items: center;
+        gap: 30px;
+    }
+
+    section.pesquisar-produto .flex .resultado-pesquisa-produto {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .form-btn-atualizar {
+        display: flex;
+        justify-content: center;
+        margin-right: 0px;
+        margin-top: 10px;
+    }
+
+    .tabela-produto-pesquisar .table-produto .linha {
+        display: none;
+    }
+
+    section.tabela-produto-pesquisar .table-produto {
+        margin-top: 0px;
+        background-color: #683781;
+        border-radius: 8px;
+        padding: 5px 5px;
+        margin-left: 0;
+    }
+
+    /* Pesquisar troca */
+    section.formulario-pesquisar-troca .interface-form-troca .form-pesquisar-troca .flex {
+        margin-top: -10px;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .form-btn-pesquisar-troca {
+
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    section.tabela-troca-pesquisar .table-troca th {
+        color: #D6C7FB;
+        padding: 0px 0px;
+    }
+
+    section.formulario-pesquisar-troca .form-btn-pesquisar-troca {
+        display: flex;
+        justify-content: center;
+        margin-right: 0;
+    }
+
+    .tabela-troca-pesquisar .table-troca .linha {
+        display: none;
+    }
+
+    /* Registro de devolução */
+    section.formulario-devolucao {
+        margin-top: -50px;
+    }
+
+    section.formulario-devolucao .flex {
+        justify-content: center;
+    }
+    /* Registro de venda */
+    section.registrar-venda .flex{
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+    section.registrar-venda .Itens-selecionados{
+        width: 100%;
+        margin: 0 8px;
+    }
+    .box-itens .table-regitroVenda thead tr th {
+      font-size: 11px;
+      padding-right: 5px;
+    }
+    .box-itens .table-regitroVenda tbody tr td{
+        font-size: 11px;
+       
+    }
+    
+    .table-regitroVenda tbody .quant-venda, .nome-produto-venda, .preço-produto-venda, .subTotal-produto-venda {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .box-itens btn-verde, .box-itens .btn-branco{
+        font-size: 15px;
+    }
+ 
 }

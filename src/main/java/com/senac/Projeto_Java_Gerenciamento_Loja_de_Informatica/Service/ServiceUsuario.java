@@ -2,6 +2,7 @@ package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service;
 
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.CriptografarSenha;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Usuario;
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.UsuarioAutenticar;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Repository.RepositoryUsuario;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -47,22 +48,22 @@ public class ServiceUsuario {
 
     
 
-    public boolean autenticarUsuario(Usuario usuario, Model model) {
+    public UsuarioAutenticar autenticarUsuario(Usuario usuario) {
+        UsuarioAutenticar usuarioAutenticado = null;
         CriptografarSenha  criptografarSenha = new CriptografarSenha();
-        String senhaCriptografada = criptografarSenha.convertToMD5(usuario.getSenha());
-        boolean usuarioEncontrado = false;
-        List<Usuario> listaUsuario = listarUsuario();
-
-       for (Usuario u : listaUsuario) {
-    if (usuario.getLogin().equalsIgnoreCase(u.getLogin()) && senhaCriptografada.equalsIgnoreCase(u.getSenha())) {
-        usuarioEncontrado = true;
-        model.addAttribute("usuarioNome", u.getLogin());
-        model.addAttribute("tipoUsuario", u.getTipoUsuario());
-        System.out.println("Tipo de usuário: " + u.getTipoUsuario());
-        break;
-    }
-}
-        return usuarioEncontrado;
+        String senhaCrip = criptografarSenha.convertToMD5(usuario.getSenha());
+        System.out.println(senhaCrip);
+        List<Usuario> usuarios = listarUsuario();
+        for(Usuario u : usuarios){
+            if(usuario.getLogin().equalsIgnoreCase(u.getLogin()) && senhaCrip.equalsIgnoreCase(u.getSenha())){
+               usuarioAutenticado = new UsuarioAutenticar();
+                usuarioAutenticado.setTipo(u.getTipoUsuario());
+               usuarioAutenticado.setLogin(u.getLogin());
+               u.setUltimo_login(LocalDate.now());
+               atualizar(u.getId(), u);
+            }
+        }
+       return usuarioAutenticado;
     }
 
 

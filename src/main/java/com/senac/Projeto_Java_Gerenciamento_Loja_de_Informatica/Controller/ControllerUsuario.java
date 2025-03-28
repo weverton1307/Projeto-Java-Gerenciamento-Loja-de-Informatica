@@ -6,6 +6,8 @@ package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Controller;
 
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Usuario;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceUsuario;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,32 +23,6 @@ public class ControllerUsuario {
     @Autowired
     ServiceUsuario serviceUsuario;
 
-    @GetMapping("/inicio")
-    public String inicio(Model model, @ModelAttribute Usuario usuario) {
-        model.addAttribute("usuario", new Usuario());
-        return "index";
-    }
-
- @PostMapping("/login")
-public String logar(Model model, @ModelAttribute Usuario usuario) {
-    boolean usuarioAutenticado = serviceUsuario.autenticarUsuario(usuario, model);
-
-    if (usuarioAutenticado) {
-        List<Usuario> listaUsuario = serviceUsuario.listarUsuario();
-       Usuario usuarioEncontrado = null;
-       for(Usuario u: listaUsuario){
-           if(u.getLogin().equalsIgnoreCase(usuario.getLogin())){
-               usuarioEncontrado = u;
-           }
-       }
-       usuarioEncontrado.setUltimo_login(LocalDate.now());
-       serviceUsuario.atualizar(usuarioEncontrado.getId(), usuarioEncontrado);
-        return "menu";  
-    } else {
-        model.addAttribute("erro", "Usuário inválido. Usuário ou senha inválida");
-        return "index";
-    }
-}
     @GetMapping("/menu")
     public String abrirMenu(Model model) {
         return "menu";
