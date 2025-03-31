@@ -36,28 +36,18 @@ public class ControllerAutenticacao {
             model.addAttribute("usuarioNome", sessao.getAttribute("usuario"));
             model.addAttribute("tipoUsuario", sessao.getAttribute("tipo"));
             return "inicio";
-        } else {
+        }else {
             model.addAttribute("erro", "Usuário ou senha inválida");
             return "index";
         }
     }
 
-    @RequestMapping("/autentica")
-    public ModelAndView inicio(HttpServletRequest request) {
-     HttpSession sessao = request.getSession();
-     String usuario = (String) sessao.getAttribute("usuario");
-        if ( sessao.getAttribute("usuario") != null & usuario.equalsIgnoreCase(loginEncontrado)) {
-            return new ModelAndView("inicio");    
-        }else{
-            return new ModelAndView("redirect:/"); 
-        }  
-    }
-
     @RequestMapping("/inicio")
-    public ModelAndView acessarInicio(HttpServletRequest request) {
+    public ModelAndView acessarInicio(HttpServletRequest request, Model model) {
         HttpSession sessao = request.getSession();
          String usuario = (String) sessao.getAttribute("usuario");
         if (sessao.getAttribute("usuario") != null && usuario.equalsIgnoreCase(loginEncontrado)) {
+             model.addAttribute("tipoUsuario", sessao.getAttribute("tipo"));
             return new ModelAndView("inicio");
         }else{
              return new ModelAndView("redirect:/");
