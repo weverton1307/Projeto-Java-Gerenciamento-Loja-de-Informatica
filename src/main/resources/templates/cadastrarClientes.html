@@ -15,19 +15,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!--end icons bootstrap-->
     <link rel="stylesheet" href="./css/style.css">
-    <!-- style -->
+    <!--end style -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- jquery -->
+    <!--end jquery -->
 </head>
+
 <body>
+    <div th:insert="navbar :: body"></div>
+    <!-- end cabeçalho -->
     <main>
-        <div th:insert="navbar :: body"></div>
         <section class="formulario-cliente">
             <div class="interface-form-cliente">
-                <form class="form-cliente"  id="formularioCliente">
+                <form class="form-cliente" id="formularioCliente">
                     <div class="flex">
                         <div class="form-center-cliente">
-                           
+
                             <h3>Nome</h3>
                             <input id="nomeCliente" type="text" th:field="${cliente.nome}" required>
                             <h3>Endereço</h3>
@@ -38,23 +40,25 @@
                             <input id="telefoneCliente" type="text" th:field="${cliente.telefone}" required>
                             <h3>E-mail</h3>
                             <input id="emailCliente" type="email" th:field="${cliente.email}" required>
-                            <input type="hidden" id="clienteId" name="id" value="${cliente.id != null ? cliente.id : ''}" />
+                            <input type="hidden" id="clienteId" name="id"
+                                value="${cliente.id != null ? cliente.id : ''}" />
                         </div>
                     </div>
-                    <!-- flex -->
+                    <!--end flex -->
                 </form>
                 <div class="form-btn-cliente">
                     <button id="teste">teste</button>
                     <button class="btn-verde" id="salvarCliente">CADASTRAR</button>
                 </div>
-                <!-- form-cliente -->
+                <!--end form-cliente -->
             </div>
-            <!--interface-form-cliente -->
+            <!--end interface-form-cliente -->
         </section>
-        <!-- formulario-cliente -->
-    </main> 
-    <script th:src="@{/js/js.js}" ></script>
-      <!-- javaScript  -->
+        <!--end formulario-cliente -->
+    </main>
+    <!-- end main -->
+    <script th:src="@{/js/js.js}"></script>
+    <!--end javaScript  -->
 </body>
 
 </html>

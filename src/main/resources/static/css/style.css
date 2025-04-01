@@ -488,8 +488,11 @@ section.formulario-funcionario .flex select {
     width: 300px;
     padding: 5px;
     border-radius: 8px;
-
 }
+.interface-form-func .form-btn-atualizar-func button{
+    margin-right: 285px;
+}
+
 
 /* Estilo da página de pesquisar funcionários */
 section.pesquisar-func .interface-pesquisar-func {
@@ -1221,7 +1224,9 @@ section.tabela-troca-pesquisar .flex {
         gap: 10px;
         margin-top: -20px;
     }
-
+    .interface-form-func .form-btn-atualizar-func button{
+        margin-right: 0;
+    }
     /* cadastrar produto */
     section.formulario-produto .flex {
         justify-content: center;

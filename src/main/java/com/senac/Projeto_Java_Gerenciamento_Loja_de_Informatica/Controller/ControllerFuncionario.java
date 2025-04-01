@@ -31,15 +31,15 @@ public class ControllerFuncionario {
     @Autowired
     ServiceUsuario serviceUsuario;
 
-    @GetMapping("/funcionarios")
+    @GetMapping("/cadastrarFuncionario")
     public String inicio(Model model) {
         model.addAttribute("funcionario", new Funcionario());
         model.addAttribute("cargo", new Cargo());
         model.addAttribute("usuario", new Usuario());
-        return "funcionarios";
+        return "cadastrarFuncionario";
     }
 
-    @PostMapping("/funcionarios")
+    @PostMapping("/processarFormulario")
     public String processarFormulario(Model model, @RequestBody Funcionario funcionario) {
         if (serviceCargo == null) {
             System.out.println("serviceCargo está nulo!");
@@ -61,7 +61,7 @@ public class ControllerFuncionario {
         funcionario.setUsuario(usuario);
         serviceFuncionario.criarFuncionario(funcionario);
 
-        return "funcionarios";
+        return "cadastrarFuncionario";
     }
 @GetMapping("/buscar-funcionario")
 @ResponseBody 

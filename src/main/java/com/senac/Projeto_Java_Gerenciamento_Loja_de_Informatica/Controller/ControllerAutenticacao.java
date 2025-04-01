@@ -18,13 +18,15 @@ public class ControllerAutenticacao {
     String loginEncontrado = "";
     @Autowired
     ServiceUsuario serviceUsuario;
-
+    
+     // Controller para exibir a página de login
     @RequestMapping("/")
     public String index(Model model) {
         model.addAttribute("usuario", new Usuario());
         return "index";
     }
-
+    
+     // Controller para validar o login do usuário
     @PostMapping("/autentica")
     public String autenticarUsuario(HttpServletRequest request, Usuario usuario, Model model) {
         HttpSession sessao = request.getSession();
@@ -41,7 +43,8 @@ public class ControllerAutenticacao {
             return "index";
         }
     }
-
+    
+     // Controller para exibir a página inicio.html
     @RequestMapping("/inicio")
     public ModelAndView acessarInicio(HttpServletRequest request, Model model) {
         HttpSession sessao = request.getSession();
@@ -53,6 +56,7 @@ public class ControllerAutenticacao {
              return new ModelAndView("redirect:/");
         } 
     }
+     // Controller para sair da sessão
     @RequestMapping("/logoff")
     public ModelAndView sair(HttpServletRequest request){
          HttpSession sessao = request.getSession();

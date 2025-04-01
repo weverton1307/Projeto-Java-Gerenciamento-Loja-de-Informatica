@@ -1,4 +1,3 @@
-
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service;
 
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Cliente;
@@ -9,24 +8,29 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ServiceCliente {
-     @Autowired
-     RepositoryCliente reposoitoryCliente;
-     
-      public Cliente buscarId(Integer id){
+
+    @Autowired
+    RepositoryCliente reposoitoryCliente;
+
+    //Função para buscar um cliente cadastrado por seu id
+    public Cliente buscarId(Integer id) {
         return reposoitoryCliente.findById(id).orElseThrow();
     }
-      
-           public Cliente criarCliente(Cliente cliente){
+    
+    //Função para cadastrar um novo cliente
+    public Cliente criarCliente(Cliente cliente) {
         cliente.setId(null);
-         reposoitoryCliente.save(cliente);
-         return cliente;
+        reposoitoryCliente.save(cliente);
+        return cliente;
     }
-           
-           public List<Cliente> listarCliente() {
+    
+    //Função para retornar uma listar com todos os clientes cadastrados
+    public List<Cliente> listarCliente() {
         return reposoitoryCliente.findAll();
     }
-           
-              public Cliente atualizar(Integer id, Cliente cliente){
+  
+    //Função para atualizar dados de um cliente cadastrado
+    public Cliente atualizar(Integer id, Cliente cliente) {
         Cliente clienteEncontrado = buscarId(id);
         clienteEncontrado.setCpf(cliente.getCpf());
         clienteEncontrado.setEmail(cliente.getEmail());
@@ -36,8 +40,9 @@ public class ServiceCliente {
         clienteEncontrado.setTotal_compras(cliente.getTotal_compras());
         return reposoitoryCliente.save(clienteEncontrado);
     }
-  
-                  public void excluir(Integer id){
+
+    //Função para excluir um cliente cadsatrado
+    public void excluir(Integer id) {
         Cliente clienteEncontrado = buscarId(id);
         reposoitoryCliente.deleteById(clienteEncontrado.getId());
     }
