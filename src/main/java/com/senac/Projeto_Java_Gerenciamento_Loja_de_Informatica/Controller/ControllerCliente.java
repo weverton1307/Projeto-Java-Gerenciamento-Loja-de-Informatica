@@ -25,19 +25,67 @@ public class ControllerCliente {
     @Autowired
     ServiceCliente serviceCliente;
 
-  @GetMapping("/cadastrarClientes")
-    public String inicio(Model model) {
+    @GetMapping("/cadastrarClientes")
+    public String inicio(Model model, HttpServletRequest request) {
+        HttpSession sessao = request.getSession();
+         String usuario = (String) sessao.getAttribute("usuario");
         model.addAttribute("cliente", new Cliente());
-        return "cadastrarClientes";
+        if (usuario != null) {
+            return "cadastrarClientes";
+        } else {
+            return "redirect:/";
+        }
+    }
+       @GetMapping("/pesquisarClientes")
+    public String pesquisarCliente(Model model, HttpServletRequest request) {
+        HttpSession sessao = request.getSession();
+         String usuario = (String) sessao.getAttribute("usuario");
+        model.addAttribute("cliente", new Cliente());
+        if (usuario != null) {
+            return "pesquisarClientes";
+        } else {
+            return "redirect:/";
+        }
     }
 
     @PostMapping("/cadastrarClientes/salvar")
-    public String cadastrarCliente(Model model, @RequestBody Cliente cliente) {
-
+    public String cadastrarCliente(Model model, @RequestBody Cliente cliente,  HttpServletRequest request) {
+ HttpSession sessao = request.getSession();
+  String usuario = (String) sessao.getAttribute("usuario");
         serviceCliente.criarCliente(cliente);
+          if (usuario != null) {
+            return "cadastrarClientes";
+        } else {
+           return "redirect:/";
+        }
+    }
 
-        return "cadastrarClientes";
+    @GetMapping("/buscar-cliente")
+    @ResponseBody
+    public ResponseEntity<?> buscarCliente(@RequestParam("id") Integer id) {
+        if (id == null || id <= 0) {
+            return ResponseEntity.badRequest().body("ID inválido.");
+        }
+
+        Cliente clienteEncontrado = serviceCliente.buscarId(id);
+        if (clienteEncontrado == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado.");
+        }
+
+        return ResponseEntity.ok(clienteEncontrado);
+    }
+    
+      @GetMapping("/listar-clientes")
+    @ResponseBody
+    public List<Cliente> listarClientes() {
+        return serviceCliente.listarCliente();  
+    }
+    
+     @PutMapping("/atualizar-Cliente")
+    public String atualizarCliente(Model model, @RequestBody Cliente cliente) {
+        serviceCliente.atualizar(cliente.getId(), cliente);
+
+        return "pesquisarClientes";
     }
 
 }
-
