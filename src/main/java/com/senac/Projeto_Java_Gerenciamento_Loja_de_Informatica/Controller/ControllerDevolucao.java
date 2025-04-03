@@ -31,20 +31,21 @@ public class ControllerDevolucao {
     ServiceProduto serviceProduto;
   @Autowired
     ServiceItensVenda serviceItensVenda;
- 
-    @GetMapping("/devolucao")
+  
+    //controller para exibir a página registrarDevolucao.html
+    @GetMapping("/registrarDevolucao")
     public String inicio(Model model) {
-
         model.addAttribute("devolucao", new Devolucao());
-        return "devolucao";
+        return "registrarDevolucao";
     }
     
+    //Controller para cadastrar devolução
   @PostMapping("/cadastro-devolucao")
 public String cadastrarDevolucao(Model model, @RequestBody Devolucao devolucao) {
     serviceDevolucao.criarDevolucao(devolucao);
     serviceProduto.atualizarDevolucao(devolucao);
     serviceItensVenda.atualizarDevolucao(devolucao);
-    return "devolucao";
+    return "registrarDevolucao";
 }
 
  @GetMapping("/buscar-devolucao")
