@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lojaInfo</title>
+    <link rel="icon" href="./img/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!--end google font-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!--end icons bootstrap-->
+    <link rel="stylesheet" href="./css/style.css">
+    <!--end style -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- end jquery -->
+</head>
+
+<body>
+
+    <main>
+        <header>
+            <div th:insert="navbar :: body"></div>
+            <!-- end cabeçalho -->
+        </header>
+        <!--end cabeçalho -->
+        <section class="pesquisar-func">
+            <div class="interface-pesquisar-func">
+                <div class="flex">
+                    <form class="form-pesquisar-func">
+                        <h3>PESQUISAR</h3>
+                        <input type="text" placeholder="Código" id="pesquisar">
+                        <div class="btn-pesquisar-func">
+                            <button type="button" class="btn-verde" id="botao-funcionario-buscar" onclick="buscarFuncionario(event)">PESQUISAR</button>
+                            <button type="button" class="btn-verde" id="limpar">LIMPAR</button>
+                        </div>
+                    </form>
+                    <!--end form-pesquisar-func -->
+                    <div class="resultado-pesquisa-func-alterar">
+                        <form id="formularioFuncionario">
+                        <div class="resultado-pesquisa-func">
+                            <div class="form-left-func-pesquisa">
+                                <h3>Nome</h3>
+                                <input id="nomeFuncionario" type="text" th:field="${funcionario.nome}" required>
+                                <h3>Endereço</h3>
+                                <input id="endereço" type="text" th:field="${funcionario.endereco}" required>
+                                <h3>CPF</h3>
+                                <input id="cpf" type="text" th:field="${funcionario.cpf}" required placeholder="xxx.xxx.xxx-xx">
+                                <h3>Telefone</h3>
+                                <input id="telefone" type="text" th:field="${funcionario.telefone}" required placeholder="(xx) xxxx-xxxx">
+                            </div>
+                            <!--end form-left-func-pesquisa -->
+                            <div class="form-right-func-pesquisa">
+                                <h3>E-mail</h3>
+                                <input id="email" type="email" th:field="${funcionario.email}" required placeholder="exemplo@dominio.com">
+                                <input type="hidden" id="funcionarioId" name="id" value="${funcionario.id != null ? funcionario.id : ''}" />
+                                <h3>Cargo</h3>
+                                <select id="cargoFuncionario" required>
+                                    <option>Selecione um item</option>
+                                    <option value="Gerente" th:field="${funcionario.cargo.nome}">Gerente</option>
+                                    <option value="Vendedor" th:field="${funcionario.cargo.nome}">Vendedor</option>
+                                </select>
+                                <h3>Nome de usuário</h3>
+                                <input id="nomeUsuario" type="text" th:field="${funcionario.usuario.login}" required>
+                                <h3>Senha</h3>
+                                <input id="senha-funcionario" type="text" th:field="${funcionario.usuario.senha}" required>
+                            </div>
+                            <!--end form-right-func-pesquisa -->
+                        </div>
+                    </form>
+                        <div class="form-btn-atualizar-func">
+                            <button type="button" class="btn-verde" id="alterarFuncionario">ALTERAR</button>
+                        </div>
+                    </div>
+                </div>
+                <!--end flex -->
+            </div>
+            <!--end interface-pesquisar -->
+        </section>
+        <!--end pesquisar-produto -->
+        <section class="tabela-func-pesquisar">
+            <div class="interface-pesquisar-func">
+                <div class="flex">
+                    <table class="table-func">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>Nome</th>
+                                <th class="linha">Endereço</th>
+                                <th class="linha">E-mail</th>
+                                <th>Cargo</th>
+                                <th>Telefone</th>
+                                <th class="linha">CPF</th>
+                                <th class="linha">Tipo de usuário</th>
+                                <th class="linha">Último login</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-funcionario">
+                        </tbody>
+                    </table>
+                    <!--end table-func  -->
+                </div>
+                <!--end flex -->
+            </div>
+            <!--end interface-pesquisar-func -->
+        </section>
+        <!--end tabela-func-pesquisar -->
+    </main>
+    <script th:src="@{/js/js.js}"></script>
+    <!-- end javascript -->
+</body>
+
+</html>

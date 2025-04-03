@@ -28,7 +28,7 @@ function limparLogin() {
 document.addEventListener("DOMContentLoaded", function () {
     let nomeUsuario = document.getElementById("boasVindasNome").value;
     let tipoUsuario = document.getElementById("boasVindasTipo").value;
-    
+
     if (nomeUsuario && tipoUsuario) {
         alert("Olá, " + nomeUsuario + "! Sua permissão é de " + tipoUsuario + ". Seja bem-vindo!");
     }
@@ -95,7 +95,7 @@ $(document).ready(function () {
             data: JSON.stringify(formData),
             success: function (response) {
                 alert("Cliente cadastrado com sucesso!");
-                window.location.href = "/cadastrarClientes"; 
+                window.location.href = "/cadastrarClientes";
             },
             error: function (xhr, status, error) {
                 alert("Ocorreu um erro: " + xhr.responseText);
@@ -152,7 +152,7 @@ $(document).ready(function () {
         $("#telefoneCliente").val(telefone);
         $("#emailCliente").val(email);
 
-        document.getElementById("alterarCliente").hidden=false;
+        document.getElementById("alterarCliente").hidden = false;
     });
 });
 
@@ -164,12 +164,12 @@ function limparCamposCliente() {
     document.getElementById('cpfCliente').value = '';
     document.getElementById('telefoneCliente').value = '';
     document.getElementById('emailCliente').value = '';
-    document.getElementById("alterarCliente").hidden=true;
+    document.getElementById("alterarCliente").hidden = true;
 }
 
 // Esconde o botão alterar
 $(document).ready(function () {
-   document.getElementById("alterarCliente").hidden=true;
+    document.getElementById("alterarCliente").hidden = true;
 });
 
 // Função para buscar um cliente
@@ -185,18 +185,18 @@ function buscarCliente(event) {
             data: { id: id },
             dataType: "json",
             success: function (data) {
-                    if (!data || Object.keys(data).length === 0) {
-                        alert("Cliente não encontrado.");
-                        limparCamposCliente();
-                        return;
-                    }
+                if (!data || Object.keys(data).length === 0) {
+                    alert("Cliente não encontrado.");
+                    limparCamposCliente();
+                    return;
+                }
                 $("#clienteId").val(data.id);
                 $("#nomeCliente").val(data.nome);
                 $("#enderecoCliente").val(data.endereco);
                 $("#cpfCliente").val(data.cpf);
                 $("#telefoneCliente").val(data.telefone);
                 $("#emailCliente").val(data.email);
-                document.getElementById("alterarCliente").hidden=false;
+                document.getElementById("alterarCliente").hidden = false;
             },
             error: function (xhr) {
                 var errorMessage = "Erro ao buscar cliente.";
@@ -278,6 +278,7 @@ $(document).ready(function () {
 });
 
 // PÁGINA PARA CADASTRAR FUNCIONÁRIOS
+//Função para cadastrar funcionário
 $(document).ready(function () {
     $("#salvarFuncionario").click(function (event) {
         event.preventDefault();
@@ -300,52 +301,52 @@ $(document).ready(function () {
 
 
         console.log("Form Data:", formData);
-        // Validação dos campos
+
         if (formData.nome === "") {
             alert("Por favor, preencha o campo nome.");
-            return;  // Interrompe a execução, não envia a requisição
+            return;
         }
         if (formData.endereco === "") {
             alert("Por favor, preencha o campo endereço.");
-            return;  // Interrompe a execução
+            return;
         }
         if (formData.cpf === "") {
             alert("Por favor, preencha o campo CPF.");
-            return;  // Interrompe a execução
+            return;
         }
         if (formData.telefone === "") {
             alert("Por favor, preencha o campo Telefone.");
             return;
         }
-        if(formData.usuario.login ===""){
+        if (formData.usuario.login === "") {
             alert("Por favor, preencha o campo nome de usuário.");
-            return; 
+            return;
         }
-        if(formData.usuario.senha ===""){
+        if (formData.usuario.senha === "") {
             alert("Por favor, preencha o campo senha.");
-            return; 
+            return;
         }
-        const telefoneRegex = /^\(\d{2}\)\d{4}-\d{4}$/; // Formato esperado: (xx)xxxx-xxxx
+        const telefoneRegex = /^\(\d{2}\)\d{4}-\d{4}$/;
         if (!telefoneRegex.test(formData.telefone)) {
             alert("Por favor, insira um telefone válido no formato (xx)xxxx-xxxx.");
-            return;  // Interrompe a execução
+            return;
         }
 
-        const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/; // Formato esperado: xxx.xxx.xxx-xx
+        const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
         if (!cpfRegex.test(formData.cpf)) {
             alert("Por favor, insira um CPF válido no formato xxx.xxx.xxx-xx.");
-            return; // Interrompe a execução
+            return;
         }
-        // Validação do e-mail (caso preenchido)
+
         if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
             alert("Por favor, insira um e-mail válido.");
-            return;  // Interrompe a execução
+            return;
         }
-        if(formData.cargo.nome === "Selecione um item"){
+        if (formData.cargo.nome === "Selecione um item") {
             alert("Por favor, selecione um cargo.");
-            return;   
+            return;
         }
-        
+
         $.ajax({
             type: "POST",
             url: "/processarFormulario",
@@ -354,6 +355,174 @@ $(document).ready(function () {
             success: function (response) {
                 alert("Funcionário cadastrado com sucesso!");
                 window.location.href = "/cadastrarFuncionario";
+            },
+            error: function (xhr, status, error) {
+                alert("Ocorreu um erro: " + xhr.responseText);
+            }
+        });
+    });
+});
+
+// PÁGINA PARA PESQUISAR FUNCIONÁRIOS
+// Esconde o botão alterar
+$(document).ready(function () {
+    document.getElementById("alterarFuncionario").hidden = true;
+});
+
+// Função para listar os funcionários
+$(document).ready(function () {
+    function listarFuncionarios() {
+        $.ajax({
+            type: "GET",
+            url: "/listar-funcionarios",
+            dataType: "json",
+            success: function (funcionarios) {
+                $("#tabela-funcionario").empty();
+                funcionarios.forEach(function (funcionario) {
+                    var ultimoLoginFormatado = "";
+
+                    if (funcionario.usuario.ultimo_login) {
+                        var data = new Date(funcionario.usuario.ultimo_login + "T00:00:00");
+                        ultimoLoginFormatado = data.toLocaleDateString('pt-BR', {
+                            day: '2-digit',
+                            month: '2-digit',
+                            year: 'numeric'
+                        });
+                    }
+                    var linha = "<tr class='linha-funcionario' data-id='" + funcionario.id + "'>" +
+                        "<td>" + funcionario.id + "</td>" +
+                        "<td>" + funcionario.nome + "</td>" +
+                        "<td>" + funcionario.endereco + "</td>" +
+                        "<td>" + funcionario.email + "</td>" +
+                        "<td>" + funcionario.cargo.nome + "</td>" +
+                        "<td>" + funcionario.telefone + "</td>" +
+                        "<td>" + funcionario.cpf + "</td>" +
+                        "<td>" + funcionario.usuario.tipoUsuario + "</td>" +
+                        "<td>" + ultimoLoginFormatado + "</td>" +
+                        "</tr>";
+
+                    $("#tabela-funcionario").append(linha);
+                });
+            },
+            error: function (xhr, status, error) {
+                alert("Erro ao carregar dados dos funcionários: " + error);
+            }
+        });
+    }
+
+    listarFuncionarios();
+
+    // Função para preencher os campos com os dados do funcionário ao clicar na linha da tabela
+    $("#tabela-funcionario").on("click", "tr.linha-funcionario", function () {
+
+        limparCampos();
+
+        let id = $(this).find("td").eq(0).text();
+        let nome = $(this).find("td").eq(1).text();
+        let endereco = $(this).find("td").eq(2).text();
+        let email = $(this).find("td").eq(3).text();
+        let cargo = $(this).find("td").eq(4).text();
+        let telefone = $(this).find("td").eq(5).text();
+        let cpf = $(this).find("td").eq(6).text();
+
+        $("#funcionarioId").val(id);
+        $("#nomeFuncionario").val(nome);
+        $("#endereço").val(endereco);
+        $("#email").val(email);
+        $("#telefone").val(telefone);
+        $("#cpf").val(cpf);
+        $("#cargoFuncionario").val(cargo);
+        document.getElementById("alterarFuncionario").hidden = false;
+    });
+
+    // Função para limpar os campos da página
+    window.limparCampos = function limparCampos() {
+        document.getElementById("alterarFuncionario").hidden = true;
+        document.getElementById('nomeFuncionario').value = '';
+        document.getElementById('endereço').value = '';
+        document.getElementById('cpf').value = '';
+        document.getElementById('telefone').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('nomeUsuario').value = '';
+        document.getElementById('senha-funcionario').value = '';
+        document.getElementById('funcionarioId').value = '';
+        document.getElementById('cargoFuncionario').value = 'Selecione um item';
+        document.getElementById('pesquisar').value = '';
+    };
+
+    document.getElementById('limpar').addEventListener('click', limparCampos);
+});
+
+//Função para pesquisar funcionário cadastrado
+function buscarFuncionario(event) {
+    event.preventDefault();
+    document.getElementById("alterarFuncionario").hidden = false;
+    var id = $("#pesquisar").val().trim();
+    if (id && !isNaN(id)) {
+        $.ajax({
+            url: "/buscar-funcionario",
+            method: "GET",
+            data: { id: id },
+            dataType: "json",
+            success: function (data) {
+
+                $("#nomeFuncionario").val(data.nome);
+                $("#endereço").val(data.endereco);
+                $("#cpf").val(data.cpf);
+                $("#telefone").val(data.telefone);
+                $("#email").val(data.email);
+                $("#cargoFuncionario").val(data.cargo.nome);
+                $("#nomeUsuario").val(data.usuario.login);
+                $("#senha-funcionario").val(data.usuario.senha);
+                $("#funcionarioId").val(data.id);
+            },
+            error: function (xhr) {
+                var errorMessage = "Erro ao buscar funcionário.";
+                limparCampos();
+                if (xhr.status === 404) {
+                    errorMessage = "Funcionário não encontrado.";
+                    limparCampos();
+                }
+                alert(errorMessage);
+            }
+        });
+    } else {
+        alert("Por favor, insira um ID válido para o funcionário.");
+        limparCampos();
+    }
+}
+
+$(document).ready(function () {
+    $("#alterarFuncionario").click(function (event) {
+        event.preventDefault();
+        const formData = {
+            nome: $("#nomeFuncionario").val().trim(),
+            endereco: $("#endereço").val().trim(),
+            cpf: $("#cpf").val().trim(),
+            telefone: $("#telefone").val(),
+            email: $("#email").val(),
+            cargo: {
+                nome: $("#cargoFuncionario").val(),
+            },
+            usuario: {
+                login: $("#nomeUsuario").val(),
+                senha: $("#senha-funcionario").val(),
+                tipoUsuario: $("#cargoFuncionario").val()
+            },
+            id: $("#funcionarioId").val() ? parseInt($("#funcionarioId").val()) : null
+        };
+
+
+        console.log("Form Data:", formData);
+
+        $.ajax({
+            type: "PUT",
+            url: "/atualizar-funcionario",
+            contentType: "application/json",
+            data: JSON.stringify(formData),
+            success: function (response) {
+                alert("Funcionário atualizado com sucesso!");
+                window.location.href = "/pesquisarFuncionarios";
             },
             error: function (xhr, status, error) {
                 alert("Ocorreu um erro: " + xhr.responseText);

@@ -1,6 +1,7 @@
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service;
 
-import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.CriptografarSenha;
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.util.CriptografarSenha;
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Funcionario;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Usuario;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.UsuarioAutenticar;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Repository.RepositoryUsuario;
@@ -19,7 +20,7 @@ public class ServiceUsuario {
     public Usuario buscarId(Integer id) {
         return reposoitoryUsuario.findById(id).orElseThrow();
     }
-    
+
     //Função para cadastrar um novo usuário
     public Usuario criarUsuario(Usuario usuario) {
         usuario.setId(null);
@@ -48,11 +49,17 @@ public class ServiceUsuario {
         reposoitoryUsuario.deleteById(usuarioEncontrado.getId());
     }
 
+    //Função para criptografar senha 
+    public Usuario criptografarSenha(Funcionario funcionario) {
+        Usuario usuario = criarUsuario(funcionario.getUsuario());
+        usuario.setSenha(CriptografarSenha.convertToMD5(usuario.getSenha()));
+        return usuario;
+    }
+
     //Função para autenticar o login de usuário
     public UsuarioAutenticar autenticarUsuario(Usuario usuario) {
         UsuarioAutenticar usuarioAutenticado = null;
-        CriptografarSenha criptografarSenha = new CriptografarSenha();
-        String senhaCrip = criptografarSenha.convertToMD5(usuario.getSenha());
+        String senhaCrip = CriptografarSenha.convertToMD5(usuario.getSenha());
         System.out.println(senhaCrip);
         List<Usuario> usuarios = listarUsuario();
         for (Usuario u : usuarios) {

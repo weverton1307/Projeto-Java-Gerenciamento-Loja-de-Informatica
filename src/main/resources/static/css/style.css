@@ -599,6 +599,23 @@ section.tabela-func-pesquisar th {
 section.tabela-func-pesquisar .flex {
     justify-content: center;
 }
+section.tabela-func-pesquisar tbody{
+    transition: background-color 0.3s ease-in-out;
+}
+
+section.tabela-func-pesquisar tbody tr:hover{
+    background-color: #b8b6b6ef;
+    cursor: pointer;
+}
+
+section.tabela-func-pesquisar tbody{
+   background-color: white;
+}
+
+section.tabela-func-pesquisar tbody td{
+    padding: 10px 30px;
+    color: #333;
+ }
 
 /* Estilo da página cadastrar clientes */
 section.formulario-cliente {
@@ -740,12 +757,11 @@ section.tabela-cliente-pesquisar th {
 section.tabela-cliente-pesquisar .flex {
     justify-content: center;
 }
-/* Estilizando o corpo da tabela */
+
 section.tabela-cliente-pesquisar tbody tr {
     transition: background-color 0.3s ease-in-out;
 }
 
-/* Efeito hover: muda a cor da linha ao passar o mouse */
 section.tabela-cliente-pesquisar tbody tr:hover {
     background-color: #b8b6b6ef;
     cursor: pointer;
@@ -754,7 +770,6 @@ section.tabela-cliente-pesquisar tbody{
     background-color: white;
 }
 
-/* Ajuste no espaçamento das células do corpo da tabela */
 section.tabela-cliente-pesquisar tbody td {
     padding: 10px 30px;
     color: #333;

@@ -22,8 +22,10 @@
 </head>
 
 <body>
-    <div th:insert="navbar :: body"></div>
-    <!-- end cabeçalho -->
+    <header>
+        <div th:insert="navbar :: body"></div>
+        <!-- end cabeçalho -->
+    </header>
     <main>
         <input type="hidden" id="boasVindasNome" th:value="${usuarioNome}">
         <input type="hidden" id="boasVindasTipo" th:value="${tipoUsuario}">

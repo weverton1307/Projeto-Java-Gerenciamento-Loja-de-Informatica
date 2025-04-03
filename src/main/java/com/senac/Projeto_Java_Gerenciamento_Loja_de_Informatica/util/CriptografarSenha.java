@@ -1,12 +1,14 @@
 
-package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model;
+package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 
 public class CriptografarSenha {
-   public  String convertToMD5(String senha) {
+    
+    //Função para converter a senha em MD5
+   public static String convertToMD5(String senha) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] hashBytes = md.digest(senha.getBytes());
