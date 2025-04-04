@@ -18,25 +18,20 @@ public class Devolucao {
     private String motivo;
     private String tipo;
     private LocalDate data;
+    private String nome_produto;
     public Devolucao() {
     }
 
-    public Devolucao(int codigoProduto, String motivo, LocalDate data) {
+    public Devolucao(Integer id, int codigoProduto, String motivo, String tipo, LocalDate data, String nome_produto) {
+        this.id = id;
         this.codigoProduto = codigoProduto;
         this.motivo = motivo;
-        this.data = data;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
         this.tipo = tipo;
+        this.data = data;
+        this.nome_produto = nome_produto;
     }
-    
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -60,6 +55,14 @@ public class Devolucao {
         this.motivo = motivo;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
     public LocalDate getData() {
         return data;
     }
@@ -68,4 +71,15 @@ public class Devolucao {
         this.data = data;
     }
 
+    public String getNome_produto() {
+        return nome_produto;
+    }
+
+    public void setNome_produto(String nome_produto) {
+        this.nome_produto = nome_produto;
+    }
+
+    
+
+    
 }

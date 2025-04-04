@@ -594,6 +594,9 @@ section.tabela-func-pesquisar th {
     font-size: 14px;
     color: #D6C7FB;
     padding: 5px 29px;
+    vertical-align: middle;
+    vertical-align: middle;
+    text-align: center;
 }
 
 section.tabela-func-pesquisar .flex {
@@ -615,6 +618,9 @@ section.tabela-func-pesquisar tbody{
 section.tabela-func-pesquisar tbody td{
     padding: 10px 30px;
     color: #333;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 10px;
  }
 
 /* Estilo da página cadastrar clientes */
@@ -752,6 +758,8 @@ section.tabela-cliente-pesquisar th {
     font-size: 14px;
     color: #D6C7FB;
     padding: 5px 30px;
+    vertical-align: middle;
+    text-align: center;
 }
 
 section.tabela-cliente-pesquisar .flex {
@@ -771,8 +779,11 @@ section.tabela-cliente-pesquisar tbody{
 }
 
 section.tabela-cliente-pesquisar tbody td {
+    font-size: 10px;
     padding: 10px 30px;
     color: #333;
+    vertical-align: middle;
+    text-align: center;
 }
 
 
@@ -930,11 +941,33 @@ section.tabela-devolucao-pesquisar th {
     font-size: 14px;
     color: #D6C7FB;
     padding: 5px 90px;
+    vertical-align: middle;
+    text-align: center;
 }
 
 section.tabela-devolucao-pesquisar .flex {
     justify-content: center;
 }
+
+section.tabela-devolucao-pesquisar tbody{
+    transition: background-color 0.3s ease-in-out;
+    background-color: white;
+}
+
+section.tabela-devolucao-pesquisar tbody tr:hover{
+    background-color: #b8b6b6ef;
+    cursor: pointer;
+}
+section.tabela-devolucao-pesquisar tbody td{
+    padding: 10px 30px;
+    color: #333;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 10px;
+    
+}
+
+
 
 /* Estilo da página pesquisar troca */
 section.formulario-pesquisar-troca .flex {

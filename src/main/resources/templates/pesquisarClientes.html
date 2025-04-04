@@ -22,7 +22,7 @@
 
 <body>
     <header>
-        <div th:insert="navbar :: body"></div>
+        <div th:replace="~{navbar :: body(titulo='Pesquisar Clientes')}"></div>
         <!-- end cabeçalho -->
     </header>
     <main>

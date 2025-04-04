@@ -17,26 +17,22 @@ public class Troca {
     private int codigoProduto;
     private String motivo;
     private String tipo;
+    private String nome_produto;
+
+    public Troca(Integer id, int codigoProduto, String motivo, String tipo, String nome_produto, LocalDate data) {
+        this.id = id;
+        this.codigoProduto = codigoProduto;
+        this.motivo = motivo;
+        this.tipo = tipo;
+        this.nome_produto = nome_produto;
+        this.data = data;
+    }
     private LocalDate data;
 
     public Troca() {
     }
 
-    public Troca(int codigoProduto, String motivo, LocalDate data) {
-        this.codigoProduto = codigoProduto;
-        this.motivo = motivo;
-        this.data = data;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -60,6 +56,22 @@ public class Troca {
         this.motivo = motivo;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getNome_produto() {
+        return nome_produto;
+    }
+
+    public void setNome_produto(String nome_produto) {
+        this.nome_produto = nome_produto;
+    }
+
     public LocalDate getData() {
         return data;
     }
@@ -68,4 +80,5 @@ public class Troca {
         this.data = data;
     }
 
+   
 }

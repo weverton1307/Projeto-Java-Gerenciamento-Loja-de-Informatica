@@ -13,7 +13,7 @@
                     <div class="logo">
                         <a href="#"><img src="./img/LogoMarca.png"></a>
                         <div class="top-titulo">
-                            <h1>Início</h1>
+                            <h1 th:text="${titulo}">Título</h1>
                         </div>
                         <!--end top-titulo -->
                     </div>
@@ -41,7 +41,7 @@
                                 <li><a href="/cadastrarClientes">Cadastrar cliente</a></li>
                                 <li><a href="/pesquisarClientes">Pesquisar cliente</a></li>
                                 <li><a href="/registrarDevolucao">Cadastrar devolução</a></li>
-                                <li><a href="#">Pesquisar devolução</a></li>
+                                <li><a href="/pesquisarDevolucao">Pesquisar devolução</a></li>
                                 <li><a href="#">Cadastrar troca</a></li>
                                 <li><a href="#">Pesquisar troca</a></li>
                                 <li class="adm"><a href="/cadastrarFuncionario">Cadastrar funcionário</a></li>
@@ -77,7 +77,7 @@
                             <li class="drop-hover"><a href="#">PESQUISAR <i class="bi bi-caret-down-fill"></i></a>
                                 <div class="drop">
                                     <a href="#">PRODUTOS</a>
-                                    <a href="#">DEVOLUÇÕES</a>
+                                    <a href="/pesquisarDevolucao">DEVOLUÇÕES</a>
                                     <a href="#">TROCAS</a>
                                     <a href="#" class="adm">VENDAS</a>
                                     <a href="/pesquisarClientes">CLIENTES</a>

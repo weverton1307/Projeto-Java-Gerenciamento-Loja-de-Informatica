@@ -22,7 +22,7 @@
 
 <body>
     <header>
-        <div th:insert="navbar :: body"></div>
+        <div th:replace="~{navbar :: body(titulo='Cadastrar Funcionários')}"></div>
         <!-- end cabeçalho -->
     </header>
     <main>
@@ -37,19 +37,19 @@
                             <input id="endereco" type="text" th:field="${funcionario.endereco}" required>
                             <h3>CPF</h3>
                             <input id="cpf" type="text" th:field="${funcionario.cpf}" required
-                            placeholder="xxx.xxx.xxx-xx">
+                                placeholder="xxx.xxx.xxx-xx">
                             <h3>Telefone</h3>
                             <input id="telefone" type="text" th:field="${funcionario.telefone}" required
-                            placeholder="(xx) xxxx-xxxx">
+                                placeholder="(xx) xxxx-xxxx">
 
                         </div>
                         <!--end form-left-func -->
                         <div class="form-right-func">
                             <h3>E-mail</h3>
                             <input id="email" type="email" th:field="${funcionario.email}" required
-                            placeholder="exemplo@dominio.com">
+                                placeholder="exemplo@dominio.com">
                             <input type="hidden" id="funcionarioId" name="id"
-                            value="${funcionario.id != null ? funcionario.id : ''}" />
+                                value="${funcionario.id != null ? funcionario.id : ''}" />
                             <h3>Cargo</h3>
                             <select id="cargoFuncionario" required>
                                 <option>Selecione um item</option>
@@ -59,8 +59,7 @@
                             <h3>Nome de usuário</h3>
                             <input id="nomeUsuario" type="text" th:field="${funcionario.usuario.login}" required>
                             <h3>Senha</h3>
-                            <input id="senha-funcionario" type="text" th:field="${funcionario.usuario.senha}"
-                                required>
+                            <input id="senha-funcionario" type="text" th:field="${funcionario.usuario.senha}" required>
 
                         </div>
                         <!--end form-right-func -->

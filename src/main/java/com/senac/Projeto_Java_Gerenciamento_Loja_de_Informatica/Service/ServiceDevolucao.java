@@ -32,6 +32,7 @@ public class ServiceDevolucao {
         devolucaoEncontrada.setData(devolucao.getData());
         devolucaoEncontrada.setMotivo(devolucao.getMotivo());
         devolucaoEncontrada.setTipo(devolucao.getTipo());
+        devolucaoEncontrada.setNome_produto(devolucao.getNome_produto());
         return reposoitoryDevolucao.save(devolucaoEncontrada);
     }
 

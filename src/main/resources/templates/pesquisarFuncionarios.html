@@ -24,7 +24,7 @@
 
     <main>
         <header>
-            <div th:insert="navbar :: body"></div>
+            <div th:replace="~{navbar :: body(titulo='Pesquisar Funcionários')}"></div>
             <!-- end cabeçalho -->
         </header>
         <!--end cabeçalho -->
