@@ -11,7 +11,7 @@
             <section class="top-header">
                 <div class="interface-header">
                     <div class="logo">
-                        <a href="#"><img src="./img/LogoMarca.png"></a>
+                        <a href="/inicio"><img src="./img/LogoMarca.png"></a>
                         <div class="top-titulo">
                             <h1 th:text="${titulo}">Título</h1>
                         </div>
@@ -33,7 +33,7 @@
                         <!--end btn-fechar -->
                          <nav>
                             <ul>
-                                <li><a href="#">Início</a></li>
+                                <li><a href="/inicio">Início</a></li>
                                 <li><a href="#">Registrar venda</a></li>
                                 <li class="adm"><a href="#">Relatório de vendas</a></li>
                                 <li><a href="#">Cadastrar produto</a></li>
@@ -42,7 +42,7 @@
                                 <li><a href="/pesquisarClientes">Pesquisar cliente</a></li>
                                 <li><a href="/registrarDevolucao">Cadastrar devolução</a></li>
                                 <li><a href="/pesquisarDevolucao">Pesquisar devolução</a></li>
-                                <li><a href="#">Cadastrar troca</a></li>
+                                <li><a href="/registrarTroca">Cadastrar troca</a></li>
                                 <li><a href="#">Pesquisar troca</a></li>
                                 <li class="adm"><a href="/cadastrarFuncionario">Cadastrar funcionário</a></li>
                                 <li class="adm"><a href="pesquisarFuncionarios">Pesquisar funcionário</a></li>
@@ -63,12 +63,12 @@
                 <div class="inteface-header">
                     <nav class="txt-menu">
                         <ul>
-                            <li><a href="#">INÍCIO</a></li>
+                            <li><a href="/inicio">INÍCIO</a></li>
                             <li class="drop-hover"><a href="#">CADASTRAR <i class="bi bi-caret-down-fill"></i></a>
                                 <div class="drop">
                                     <a href="#">PRODUTOS</a>
                                     <a href="registrarDevolucao">DEVOLUÇÕES</a>
-                                    <a href="#">TROCAS</a>
+                                    <a href="/registrarTroca">TROCAS</a>
                                     <a href="#">VENDAS</a>
                                     <a href="/cadastrarClientes">CLIENTES</a>
                                     <a href="/cadastrarFuncionario" class="adm">FUNCIONÁRIOS</a>

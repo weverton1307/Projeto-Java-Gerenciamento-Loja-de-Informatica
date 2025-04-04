@@ -32,11 +32,10 @@ public class ControllerTroca {
   @Autowired
   ServiceItensVenda serviceItensVenda;
    
- @GetMapping("/troca")
+ @GetMapping("/registrarTroca")
     public String inicio(Model model) {
-
         model.addAttribute("troca", new Troca());
-        return "troca";
+        return "registrarTroca";
     }
     
     @PostMapping("/cadastro-troca")

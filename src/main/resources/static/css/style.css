@@ -489,7 +489,8 @@ section.formulario-funcionario .flex select {
     padding: 5px;
     border-radius: 8px;
 }
-.interface-form-func .form-btn-atualizar-func button{
+
+.interface-form-func .form-btn-atualizar-func button {
     margin-right: 285px;
 }
 
@@ -602,26 +603,27 @@ section.tabela-func-pesquisar th {
 section.tabela-func-pesquisar .flex {
     justify-content: center;
 }
-section.tabela-func-pesquisar tbody{
+
+section.tabela-func-pesquisar tbody {
     transition: background-color 0.3s ease-in-out;
 }
 
-section.tabela-func-pesquisar tbody tr:hover{
+section.tabela-func-pesquisar tbody tr:hover {
     background-color: #b8b6b6ef;
     cursor: pointer;
 }
 
-section.tabela-func-pesquisar tbody{
-   background-color: white;
+section.tabela-func-pesquisar tbody {
+    background-color: white;
 }
 
-section.tabela-func-pesquisar tbody td{
+section.tabela-func-pesquisar tbody td {
     padding: 10px 30px;
     color: #333;
     vertical-align: middle;
     text-align: center;
     font-size: 10px;
- }
+}
 
 /* Estilo da página cadastrar clientes */
 section.formulario-cliente {
@@ -774,7 +776,8 @@ section.tabela-cliente-pesquisar tbody tr:hover {
     background-color: #b8b6b6ef;
     cursor: pointer;
 }
-section.tabela-cliente-pesquisar tbody{
+
+section.tabela-cliente-pesquisar tbody {
     background-color: white;
 }
 
@@ -949,22 +952,23 @@ section.tabela-devolucao-pesquisar .flex {
     justify-content: center;
 }
 
-section.tabela-devolucao-pesquisar tbody{
+section.tabela-devolucao-pesquisar tbody {
     transition: background-color 0.3s ease-in-out;
     background-color: white;
 }
 
-section.tabela-devolucao-pesquisar tbody tr:hover{
+section.tabela-devolucao-pesquisar tbody tr:hover {
     background-color: #b8b6b6ef;
     cursor: pointer;
 }
-section.tabela-devolucao-pesquisar tbody td{
+
+section.tabela-devolucao-pesquisar tbody td {
     padding: 10px 30px;
     color: #333;
     text-align: center;
     vertical-align: middle;
     font-size: 10px;
-    
+
 }
 
 
@@ -1272,9 +1276,11 @@ section.tabela-troca-pesquisar .flex {
         gap: 10px;
         margin-top: -20px;
     }
-    .interface-form-func .form-btn-atualizar-func button{
+
+    .interface-form-func .form-btn-atualizar-func button {
         margin-right: 0;
     }
+
     /* cadastrar produto */
     section.formulario-produto .flex {
         justify-content: center;
@@ -1444,32 +1450,41 @@ section.tabela-troca-pesquisar .flex {
     section.formulario-devolucao .flex {
         justify-content: center;
     }
+
     /* Registro de venda */
-    section.registrar-venda .flex{
+    section.registrar-venda .flex {
         justify-content: center;
         align-items: center;
         gap: 30px;
     }
-    section.registrar-venda .Itens-selecionados{
+
+    section.registrar-venda .Itens-selecionados {
         width: 100%;
         margin: 0 8px;
     }
+
     .box-itens .table-regitroVenda thead tr th {
-      font-size: 11px;
-      padding-right: 5px;
-    }
-    .box-itens .table-regitroVenda tbody tr td{
         font-size: 11px;
-       
+        padding-right: 5px;
     }
-    
-    .table-regitroVenda tbody .quant-venda, .nome-produto-venda, .preço-produto-venda, .subTotal-produto-venda {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+
+    .box-itens .table-regitroVenda tbody tr td {
+        font-size: 11px;
+
     }
-    .box-itens btn-verde, .box-itens .btn-branco{
+
+    .table-regitroVenda tbody .quant-venda,
+    .nome-produto-venda,
+    .preço-produto-venda,
+    .subTotal-produto-venda {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .box-itens btn-verde,
+    .box-itens .btn-branco {
         font-size: 15px;
     }
- 
+
 }
