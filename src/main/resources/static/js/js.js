@@ -120,11 +120,11 @@ $(document).ready(function () {
                 <tr class='linha-Cliente' data-id='${cliente.id}'>
                     <td>${cliente.id}</td>
                     <td>${cliente.nome}</td>
-                    <td>${cliente.endereco}</td>
-                    <td>${cliente.cpf}</td>
+                    <td class='linha'>${cliente.endereco}</td>
+                    <td class='linha'>${cliente.cpf}</td>
                     <td>${cliente.telefone}</td>
                     <td>${cliente.email}</td>
-                    <td>${cliente.total_compras || 'N/A'}</td>
+                    <td class='linha'>${cliente.total_compras || 'N/A'}</td>
                 </tr>
             `;
                     $("#tabela-cliente").append(linha);
