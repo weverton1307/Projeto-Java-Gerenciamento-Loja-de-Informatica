@@ -118,7 +118,7 @@ $(document).ready(function () {
                 clientes.forEach(function (cliente) {
                     var linha = `
                 <tr class='linha-Cliente' data-id='${cliente.id}'>
-                    <td>${cliente.id}</td>
+                    <td class='linha'>${cliente.id}</td>
                     <td>${cliente.nome}</td>
                     <td class='linha'>${cliente.endereco}</td>
                     <td class='linha'>${cliente.cpf}</td>
@@ -390,7 +390,7 @@ $(document).ready(function () {
                         });
                     }
                     var linha = "<tr class='linha-funcionario' data-id='" + funcionario.id + "'>" +
-                        "<td>" + funcionario.id + "</td>" +
+                        "<td class='linha'>" + funcionario.id + "</td>" +
                         "<td>" + funcionario.nome + "</td>" +
                         "<td class='linha'>" + funcionario.endereco + "</td>" +
                         "<td class='linha'>" + funcionario.email + "</td>" +
@@ -614,8 +614,8 @@ $(document).ready(function () {
                     console.log("Form Data:", item.motivo);
                     var linha = `
                         <tr class='linha-devolucao' data-id='${item.id}'>
-                            <td>${item.id}</td>
-                            <td class="linha">${item.motivo}</td>
+                            <td class='linha'>${item.id}</td>
+                            <td >${item.motivo}</td>
                             <td> ${item.nome_produto} </td>
                             <td>${item.codigoProduto}</td>
                             <td class="linha">${dataFormatada}</td>
