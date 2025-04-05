@@ -392,13 +392,13 @@ $(document).ready(function () {
                     var linha = "<tr class='linha-funcionario' data-id='" + funcionario.id + "'>" +
                         "<td>" + funcionario.id + "</td>" +
                         "<td>" + funcionario.nome + "</td>" +
-                        "<td>" + funcionario.endereco + "</td>" +
-                        "<td>" + funcionario.email + "</td>" +
+                        "<td class='linha'>" + funcionario.endereco + "</td>" +
+                        "<td class='linha'>" + funcionario.email + "</td>" +
                         "<td>" + funcionario.cargo.nome + "</td>" +
                         "<td>" + funcionario.telefone + "</td>" +
-                        "<td>" + funcionario.cpf + "</td>" +
-                        "<td>" + funcionario.usuario.tipoUsuario + "</td>" +
-                        "<td>" + ultimoLoginFormatado + "</td>" +
+                        "<td class='linha'>" + funcionario.cpf + "</td>" +
+                        "<td class='linha'>" + funcionario.usuario.tipoUsuario + "</td>" +
+                        "<td class='linha'>" + ultimoLoginFormatado + "</td>" +
                         "</tr>";
 
                     $("#tabela-funcionario").append(linha);
@@ -585,7 +585,6 @@ $(document).ready(function () {
 });
 
 //PÁGINA DE PESQUISAR DEVOLUÇÃO
-
 //Esconde o botão alterar
 $(document).ready(function () {
     document.getElementById("alterarDevolucao").hidden = true;
