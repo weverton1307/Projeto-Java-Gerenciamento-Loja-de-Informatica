@@ -789,8 +789,7 @@ section.tabela-cliente-pesquisar tbody td {
     text-align: center;
 }
 
-
-/* Estilo da página devolução */
+/* Estilo da página registrar devolução */
 section.formulario-devolucao .flex {
     justify-content: center;
     margin-top: 30px;
@@ -822,7 +821,7 @@ section.formulario-devolucao .form-btn-devolucao {
 
 section.formulario-devolucao .form-btn-devolucao button {
     margin-top: 30px;
-    margin-left: 155px;
+    margin-left: 150px;
 }
 
 /* Estilo da página registrar troca */
@@ -891,16 +890,6 @@ section.formulario-pesquisar-devolucao .flex textarea {
     border-radius: 8px;
     resize: none;
     max-height: 200px;
-}
-
-section.formulario-pesquisar-devolucao .form-btn-troca {
-    display: flex;
-    justify-content: space-around;
-}
-
-section.formulario-pesquisar-devolucao .form-btn-troca button {
-    margin-top: 30px;
-    margin-left: 155px;
 }
 
 section.formulario-pesquisar-devolucao .flex .form-pesq-devolucao {
@@ -1247,6 +1236,29 @@ section.tabela-troca-pesquisar .flex {
     .btn-abrir-menu {
         display: contents;
     }
+     /* Registrar troca */
+ .interface-form-troca{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.interface-form-troca{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.interface-form-troca .flex{
+    margin: 0 auto;
+    align-items: center;
+}
+.interface-form-troca .form-btn-troca{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-center-troca{
+    margin: 0 auto;
+}
 
     /* cadastrar cliente */
     section.formulario-cliente .form-center-cliente h3 {
@@ -1359,12 +1371,6 @@ section.tabela-troca-pesquisar .flex {
         gap: 5px;
     }
 
-    section.formulario-pesquisar-devolucao .form-btn-troca button {
-        margin-top: 30px;
-        display: flex;
-        justify-content: center;
-    }
-
     .form-btn-atualizar-func {
 
         display: flex;
@@ -1413,6 +1419,10 @@ section.tabela-troca-pesquisar .flex {
         margin-left: 0;
     }
 
+.interface-form-troca .form-btn-troca button{
+    margin-right: 170px;
+}
+
     /* Pesquisar troca */
     section.formulario-pesquisar-troca .interface-form-troca .form-pesquisar-troca .flex {
         margin-top: -10px;
@@ -1443,12 +1453,30 @@ section.tabela-troca-pesquisar .flex {
     }
 
     /* Registro de devolução */
-    section.formulario-devolucao {
-        margin-top: -50px;
+    section.formulario-devolucao .form-btn-devolucao button {
+        margin-left: 0;
     }
 
-    section.formulario-devolucao .flex {
+    .interface-form-devolucao{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    section.formulario-devolucao .interface-form-devolucao {
+        margin-top: -30px;
+    }
+
+    .interface-form-devolucao .flex{
+        margin: 0 auto;
+        align-items: center;
+    }
+
+    .interface-form-devolucao .form-btn-devolucao{
+        display: flex;
+        align-items: center;
         justify-content: center;
+        margin: 0 0 0 0;
     }
 
     /* Registro de venda */

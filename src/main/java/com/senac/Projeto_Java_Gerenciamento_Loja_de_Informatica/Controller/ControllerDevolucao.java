@@ -35,8 +35,8 @@ public class ControllerDevolucao {
     @GetMapping("/registrarDevolucao")
     public String inicio(Model model, HttpServletRequest request) {
         model.addAttribute("devolucao", new Devolucao());
-        String sessaoValidada = ValidarSessao.validarSessao(request, "registrarDevolucao", "redirect:/");
-        return sessaoValidada;
+        
+        return "registrarDevolucao";
     }
 
     //controller para exibir a página registrarDevolucao.html
