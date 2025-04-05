@@ -616,10 +616,10 @@ $(document).ready(function () {
                     var linha = `
                         <tr class='linha-devolucao' data-id='${item.id}'>
                             <td>${item.id}</td>
-                            <td>${item.motivo}</td>
+                            <td class="linha">${item.motivo}</td>
                             <td> ${item.nome_produto} </td>
                             <td>${item.codigoProduto}</td>
-                            <td>${dataFormatada}</td>
+                            <td class="linha">${dataFormatada}</td>
                         </tr>
                     `;
                     $("#tabela-devolucao").append(linha);
