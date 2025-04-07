@@ -791,8 +791,13 @@ $(document).ready(function () {
 });
 
 // PÁGINA PESQUISAR TROCA
+//Esconde o botão alterar
 $(document).ready(function () {
-    // Função para listar trocas
+    $("#alterarTroca").hide();
+});
+
+// Função para listar trocas
+$(document).ready(function () {
     function listarTroca() {
         $.ajax({
             type: "GET",
@@ -834,7 +839,7 @@ $(document).ready(function () {
 
     listarTroca();
 //Função para preencher os campos com os dados da troca ao clicar na linha da tabela
-    $("#tabela-devolucaoOuTroca").on("click", "tr.linha-troca", function () {
+    $("#tabela-troca").on("click", "tr.linha-troca", function () {
         var id = $(this).find("td").eq(0).text();
         var codigoProduto = $(this).find("td").eq(1).text();
         var motivo = $(this).find("td").eq(2).text();
@@ -848,10 +853,17 @@ $(document).ready(function () {
         $("#motivo-troca").val(motivo);
         $("#data-troca").val(dataConvertida);
 
-        $("#alterarTroca").prop("disabled", false);
-        $("#excluirTroca").prop("disabled", false);
-        $("#salvarTroca").prop("disabled", true);
+        document.getElementById("alterarTroca").hidden = false;
     });
 
 });
+
+//Função para limpar os campos da página
+function limparCamposTroca() {
+    $("#alterarTroca").hide();
+    document.getElementById('pesquisar-trocaCodigo').value = '';
+    document.getElementById('codigo-troca').value = '';
+    document.getElementById('motivo-troca').value = '';
+    document.getElementById('data-troca').value = '';
+}
 
