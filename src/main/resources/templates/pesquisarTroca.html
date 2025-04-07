@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lojaInfo</title>
+    <link rel="icon" href="./img/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!--end google font-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!--end icons bootstrap-->
+    <link rel="stylesheet" href="./css/style.css">
+    <!--end style -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--end jquery -->
+</head>
+
+<body>
+    <header>
+        <div th:replace="~{navbar :: body(titulo='Pesquisar Trocas')}"></div>
+    </header>
+    <!--end cabeçalho -->
+    <Main>
+        <section class="formulario-pesquisar-troca">
+            <div class="interface-form-troca">
+                <form class="form-troca">
+                    <div class="flex">
+                        <div class="form-pesq-troca">
+                            <h3>PESQUISAR</h3>
+                            <div><input id="pesquisar-devolucaoOuTroca" type="text" placeholder="Código">
+                                <div class="btn-pesquisar-troca">
+                                    <button type="button" class="btn-verde" id="search-button"
+                                        onclick="buscarTroca(event)">PESQUISAR</button>
+                                    <button type="button" class="btn-verde"
+                                        onclick="limparCamposTrocao()">LIMPAR</button>
+                                </div>
+                                <!--end btn-pesquisar-troca -->
+                            </div>
+                        </div>
+                        <!--end form-pesq-troca -->
+                        <div class="form-center-pesquisar-troca">
+                            <h3>Código do produto</h3>
+                            <input type="number" id="codigo-troca" th:field="${troca.codigoProduto}" required>
+                            <h3>Motivo</h3>
+                            <textarea id="motivo-troca" class="form-control" th:field="${troca.motivo}"
+                                required></textarea>
+                            <h3>Data</h3>
+                            <input type="date" id="data-troca" th:field="${troca.data}" required>
+                            <input type="hidden" id="trocaId" name="id" value="${troca.id != null ? troca.id : ''}" />
+                        </div>
+                        <!--end form-center-pesquisar-troca -->
+                    </div>
+                    <!--end flex -->
+                </form>
+                <!--end form-pesquisar-troca -->
+                <div class="form-btn-pesquisar-troca">
+                    <button type="button" class="btn-verde" id="alterarTroca">Alterar</button>
+                </div>
+            </div>
+            <!--end interface-form-troca -->
+        </section>
+        <!--end formulario-pesquisar-troca -->
+        <section class="tabela-troca-pesquisar">
+            <div class="interface-pesquisar-troca">
+                <div class="flex">
+                    <table class="table-troca">
+                        <thead>
+                            <tr>
+                                <th class="linha">id</th>
+                                <th>Código do produto</th>
+                                <th>Motivo</th>
+                                <th>produto</th>
+                                <th class="linha">Data</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-troca">
+                        </tbody>
+                    </table>
+                    <!--end table-troca  -->
+                </div>
+                <!--end flex -->
+            </div>
+            <!--end interface-pesquisar-troca -->
+        </section>
+        <!--end tabela-troca-pesquisar -->
+    </Main>
+    <script th:src="@{/js/js.js}"></script>
+    <!--end javaScript  -->
+</body>
+
+</html>

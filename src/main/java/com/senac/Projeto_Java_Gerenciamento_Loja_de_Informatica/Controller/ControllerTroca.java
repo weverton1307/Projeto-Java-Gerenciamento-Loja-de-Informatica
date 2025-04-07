@@ -1,4 +1,3 @@
-
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Controller;
 
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Produto;
@@ -23,20 +22,30 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class ControllerTroca {
-       @Autowired
-   ServiceTroca serviceTroca;
-       
- @Autowired
+
+    @Autowired
+    ServiceTroca serviceTroca;
+
+    @Autowired
     ServiceProduto serviceProduto;
- 
-  @Autowired
-  ServiceItensVenda serviceItensVenda;
-  //Controller para exibir a página de registrarTroca.html
- @GetMapping("/registrarTroca")
+
+    @Autowired
+    ServiceItensVenda serviceItensVenda;
+    
+    //Controller para exibir a página de registrarTroca.html
+    @GetMapping("/registrarTroca")
     public String inicio(Model model) {
         model.addAttribute("troca", new Troca());
         return "registrarTroca";
     }
+    
+    //Controller para exibir a página pesquisarTroca.html
+      @GetMapping("/pesquisarTroca")
+    public String buscarTroca(Model model) {
+        model.addAttribute("troca", new Troca());
+        return "pesquisarTroca";
+    }
+
     //Controller para registrar a troca de um produto
     @PostMapping("/cadastro-troca")
     public String cadastrarTroca(Model model, @RequestBody Troca troca) {
@@ -49,7 +58,7 @@ public class ControllerTroca {
         return "registrarTroca";
     }
 
- @GetMapping("/buscar-troca")
+    @GetMapping("/buscar-troca")
     @ResponseBody
     public ResponseEntity<?> buscartroca(@RequestParam("id") Integer id) {
         if (id == null || id <= 0) {
@@ -63,25 +72,26 @@ public class ControllerTroca {
 
         return ResponseEntity.ok(trocaEncontrada);
     }
-    
-     @GetMapping("/listar-troca")
+
+    //Controller para retornar uma lista com trocas cadastradas
+    @GetMapping("/listar-troca")
     @ResponseBody
     public List<Troca> listarTroca() {
-        return serviceTroca.listarTroca();  
+        return serviceTroca.listarTroca();
     }
-    
-      @PutMapping("/atualizar-troca")
+
+    @PutMapping("/atualizar-troca")
     public String atualizarTroca(Model model, @RequestBody Troca troca) {
         serviceTroca.atualizar(troca.getId(), troca);
 
         return "troca";
     }
-    
-        @DeleteMapping("/troca-excluir")
+
+    @DeleteMapping("/troca-excluir")
     @ResponseBody
     public String excluirTroca(@RequestBody Troca troca) {
-      serviceTroca.excluir(troca.getId());
+        serviceTroca.excluir(troca.getId());
         return "troca";
     }
-    
+
 }

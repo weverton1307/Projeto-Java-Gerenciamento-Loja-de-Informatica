@@ -790,4 +790,68 @@ $(document).ready(function () {
     });
 });
 
+// PÁGINA PESQUISAR TROCA
+$(document).ready(function () {
+    // Função para listar trocas
+    function listarTroca() {
+        $.ajax({
+            type: "GET",
+            url: "/listar-troca",
+            dataType: "json",
+            success: function (troca) {
+
+                $("#tabela-devolucaoOuTroca").empty();
+
+                troca.forEach(function (item) {
+                    var dataFormatada = "";
+
+                    if (item.data) {
+                        var data = new Date(item.data);
+                        dataFormatada = data.toLocaleDateString('pt-BR', {
+                            day: '2-digit',
+                            month: '2-digit',
+                            year: 'numeric'
+                        });
+                    }
+
+                    var linha = `
+                        <tr class='linha-troca' data-id='${item.id}'>
+                            <td class="linha">${item.id}</td>
+                            <td >${item.codigoProduto}</td>
+                            <td>${item.motivo}</td>
+                            <td>${item.nome_produto}</td>
+                            <td class="linha">${dataFormatada}</td>
+                        </tr>
+                    `;
+                    $("#tabela-troca").append(linha);
+                });
+            },
+            error: function (xhr, status, error) {
+                alert("Erro ao carregar dados das trocas: " + error);
+            }
+        });
+    }
+
+    listarTroca();
+//Função para preencher os campos com os dados da troca ao clicar na linha da tabela
+    $("#tabela-devolucaoOuTroca").on("click", "tr.linha-troca", function () {
+        var id = $(this).find("td").eq(0).text();
+        var codigoProduto = $(this).find("td").eq(1).text();
+        var motivo = $(this).find("td").eq(2).text();
+        var tipo = $(this).find("td").eq(3).text();
+        var data = $(this).find("td").eq(4).text();
+
+        var dataConvertida = data.split('/').reverse().join('-');
+
+        $("#trocaId").val(id);
+        $("#codigo-troca").val(codigoProduto);
+        $("#motivo-troca").val(motivo);
+        $("#data-troca").val(dataConvertida);
+
+        $("#alterarTroca").prop("disabled", false);
+        $("#excluirTroca").prop("disabled", false);
+        $("#salvarTroca").prop("disabled", true);
+    });
+
+});
 

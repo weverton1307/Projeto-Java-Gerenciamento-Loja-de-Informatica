@@ -961,9 +961,14 @@ section.tabela-devolucao-pesquisar tbody td {
 
 }
 
-
-
 /* Estilo da página pesquisar troca */
+.interface-form-troca {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 20px;
+
+}
+
 section.formulario-pesquisar-troca .flex {
     justify-content: space-around;
     margin-top: 20px;
@@ -972,12 +977,6 @@ section.formulario-pesquisar-troca .flex {
 section.formulario-pesquisar-troca .flex h3 {
     margin-top: 15px;
     color: #683781;
-}
-
-section.formulario-pesquisar-troca .flex .form-pesq-troca .btn-pesquisar-troca {
-    padding-top: 15px;
-    display: flex;
-    justify-content: space-between;
 }
 
 section.formulario-pesquisar-troca .flex input {
@@ -995,6 +994,28 @@ section.formulario-pesquisar-troca .flex textarea {
     max-height: 200px;
 }
 
+section.formulario-pesquisar-troca .flex .form-pesq-troca {
+    display: flex;
+    flex-direction: column;
+}
+
+section.formulario-pesquisar-troca .flex .form-pesq-troca .btn-pesquisar-troca {
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+section.formulario-pesquisar-troca .form-btn-pesquisar-troca {
+    display: flex;
+    justify-content: end;
+    margin-right: 168px;
+}
+
+section.formulario-pesquisar-troca .form-btn-pesquisar-troca button {
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+}
 
 /* Estilo da tabela pesquisar troca */
 section.tabela-troca-pesquisar .interface-pesquisar-troca {
@@ -1015,18 +1036,34 @@ section.tabela-troca-pesquisar th {
     font-size: 14px;
     color: #D6C7FB;
     padding: 5px 90px;
+    vertical-align: middle;
+    text-align: center;
 }
 
 section.tabela-troca-pesquisar .flex {
     justify-content: center;
 }
 
-.form-btn-pesquisar-troca {
-    display: flex;
-    justify-content: end;
-    margin-right: 187px;
-    margin-top: 20px;
+section.tabela-troca-pesquisar tbody {
+    transition: background-color 0.3s ease-in-out;
+    background-color: white;
 }
+
+section.tabela-troca-pesquisar tbody tr:hover {
+    background-color: #b8b6b6ef;
+    cursor: pointer;
+}
+
+section.tabela-troca-pesquisar tbody td {
+    padding: 10px 30px;
+    color: #333;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 10px;
+
+}
+
+
 
 /* Estilo da página registrar Venda */
 .registrar-venda .interface-registroVenda {
@@ -1431,7 +1468,7 @@ section.tabela-troca-pesquisar .flex {
 
     /* Pesquisar troca */
     section.formulario-pesquisar-troca .interface-form-troca .form-pesquisar-troca .flex {
-        margin-top: -10px;
+        margin-top: -30px;
         align-items: center;
         gap: 30px;
     }
