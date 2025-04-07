@@ -31,21 +31,22 @@ public class ControllerTroca {
  
   @Autowired
   ServiceItensVenda serviceItensVenda;
-   
+  //Controller para exibir a página de registrarTroca.html
  @GetMapping("/registrarTroca")
     public String inicio(Model model) {
         model.addAttribute("troca", new Troca());
         return "registrarTroca";
     }
-    
+    //Controller para registrar a troca de um produto
     @PostMapping("/cadastro-troca")
     public String cadastrarTroca(Model model, @RequestBody Troca troca) {
+        Produto produto = serviceProduto.buscarId(troca.getCodigoProduto());
+        troca.setNome_produto(produto.getNomeProduto());
         serviceTroca.criarTroca(troca);
         serviceProduto.atualizarTroca(troca);
         List<Produto> listaProduto = serviceProduto.listarProduto();
-        Produto produto = serviceProduto.buscarId(troca.getCodigoProduto());
         serviceItensVenda.atualizarTroca(troca, listaProduto, produto);
-        return "troca";
+        return "registrarTroca";
     }
 
  @GetMapping("/buscar-troca")

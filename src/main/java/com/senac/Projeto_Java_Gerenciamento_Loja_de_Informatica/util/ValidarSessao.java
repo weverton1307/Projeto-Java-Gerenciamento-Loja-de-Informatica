@@ -9,6 +9,7 @@ public class  ValidarSessao {
     public static String validarSessao(HttpServletRequest request, String verdadeiro, String falso) {
         HttpSession sessao = request.getSession();
         String usuario = (String) sessao.getAttribute("usuario");
+        String login = (String) sessao.getAttribute("login");
          if(usuario != null){
               return verdadeiro;
          }else{

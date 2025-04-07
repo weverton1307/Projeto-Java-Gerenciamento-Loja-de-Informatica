@@ -39,7 +39,7 @@ public class ControllerDevolucao {
         return "registrarDevolucao";
     }
 
-    //controller para exibir a página registrarDevolucao.html
+    //controller para exibir a página pesquisarDevolucao.html
     @GetMapping("/pesquisarDevolucao")
     public String buscarDevolucao(Model model, HttpServletRequest request) {
         model.addAttribute("devolucao", new Devolucao());
