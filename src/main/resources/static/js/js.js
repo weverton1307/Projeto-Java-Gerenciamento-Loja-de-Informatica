@@ -645,13 +645,13 @@ $(document).ready(function () {
         $("#codigo-devolucao").val(codigoProduto);
         $("#motivo-devolucao").val(motivo);
         $("#data-devolucao").val(dataConvertida);
-        document.getElementById("alterarDevolucao").hidden = false;
+        $("#alterarDevolucao").show();
     });
 });
 
 //Função para limpar os campos da página
 function limparCamposDevolucao() {
-    document.getElementById('alterarDevolucao').hidden = true;
+   $("#alterarDevolucao").hide();
     document.getElementById('codigo-devolucao').value = '';
     document.getElementById('motivo-devolucao').value = '';
     document.getElementById('data-devolucao').value = '';
@@ -661,7 +661,7 @@ function limparCamposDevolucao() {
 //Função para pesquisar devolução
 function buscarDevolucao(event) {
     event.preventDefault();
-    document.getElementById('alterarDevolucao').hidden = false;
+    $("#alterarDevolucao").show();
     var id = $("#pesquisarDevolucaoId").val().trim();
     if (id && !isNaN(id)) {
         $.ajax({
@@ -677,12 +677,11 @@ function buscarDevolucao(event) {
             },
             error: function (xhr, status, errorThrown) {
                 var errorMessage = "Busca inválida! Por favor, tente novamente.";
-                limparCamposDevolucao();
                 if (xhr.status === 404) {
                     errorMessage = "Devolução não encontrada.";
-                    limparCamposDevolucao();
                 }
                 alert(errorMessage);
+                limparCamposDevolucao();
             }
         });
     } else {
