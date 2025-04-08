@@ -41,7 +41,7 @@ public class ControllerFuncionario {
         return sessaoValidada; 
     }
 
-    //Controller para pesquisar um funcionário cadastrado
+    //Controller para exibir a página pesquisarFuncionarios.html
     @GetMapping("/pesquisarFuncionarios")
     public String buscarFunc(Model model,  HttpServletRequest request) {
         model.addAttribute("funcionario", new Funcionario());

@@ -31,7 +31,8 @@ public class ControllerProduto {
 
     @Autowired
     ServiceLocalArmazenamento serviceLocalArmazenamento;
-
+    
+    //Controller para exibir a página cadastroProduto.html
     @GetMapping("/cadastroProduto")
     public String inicio(Model model) {
         model.addAttribute("produto", new Produto());
@@ -40,33 +41,17 @@ public class ControllerProduto {
         return "cadastroProduto";
     }
 
+    //Controller para cadastrar um produto
     @PostMapping("/cadastro-produto")
     public String cadastrarProduto(Model model, @RequestBody Produto produto) {
-        System.out.println("Produto do formulario " + produto);
-        Categoria categoriaEncontrada = null;
-        System.out.println("Produto recebido: " + produto.getLocalArmazenamento().getNumeroPrateleira()
-                + ", " + produto.getLocalArmazenamento().getNumeroLocalPrateleira());
-
-        List<Categoria> listaCategoria = serviceCategoria.listarCategoria();
-        for (Categoria c : listaCategoria) {
-            if (c.getNome().equalsIgnoreCase(produto.getCategoria().getNome())) {
-                categoriaEncontrada = c;
-            }
-        }
-        Local_armazenamento localArmazenamentoEncontrado = null;
-        List<Local_armazenamento> listaLocalArmazenamento = serviceLocalArmazenamento.listarLocalArmazenamento();
-        for (Local_armazenamento l : listaLocalArmazenamento) {
-
-            if (l.getNumeroLocalPrateleira().equalsIgnoreCase(produto.getLocalArmazenamento().getNumeroLocalPrateleira()) && l.getNumeroPrateleira().equalsIgnoreCase(produto.getLocalArmazenamento().getNumeroPrateleira())) {
-                localArmazenamentoEncontrado = l;
-            }
-        }
-        System.out.println("Categoria: " + categoriaEncontrada + " local: " + localArmazenamentoEncontrado);
+        System.out.println("Produto do formulario " + produto.getCategoria());
+        Categoria categoriaEncontrada = serviceCategoria.buscarCategoria(produto);
+        Local_armazenamento localArmazenamentoEncontrado = serviceLocalArmazenamento.buscarLoca_armazenamento(produto);
         produto.setCategoria(categoriaEncontrada);
         produto.setLocalArmazenamento(localArmazenamentoEncontrado);
         serviceProduto.criarProduto(produto);
         serviceProduto.atualizarQuantidadeproduto(produto);
-        return "produtos";
+        return "cadastroProduto";
     }
 
     @GetMapping("/buscar-produto")
