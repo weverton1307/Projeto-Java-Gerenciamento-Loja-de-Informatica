@@ -896,3 +896,52 @@ function buscarTroca(event) {
     }
 }
 
+//Função para atualizar dados de uma troca cadastrada
+$(document).ready(function () {
+    $("#alterarTroca").click(function (event) {
+        event.preventDefault();
+        const formData = {
+            codigoProduto: $("#codigo-troca").val().trim(),
+            motivo: $("#motivo-troca").val().trim(),
+            tipo: "Troca",
+            data: $("#data-troca").val().trim(),
+            id: $("#trocaId").val() ? parseInt($("#trocaId").val()) : null
+        };
+
+        console.log("Form Data:", formData);
+        if (formData.codigoProduto === "") {
+            alert("Por favor, preencha o campo código do produto.");
+            return;
+        }
+
+        if (!/^\d+$/.test(formData.codigoProduto)) {
+            alert("O código do produto deve conter apenas números inteiros positivos.");
+            return;
+        }
+
+        if (formData.motivo === "") {
+            alert("Por favor, preencha o campo motivo.");
+            return;
+        }
+
+        if (formData.data === "") {
+            alert("Por favor, preencha o campo data.");
+            return;
+        }
+
+        $.ajax({
+            type: "PUT",
+            url: "/atualizar-troca",
+            contentType: "application/json",
+            data: JSON.stringify(formData),
+            success: function (response) {
+                alert("Troca atualizada com sucesso!");
+                window.location.href = "/pesquisarTroca";
+            },
+            error: function (xhr, status, error) {
+                alert("Ocorreu um erro: " + xhr.responseText);
+            }
+        });
+    });
+});
+

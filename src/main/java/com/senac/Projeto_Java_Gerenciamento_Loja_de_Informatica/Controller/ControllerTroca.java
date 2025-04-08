@@ -81,18 +81,13 @@ public class ControllerTroca {
         return serviceTroca.listarTroca();
     }
 
+    //Controller para atualizar os dados de uma troca cadastrada
     @PutMapping("/atualizar-troca")
     public String atualizarTroca(Model model, @RequestBody Troca troca) {
+        Produto produto = serviceProduto.buscarId(troca.getCodigoProduto());
+        troca.setNome_produto(produto.getNomeProduto());
+                System.out.println(troca.getNome_produto());
         serviceTroca.atualizar(troca.getId(), troca);
-
-        return "troca";
+        return "pesquisarTroca";
     }
-
-    @DeleteMapping("/troca-excluir")
-    @ResponseBody
-    public String excluirTroca(@RequestBody Troca troca) {
-        serviceTroca.excluir(troca.getId());
-        return "troca";
-    }
-
 }

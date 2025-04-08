@@ -35,6 +35,7 @@ public class ServiceTroca {
         trocaEncontrada.setData(troca.getData());
         trocaEncontrada.setMotivo(troca.getMotivo());
         trocaEncontrada.setTipo(troca.getTipo());
+        trocaEncontrada.setNome_produto(troca.getNome_produto());
         return reposoitoryTroca.save(trocaEncontrada);
     }
     
