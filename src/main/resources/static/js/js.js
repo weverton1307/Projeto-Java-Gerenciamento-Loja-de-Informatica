@@ -543,7 +543,7 @@ $(document).ready(function () {
             tipo: "Devolução",
             data: $("#data-devolucao").val().trim(),
             id: $("#devolucaoId").val() ? parseInt($("#devolucaoId").val()) : null,
-            nome_produto:$("#NomeProdutoDevolucao").val() ? parseInt($("#NomeProdutoDevolucao").val()) : null
+            nome_produto: $("#NomeProdutoDevolucao").val() ? parseInt($("#NomeProdutoDevolucao").val()) : null
         };
 
         console.log("Form Data:", formData);
@@ -703,8 +703,7 @@ $(document).ready(function () {
         };
 
         console.log("Form Data:", formData);
-         // Validações
-         if (formData.codigoProduto === "") {
+        if (formData.codigoProduto === "") {
             alert("Por favor, preencha o campo código do produto.");
             return;
         }
@@ -734,7 +733,7 @@ $(document).ready(function () {
                 window.location.href = "/pesquisarDevolucao";
             },
             error: function (xhr, status, errorThrown) {
-                alert("Atualização inválida! Por favor, tente novamente. " );
+                alert("Atualização inválida! Por favor, tente novamente. ");
                 limparCamposDevolucao();
             }
         });
@@ -753,7 +752,6 @@ $(document).ready(function () {
             id: $("#trocaId").val() ? parseInt($("#trocaId").val()) : null
         };
         console.log("Form Data:", formData);
-        // Validações
         if (formData.codigoProduto === "") {
             alert("Por favor, preencha o campo código do produto.");
             return;
@@ -805,7 +803,7 @@ $(document).ready(function () {
             dataType: "json",
             success: function (troca) {
 
-                $("#tabela-devolucaoOuTroca").empty();
+                $("#tabela-troca").empty();
 
                 troca.forEach(function (item) {
                     var dataFormatada = "";
@@ -838,7 +836,7 @@ $(document).ready(function () {
     }
 
     listarTroca();
-//Função para preencher os campos com os dados da troca ao clicar na linha da tabela
+    //Função para preencher os campos com os dados da troca ao clicar na linha da tabela
     $("#tabela-troca").on("click", "tr.linha-troca", function () {
         var id = $(this).find("td").eq(0).text();
         var codigoProduto = $(this).find("td").eq(1).text();
@@ -853,7 +851,7 @@ $(document).ready(function () {
         $("#motivo-troca").val(motivo);
         $("#data-troca").val(dataConvertida);
 
-        document.getElementById("alterarTroca").hidden = false;
+        $("#alterarTroca").show();
     });
 
 });
@@ -865,5 +863,37 @@ function limparCamposTroca() {
     document.getElementById('codigo-troca').value = '';
     document.getElementById('motivo-troca').value = '';
     document.getElementById('data-troca').value = '';
+}
+//Função para pesquisar uma troca cadastrada
+function buscarTroca(event) {
+    event.preventDefault();
+    var id = $("#pesquisar-trocaCodigo").val().trim();
+
+    if (id && !isNaN(id)) {
+        $.ajax({
+            url: "/buscar-troca",
+            method: "GET",
+            data: { id: id },
+            dataType: "json",
+            success: function (data) {
+                $("#trocaId").val(data.id);
+                $("#codigo-troca").val(data.codigoProduto);
+                $("#motivo-troca").val(data.motivo);
+                $("#data-troca").val(data.data);
+                $("#alterarTroca").show();
+            },
+            error: function (xhr, status, errorThrown) {
+                var errorMessage = "Busca inválida! Por favor, tente novamente.";
+                if (xhr.status === 404) {
+                    errorMessage = "Troca não encontrada.";
+                }
+                alert(errorMessage);
+                limparCamposTroca();
+            }
+        });
+    } else {
+        alert("Por favor, insira um ID válido para a troca.");
+        limparCamposTroca();
+    }
 }
 

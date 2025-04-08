@@ -58,6 +58,7 @@ public class ControllerTroca {
         return "registrarTroca";
     }
 
+    //Controller para pesquisar uma troca cadastrada
     @GetMapping("/buscar-troca")
     @ResponseBody
     public ResponseEntity<?> buscartroca(@RequestParam("id") Integer id) {
