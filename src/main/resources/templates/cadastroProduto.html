@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lojaInfo</title>
+    <link rel="icon" href="./img/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!--end google font-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!--end icons bootstrap-->
+    <link rel="stylesheet" href="./css/style.css">
+    <!--end style -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--end jquery -->
+</head>
+
+<body>
+    <header>
+        <div th:replace="~{navbar :: body(titulo='Cadastrar Produtos')}"></div>
+    </header>
+    <!-- end cabeçalho -->
+    <main>
+        <section class="formulario-produto">
+            <div class="interface-form">
+                <form class="form-produto">
+                    <div class="flex">
+                        <div class="form-left">
+                            <h3>Nome</h3>
+                            <input id="nome" type="text" th:field="${produto.nomeProduto}" required>
+                            <h3>Valor de compra</h3>
+                            <input id="valorCompra" type="text" th:field="${produto.valorCompra}" required>
+                            <h3>Valor de venda</h3>
+                            <input id="valorVenda" type="text" th:field="${produto.valorVenda}" required>
+                            <h3>Modelo</h3>
+                            <input id="modelo" type="text" th:field="${produto.modelo}" required>
+                            <h3>Data de aquisição</h3>
+                            <input id="data" type="date" required min="1900-01-01" max="2100-12-31"
+                                th:field="${produto.dataAquisicao}">
+                            <h3>Nota fiscal</h3>
+                            <input id="fiscal" type="text" th:field="${produto.notaFiscal}" required>
+                            <input type="hidden" id="produtoId" name="id"
+                                value="${produto.id != null ? produto.id : ''}" />
+                        </div>
+                        <!--end form-left -->
+                        <div class="form-right">
+                            <h3>Fabricante</h3>
+                            <input id="fabricante" type="text" th:field="${produto.fabricante}" required>
+                            <h3>Número da prateleira</h3>
+                            <select id="prateleira" required>
+                                <option value="">Selecione um item</option>
+                                <option value="1" th:field="${produto.localArmazenamento.numeroPrateleira}">1</option>
+                                <option value="2" th:field="${produto.localArmazenamento.numeroPrateleira}">2</option>
+                                <option value="3" th:field="${produto.localArmazenamento.numeroPrateleira}">3</option>
+                                <option value="4" th:field="${produto.localArmazenamento.numeroPrateleira}">4</option>
+                            </select>
+                            <h3>Número do local da prateleira</h3>
+                            <select id="localPrateleira" required>
+                                <option value="">Selecione um item</option>
+                                <option value="1" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">1
+                                </option>
+                                <option value="2" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">2
+                                </option>
+                                <option value="3" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">3
+                                </option>
+                                <option value="4" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">4
+                                </option>
+                            </select>
+                            <h3>Categoria</h3>
+                            <select id="categoria" required>
+                                <option value="">Selecione um item</option>
+                                <option value="Componentes de hardware" th:field="${produto.categoria.nome}">Componentes
+                                    de hardware</option>
+                                <option value="Conectividade e redes" th:field="${produto.categoria.nome}">Conectividade
+                                    e redes</option>
+                                <option value="Dispositivos computacionais" th:field="${produto.categoria.nome}">
+                                    Dispositivos computacionais</option>
+                                <option value="Periférico" th:field="${produto.categoria.nome}">Periférico</option>
+                                <option value="Suprimentos de impressora" th:field="${produto.categoria.nome}">
+                                    Suprimentos de impressora</option>
+                            </select>
+                            <h3>Descrição técnica</h3>
+                            <textarea id="descricao" class="form-control" th:field="${produto.descricaoTecnica}"
+                                required></textarea>
+                        </div>
+                        <!--end form-right -->
+                    </div>
+                    <!--end flex -->
+                </form>
+                <!--end form-produto -->
+                <div class="form-btn-atualizar-produto">
+                    <button type="button" class="btn-verde" id="salvarProduto">CADASTRAR</button>
+                </div>   
+            </div>
+            <!-- interface-form -->
+        </section>
+        <!-- formulario-produto -->
+    </main>
+    <script th:src="@{/js/js.js}"></script>
+    <!--end javaScript  -->
+</body>
+
+</html>

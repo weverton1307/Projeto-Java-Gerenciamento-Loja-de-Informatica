@@ -339,10 +339,12 @@ section.formulario-produto .flex textarea {
     display: flex;
     justify-content: right;
 }
-
-.form-btn button {
-    margin-right: 268px;
-    margin-top: 40px;
+.form-btn-atualizar-produto{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-top: 30px;
+    padding-right: 288px;
 }
 
 /* Estilo da página pesquisar produtos */
