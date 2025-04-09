@@ -62,31 +62,22 @@
                             <h3>Número do local da prateleira</h3>
                             <select id="localPrateleira" required>
                                 <option value="">Selecione um item</option>
-                                <option value="1" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">1
-                                </option>
-                                <option value="2" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">2
-                                </option>
-                                <option value="3" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">3
-                                </option>
-                                <option value="4" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">4
-                                </option>
+                                <option value="1" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">1</option>
+                                <option value="2" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">2</option>
+                                <option value="3" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">3</option>
+                                <option value="4" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">4</option>
                             </select>
                             <h3>Categoria</h3>
                             <select id="categoria" required>
                                 <option value="">Selecione um item</option>
-                                <option value="Componentes de hardware" th:field="${produto.categoria.nome}">Componentes
-                                    de hardware</option>
-                                <option value="Conectividade e redes" th:field="${produto.categoria.nome}">Conectividade
-                                    e redes</option>
-                                <option value="Dispositivos computacionais" th:field="${produto.categoria.nome}">
-                                    Dispositivos computacionais</option>
+                                <option value="Componentes de hardware" th:field="${produto.categoria.nome}">Componentesde hardware</option>
+                                <option value="Conectividade e redes" th:field="${produto.categoria.nome}">Conectividadee redes</option>
+                                <option value="Dispositivos computacionais" th:field="${produto.categoria.nome}">Dispositivos computacionais</option>
                                 <option value="Periférico" th:field="${produto.categoria.nome}">Periférico</option>
-                                <option value="Suprimentos de impressora" th:field="${produto.categoria.nome}">
-                                    Suprimentos de impressora</option>
+                                <option value="Suprimentos de impressora" th:field="${produto.categoria.nome}">Suprimentos de impressora</option>
                             </select>
                             <h3>Descrição técnica</h3>
-                            <textarea id="descricao" class="form-control" th:field="${produto.descricaoTecnica}"
-                                required></textarea>
+                            <textarea id="descricao" class="form-control" th:field="${produto.descricaoTecnica}" required></textarea>
                         </div>
                         <!--end form-right -->
                     </div>

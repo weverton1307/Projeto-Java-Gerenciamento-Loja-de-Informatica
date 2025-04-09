@@ -56,6 +56,24 @@ body {
     transition: .3s;
 }
 
+.tabelaGeral tbody {
+    transition: background-color 0.3s ease-in-out;
+    background-color: white;
+}
+
+.tabelaGeral tbody tr:hover {
+    background-color: #b8b6b6ef;
+    cursor: pointer;
+}
+
+.tabelaGeral tbody td {
+    padding: 10px 30px;
+    color: #333;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 10px;
+}
+
 /* estilo do cabeçalho */
 .interface-header {
     max-width: 1280px;
@@ -438,13 +456,15 @@ section.tabela-produto-pesquisar .interface-pesquisar {
     margin: 0 auto;
     padding-top: 40px;
 }
+section.tabela-produto-pesquisar{
+    margin-right: 56px;
+}
 
 section.tabela-produto-pesquisar .table-produto {
     margin-top: 15px;
     background-color: #683781;
     border-radius: 8px;
     padding: 5px 5px;
-    margin-left: 56px;
 }
 
 section.tabela-produto-pesquisar th {
@@ -606,19 +626,6 @@ section.tabela-func-pesquisar .flex {
     justify-content: center;
 }
 
-section.tabela-func-pesquisar tbody {
-    transition: background-color 0.3s ease-in-out;
-}
-
-section.tabela-func-pesquisar tbody tr:hover {
-    background-color: #b8b6b6ef;
-    cursor: pointer;
-}
-
-section.tabela-func-pesquisar tbody {
-    background-color: white;
-}
-
 section.tabela-func-pesquisar tbody td {
     padding: 10px 30px;
     color: #333;
@@ -768,27 +775,6 @@ section.tabela-cliente-pesquisar th {
 
 section.tabela-cliente-pesquisar .flex {
     justify-content: center;
-}
-
-section.tabela-cliente-pesquisar tbody tr {
-    transition: background-color 0.3s ease-in-out;
-}
-
-section.tabela-cliente-pesquisar tbody tr:hover {
-    background-color: #b8b6b6ef;
-    cursor: pointer;
-}
-
-section.tabela-cliente-pesquisar tbody {
-    background-color: white;
-}
-
-section.tabela-cliente-pesquisar tbody td {
-    font-size: 10px;
-    padding: 10px 30px;
-    color: #333;
-    vertical-align: middle;
-    text-align: center;
 }
 
 /* Estilo da página registrar devolução */
@@ -944,24 +930,6 @@ section.tabela-devolucao-pesquisar .flex {
     justify-content: center;
 }
 
-section.tabela-devolucao-pesquisar tbody {
-    transition: background-color 0.3s ease-in-out;
-    background-color: white;
-}
-
-section.tabela-devolucao-pesquisar tbody tr:hover {
-    background-color: #b8b6b6ef;
-    cursor: pointer;
-}
-
-section.tabela-devolucao-pesquisar tbody td {
-    padding: 10px 30px;
-    color: #333;
-    text-align: center;
-    vertical-align: middle;
-    font-size: 10px;
-
-}
 
 /* Estilo da página pesquisar troca */
 .interface-form-troca {
@@ -1045,27 +1013,6 @@ section.tabela-troca-pesquisar th {
 section.tabela-troca-pesquisar .flex {
     justify-content: center;
 }
-
-section.tabela-troca-pesquisar tbody {
-    transition: background-color 0.3s ease-in-out;
-    background-color: white;
-}
-
-section.tabela-troca-pesquisar tbody tr:hover {
-    background-color: #b8b6b6ef;
-    cursor: pointer;
-}
-
-section.tabela-troca-pesquisar tbody td {
-    padding: 10px 30px;
-    color: #333;
-    text-align: center;
-    vertical-align: middle;
-    font-size: 10px;
-
-}
-
-
 
 /* Estilo da página registrar Venda */
 .registrar-venda .interface-registroVenda {
@@ -1285,7 +1232,7 @@ section.tabela-troca-pesquisar tbody td {
     }
 
     section.formulario-troca .form-btn-troca button {
-        margin: 30px auto 0 auto; /* top auto bottom auto */
+        margin: 30px auto 0 auto;
         display: block;
     }
 
@@ -1380,6 +1327,10 @@ section.tabela-troca-pesquisar tbody td {
     .tabela-cliente-pesquisar .table-cliente .linha {
         display: none;
     }
+    .table-cliente {
+        width: 100%;
+        border-collapse: collapse;
+    }
 
     /* pesquisar devolução */
     section.formulario-pesquisar-devolucao .interface-form-devolucao .form-pesquisar-devolucao .flex {
@@ -1400,6 +1351,10 @@ section.tabela-troca-pesquisar tbody td {
 
     .tabela-devolucao-pesquisar .table-devolucao .linha {
         display: none;
+    }
+    .table-devolucao {
+        width: 100%;
+        border-collapse: collapse;
     }
 
     /* pesquisar funcionários */
@@ -1431,11 +1386,18 @@ section.tabela-troca-pesquisar tbody td {
         display: none;
     }
 
+    .table-func {
+        width: 100%;
+        border-collapse: collapse;
+    }
     /* Pesquisar produto */
     section.pesquisar-produto .interface-pesquisar .flex {
         margin-top: -50px;
         align-items: center;
         gap: 30px;
+    }
+    section.pesquisar-produto .interface-pesquisar{
+        width: 100%;
     }
 
     section.pesquisar-produto .flex .resultado-pesquisa-produto {
@@ -1455,6 +1417,7 @@ section.tabela-troca-pesquisar tbody td {
     .tabela-produto-pesquisar .table-produto .linha {
         display: none;
     }
+    
 
     section.tabela-produto-pesquisar .table-produto {
         margin-top: 0px;
@@ -1467,6 +1430,12 @@ section.tabela-troca-pesquisar tbody td {
     .interface-form-troca .form-btn-troca button {
         margin-right: 170px;
     }
+
+.table-produto {
+    width: 100%;
+    border-collapse: collapse;
+}
+
 
     /* Pesquisar troca */
     section.formulario-pesquisar-troca .interface-form-troca .form-pesquisar-troca .flex {
@@ -1495,6 +1464,10 @@ section.tabela-troca-pesquisar tbody td {
 
     .tabela-troca-pesquisar .table-troca .linha {
         display: none;
+    }
+    .table-troca {
+        width: 100%;
+        border-collapse: collapse;
     }
 
     /* Registro de devolução */

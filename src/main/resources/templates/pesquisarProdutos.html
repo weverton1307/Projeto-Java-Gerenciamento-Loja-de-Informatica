@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lojaInfo</title>
+    <link rel="icon" href="./img/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!--end google font-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!--end icons bootstrap-->
+    <link rel="stylesheet" href="./css/style.css">
+    <!--end style -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--end jquery -->
+</head>
+
+<body>
+    <header>
+        <div th:replace="~{navbar :: body(titulo='Pesquisar Clientes')}"></div>   
+    </header>
+     <!-- end cabeçalho -->
+    <main>
+        <section class="pesquisar-produto">
+            <div class="interface-pesquisar">
+                <div class="flex">
+                    <form class="form-pesquisar">
+                        <select required>
+                            <option value="">Selecione um critério de pesquisa</option>
+                            <option value="Código">Código</option>
+                            <option value="Nome">Nome</option>
+                            <option value="Modelo">modelo</option>
+                            <option value="Fabricante">Fabricante</option>
+                            <option value="Disponibilidade">Disponibilidade</option>
+                            <option value="Devolvido">Devolvido</option>
+                            <option value="Categoria">Categoria</option>
+                        </select>
+                        <select id="categoriaProduto" required>
+                            <option value="">Selecione uma categoria</option>
+                            <option value="Componentes de hardware">Componentes de hardware</option>
+                            <option value="Conectividade e redes">Conectividade e redes</option>
+                            <option value="Dispositivos computacionais">Dispositivos computacionais</option>
+                            <option value="Periférico">Periférico</option>
+                            <option value="Suprimentos de impressora">Suprimentos de impressora</option>
+                        </select>
+                        <input type="text" placeholder="Critério">
+                        <div class="btn-pesquisar-produto">
+                            <button class="btn-verde">PESQUISAR</button>
+                            <button class="btn-verde">LIMPAR</button>
+                        </div>
+                    </form>
+                    <!--end form-pesquisar -->
+                    <div class="resultado-pesquisa-produto">  
+                        <div class="form-left">
+                            <h3>Nome</h3>
+                            <input type="txt" th:field="${produto.nomeProduto}" required>
+                            <h3>Valor de compra</h3>
+                            <input type="txt" th:field="${produto.valorCompra}" required>
+                            <h3>Valor de venda</h3>
+                            <input type="txt" th:field="${produto.valorVenda}" required>
+                            <h3>Modelo</h3>
+                            <input type="txt" th:field="${produto.modelo}" required>
+                            <h3>Data de aquisição</h3>
+                            <input type="txt" th:field="${produto.dataAquisicao}" required>
+                            <h3>Nota fiscal</h3>
+                            <input type="txt" th:field="${produto.notaFiscal}"required>
+                            <h3>Status</h3>
+                            <div id="statusProduto"></div>
+                        </div>
+                        <!--end form-left -->
+                        <div class="form-right">
+                            <h3>Fabricante</h3>
+                            <input type="txt" th:field="${produto.fabricante}" required>
+                            <h3>Fabricante</h3>
+                            <div id="pesquisarQuantidadeProduto"></div>
+                            <h3>Número da prateleira</h3>
+                            <select id="pesquisarProduto_prateleira" required>
+                                <option value="">Selecione um item</option>
+                                <option value="1" th:field="${produto.localArmazenamento.numeroPrateleira}">1</option>
+                                <option value="2" th:field="${produto.localArmazenamento.numeroPrateleira}">2</option>
+                                <option value="3" th:field="${produto.localArmazenamento.numeroPrateleira}">3</option>
+                                <option value="4" th:field="${produto.localArmazenamento.numeroPrateleira}">4</option>
+                            </select>
+                            <h3>Número do local da prateleira</h3>
+                            <select id="pesquisarProduto_LocalPrateleira" required>
+                                <option value="">Selecione um item</option>
+                                <option value="1" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">1</option>
+                                <option value="2" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">2</option>
+                                <option value="3" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">3</option>
+                                <option value="4" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">4</option>
+                            </select>
+                            <h3>Categoria</h3>
+                            <select id="pesquisarProduto_categoria" required>
+                                <option value="">Selecione um item</option>
+                                <option value="Componentes de hardware" th:field="${produto.categoria.nome}">Componentesde hardware</option>
+                                <option value="Conectividade e redes" th:field="${produto.categoria.nome}">Conectividadee redes</option>
+                                <option value="Dispositivos computacionais" th:field="${produto.categoria.nome}">Dispositivos computacionais</option>
+                                <option value="Periférico" th:field="${produto.categoria.nome}">Periférico</option>
+                                <option value="Suprimentos de impressora" th:field="${produto.categoria.nome}">Suprimentos de impressora</option>
+                            </select>
+                            <h3>Descrição técnica</h3>
+                            <textarea id="pesquisarProduto_descricao" th:field="${produto.descricaoTecnica}" required> </textarea>
+                        </div>
+                        <!--end form-right -->
+                    </div>  
+                </div>
+                <!--end flex -->
+                <div class="form-btn-atualizar">
+                    <button class="btn-verde">ALTERAR</button>
+                </div>
+            </div>
+            <!--end interface-pesquisar -->
+        </section>
+        <!--end pesquisar-produto -->
+        <section class="tabela-produto-pesquisar tabelaGeral">
+        <div class="interface-pesquisar">
+            <div class="flex">
+                <table class="table-produto">
+                    <thead>
+                        <tr>
+                            <th class="linha">ID</th>
+                            <th>Nome</th>
+                            <th class="linha">Valor de Compra</th>
+                            <th>Valor de Venda</th>
+                            <th>Quantidade</th>
+                            <th class="linha">Modelo</th>
+                            <th class="linha">Nota Fiscal</th>
+                            <th class="linha">Data de Aquisição</th>
+                            <th class="linha">Fabricante</th>
+                            <th class="linha">Categoria</th>
+                            <th class="linha">Prateleira</th>
+                            <th class="linha">Local de Armazenamento</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-produto">
+                    </tbody>
+                </table>
+                <!-- end tabela-produto -->
+            </div>
+            <!--end flex --> 
+        </div>
+        <!-- end interface-pesquisar -->
+        </section>
+        <!-- end tabela-produto-pesquisar -->
+        <script th:src="@{/js/js.js}"></script>
+        <!--end javaScript  -->
+    </main>
+</body>
+</html>

@@ -651,7 +651,7 @@ $(document).ready(function () {
 
 //Função para limpar os campos da página
 function limparCamposDevolucao() {
-   $("#alterarDevolucao").hide();
+    $("#alterarDevolucao").hide();
     document.getElementById('codigo-devolucao').value = '';
     document.getElementById('motivo-devolucao').value = '';
     document.getElementById('data-devolucao').value = '';
@@ -976,7 +976,7 @@ $(document).ready(function () {
         console.log($("#localPrateleira").val());
         console.log("Form Data:", formData);
 
-         if (formData.nomeProduto === "") {
+        if (formData.nomeProduto === "") {
             alert("Por favor, preencha o nome do produto.");
             return;
         }
@@ -1015,7 +1015,7 @@ $(document).ready(function () {
             alert("Por favor, preencha a nota fiscal.");
             return;
         }
-       
+
         const numeroRegex = /^[+]?\d+(\.\d+)?$/;
 
 
@@ -1028,18 +1028,18 @@ $(document).ready(function () {
             alert("O valor da venda deve ser um número positivo maior que zero e não pode conter letras.");
             return;
         }
-         if (formData.categoria.nome === "Selecione um item") {
+        if (formData.categoria.nome === "Selecione um item") {
             alert("Por favor, selecione uma categoria.");
             return;
-         }
-         if (formData.localArmazenamento.numeroPrateleira === "Selecione um item") {
+        }
+        if (formData.localArmazenamento.numeroPrateleira === "Selecione um item") {
             alert("Por favor, selecione uma prateleira.");
             return;
-         }
-         if (formData.localArmazenamento.numeroLocalPrateleira === "Selecione um item") {
+        }
+        if (formData.localArmazenamento.numeroLocalPrateleira === "Selecione um item") {
             alert("Por favor, selecione um local da prateleira.");
             return;
-         }
+        }
         $.ajax({
             type: "POST",
             url: "/cadastro-produto",
@@ -1055,4 +1055,127 @@ $(document).ready(function () {
         });
     });
 });
+
+//PÁGINA PESQUISAR PRODUTO
+// Função para listar os produtos
+function listarProdutos() {
+    $.ajax({
+        type: "GET",
+        url: "/listar-produtos",
+        dataType: "json",
+        cache: false,
+        success: function (produtos) {
+            console.log(produtos);
+            $("#tabela-produto").empty();
+
+            if (produtos && produtos.length > 0) {
+                produtos.forEach(function (produto) {
+                    var dataAquisicaoFormatada = "";
+
+                    if (produto.dataAquisicao) {
+                        var data = new Date(produto.dataAquisicao + "T00:00:00");
+                        dataAquisicaoFormatada = data.toLocaleDateString('pt-BR', {
+                            day: '2-digit',
+                            month: '2-digit',
+                            year: 'numeric'
+                        });
+                    }
+
+                    var linha = "<tr class='linha-produto' data-id='" + produto.id + "'>" +
+                        "<td class='linha'>" + produto.id + "</td>" +
+                        "<td >" + produto.nomeProduto + "</td>" +
+                        "<td class='linha'>" + produto.valorCompra + "</td>" +
+                        "<td>" + produto.valorVenda + "</td>" +
+                        "<td>" + produto.quantidadeProduto + "</td>" +
+                        "<td class='linha'>" + produto.modelo + "</td>" +
+                        "<td class='linha'>" + produto.notaFiscal + "</td>" +
+                        "<td class='linha'>" + dataAquisicaoFormatada + "</td>" +
+                        "<td class='linha'>" + produto.fabricante + "</td>" +
+                        "<td class='linha'>" + (produto.categoria ? produto.categoria.nome : "") + "</td>" +
+                        "<td class='linha'>" + (produto.localArmazenamento ? produto.localArmazenamento.numeroPrateleira : "") + "</td>" +
+                        "<td class='linha'>" + (produto.localArmazenamento ? produto.localArmazenamento.numeroLocalPrateleira : "") + "</td>" +
+                        "<td>" + produto.statusProduto + "</td>" +
+                        "</tr>";
+
+                    $("#tabela-produto").append(linha);
+                });
+            } else {
+                alert("Nenhum produto encontrado.");
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Erro ao carregar dados dos produtos:", error);  
+            alert("Erro ao carregar dados dos produtos.");
+        }
+    });
+}
+
+// Chama a função para listar os produtos quando a página for carregada
+$(document).ready(function () {
+    listarProdutos();
+});
+$("#tabela-reservas").on("click", "tr.linha-produto", function () {
+    var idProduto = $(this).data("id");
+    $("#atualizarProduto").prop("disabled", false);
+    $("#salvarProduto").prop("disabled", true);
+
+    $.ajax({
+        url: "/buscar-produto",
+        method: "GET",
+        data: { id: idProduto },
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+
+            $("#nome").val(response.nomeProduto || "");
+            $("#valorCompra").val(response.valorCompra || "");
+            $("#valorVenda").val(response.valorVenda || "");
+            $("#modelo").val(response.modelo || "");
+            $("#fiscal").val(response.notaFiscal || "");
+            $("#data").val(response.dataAquisicao || "");
+            $("#fabricante").val(response.fabricante || "");
+            $("#descricao").val(response.descricaoTecnica || "");
+            $("#prateleira").val(response.localArmazenamento?.numeroPrateleira || "");
+            $("#localPrateleira").val(response.localArmazenamento?.numeroLocalPrateleira || "");
+            $("#categoria").val(response.categoria?.nome || "");
+            $("#status").text("Status: " + (response.statusProduto || "Desconhecido"));
+            $("#quantidade").text("Quantidade do produto: " + (response.quantidadeProduto || "Desconhecido"));
+            $("#produtoId").val(response.id);
+        },
+        error: function (xhr) {
+            alert("Erro ao buscar produto.");
+        }
+    });
+});
+
+document.getElementById("codigo").hidden = true;
+
+$(document).ready(function () {
+    $.ajax({
+        url: '/quantidade-produto',
+        method: 'GET',
+        success: function (data) {
+            console.log("Dados retornados:", data);
+            console.log("Tipo de dados:", typeof data);
+
+            if (Array.isArray(data)) {
+                data.forEach(function (produto) {
+                    let quantidade = produto.quantidadeProduto;
+                    let nomeProduto = produto.nomeProduto;
+
+                    if (quantidade < 5) {
+                        alert('O produto "' + nomeProduto + '" tem apenas ' + quantidade + ' unidades em estoque!');
+                    }
+                });
+            } else {
+                console.error("Estrutura de dados inesperada:", data);
+            }
+
+        },
+        error: function (xhr, status, error) {
+            console.error("Erro ao carregar os produtos: " + error);
+        }
+    });
+});
+
 

@@ -40,6 +40,14 @@ public class ControllerProduto {
         model.addAttribute("localArmazenamento", new Local_armazenamento());
         return "cadastroProduto";
     }
+     //Controller para exibir a página pesquisarProdutos.html
+    @GetMapping("/pesquisarProdutos")
+    public String buscarProduto(Model model) {
+        model.addAttribute("produto", new Produto());
+        model.addAttribute("categoria", new Categoria());
+        model.addAttribute("localArmazenamento", new Local_armazenamento());
+        return "pesquisarProdutos";
+    }
 
     //Controller para cadastrar um produto
     @PostMapping("/cadastro-produto")
@@ -114,6 +122,7 @@ public class ControllerProduto {
         }
     }
 
+    //Controller para retornar uma lista de produtos
     @GetMapping("/listar-produtos")
     @ResponseBody
     public List<Produto> listarProduto() {
