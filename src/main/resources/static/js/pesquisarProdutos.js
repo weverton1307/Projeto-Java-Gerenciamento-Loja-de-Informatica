@@ -1,6 +1,6 @@
 //PÁGINA PESQUISAR PRODUTO
 // esconde o botão alterar
-$(document).ready(function() {
+$(document).ready(function () {
     $("#alterarProduto").hide();
 });
 // Função para listar os produtos
@@ -26,7 +26,7 @@ function listarProdutos() {
                             year: 'numeric'
                         });
                     }
-
+                     
                     var linha = "<tr class='linha-produto' data-id='" + produto.id + "'>" +
                         "<td class='linha'>" + produto.id + "</td>" +
                         "<td >" + produto.nomeProduto + "</td>" +
@@ -50,17 +50,18 @@ function listarProdutos() {
             }
         },
         error: function (xhr, status, error) {
-            console.error("Erro ao carregar dados dos produtos:", error);  
+            console.error("Erro ao carregar dados dos produtos:", error);
             alert("Erro ao carregar dados dos produtos.");
         }
     });
 }
 
 // Chama a função para listar os produtos quando a página for carregada
-$(document).ready(function() {
+$(document).ready(function () {
     listarProdutos();
 });
 
+//Preenche os campos da página ao clicar numa linha da tabela
 $("#tabela-produto").on("click", "tr.linha-produto", function () {
     var idProduto = $(this).data("id");
 
@@ -94,5 +95,21 @@ $("#tabela-produto").on("click", "tr.linha-produto", function () {
     });
 });
 
+//Função para limpar os campos
+function limparCampos() {
+    $("input[type='text'], input[type='number'], input[type='date']").val("");
+
+    $("select").each(function () {
+        $(this).val($(this).find("option:first").val());
+    });
+
+    listarProdutos();
+}
+    // Adiciona evento de clique ao botão de limpar
+$(document).ready(function () {
+    $("#btn-limpar").click(function () {
+        limparCampos();
+    });
+});
 
 
