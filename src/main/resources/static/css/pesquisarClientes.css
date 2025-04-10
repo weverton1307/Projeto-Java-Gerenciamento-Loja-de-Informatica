@@ -1,0 +1,121 @@
+/* Estilo da página pesquisar clientes */
+section.pesquisar-cliente .interface-pesquisar-cliente {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+section.pesquisar-cliente .interface-pesquisar-cliente .flex {
+    justify-content: center;
+    gap: 150px;
+}
+
+section.pesquisar-cliente .interface-pesquisar-cliente .flex .form-pesquisar-cliente {
+    display: flex;
+    flex-direction: column;
+    margin-top: 33px;
+}
+
+section.pesquisar-cliente .interface-pesquisar-cliente .flex .form-pesquisar-cliente input,
+section.pesquisar-cliente .interface-pesquisar-cliente .flex .form-pesquisar-cliente select {
+    padding: 5px;
+    border-radius: 8px;
+}
+
+section.pesquisar-cliente .btn-pesquisar-cliente {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.section.pesquisar-cliente .btn-pesquisar-cliente .btn-verde button {
+    width: 15px;
+}
+
+section.pesquisar-cliente .flex .resultado-pesquisa-cliente {
+    display: flex;
+    flex-direction: column;
+}
+
+section.pesquisar-cliente .interface-pesquisar-cliente .flex h3 {
+    color: #683781;
+    font-size: 15px;
+    padding-top: 5px;
+}
+
+section.pesquisar-cliente .interface-pesquisar-func .flex .resultado-pesquisa-cliente {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: end;
+
+}
+
+section.pesquisar-cliente .interface-pesquisar-cliente .flex input,
+section.pesquisar-cliente .interface-pesquisar-cliente .flex select {
+    width: 280px;
+    padding: 3px;
+    border-radius: 8px;
+
+}
+
+.form-btn-atualizar-cliente {
+
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+}
+
+
+
+
+/* Estilo da tabela clientes */
+section.tabela-cliente-pesquisar .interface-pesquisar-cliente {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+section.tabela-cliente-pesquisar .table-cliente {
+    background-color: #683781;
+    border-radius: 8px;
+    padding: 5px 5px;
+
+}
+
+section.tabela-cliente-pesquisar th {
+    font-size: 14px;
+    color: #D6C7FB;
+    padding: 5px 30px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+section.tabela-cliente-pesquisar .flex {
+    justify-content: center;
+}
+
+/* Estilo para telas menores que 882px */
+@media screen and (max-width: 882px){
+     /* pesquisar cliente */
+     section.pesquisar-cliente .interface-pesquisar-cliente .flex {
+        margin-top: -50px;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .form-btn-atualizar-cliente {
+
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .tabela-cliente-pesquisar .table-cliente .linha {
+        display: none;
+    }
+    .table-cliente {
+        width: 100%;
+        border-collapse: collapse;
+    }
+}

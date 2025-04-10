@@ -1,0 +1,73 @@
+/* Estilo da página cadastrar produto */
+section.formulario-produto {
+    padding: 20px 4%;
+}
+
+section.formulario-produto .interface-form {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+section.formulario-produto .flex {
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+section.formulario-produto .flex h3 {
+    margin-top: 10px;
+    color: #683781;
+}
+
+section.formulario-produto .flex .form-left {
+    display: flex;
+    flex-direction: column;
+}
+
+section.formulario-produto .flex .form-right {
+    display: flex;
+    flex-direction: column;
+}
+
+section.formulario-produto .flex input,
+section.formulario-produto .flex select {
+    width: 300px;
+    padding: 5px;
+    border-radius: 8px;
+
+}
+
+section.formulario-produto .flex textarea {
+    width: 300px;
+    height: 110px;
+    border-radius: 8px;
+}
+
+.form-btn {
+    display: flex;
+    justify-content: right;
+}
+.form-btn-atualizar-produto{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-top: 30px;
+    padding-right: 288px;
+}
+
+/* Estilo para telas menores que 882px */
+@media screen and (max-width: 882px){
+    /* cadastrar produto */
+    section.formulario-produto .flex {
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: -20px;
+    }
+
+    .form-btn-atualizar-produto {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }
+}

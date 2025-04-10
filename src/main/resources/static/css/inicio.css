@@ -1,0 +1,12 @@
+/* Estilo da sessão início */
+.img-inicio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.img-inicio img {
+    width: 530px;
+    height: 530px;
+}

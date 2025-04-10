@@ -1,0 +1,65 @@
+/* Estilo da página registrar devolução */
+section.formulario-devolucao .flex {
+    justify-content: center;
+    margin-top: 30px;
+}
+
+section.formulario-devolucao .flex h3 {
+    margin-top: 15px;
+    color: #683781;
+}
+
+section.formulario-devolucao .flex input {
+    width: 300px;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+section.formulario-devolucao .flex textarea {
+    width: 300px;
+    height: 150px;
+    border-radius: 8px;
+    resize: none;
+    max-height: 200px;
+}
+
+section.formulario-devolucao .form-btn-devolucao {
+    display: flex;
+    justify-content: space-around;
+}
+
+section.formulario-devolucao .form-btn-devolucao button {
+    margin-top: 30px;
+    margin-left: 150px;
+}
+
+/* Estilo para telas menores que 882px */
+@media screen and (max-width: 882px){
+    /* Registro de devolução */
+    section.formulario-devolucao .form-btn-devolucao button {
+        margin-left: 0;
+    }
+
+    .interface-form-devolucao {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    section.formulario-devolucao .interface-form-devolucao {
+        margin-top: -30px;
+    }
+
+    .interface-form-devolucao .flex {
+        margin: 0 auto;
+        align-items: center;
+    }
+
+    .interface-form-devolucao .form-btn-devolucao {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 0 0 0;
+    }
+}

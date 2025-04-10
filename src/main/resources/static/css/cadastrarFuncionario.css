@@ -1,0 +1,62 @@
+/* Estilo da página cadastrar funcionário */
+section.formulario-funcionario {
+    padding: 20px 4%;
+}
+
+section.formulario-funcionario .interface-form-func {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+section.formulario-funcionario .flex {
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+section.formulario-funcionario .flex h3 {
+    margin-top: 10px;
+    color: #683781;
+}
+
+section.formulario-funcionario .flex .form-left-func {
+    display: flex;
+    flex-direction: column;
+}
+
+section.formulario-funcionario .flex .form-right-func {
+    display: flex;
+    flex-direction: column;
+}
+
+section.formulario-funcionario .flex input,
+section.formulario-funcionario .flex select {
+    width: 300px;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.interface-form-func .form-btn-atualizar-func {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-top: 30px;
+    padding-right: 288px;
+}
+
+/* Estilo para telas menores que 882px */
+@media screen and (max-width: 882px){
+    /* Cadastrar funcionário */
+    section.formulario-funcionario .flex {
+        gap: 10px;
+        margin-top: -20px;
+    }
+    .interface-form-func .form-btn-atualizar-func {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 30px;
+        padding-right: 0;    
+    }
+
+}

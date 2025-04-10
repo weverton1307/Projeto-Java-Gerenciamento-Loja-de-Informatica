@@ -14,7 +14,8 @@
     <!--end google font-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!--end icons bootstrap-->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/cadastrarFuncionario.css">
     <!--end style -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!--end jquery -->
@@ -67,16 +68,17 @@
                     </div>
                     <!--end flex -->
                 </form>
+                <!--end form-func -->
                 <div class="form-btn-atualizar-func">
                     <button id="salvarFuncionario" class="btn-verde">CADASTRAR</button>
                 </div>
-                <!--end form-func -->
-
+                <!-- form-btn-atualizar-func -->
             </div>
             <!--end interface-form-func -->
         </section>
         <!--end formulario-funcionario -->
-        <script th:src="@{/js/js.js}"></script>
+        <script th:src="@{/js/global.js}"></script>
+        <script th:src="@{/js/cadastrarFuncionario.js}"></script>
         <!--end javaScript  -->
     </main>
 </body>

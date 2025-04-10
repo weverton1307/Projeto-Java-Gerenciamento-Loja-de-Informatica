@@ -1,0 +1,156 @@
+/* Estilo da página pesquisar produtos */
+section.pesquisar-produto .interface-pesquisar {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+section.pesquisar-produto .interface-pesquisar .flex {
+    justify-content: space-around;
+}
+
+section.pesquisar-produto .interface-pesquisar .flex .form-pesquisar {
+    display: flex;
+    flex-direction: column;
+    margin-top: 33px;
+}
+
+section.pesquisar-produto .interface-pesquisar .flex .form-pesquisar input,
+section.pesquisar-produto .interface-pesquisar .flex .form-pesquisar select {
+    margin: 10px;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+section.pesquisar-produto .btn-pesquisar-produto {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+section.pesquisar-produto .flex .resultado-pesquisa-produto {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+
+}
+
+section.pesquisar-produto .interface-pesquisar .flex h3 {
+    color: #683781;
+    font-size: 15px;
+}
+
+section.pesquisar-produto .interface-pesquisar .flex .form-left {
+    display: flex;
+    flex-direction: column;
+
+}
+
+section.pesquisar-produto .interface-pesquisar .flex .form-right {
+    display: flex;
+    flex-direction: column;
+}
+
+section.pesquisar-produto .interface-pesquisar .flex input,
+section.pesquisar-produto .interface-pesquisar .flex select {
+    width: 280px;
+    padding: 3px;
+    border-radius: 8px;
+
+}
+
+section.pesquisar-produto .interface-pesquisar .flex textarea {
+    width: 280px;
+    height: 90px;
+    border-radius: 8px;
+}
+
+.form-btn {
+    display: flex;
+    justify-content: right;
+}
+
+.form-btn-atualizar button {
+    margin-right: 5px;
+    margin-top: 20px;
+}
+
+.form-btn-atualizar {
+    display: flex;
+    justify-content: right;
+    margin-right: 95px;
+    margin-top: 10px;
+}
+
+/* Estilo da tabela produtos */
+section.tabela-produto-pesquisar .interface-pesquisar {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+section.tabela-produto-pesquisar{
+    margin-right: 56px;
+}
+
+section.tabela-produto-pesquisar .table-produto {
+    margin-top: 15px;
+    background-color: #683781;
+    border-radius: 8px;
+    padding: 5px 5px;
+}
+
+section.tabela-produto-pesquisar th {
+    font-size: 10px;
+    color: #D6C7FB;
+    padding: 5px 6px;
+}
+
+/* Estilo para telas menores que 882px */
+@media screen and (max-width: 882px){
+    /* Pesquisar produto */
+    section.pesquisar-produto .interface-pesquisar .flex {
+        margin-top: -50px;
+        align-items: center;
+        gap: 30px;
+    }
+    section.pesquisar-produto .interface-pesquisar{
+        width: 100%;
+    }
+
+    section.pesquisar-produto .flex .resultado-pesquisa-produto {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .form-btn-atualizar {
+        display: flex;
+        justify-content: center;
+        margin-right: 0px;
+        margin-top: 10px;
+    }
+
+    .tabela-produto-pesquisar .table-produto .linha {
+        display: none;
+    }
+    
+
+    section.tabela-produto-pesquisar .table-produto {
+        margin-top: 0px;
+        background-color: #683781;
+        border-radius: 8px;
+        padding: 5px 5px;
+        margin-left: 0;
+    }
+
+    .interface-form-troca .form-btn-troca button {
+        margin-right: 170px;
+    }
+
+.table-produto {
+    width: 100%;
+    border-collapse: collapse;
+}
+}

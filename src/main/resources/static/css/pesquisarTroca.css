@@ -1,0 +1,118 @@
+/* Estilo da página pesquisar troca */
+.interface-form-troca {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 20px;
+
+}
+
+section.formulario-pesquisar-troca .flex {
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+section.formulario-pesquisar-troca .flex h3 {
+    margin-top: 15px;
+    color: #683781;
+}
+
+section.formulario-pesquisar-troca .flex input {
+    width: 300px;
+    height: 35px;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+section.formulario-pesquisar-troca .flex textarea {
+    width: 300px;
+    height: 150px;
+    border-radius: 8px;
+    resize: none;
+    max-height: 200px;
+}
+
+section.formulario-pesquisar-troca .flex .form-pesq-troca {
+    display: flex;
+    flex-direction: column;
+}
+
+section.formulario-pesquisar-troca .flex .form-pesq-troca .btn-pesquisar-troca {
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+section.formulario-pesquisar-troca .form-btn-pesquisar-troca {
+    display: flex;
+    justify-content: end;
+    margin-right: 168px;
+}
+
+section.formulario-pesquisar-troca .form-btn-pesquisar-troca button {
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+}
+
+/* Estilo da tabela pesquisar troca */
+section.tabela-troca-pesquisar .interface-pesquisar-troca {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+section.tabela-troca-pesquisar .table-troca {
+    margin-top: 20px;
+    background-color: #683781;
+    border-radius: 8px;
+    padding: 5px 5px;
+
+}
+
+section.tabela-troca-pesquisar th {
+    font-size: 14px;
+    color: #D6C7FB;
+    padding: 5px 90px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+section.tabela-troca-pesquisar .flex {
+    justify-content: center;
+}
+
+/* Estilo para telas menores que 882px */
+@media screen and (max-width: 882px){
+    /* Pesquisar troca */
+    section.formulario-pesquisar-troca .flex {
+        margin-top: -10px;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .form-btn-pesquisar-troca {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    section.tabela-troca-pesquisar .table-troca th {
+        color: #D6C7FB;
+        padding: 0px 0px;
+    }
+
+    section.formulario-pesquisar-troca .form-btn-pesquisar-troca {
+        display: flex;
+        justify-content: center;
+        margin-right: 0;
+    }
+
+    .tabela-troca-pesquisar .table-troca .linha {
+        display: none;
+    }
+    .table-troca {
+        width: 100%;
+        border-collapse: collapse;
+    }
+}

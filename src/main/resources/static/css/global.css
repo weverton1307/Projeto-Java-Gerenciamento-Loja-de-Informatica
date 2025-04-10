@@ -1,0 +1,263 @@
+/* Estilo geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #D6C7FB;
+    height: 100vh;
+
+}
+
+.interface {
+    max-width: 1280px;
+    margin: 0 auto;
+    gap: 150px;
+}
+
+.flex {
+    display: flex;
+}
+
+.btn-verde {
+    padding: 8px 30px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 15px;
+    background-color: #683781;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+}
+
+.btn-branco {
+    padding: 8px 30px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 15px;
+    background-color: #fff;
+    color: #D6C7FB;
+    border: 0;
+    cursor: pointer;
+}
+
+.btn-registro-venda .btn-verde {
+    padding: 15px 20px;
+    transition: .3s;
+    font-size: 14px;
+}
+
+.btn-registro-venda .btn-verde:hover {
+    box-shadow: 0px 0px 8px #6837819b;
+    transform: scale(1.05);
+    transition: .3s;
+}
+
+.tabelaGeral tbody {
+    transition: background-color 0.3s ease-in-out;
+    background-color: white;
+}
+
+.tabelaGeral tbody tr:hover {
+    background-color: #b8b6b6ef;
+    cursor: pointer;
+}
+
+.tabelaGeral tbody td {
+    padding: 10px 30px;
+    color: #333;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 10px;
+}
+
+/* estilo do cabeçalho */
+.interface-header {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+header {
+    width: 100%;
+    background-color: #683781;
+}
+
+.top-header {
+    background-color: #D6C7FB;
+    padding: 5px 4%;
+}
+
+.top-header>.interface-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.top-header .logo {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.top-header .logo a img {
+    width: 65px;
+}
+
+.top-header .top-titulo {
+    font-size: 25px;
+    color: #683781;
+}
+
+.botton-header nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+}
+
+.botton-header nav ul li a {
+    color: #D6C7FB;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px 30px;
+    text-decoration: none;
+    display: block;
+    transition: .5s;
+
+}
+
+.botton-header nav ul li a:hover {
+    background-color: #D97BF9;
+    font-weight: 600;
+    color: #683781;
+    box-shadow: inset 0 0 8px #683781c7;
+
+}
+
+.drop-hover {
+    position: relative;
+}
+
+.drop-hover .drop {
+    position: absolute;
+    background-color: #714089;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.drop-hover .drop a {
+    padding: 15px;
+}
+
+.drop-hover:hover .drop {
+    height: 315px;
+}
+
+/* Estilo do menu mobile */
+.btn-abrir-menu {
+    display: none;
+}
+
+.btn-abrir-menu i {
+    color: #683781;
+    font-size: 40px;
+}
+
+.menu-mobile {
+    background-color: #683781;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9999999;
+    width: 0%;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.menu-mobile.abrir-menu {
+    width: 70%;
+}
+
+.menu-mobile.abrir-menu~.overlay-menu {
+    display: block;
+}
+
+.menu-mobile nav ul {
+    text-align: right;
+    list-style-type: none;
+}
+
+.menu-mobile nav ul li a {
+    display: block;
+    color: #D6C7FB;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 5px 8%;
+    text-decoration: none;
+
+}
+
+.menu-mobile nav ul li a:hover {
+    background-color: #D97BF9;
+    color: #D6C7FB;
+    font-weight: 600;
+}
+
+.menu-mobile .btn-fechar i {
+    color: #D6C7FB;
+    font-size: 30px;
+}
+
+.menu-mobile .btn-fechar {
+    padding: 20px 5%;
+}
+
+.overlay-menu {
+    background-color: #000000a9;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 8999999;
+    display: none;
+}
+
+/* Estilo para telas menores que 882px */
+@media screen and (max-width: 882px){
+     /* Cabeçalho */
+     section.top-header .btn-registro-venda .btn-verde {
+        display: none;
+    }
+
+    section.botton-header nav {
+        display: none;
+    }
+
+    section.img-inicio {
+        margin-top: 30px;
+    }
+
+    section.img-inicio img {
+        width: 100%;
+    }
+
+    .btn-abrir-menu {
+        display: contents;
+    }
+    
+      /* Classes gerais */
+      .flex {
+        flex-direction: column;
+    }
+
+    section.top-header .top-titulo h1 {
+        font-size: 18px;
+    }
+}

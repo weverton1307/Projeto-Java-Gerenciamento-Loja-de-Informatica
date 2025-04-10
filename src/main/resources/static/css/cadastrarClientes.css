@@ -1,0 +1,71 @@
+/* Estilo da página cadastrar clientes */
+section.formulario-cliente {
+    padding: 20px 4%;
+}
+
+section.formulario-cliente .interface-form-cliente {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+section.formulario-cliente .flex {
+    justify-content: center;
+    align-items: center;
+}
+
+section.formulario-cliente .flex h3 {
+    margin-top: 10px;
+    color: #683781;
+}
+
+section.formulario-cliente .flex {
+    display: flex;
+    flex-direction: column;
+}
+
+section.formulario-cliente .flex input,
+section.formulario-cliente .flex select {
+    width: 300px;
+    padding: 5px;
+    border-radius: 8px;
+
+}
+
+.form-btn-cliente {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 150px;
+
+}
+
+.form-btn button {
+    margin-right: 489px;
+    margin-top: 30px;
+}
+
+/* Estilo para telas menores que 882px */
+@media screen and (max-width: 882px) {
+    /* cadastrar cliente */
+    section.formulario-cliente .form-center-cliente h3 {
+        margin-top: 25px;
+
+    }
+
+    section.formulario-cliente .form-center-cliente {
+        margin-top: -30px;
+    }
+
+    .form-btn-cliente button {
+        margin-top: 20px;
+
+    }
+
+    .form-btn-cliente {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        margin-left: 0;
+
+    }
+}

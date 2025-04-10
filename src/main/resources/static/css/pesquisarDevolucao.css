@@ -1,0 +1,109 @@
+/* Estilo da página pesquisar devolução */
+.interface-form-devolucao {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 20px;
+
+}
+
+section.formulario-pesquisar-devolucao .flex {
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+section.formulario-pesquisar-devolucao .flex h3 {
+    margin-top: 15px;
+    color: #683781;
+}
+
+section.formulario-pesquisar-devolucao .flex input {
+    width: 300px;
+    height: 35px;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+section.formulario-pesquisar-devolucao .flex textarea {
+    width: 300px;
+    height: 150px;
+    border-radius: 8px;
+    resize: none;
+    max-height: 200px;
+}
+
+section.formulario-pesquisar-devolucao .flex .form-pesq-devolucao {
+    display: flex;
+    flex-direction: column;
+}
+
+section.formulario-pesquisar-devolucao .flex .form-pesq-devolucao .btn-pesquisar-devolucao {
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+section.formulario-pesquisar-devolucao .form-btn-pesquisar-devolucao {
+    display: flex;
+    justify-content: end;
+}
+
+section.formulario-pesquisar-devolucao .form-btn-pesquisar-devolucao button {
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+}
+
+/* Estilo da tabela pesquisar devolução */
+section.tabela-devolucao-pesquisar .interface-pesquisar-devolucao {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+section.tabela-devolucao-pesquisar .table-devolucao {
+    margin-top: 20px;
+    background-color: #683781;
+    border-radius: 8px;
+    padding: 5px 5px;
+
+}
+
+section.tabela-devolucao-pesquisar th {
+    font-size: 14px;
+    color: #D6C7FB;
+    padding: 5px 90px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+section.tabela-devolucao-pesquisar .flex {
+    justify-content: center;
+}
+
+/* Estilo para telas menores que 882px */
+@media screen and (max-width: 882px) {
+    /* pesquisar devolução */
+    section.formulario-pesquisar-devolucao .interface-form-devolucao .form-pesquisar-devolucao .flex {
+        margin-top: -10px;
+        align-items: center;
+        gap: 30px;
+    }
+
+    section.formulario-pesquisar-devolucao .form-btn-pesquisar-devolucao {
+        display: flex;
+        justify-content: center;
+    }
+
+    section.tabela-devolucao-pesquisar .table-devolucao th {
+        color: #D6C7FB;
+        padding: 0px 0px;
+    }
+
+    .tabela-devolucao-pesquisar .table-devolucao .linha {
+        display: none;
+    }
+    .table-devolucao {
+        width: 100%;
+        border-collapse: collapse;
+    }
+}

@@ -1,0 +1,65 @@
+/* Estilo da página registrar troca */
+section.formulario-troca .flex {
+    justify-content: center;
+    margin-top: 30px;
+}
+
+section.formulario-troca .flex h3 {
+    margin-top: 15px;
+    color: #683781;
+}
+
+section.formulario-troca .flex input {
+    width: 300px;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+section.formulario-troca .flex textarea {
+    width: 300px;
+    height: 150px;
+    border-radius: 8px;
+    resize: none;
+    max-height: 200px;
+}
+
+section.formulario-troca .form-btn-troca {
+    display: flex;
+    justify-content: space-around;
+}
+
+section.formulario-troca .form-btn-troca button {
+    margin-top: 30px;
+    margin-left: 150px;
+}
+
+/* Estilo para telas menores que 882px */
+@media screen and (max-width: 882px) {
+     /* Registrar troca */
+     section.formulario-troca .form-btn-troca {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    section.formulario-troca .form-btn-troca button {
+        margin: 30px auto 0 auto;
+        display: block;
+    }
+
+    .interface-form-troca {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .interface-form-troca .flex {
+        margin: 0 auto;
+        align-items: center;
+    }
+
+    .form-center-troca {
+        margin: 0 auto;
+    }
+}

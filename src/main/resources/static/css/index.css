@@ -1,0 +1,78 @@
+/* Estilo da sessão login */
+section.inicio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section.inicio .interface {
+    display: flex;
+    align-items: center;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    margin-top: -60px;
+}
+
+.login .login-formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+.login img {
+    width: 95px;
+}
+
+.login h1 {
+    font-size: 65px;
+    color: #683781;
+}
+
+.login h3 {
+    color: #683781;
+}
+
+#senha-login {
+    margin-top: 8px;
+}
+
+.login input {
+    padding: 6px 47px;
+    border-radius: 15px;
+    margin-top: 0px;
+}
+
+.inicio .btn-branco {
+    padding: 8px 35px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 15px;
+    background-color: #ffffff;
+    color: #D6C7FB;
+    border: 0;
+    cursor: pointer;
+}
+
+.btn {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Estilo para telas menores que 882px */
+@media screen and (max-width: 882px) {
+    /* login */
+    section.inicio .interface {
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 200px;
+    }
+
+    .mac {
+        display: none;
+    }
+}

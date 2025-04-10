@@ -1,99 +1,104 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>navBar</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <header>
-            <section class="top-header">
-                <div class="interface-header">
-                    <div class="logo">
-                        <a href="/inicio"><img src="./img/LogoMarca.png"></a>
-                        <div class="top-titulo">
-                            <h1 th:text="${titulo}">Título</h1>
-                        </div>
-                        <!--end top-titulo -->
+
+<head>
+    <title>navBar</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--end jquery -->
+</head>
+
+<body>
+    <header>
+        <section class="top-header">
+            <div class="interface-header">
+                <div class="logo">
+                    <a href="/inicio"><img src="./img/LogoMarca.png"></a>
+                    <div class="top-titulo">
+                        <h1 th:text="${titulo}">Título</h1>
                     </div>
-                    <!--end logo -->
-                    <div class="btn-registro-venda">
-                        <a href="#"><button class="btn-verde">REGISTRAR VENDA</button></a>
-                    </div>
-                    <!--end btn-registro-venda -->
-                    <div class="btn-abrir-menu" id="btn-menu">
-                        <i class="bi bi-list"></i>
-                    </div>
-                    <!--end btn-abrir-menu -->
-                    <div class="menu-mobile" id="menu-mobile">
-                        <div class="btn-fechar">
-                            <i class="bi bi-x-lg"></i>
-                        </div>
-                        <!--end btn-fechar -->
-                         <nav>
-                            <ul>
-                                <li><a href="/inicio">Início</a></li>
-                                <li><a href="#">Registrar venda</a></li>
-                                <li class="adm"><a href="#">Relatório de vendas</a></li>
-                                <li><a href="/cadastroProduto">Cadastrar produto</a></li>
-                                <li><a href="/pesquisarProdutos">PesquisarProduto</a></li>
-                                <li><a href="/cadastrarClientes">Cadastrar cliente</a></li>
-                                <li><a href="/pesquisarClientes">Pesquisar cliente</a></li>
-                                <li><a href="/registrarDevolucao">Cadastrar devolução</a></li>
-                                <li><a href="/pesquisarDevolucao">Pesquisar devolução</a></li>
-                                <li><a href="/registrarTroca">Cadastrar troca</a></li>
-                                <li><a href="/pesquisarTroca">Pesquisar troca</a></li>
-                                <li class="adm"><a href="/cadastrarFuncionario">Cadastrar funcionário</a></li>
-                                <li class="adm"><a href="pesquisarFuncionarios">Pesquisar funcionário</a></li>
-                                 <li><a href="/logoff">Sair</a></li>
-    
-                            </ul>
-                         </nav>
-                         <!-- end nav -->
-                    </div>
-                    <!--end menu-mobile -->
-                     <div class="overlay-menu" id="overlay-menu"></div>
-                     <!--end overlay-menu -->
+                    <!--end top-titulo -->
                 </div>
-                <!--end interface-header -->
-            </section>
-            <!--end top-header -->
-            <section class="botton-header">
-                <div class="inteface-header">
-                    <nav class="txt-menu">
+                <!--end logo -->
+                <div class="btn-registro-venda">
+                    <a href="#"><button class="btn-verde">REGISTRAR VENDA</button></a>
+                </div>
+                <!--end btn-registro-venda -->
+                <div class="btn-abrir-menu" id="btn-menu">
+                    <i class="bi bi-list"></i>
+                </div>
+                <!--end btn-abrir-menu -->
+                <div class="menu-mobile" id="menu-mobile">
+                    <div class="btn-fechar">
+                        <i class="bi bi-x-lg"></i>
+                    </div>
+                    <!--end btn-fechar -->
+                    <nav>
                         <ul>
-                            <li><a href="/inicio">INÍCIO</a></li>
-                            <li class="drop-hover"><a href="#">CADASTRAR <i class="bi bi-caret-down-fill"></i></a>
-                                <div class="drop">
-                                    <a href="/cadastroProduto">PRODUTOS</a>
-                                    <a href="registrarDevolucao">DEVOLUÇÕES</a>
-                                    <a href="/registrarTroca">TROCAS</a>
-                                    <a href="#">VENDAS</a>
-                                    <a href="/cadastrarClientes">CLIENTES</a>
-                                    <a href="/cadastrarFuncionario" class="adm">FUNCIONÁRIOS</a>
-                                </div>
-                            </li>
-                            <li class="drop-hover"><a href="#">PESQUISAR <i class="bi bi-caret-down-fill"></i></a>
-                                <div class="drop">
-                                    <a href="/pesquisarProdutos">PRODUTOS</a>
-                                    <a href="/pesquisarDevolucao">DEVOLUÇÕES</a>
-                                    <a href="/pesquisarTroca">TROCAS</a>
-                                    <a href="#" class="adm">VENDAS</a>
-                                    <a href="/pesquisarClientes">CLIENTES</a>
-                                    <a href="/pesquisarFuncionarios"class="adm">FUNCIONÁRIOS</a>
-                                </div>
-                            </li>
-                            <li class="drop-hover"><a href="#" class="adm">RELATÓRIO DE VENDAS</a></li>
-                            <li><a href="/logoff">SAIR</a></li>
+                            <li><a href="/inicio">Início</a></li>
+                            <li><a href="#">Registrar venda</a></li>
+                            <li class="adm"><a href="#">Relatório de vendas</a></li>
+                            <li><a href="/cadastroProduto">Cadastrar produto</a></li>
+                            <li><a href="/pesquisarProdutos">PesquisarProduto</a></li>
+                            <li><a href="/cadastrarClientes">Cadastrar cliente</a></li>
+                            <li><a href="/pesquisarClientes">Pesquisar cliente</a></li>
+                            <li><a href="/registrarDevolucao">Cadastrar devolução</a></li>
+                            <li><a href="/pesquisarDevolucao">Pesquisar devolução</a></li>
+                            <li><a href="/registrarTroca">Cadastrar troca</a></li>
+                            <li><a href="/pesquisarTroca">Pesquisar troca</a></li>
+                            <li class="adm"><a href="/cadastrarFuncionario">Cadastrar funcionário</a></li>
+                            <li class="adm"><a href="pesquisarFuncionarios">Pesquisar funcionário</a></li>
+                            <li><a href="/logoff">Sair</a></li>
+
                         </ul>
                     </nav>
-                    <!--end nav -->
+                    <!-- end nav -->
                 </div>
-                <!--end inteface-header -->
-            </section>
-            <!--end botton-header -->
-        </header>
-        <!--end cabeçalho -->
-    </body>
+                <!--end menu-mobile -->
+                <div class="overlay-menu" id="overlay-menu"></div>
+                <!--end overlay-menu -->
+            </div>
+            <!--end interface-header -->
+        </section>
+        <!--end top-header -->
+        <section class="botton-header">
+            <div class="inteface-header">
+                <nav class="txt-menu">
+                    <ul>
+                        <li><a href="/inicio">INÍCIO</a></li>
+                        <li class="drop-hover"><a href="#">CADASTRAR <i class="bi bi-caret-down-fill"></i></a>
+                            <div class="drop">
+                                <a href="/cadastroProduto">PRODUTOS</a>
+                                <a href="registrarDevolucao">DEVOLUÇÕES</a>
+                                <a href="/registrarTroca">TROCAS</a>
+                                <a href="#">VENDAS</a>
+                                <a href="/cadastrarClientes">CLIENTES</a>
+                                <a href="/cadastrarFuncionario" class="adm">FUNCIONÁRIOS</a>
+                            </div>
+                        </li>
+                        <li class="drop-hover"><a href="#">PESQUISAR <i class="bi bi-caret-down-fill"></i></a>
+                            <div class="drop">
+                                <a href="/pesquisarProdutos">PRODUTOS</a>
+                                <a href="/pesquisarDevolucao">DEVOLUÇÕES</a>
+                                <a href="/pesquisarTroca">TROCAS</a>
+                                <a href="#" class="adm">VENDAS</a>
+                                <a href="/pesquisarClientes">CLIENTES</a>
+                                <a href="/pesquisarFuncionarios" class="adm">FUNCIONÁRIOS</a>
+                            </div>
+                        </li>
+                        <li class="drop-hover"><a href="#" class="adm">RELATÓRIO DE VENDAS</a></li>
+                        <li><a href="/logoff">SAIR</a></li>
+                    </ul>
+                </nav>
+                <!--end nav -->
+            </div>
+            <!--end inteface-header -->
+        </section>
+        <!--end botton-header -->
+    </header>
+    <!--end cabeçalho -->
+</body>
+
 </html>

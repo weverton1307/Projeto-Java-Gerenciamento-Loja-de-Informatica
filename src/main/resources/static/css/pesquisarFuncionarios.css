@@ -1,0 +1,153 @@
+/* Estilo da página de pesquisar funcionários */
+section.pesquisar-func .interface-pesquisar-func {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+section.pesquisar-func .interface-pesquisar-func .flex {
+    justify-content: space-around;
+}
+
+section.pesquisar-func .interface-pesquisar-func .flex .form-pesquisar-func {
+    display: flex;
+    flex-direction: column;
+    margin-top: 33px;
+}
+
+section.pesquisar-func .interface-pesquisar-func .flex .form-pesquisar-func input,
+section.pesquisar-func .interface-pesquisar-func .flex .form-pesquisar-func select {
+    padding: 5px;
+    border-radius: 8px;
+}
+
+section.pesquisar-func .btn-pesquisar-func {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.section.pesquisar-func .btn-pesquisar-func .btn-verde button {
+    width: 15px;
+}
+
+section.pesquisar-func .flex .resultado-pesquisa-func {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+
+}
+
+section.pesquisar-func .interface-pesquisar-func .flex h3 {
+    color: #683781;
+    font-size: 15px;
+}
+
+section.pesquisar-func .interface-pesquisar-func .flex .form-left-func-pesquisa {
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+section.pesquisar-func .interface-pesquisar-func .flex .form-right-func-pesquisa {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-btn-atualizar-func {
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+}
+
+
+section.pesquisar-func .interface-pesquisar-func .flex input,
+section.pesquisar-func .interface-pesquisar-func .flex select {
+    width: 280px;
+    padding: 3px;
+    border-radius: 8px;
+
+}
+
+section.pesquisar-func .interface-pesquisar-func .flex textarea {
+    width: 280px;
+    height: 90px;
+    border-radius: 8px;
+}
+
+
+
+/* Estilo da tabela funcionários */
+section.tabela-func-pesquisar .interface-pesquisar-func {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+section.tabela-func-pesquisar .table-func {
+    margin-top: 20px;
+    background-color: #683781;
+    border-radius: 8px;
+    padding: 5px 5px;
+
+}
+
+section.tabela-func-pesquisar th {
+    font-size: 14px;
+    color: #D6C7FB;
+    padding: 5px 29px;
+    vertical-align: middle;
+    vertical-align: middle;
+    text-align: center;
+}
+
+section.tabela-func-pesquisar .flex {
+    justify-content: center;
+}
+
+section.tabela-func-pesquisar tbody td {
+    padding: 10px 30px;
+    color: #333;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 10px;
+}
+
+/* Estilo para telas menores que 882px */
+@media screen and (max-width: 882px){
+    /* pesquisar funcionários */
+    section.pesquisar-func .interface-pesquisar-func .flex {
+        margin-top: -50px;
+        align-items: center;
+        gap: 30px;
+    }
+
+    section.pesquisar-func .flex .resultado-pesquisa-func {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .form-btn-atualizar-func {
+
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .form-btn-atualizar-func button {
+        margin-right: 0px;
+    }
+
+    .tabela-func-pesquisar .table-func .linha {
+        display: none;
+    }
+
+    .table-func {
+        width: 100%;
+        border-collapse: collapse;
+    }
+}
