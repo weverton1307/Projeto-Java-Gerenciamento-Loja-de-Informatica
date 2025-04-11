@@ -31,8 +31,8 @@
             <div class="interface-pesquisar">
                 <div class="flex">
                     <form class="form-pesquisar">
-                        <select >
-                            <option id="pesquisarProduto_criterio" value="">Selecione um critério de pesquisa</option>
+                        <select id="pesquisarProduto_criterio" class="select">
+                            <option  value="">Selecione um critério de pesquisa</option>
                             <option value="Código">Código</option>
                             <option value="Nome">Nome</option>
                             <option value="Modelo">modelo</option>
@@ -41,7 +41,7 @@
                             <option value="Devolvido">Devolvido</option>
                             <option value="Categoria">Categoria</option>
                         </select>
-                        <select id="categoriaProduto">
+                        <select id="categoriaProduto" class="select">
                             <option value="">Selecione uma categoria</option>
                             <option value="Componentes de hardware">Componentes de hardware</option>
                             <option value="Conectividade e redes">Conectividade e redes</option>
@@ -52,7 +52,7 @@
                         <input type="text" id="pesquisarProduto_campo" placeholder="Critério">
                         <div class="btn-pesquisar-produto">
                             <button class="btn-verde" id="search-button">PESQUISAR</button>
-                            <button class="btn-verde" id="btn-limpar">LIMPAR</button>
+                            <button class="btn-verde" id="btn-limpar" onclick="limparCampos()">LIMPAR</button>
                         </div>
                     </form>
                     <!--end form-pesquisar -->

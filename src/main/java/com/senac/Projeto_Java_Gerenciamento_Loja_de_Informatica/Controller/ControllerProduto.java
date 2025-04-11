@@ -70,10 +70,10 @@ public class ControllerProduto {
             @RequestParam(required = false) String modelo,
             @RequestParam(required = false) String fabricante,
             @RequestParam(required = false) String disponibilidade,
-            @RequestParam(required = false) Integer devolvido,
+            @RequestParam(required = false) String devolvido,
             @RequestParam(required = false) String categoria
     ) {
-        System.out.println("Modelo pesquisado: " + modelo);
+        System.out.println("Modelo pesquisado: " + nome);
 
         if (id != null) {
             if (id <= 0) {
@@ -114,6 +114,7 @@ public class ControllerProduto {
                     : ResponseEntity.ok(produtosEncontrados);
         } else if (categoria != null && !categoria.trim().isEmpty()) {
             List<Produto> produtosEncontrados = serviceProduto.buscarProdutoCategoria(categoria);
+            System.out.println("dsfdssfsd: "+ produtosEncontrados.isEmpty());
             return produtosEncontrados.isEmpty()
                     ? ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum produto encontrado para a categoria informada.")
                     : ResponseEntity.ok(produtosEncontrados);

@@ -125,14 +125,13 @@ public class ServiceProduto {
         return produtosEncontrados;
     }
 
-    public List<Produto> buscarProdutoDevolvido(int codigoDevolvido) {
+    public List<Produto> buscarProdutoDevolvido(String devolvido) {
         List<Produto> produtosEncontrados = new ArrayList<>();
         List<Produto> listaProduto = listarProduto();
-        for (Produto p : listaProduto) {
-            if (p.getTroca() != null && p.getTroca().getTipo().equalsIgnoreCase("Troca") || p.getDevolucao() != null && p.getDevolucao().getTipo().equalsIgnoreCase("Devolução")) {
-                produtosEncontrados.add(p);
-            }
-        }
+       for(Produto p: listaProduto){
+           if(p.getStatusProduto().equalsIgnoreCase(devolvido))
+           produtosEncontrados.add(p);
+       }
         return produtosEncontrados;
     }
 

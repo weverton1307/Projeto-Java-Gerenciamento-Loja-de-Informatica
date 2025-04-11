@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.ProjetoJavaGerenciamentoLojaDeInformaticaApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.644 s -- in com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.ProjetoJavaGerenciamentoLojaDeInformaticaApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.227 s -- in com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.ProjetoJavaGerenciamentoLojaDeInformaticaApplicationTests

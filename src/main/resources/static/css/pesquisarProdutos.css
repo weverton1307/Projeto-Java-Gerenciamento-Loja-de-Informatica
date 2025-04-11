@@ -89,8 +89,9 @@ section.tabela-produto-pesquisar .interface-pesquisar {
     margin: 0 auto;
     padding-top: 40px;
 }
-section.tabela-produto-pesquisar{
-    margin-right: 56px;
+section.tabela-produto-pesquisar .flex{
+   justify-content: center;
+   align-items: center;
 }
 
 section.tabela-produto-pesquisar .table-produto {
@@ -101,10 +102,15 @@ section.tabela-produto-pesquisar .table-produto {
 }
 
 section.tabela-produto-pesquisar th {
-    font-size: 10px;
+    font-size: 15px;
     color: #D6C7FB;
     padding: 5px 6px;
 }
+.desativado {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  
 
 /* Estilo para telas menores que 882px */
 @media screen and (max-width: 882px){
