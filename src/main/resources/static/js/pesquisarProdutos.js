@@ -97,6 +97,7 @@ $("#tabela-produto").on("click", "tr.linha-produto", function () {
             $("#alterarProduto").hide();
             $("#pesquisarProduto_campo").hide();
             $("#categoriaProduto").hide();
+            $("#pesquisarProduto_criterio").val("");
             limparCampos();
         }
     });
@@ -131,7 +132,7 @@ function limparCampos() {
 }
 //Esconde selects
 $(".select").on("change", function () {
-    var criterio = $(this).val();
+    var criterio = $("#pesquisarProduto_criterio").val();
     if (criterio === "Categoria") {
         $("#pesquisarProduto_campo").hide();
         $("#categoriaProduto").show();
@@ -223,6 +224,7 @@ $(document).ready(function () {
                     $("#status").val((response.statusProduto || "Desconhecido"));
                     $("#quantidade").val((response.quantidadeProduto || "Desconhecido"));
                     $("#produtoId").val(data.id);
+                    $("#pesquisarProduto_criterio").val("");
                 }
 
                 // Limpa a tabela antes de inserir os resultados
@@ -248,18 +250,44 @@ $(document).ready(function () {
                         </tr>
                     `;
                     $("#tabela-produto").append(linha);
+                    $("#pesquisarProduto_criterio").val("");
                    
                 });
-                alert("clique em um produto na tabela para poder alterar os dados do produto.");
             },
             error: function (xhr) {
                 alert("Produto não encontrado, por favor tente novamente.");
                 $("#alterarProduto").hide();
                 $("#pesquisarProduto_campo").hide();
                 $("#categoriaProduto").hide();
+                $("#pesquisarProduto_criterio").val("");
                 limparCampos();
             }
         });
+    });
+});
+
+//Função para alertar produtos com menos de 5 unidade
+$(document).ready(function() {
+    $.ajax({
+        url: '/quantidade-produto',
+        method: 'GET',
+        success: function(mensagem) {            
+            let listaProdutos = "<ul style='list-style-type: none; padding-left: 0;'>";         
+                mensagem.split('\n').forEach(function(produto) {
+                    listaProdutos += "<li>" + produto + "</li>";
+                });
+                listaProdutos += "</ul>";
+                
+                Swal.fire({
+                    title: 'Produtos com menos de 5 unidades',
+                    icon: 'warning', 
+                    html: listaProdutos,  
+                    confirmButtonText: 'OK'
+                });  
+        },
+        error: function(xhr, status, error) {
+            console.error("Erro ao carregar os produtos: " + error);
+        }
     });
 });
 

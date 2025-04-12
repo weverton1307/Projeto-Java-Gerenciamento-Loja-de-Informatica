@@ -16,6 +16,8 @@
     <!--end icons bootstrap-->
     <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/pesquisarProdutos.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- end  SweetAlert2) -->
     <!--end style -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!--end jquery -->
@@ -32,7 +34,7 @@
                 <div class="flex">
                     <form class="form-pesquisar">
                         <select id="pesquisarProduto_criterio" class="select">
-                            <option  value="">Selecione um critério de pesquisa</option>
+                            <option value="">Selecione um critério de pesquisa</option>
                             <option value="Código">Código</option>
                             <option value="Nome">Nome</option>
                             <option value="Modelo">modelo</option>
@@ -71,7 +73,7 @@
                             <h3>Nota fiscal</h3>
                             <input id="fiscal" type="txt" th:field="${produto.notaFiscal}" required>
                             <h3>Status</h3>
-                            <input type="text" id="status" th:field="${produto.statusProduto}" readonly ></input>
+                            <input type="text" id="status" th:field="${produto.statusProduto}" readonly></input>
                         </div>
                         <!--end form-left -->
                         <div class="form-right">
@@ -113,8 +115,7 @@
                                     Suprimentos de impressora</option>
                             </select>
                             <h3>Descrição técnica</h3>
-                            <textarea id="descricao" th:field="${produto.descricaoTecnica}"
-                                required> </textarea>
+                            <textarea id="descricao" th:field="${produto.descricaoTecnica}" required> </textarea>
                         </div>
                         <!--end form-right -->
                     </div>
@@ -163,4 +164,5 @@
     <script th:src="@{/js/pesquisarProdutos.js}"></script>
     <!--end javaScript  -->
 </body>
+
 </html>
