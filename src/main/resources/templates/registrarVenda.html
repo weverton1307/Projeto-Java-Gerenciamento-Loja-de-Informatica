@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lojaInfo</title>
+    <link rel="icon" href="./img/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!--Fim google font-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- BootStrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!--end icons bootstrap-->
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- style -->
+    <script src="js.js" defer></script>
+    <!-- javaScript -->
+</head>
+
+<body>
+    <header>
+        <section class="top-header">
+            <div class="interface-header">
+                <div class="logo">
+                    <a href="#"><img src="./img/LogoMarca.png"></a>
+                    <div class="top-titulo">
+                        <h1>Registrar venda</h1>
+                    </div>
+                    <!-- top-titulo -->
+                </div>
+                <!-- logo -->
+                <div class="btn-registro-venda">
+                    <a href="#"><button class="btn-verde">REGISTRAR VENDA</button></a>
+                </div>
+                <!-- btn-registro-venda -->
+                <div class="btn-abrir-menu" id="btn-menu">
+                    <i class="bi bi-list"></i>
+                </div>
+                <!-- btn-abrir-menu -->
+                <div class="menu-mobile" id="menu-mobile">
+                    <div class="btn-fechar">
+                        <i class="bi bi-x-lg"></i>
+                    </div>
+                    <!-- btn-fechar -->
+                    <nav>
+                        <ul>
+                            <li><a href="#">Início</a></li>
+                            <li><a href="#">Registrar venda</a></li>
+                            <li><a href="#">Relatório de vendas</a></li>
+                            <li><a href="#">Cadastrar produto</a></li>
+                            <li><a href="#">PesquisarProduto</a></li>
+                            <li><a href="#">Cadastrar cliente</a></li>
+                            <li><a href="#">Pesquisar cliente</a></li>
+                            <li><a href="#">Cadastrar devolução</a></li>
+                            <li><a href="#">Pesquisar devolução</a></li>
+                            <li><a href="#">Cadastrar troca</a></li>
+                            <li><a href="#">Pesquisar troca</a></li>
+                            <li><a href="#">Cadastrar funcionário</a></li>
+                            <li><a href="#">Pesquisar funcionário</a></li>
+
+                        </ul>
+                    </nav>
+                </div>
+                <!-- menu-mobile -->
+                <div class="overlay-menu" id="overlay-menu"></div>
+                <!-- overlay-menu -->
+            </div>
+            <!-- interface-header -->
+        </section>
+        <!-- top-header -->
+        <section class="botton-header">
+            <div class="inteface-header">
+                <nav class="txt-menu">
+                    <ul>
+                        <li><a href="#">INÍCIO</a></li>
+                        <li class="drop-hover"><a href="#">CADASTRAR <i class="bi bi-caret-down-fill"></i></a>
+                            <div class="drop">
+                                <a href="#">PRODUTOS</a>
+                                <a href="#">DEVOLUÇÕES</a>
+                                <a href="#">TROCAS</a>
+                                <a href="#">VENDAS</a>
+                                <a href="#">CLIENTES</a>
+                                <a href="#">FUNCIONÁRIOS</a>
+                            </div>
+                        </li>
+                        <li class="drop-hover"><a href="#">PESQUISAR <i class="bi bi-caret-down-fill"></i></a>
+                            <div class="drop">
+                                <a href="#">PRODUTOS</a>
+                                <a href="#">DEVOLUÇÕES</a>
+                                <a href="#">TROCAS</a>
+                                <a href="#">VENDAS</a>
+                                <a href="#">CLIENTES</a>
+                                <a href="#">FUNCIONÁRIOS</a>
+                            </div>
+                        </li>
+                        <li class="drop-hover"><a href="#">RELATÓRIO DE VENDAS</a></li>
+                        <li><a href="#">SAIR</a></li>
+                    </ul>
+                </nav>
+                <!-- txt-menu -->
+            </div>
+            <!-- inteface-header -->
+        </section>
+        <!-- botton-header -->
+    </header>
+    <!-- cabeçalho -->
+</body>
+<section class="registrar-venda">
+    <div class="interface-registroVenda">
+        <div class="flex">
+            <div class="form-registroVenda">
+                <h3>CPF do cliente</h3>
+                <form>
+                    <input type="text" placeholder="xxx.xxx.xxx-xx">
+
+                    <h3>Buscar produto</h3>
+                    <input type="text" placeholder="Código do produto">
+                    <div class="btn-buscarProdutoVenda">
+                        <button class="btn-verde">Buscar</button>
+                    </div>
+                    <div class="resultado-busca">
+
+                    </div>
+                </form>
+                <!-- resultado-busca -->
+                <div class="btn-adicionar">
+                    <button class="btn-branco">Limpar</button>
+                    <button class="btn-verde">Adicionar</button>
+                </div>
+                <!-- btn-adicionar -->
+            </div>
+            <!-- form-registroVenda -->
+            <div class="Itens-selecionados">
+                <h1>Itens selecionados</h1>
+
+                <div class="box-itens">
+                    <table class="table-regitroVenda">
+
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Unitário</th>
+                                <th>SubTotal</th>
+                                <th>Quantidade</th>
+                                <th>Excluir</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="nome-produto-venda">
+                                        <span> Smart tv 42"</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="preço-produto-venda">
+                                        <span>R$ 1739,99</span>
+                                    </div>
+                                    </td>
+                                <td>
+                                    <div class="subTotal-produto-venda">
+                                        <span>R$ 1739,99</span>
+                                    </div>
+                                   </td>
+                                <td>
+                                    <div class="quant-venda">
+                                        <button>-</button>
+                                        <span>1</span>
+                                        <button>+</button>
+                                    </div>
+
+                                </td>
+                                <td><a href="#"><i class="bi bi-trash3"></i></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="box-info">
+                        <h5>Total de itens: <span>1</span></h5>
+                        <h5>Total: <span>R$ 0,00</span></h5>
+                    </div>
+                    <div class="btn-finalizarVenda">
+                        <button class="btn-branco">Cancelar</button>
+                        <button class="btn-verde">Finalizar</button>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- Itens-selecionados -->
+        </div>
+        <!-- flex -->
+    </div>
+    <!-- interface-registroVenda -->
+</section>
+<!-- registrar-venda -->
+
+
+</html>

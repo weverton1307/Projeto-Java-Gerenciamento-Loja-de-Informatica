@@ -4,7 +4,7 @@ $(document).ready(function () {
     $("#alterarProduto").hide();
     $("#categoriaProduto").hide();
     $("#pesquisarProduto_campo").hide();
-    
+
 });
 //Função para listar os produtos
 function listarProdutos() {
@@ -251,7 +251,7 @@ $(document).ready(function () {
                     `;
                     $("#tabela-produto").append(linha);
                     $("#pesquisarProduto_criterio").val("");
-                   
+
                 });
             },
             error: function (xhr) {
@@ -267,27 +267,82 @@ $(document).ready(function () {
 });
 
 //Função para alertar produtos com menos de 5 unidade
-$(document).ready(function() {
-    $.ajax({
-        url: '/quantidade-produto',
-        method: 'GET',
-        success: function(mensagem) {            
-            let listaProdutos = "<ul style='list-style-type: none; padding-left: 0;'>";         
-                mensagem.split('\n').forEach(function(produto) {
+$(document).ready(function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const alerta = urlParams.get('alerta');
+
+    if (alerta === 'true') {
+        $.ajax({
+            url: '/quantidade-produto',
+            method: 'GET',
+            success: function (mensagem) {
+                let listaProdutos = "<ul style='list-style-type: none; padding-left: 0;'>";
+                mensagem.split('\n').forEach(function (produto) {
                     listaProdutos += "<li>" + produto + "</li>";
                 });
                 listaProdutos += "</ul>";
-                
+
                 Swal.fire({
                     title: 'Produtos com menos de 5 unidades',
-                    icon: 'warning', 
-                    html: listaProdutos,  
+                    icon: 'warning',
+                    html: listaProdutos,
                     confirmButtonText: 'OK'
-                });  
-        },
-        error: function(xhr, status, error) {
-            console.error("Erro ao carregar os produtos: " + error);
-        }
+                });
+            },
+            error: function (xhr, status, error) {
+                console.error("Erro ao carregar os produtos: " + error);
+            }
+        });
+    }
+});
+
+
+//Função para atualizar produto
+$(document).ready(function () {
+    $("#alterarProduto").click(function (event) {
+        event.preventDefault();
+        const formData = {
+            id: $("#produtoId").val() ? parseInt($("#produtoId").val()) : null,
+            nomeProduto: $("#nome").val().trim(),
+            valorCompra: $("#valorCompra").val().trim(),
+            valorVenda: $("#valorVenda").val().trim(),
+            descricaoTecnica: $("#descricao").val().trim(),
+            dataAquisicao: $("#data").val().trim(),
+            fabricante: $("#fabricante").val().trim(),
+            modelo: $("#modelo").val().trim(),
+            notaFiscal: $("#fiscal").val().trim(),
+            statusProduto: "Disponível",
+            cpf_cliente_devolucao: null,
+            categoria: {
+                nome: $("#categoria").val().trim()
+            },
+            troca: null,
+            devolucao: null,
+            localArmazenamento: {
+                numeroPrateleira: $("#prateleira").val().trim(),
+                numeroLocalPrateleira: $("#localPrateleira").val().trim(),
+            },
+            id: $("#produtoId").val() ? parseInt($("#produtoId").val()) : null
+        };
+        console.log($("#prateleira").val());
+        console.log($("#localPrateleira").val());
+
+
+        console.log("Form Data:", formData);
+
+        $.ajax({
+            type: "PUT",
+            url: "/atualizar-produto",
+            contentType: "application/json",
+            data: JSON.stringify(formData),
+            success: function (response) {
+                alert("produto atualizado com sucesso!");
+                window.location.href = "/pesquisarProdutos";
+            },
+            error: function (xhr, status, error) {
+                alert("Ocorreu um erro: " + xhr.responseText);
+            }
+        });
     });
 });
 

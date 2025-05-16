@@ -8,6 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!--end jquery -->
+    <!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
@@ -41,7 +47,7 @@
                             <li><a href="#">Registrar venda</a></li>
                             <li class="adm"><a href="#">Relatório de vendas</a></li>
                             <li><a href="/cadastroProduto">Cadastrar produto</a></li>
-                            <li><a href="/pesquisarProdutos">PesquisarProduto</a></li>
+                            <li><a href="/pesquisarProdutos?alerta=true" class="pesquiProdut">PesquisarProduto</a></li>
                             <li><a href="/cadastrarClientes">Cadastrar cliente</a></li>
                             <li><a href="/pesquisarClientes">Pesquisar cliente</a></li>
                             <li><a href="/registrarDevolucao">Cadastrar devolução</a></li>
@@ -80,7 +86,7 @@
                         </li>
                         <li class="drop-hover"><a href="#">PESQUISAR <i class="bi bi-caret-down-fill"></i></a>
                             <div class="drop">
-                                <a href="/pesquisarProdutos">PRODUTOS</a>
+                                <a href="/pesquisarProdutos?alerta=true" class="pesquiProdut">PRODUTOS</a>
                                 <a href="/pesquisarDevolucao">DEVOLUÇÕES</a>
                                 <a href="/pesquisarTroca">TROCAS</a>
                                 <a href="#" class="adm">VENDAS</a>

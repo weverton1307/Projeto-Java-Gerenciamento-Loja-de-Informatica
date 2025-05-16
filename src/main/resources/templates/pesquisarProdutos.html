@@ -61,61 +61,62 @@
                     <div class="resultado-pesquisa-produto">
                         <div class="form-left">
                             <h3>Nome</h3>
-                            <input id="nome" type="txt" th:field="${produto.nomeProduto}" required>
+                            <input id="nome" type="txt" required>
                             <h3>Valor de compra</h3>
-                            <input id="valorCompra" type="txt" th:field="${produto.valorCompra}" required>
+                            <input id="valorCompra" type="txt" required>
                             <h3>Valor de venda</h3>
-                            <input id="valorVenda" type="txt" th:field="${produto.valorVenda}" required>
+                            <input id="valorVenda" type="txt" required>
                             <h3>Modelo</h3>
-                            <input id="modelo" type="txt" th:field="${produto.modelo}" required>
+                            <input id="modelo" type="txt"  required>
                             <h3>Data de aquisição</h3>
-                            <input id="data" type="date" th:field="${produto.dataAquisicao}" required>
+                            <input id="data" type="date"  required>
                             <h3>Nota fiscal</h3>
-                            <input id="fiscal" type="txt" th:field="${produto.notaFiscal}" required>
+                            <input id="fiscal" type="txt"  required>
                             <h3>Status</h3>
-                            <input type="text" id="status" th:field="${produto.statusProduto}" readonly></input>
+                            <input type="text" id="status"  readonly></input>
+                             <input type="hidden" id="produtoId" name="id" value="${produto.id != null ? produto.id : ''}" />
                         </div>
                         <!--end form-left -->
                         <div class="form-right">
                             <h3>Fabricante</h3>
-                            <input id="fabricante" type="txt" th:field="${produto.fabricante}" required>
+                            <input id="fabricante" type="txt"  required>
                             <h3>Quantidade</h3>
-                            <input type="text" id="quantidade" th:field="${produto.quantidadeProduto}" readonly></input>
+                            <input type="text" id="quantidade" readonly></input>
                             <h3>Número da prateleira</h3>
                             <select id="prateleira" required>
                                 <option value="">Selecione um item</option>
-                                <option value="1" th:field="${produto.localArmazenamento.numeroPrateleira}">1</option>
-                                <option value="2" th:field="${produto.localArmazenamento.numeroPrateleira}">2</option>
-                                <option value="3" th:field="${produto.localArmazenamento.numeroPrateleira}">3</option>
-                                <option value="4" th:field="${produto.localArmazenamento.numeroPrateleira}">4</option>
+                                <option value="1">1</option>
+                                <option value="2" >2</option>
+                                <option value="3" >3</option>
+                                <option value="4" >4</option>
                             </select>
                             <h3>Número do local da prateleira</h3>
                             <select id="localPrateleira" required>
                                 <option value="">Selecione um item</option>
-                                <option value="1" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">1
+                                <option value="1">1
                                 </option>
-                                <option value="2" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">2
+                                <option value="2">2
                                 </option>
-                                <option value="3" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">3
+                                <option value="3">3
                                 </option>
-                                <option value="4" th:field="${produto.localArmazenamento.numeroLocalPrateleira}">4
+                                <option value="4">4
                                 </option>
                             </select>
                             <h3>Categoria</h3>
                             <select id="categoria" required>
                                 <option value="">Selecione um item</option>
-                                <option value="Componentes de hardware" th:field="${produto.categoria.nome}">
+                                <option value="Componentes de hardware" >
                                     Componentesde hardware</option>
-                                <option value="Conectividade e redes" th:field="${produto.categoria.nome}">
+                                <option value="Conectividade e redes" >
                                     Conectividadee redes</option>
-                                <option value="Dispositivos computacionais" th:field="${produto.categoria.nome}">
+                                <option value="Dispositivos computacionais">
                                     Dispositivos computacionais</option>
-                                <option value="Periférico" th:field="${produto.categoria.nome}">Periférico</option>
-                                <option value="Suprimentos de impressora" th:field="${produto.categoria.nome}">
+                                <option value="Periférico" >Periférico</option>
+                                <option value="Suprimentos de impressora">
                                     Suprimentos de impressora</option>
                             </select>
                             <h3>Descrição técnica</h3>
-                            <textarea id="descricao" th:field="${produto.descricaoTecnica}" required> </textarea>
+                            <textarea id="descricao"  required> </textarea>
                         </div>
                         <!--end form-right -->
                     </div>

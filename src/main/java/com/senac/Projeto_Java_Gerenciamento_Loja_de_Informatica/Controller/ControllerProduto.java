@@ -3,13 +3,11 @@ package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Controller;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Categoria;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Local_armazenamento;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Produto;
-import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.ProdutosContado;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceCategoria;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceLocalArmazenamento;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceProduto;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -84,6 +82,7 @@ public class ControllerProduto {
         return serviceProduto.listarProduto();
     }
 
+    //Controller para atualizar os das do produto cadastrado
     @PutMapping("/atualizar-produto")
     public String atualizarProduto(@RequestBody Produto produto) {
         Categoria categoriaEncontrada = null;
@@ -103,11 +102,10 @@ public class ControllerProduto {
         }
         produto.setCategoria(categoriaEncontrada);
         produto.setLocalArmazenamento(localArmazenamentoEncontrado);
-        System.out.println("id do produto: " + produto.getId());
         serviceProduto.atualizar(produto.getId(), produto);
         serviceProduto.atualizarQuantidadeproduto(produto);
 
-        return "produtos";
+        return "pesquisarProdutos";
     }
 
     @GetMapping("/quantidade-produto")
