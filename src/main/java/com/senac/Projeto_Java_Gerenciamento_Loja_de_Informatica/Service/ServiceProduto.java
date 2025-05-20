@@ -1,15 +1,10 @@
 package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service;
-
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Devolucao;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Produto;
-import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.ProdutosContado;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Troca;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Repository.RepositoryProduto;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -202,9 +197,7 @@ public class ServiceProduto {
             return ResponseEntity.ok(produtoEncontrado);
         } else if (nome != null && !nome.trim().isEmpty()) {
             List<Produto> produtosEncontrados = buscarProdutoNome(nome);
-            return produtosEncontrados.isEmpty()
-                    ? ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum produto encontrado.")
-                    : ResponseEntity.ok(produtosEncontrados);
+           dre
         } else if (modelo != null && !modelo.trim().isEmpty()) {
             List<Produto> produtosEncontrados = buscarProdutoModelo(modelo);
             System.out.println("Produto encontrado: " + produtosEncontrados);
