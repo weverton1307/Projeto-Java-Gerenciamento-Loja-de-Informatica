@@ -17,11 +17,14 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -43,10 +46,21 @@ public class ControllerItensVenda {
 
 
     @GetMapping("/registrarVenda")
-    public String inicio(Model model) {
-        model.addAttribute("venda", new Venda());
-        model.addAttribute("cliente", new Cliente());
-        model.addAttribute("produto", new Produto());
+    public String inicio() {
+          
         return "registrarVenda";
     } 
+    
+    @GetMapping ("/buscarProduto")
+        @ResponseBody
+    public  ResponseEntity<?> buscarProduto(@RequestParam("id") Integer id){
+        if(id == null || id <=0){
+            return ResponseEntity.badRequest().body("ID inválido");
+        }
+        Produto produtoEncontrado = serviceProduto.buscarId(id);
+        if (produtoEncontrado == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto não encontrado");
+        }
+        return ResponseEntity.ok(produtoEncontrado);
+    }
 }

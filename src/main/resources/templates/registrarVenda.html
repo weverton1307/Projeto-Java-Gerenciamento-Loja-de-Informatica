@@ -48,12 +48,13 @@
                             </select>
 
                             <h3>Buscar produto</h3>
-                            <input type="text" placeholder="Código do produto">
+                            <input type="text" placeholder="Código do produto" id="codigoProdut">
                             <div class="btn-buscarProdutoVenda">
-                                <button class="btn-verde">Buscar</button>
+                                <button class="btn-verde" onclick="buscarProdudo(event)">Buscar</button>
                             </div>
                             <div class="resultado-busca">
-
+                               <h5 id="nomeProduto"></h5>
+                                <h5 id="valorProduto"></h5>
                             </div>
                         </form>
 
