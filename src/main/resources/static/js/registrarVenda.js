@@ -38,7 +38,18 @@ function buscarProdudo(event) {
     }
   })
 }
-
+function diminuirQuantidade(index) {
+  if (itens[index][4] > 1) {
+    itens[index][4] -= 1;
+    itens[index][3] = itens[index][2] * itens[index][4]; 
+    adicionarItens(new Event("update")); 
+  }
+}
+function aumentarQuantidade(index) {
+  itens[index][4] += 1;
+  itens[index][3] = itens[index][2] * itens[index][4];
+  adicionarItens(new Event("update"));
+}
 function adicionarItens(event){
   event.preventDefault();
   const tbody =$("#corpoTabelaVenda");
@@ -53,9 +64,9 @@ function adicionarItens(event){
         <td><div class="subTotal-produto-venda"><span>R$ ${item[3].toFixed(2)}</span></div></td>
         <td>
           <div class="quant-venda">
-            <button>-</button>
+            <button onclick="diminuirQuantidade(${index})">-</button>
             <span>${item[4]}</span>
-            <button>+</button>
+            <button onclick="aumentarQuantidade(${index})">+</button>
           </div>
         </td>
         <td><a href="#"><i class="bi bi-trash3"></i></a></td>
