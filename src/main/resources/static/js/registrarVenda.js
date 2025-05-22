@@ -50,10 +50,14 @@ function aumentarQuantidade(index) {
   itens[index][3] = itens[index][2] * itens[index][4];
   adicionarItens(new Event("update"));
 }
+
+  function excluirItem(index) {
+  itens.splice(index, 1);
+  adicionarItens(new Event("update"));
+}
 function adicionarItens(event){
   event.preventDefault();
   const tbody =$("#corpoTabelaVenda");
-  
   tbody.empty();
   itens.forEach(function(item, index){
 
@@ -69,7 +73,7 @@ function adicionarItens(event){
             <button onclick="aumentarQuantidade(${index})">+</button>
           </div>
         </td>
-        <td><a href="#"><i class="bi bi-trash3"></i></a></td>
+        <td><a href="#" onclick="excluirItem(${index})"><i class="bi bi-trash3"></i></a></td>
       </tr>
     `;
      tbody.append(linha);
