@@ -55,6 +55,18 @@ function aumentarQuantidade(index) {
   itens.splice(index, 1);
   adicionarItens(new Event("update"));
 }
+
+function calcularTotalItens() {
+  let totalItens = 0;
+  let valorTotal = 0;
+
+  itens.forEach(item => {
+    totalItens += item[4];         
+    valorTotal += item[2] * item[4]; 
+  });
+  $("#total-itens").text(totalItens);
+  $("#valor-total").text("R$ " + valorTotal.toFixed(2).replace('.', ','));
+}
 function adicionarItens(event){
   event.preventDefault();
   const tbody =$("#corpoTabelaVenda");
@@ -77,5 +89,6 @@ function adicionarItens(event){
       </tr>
     `;
      tbody.append(linha);
+     calcularTotalItens();
   })
 }
