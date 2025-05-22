@@ -53,14 +53,14 @@
                                 <button class="btn-verde" onclick="buscarProdudo(event)">Buscar</button>
                             </div>
                             <div class="resultado-busca">
-                               <h5 id="nomeProduto"></h5>
+                                <h5 id="nomeProduto"></h5>
                                 <h5 id="valorProduto"></h5>
                             </div>
                         </form>
 
                         <div class="btn-adicionar">
                             <button class="btn-branco">Limpar</button>
-                            <button class="btn-verde">Adicionar</button>
+                            <button class="btn-verde" onclick="adicionarItens(event)">Adicionar</button>
                         </div>
                         <!-- end btn-adicionar -->
                     </div>
@@ -78,35 +78,11 @@
                                         <th>Excluir</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="nome-produto-venda">
-                                                <span> Smart tv 42"</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="preço-produto-venda">
-                                                <span>R$ 1739,99</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="subTotal-produto-venda">
-                                                <span>R$ 1739,99</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="quant-venda">
-                                                <button>-</button>
-                                                <span>1</span>
-                                                <button>+</button>
-                                            </div>
-
-                                        </td>
-                                        <td><a href="#"><i class="bi bi-trash3"></i></a></td>
-                                    </tr>
+                                <tbody id="corpoTabelaVenda">
+                                    <!-- As linhas dos produtos serão adicionadas aqui -->
                                 </tbody>
                             </table>
+
                             <!-- end table-regitroVenda -->
                             <div class="box-info">
                                 <h5>Total de itens: <span>1</span></h5>

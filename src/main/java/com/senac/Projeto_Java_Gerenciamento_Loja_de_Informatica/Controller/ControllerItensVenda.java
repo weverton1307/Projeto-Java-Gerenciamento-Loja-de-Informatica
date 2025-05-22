@@ -43,24 +43,34 @@ public class ControllerItensVenda {
 
     @Autowired
     ServiceProduto serviceProduto;
-
+    
+    Produto produtoEncontrado = null;
+    Venda venda = null;
+    List<Itens_venda> listaItens = null;
+    Itens_venda itens = null;
 
     @GetMapping("/registrarVenda")
     public String inicio() {
-          
+
         return "registrarVenda";
-    } 
-    
-    @GetMapping ("/buscarProduto")
-        @ResponseBody
-    public  ResponseEntity<?> buscarProduto(@RequestParam("id") Integer id){
-        if(id == null || id <=0){
+    }
+
+    @GetMapping("/buscarProduto")
+    @ResponseBody
+    public ResponseEntity<?> buscarProduto(@RequestParam("id") Integer id) {
+        if (id == null || id <= 0) {
             return ResponseEntity.badRequest().body("ID inválido");
         }
-        Produto produtoEncontrado = serviceProduto.buscarId(id);
-        if (produtoEncontrado == null){
+         produtoEncontrado = serviceProduto.buscarId(id);
+        if (produtoEncontrado == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto não encontrado");
         }
         return ResponseEntity.ok(produtoEncontrado);
+    }
+
+    @GetMapping("/adicionar")
+    public String adicionar(){
+        
+        return "registrarVenda";
     }
 }

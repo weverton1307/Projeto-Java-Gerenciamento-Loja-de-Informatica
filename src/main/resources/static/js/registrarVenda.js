@@ -1,3 +1,5 @@
+const itens = [];
+
 
 function buscarProdudo(event) {
   event.preventDefault();
@@ -12,7 +14,20 @@ function buscarProdudo(event) {
     success: function (data) {
       $("#nomeProduto").text(data.nomeProduto);
       $("#valorProduto").text("R$ " + data.valorVenda.toFixed(2));
+        const codigo = data.id;
+      const nome = data.nomeProduto;
+      const valor = data.valorVenda;
+      const quantidade = 1;
+      const subTotal = quantidade * valor;
+        // Criando o item agora com os valores definidos
+      let item = [codigo, nome, valor, subTotal, quantidade];
+     
+      // Adicionando ao array principal
+      itens.push(item);
 
+      itens.forEach((item)=>{
+        console.log("teste: " + item[1]);
+      })
     },
     error: function (xhr) {
       var errorMessage = "Erro ao buscar produto.";
@@ -22,6 +37,30 @@ function buscarProdudo(event) {
       alert(errorMessage);
     }
   })
+}
 
+function adicionarItens(event){
+  event.preventDefault();
+  const tbody =$("#corpoTabelaVenda");
+  
+  tbody.empty();
+  itens.forEach(function(item, index){
 
+      const linha = `
+      <tr>
+        <td><div class="nome-produto-venda"><span>${item[1]}</span></div></td>
+        <td><div class="preço-produto-venda"><span>R$ ${item[2]}</span></div></td>
+        <td><div class="subTotal-produto-venda"><span>R$ ${item[3].toFixed(2)}</span></div></td>
+        <td>
+          <div class="quant-venda">
+            <button>-</button>
+            <span>${item[4]}</span>
+            <button>+</button>
+          </div>
+        </td>
+        <td><a href="#"><i class="bi bi-trash3"></i></a></td>
+      </tr>
+    `;
+     tbody.append(linha);
+  })
 }

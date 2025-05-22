@@ -110,7 +110,7 @@
     padding: 10px;
     border-top: 2px solid #060606;
     font-size: 16px;
-    text-align: right;
+    text-align: center;
     color: #333;
 }
 
@@ -177,6 +177,7 @@
 .Itens-selecionados {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
+
 
 /* Estilo para telas menores que 882px */
 @media screen and (max-width: 882px){
