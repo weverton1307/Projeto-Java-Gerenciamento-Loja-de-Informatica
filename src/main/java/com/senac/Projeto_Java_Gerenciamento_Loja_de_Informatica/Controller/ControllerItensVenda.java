@@ -2,15 +2,19 @@ package com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Controller;
 
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Cliente;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Funcionario;
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.ItensDTO;
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.VendaDTO;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Itens_venda;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Produto;
-import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.ProdutoRequest;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Venda;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceCliente;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceFuncionario;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceItensVenda;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceProduto;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceVenda;
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.util.ValidarSessao;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -43,16 +47,11 @@ public class ControllerItensVenda {
 
     @Autowired
     ServiceProduto serviceProduto;
-    
-    Produto produtoEncontrado = null;
-    Venda venda = null;
-    List<Itens_venda> listaItens = null;
-    Itens_venda itens = null;
 
     @GetMapping("/registrarVenda")
-    public String inicio() {
-
-        return "registrarVenda";
+    public String inicio(HttpServletRequest request) {
+        String sessaoValidada = ValidarSessao.validarSessao(request, "registrarVenda", "redirect:/");
+        return sessaoValidada;
     }
 
     @GetMapping("/buscarProduto")
@@ -61,16 +60,18 @@ public class ControllerItensVenda {
         if (id == null || id <= 0) {
             return ResponseEntity.badRequest().body("ID inválido");
         }
-         produtoEncontrado = serviceProduto.buscarId(id);
+        Produto produtoEncontrado = serviceProduto.buscarId(id);
         if (produtoEncontrado == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto não encontrado");
         }
         return ResponseEntity.ok(produtoEncontrado);
     }
 
-    @GetMapping("/adicionar")
-    public String adicionar(){
-        
-        return "registrarVenda";
+    @GetMapping("/listarClientes")
+    public ResponseEntity<?> listarClientes() {
+        List<Cliente> clientes = serviceCliente.listarCliente();
+        return ResponseEntity.ok(clientes);
     }
+
+   
 }

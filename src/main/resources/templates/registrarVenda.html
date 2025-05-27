@@ -35,11 +35,10 @@
                     <div class="form-registroVenda">
                         <h3>CPF do cliente</h3>
                         <form>
-                            <input type="text" placeholder="xxx.xxx.xxx-xx">
-
+                            <input id="cpf-cliente" type="text" onchange="verificarCpf(event)" placeholder="xxx.xxx.xxx-xx">
                             <h3>Método de pagamento</h3>
                             <select id="metodo-pagamento">
-                                <option value="selecione um item" required>selecione um item
+                                <option value="selecione um item"  required>selecione um item
                                 </option>
                                 <option value="dinheiro">Dinheiro </option>
                                 <option value="pix">Pix</option>
