@@ -72,6 +72,62 @@ public class ControllerItensVenda {
         List<Cliente> clientes = serviceCliente.listarCliente();
         return ResponseEntity.ok(clientes);
     }
+      @GetMapping("/listarProdutos")
+    public ResponseEntity<?> listarProdutos() {
+       List<Produto> produtos = serviceProduto.listarProduto();
+        return ResponseEntity.ok(produtos);
+    }
 
-   
+    @PostMapping("/registrarVenda")
+    public String registrarVenda(@RequestBody VendaDTO vendaDTO, HttpServletRequest request) {
+        
+        HttpSession sessao = request.getSession();
+        String nomeVendedor = (String) sessao.getAttribute("usuario");
+        System.out.println("Loguin: "+nomeVendedor);
+        Venda venda = new Venda();
+        venda.setStatusVenda("Realizada");
+        venda.setDataHora(LocalDateTime.now());
+        Funcionario funcionarioEncontrado = null;
+        List<Funcionario> funcionarios = serviceFuncionario.listarFuncionario();
+        List<Cliente> clientes = serviceCliente.listarCliente();
+        venda.setMetodoPagamento(vendaDTO.getMetodoPagamento());
+        String sessaoValidada = ValidarSessao.validarSessao(request, "registrarVenda", "redirect:/");
+        for (Funcionario f : funcionarios) {
+            if (f.getUsuario().getLogin().equalsIgnoreCase(nomeVendedor)) {
+                funcionarioEncontrado = f;
+                System.out.println("funcionario encontrado: "+funcionarioEncontrado.getId());
+                venda.setVendedor(funcionarioEncontrado);
+            }
+        }
+        if (vendaDTO.getCpf().isEmpty()) {
+            venda.setCliente(null);
+        } else {
+             int totalItens = 0;
+            for (Cliente c : clientes) {
+                if (c.getCpf().equalsIgnoreCase(vendaDTO.getCpf())) {
+                    for (ItensDTO i : vendaDTO.getItens()) {
+                       
+                        totalItens += i.getQuantidade();
+
+                    }
+                  c.setTotal_compras(totalItens);
+                  serviceCliente.atualizar(c.getId(), c);
+                  venda.setCliente(c);
+                }
+            }
+            serviceVenda.criarVenda(venda);
+            for (ItensDTO item : vendaDTO.getItens()) {
+                Produto produto = serviceProduto.buscarId(item.getCodigo());
+                produto.setStatusProduto("Vendido");
+               serviceProduto.atualizarQuantidadeproduto(produto);
+                serviceProduto.atualizar(produto.getId(), produto);
+                Itens_venda iv = new Itens_venda();
+                iv.setProduto(produto);
+                iv.setVenda(venda);
+                iv.setQuantidade(item.getQuantidade());
+                serviceItensVenda.criarItensVenda(iv);
+            }  
+        }
+         return sessaoValidada;
+    }
 }

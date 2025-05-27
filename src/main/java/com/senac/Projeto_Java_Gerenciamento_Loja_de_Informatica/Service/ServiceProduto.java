@@ -197,7 +197,9 @@ public class ServiceProduto {
             return ResponseEntity.ok(produtoEncontrado);
         } else if (nome != null && !nome.trim().isEmpty()) {
             List<Produto> produtosEncontrados = buscarProdutoNome(nome);
-           dre
+                return produtosEncontrados.isEmpty()
+            ? ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum produto encontrado para o nome informado.")
+            : ResponseEntity.ok(produtosEncontrados);
         } else if (modelo != null && !modelo.trim().isEmpty()) {
             List<Produto> produtosEncontrados = buscarProdutoModelo(modelo);
             System.out.println("Produto encontrado: " + produtosEncontrados);
