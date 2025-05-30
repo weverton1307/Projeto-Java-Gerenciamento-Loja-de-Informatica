@@ -1,4 +1,23 @@
 const itens = [];
+$("#registrarVenda").hide();
+$("#cancelarVenda").hide();
+$("#adicionarProduto").hide();
+
+function limparCampos(event) {
+  event.preventDefault();
+  $("#registrarVenda").hide();
+  $("#cancelarVenda").hide();
+  $("#adicionarProduto").hide();
+  $("#cpf-cliente").val("");
+  $("#metodo-pagamento").val("selecione um item");
+  $("#codigoProdut").val("")
+  $("#nomeProduto").text("");
+  $("#valorProduto").text("");
+   const tbody = $("#corpoTabelaVenda");
+  tbody.empty();
+  $("#total-itens").text(" 0");
+   $("#valor-total").text(" R$ 0,00")
+}
 function verificarCpf(event) {
   event.preventDefault();
   const cpfDigitado = $("#cpf-cliente").val().trim();
@@ -26,6 +45,7 @@ function verificarProdutoDisponivel(callback, id) {
     method: "GET",
     dataType: "json",
     success: function (produtos) {
+ 
       produtos.forEach((produto) => {
         if (produto.id === id && produto.statusProduto !== "Disponível") {
           produtoDisponivel = false;
@@ -43,10 +63,12 @@ function verificarProdutoDisponivel(callback, id) {
 function buscarProdudo(event) {
   event.preventDefault();
   let id = parseInt($("#codigoProdut").val().trim());
-
-  verificarProdutoDisponivel(function(disponivel) {
+  let metodoPagamento = $("#metodo-pagamento").val();
+  verificarProdutoDisponivel(function (disponivel) {
     if (!disponivel) {
       alert("Produto não disponível, por favor tente novamente");
+    }else if(metodoPagamento ==="selecione um item"){
+alert("Por favor, selecione um método de pagamento");
     } else {
       $.ajax({
         url: "/buscarProduto",
@@ -54,8 +76,6 @@ function buscarProdudo(event) {
         data: { id: id },
         dataType: "json",
         success: function (data) {
-          $("#nomeProduto").text(data.nomeProduto);
-          $("#valorProduto").text("R$ " + data.valorVenda.toFixed(2));
           const codigo = data.id;
           const nome = data.nomeProduto;
           const valor = data.valorVenda;
@@ -63,15 +83,20 @@ function buscarProdudo(event) {
           const subTotal = quantidade * valor;
           const desconto = false;
           let item = [codigo, nome, valor, subTotal, quantidade, desconto];
+          let tanaLista = itens.some((item) => item[1] === nome);
+          if (tanaLista) {
+            alert("O produto já está na lista de selecionados");
+          } else {
+            $("#nomeProduto").text(data.nomeProduto);
+            $("#valorProduto").text("R$ " + data.valorVenda.toFixed(2));
+            itens.push(item);
+            $("#adicionarProduto").show();
+            tanaLista = false;
+          }
 
-          itens.push(item);
-
-          itens.forEach((item) => {
-            console.log("teste: " + item[1]);
-          });
         },
         error: function (xhr) {
-          var errorMessage = "Erro ao buscar produto.";
+          var errorMessage = "Por favor, digitr um id válido.";
           if (xhr.status === 404) {
             errorMessage = "Produto não encontrado.";
           }
@@ -118,32 +143,28 @@ function removerDesconto(index) {
 }
 function adicionarItens(event) {
   event.preventDefault();
-  const cpfCliente = $("#cpf-cliente").val().trim();
+  let cpfCliente = $("#cpf-cliente").val().trim();
   const tbody = $("#corpoTabelaVenda");
   tbody.empty();
-
+  if (cpfCliente === "") {
+    cpfCliente = "111.111.111-11";
+  }
   $.ajax({
     url: "/listarClientes",
     method: "GET",
     dataType: "json",
     success: function (clientes) {
       let clienteVenda = null;
-
       clientes.forEach((cliente) => {
+        
+
         if (cliente.cpf === cpfCliente) {
           clienteVenda = cliente;
         }
       });
-
-      if (!clienteVenda) {
-        alert("Cliente não encontrado.");
-        return;
-      }
-
       itens.forEach(function (item, index) {
         let count = clienteVenda.total_compras / 5;
         if (Number.isInteger(count) && !item.desconto && count > 0) {
-          console.log($("#corpoTabelaVenda").val() + " = " + item.nome)
           item.desconto = true;
           item[2] = item[2] * 0.95;
           item[3] = item[3] * 0.95;
@@ -166,6 +187,12 @@ function adicionarItens(event) {
         `;
         tbody.append(linha);
         calcularTotalItens();
+        $("#adicionarProduto").hide();
+        $("#codigoProdut").val("")
+        $("#nomeProduto").text("");
+        $("#valorProduto").text("");
+        $("#registrarVenda").show();
+        $("#cancelarVenda").show();
       });
     },
     error: function (xhr) {
@@ -196,9 +223,12 @@ function registrarVenda(event) {
       desconto: item[5]
     };
   });
-
+  let cpfCliente = $("#cpf-cliente").val().trim();
+  if (cpfCliente === "") {
+    cpfCliente = "111.111.111-11";
+  }
   const dadosVenda = {
-    cpf: $("#cpf-cliente").val().trim(),
+    cpf: cpfCliente,
     metodoPagamento: $("#metodo-pagamento").val(),
     itens: itensFormatados
   };
@@ -209,7 +239,8 @@ function registrarVenda(event) {
     data: JSON.stringify(dadosVenda),
 
     success: function (success) {
-      alert("Venda realizada com sucesso")
+      alert("Venda realizada com sucesso");
+      limparCampos(event);
     },
 
     error: function (xhr, status, error) {
@@ -218,4 +249,8 @@ function registrarVenda(event) {
     }
   });
 }
+
+
+
+
 

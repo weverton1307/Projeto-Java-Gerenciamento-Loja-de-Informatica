@@ -89,6 +89,7 @@ public class ControllerItensVenda {
         Funcionario funcionarioEncontrado = null;
         List<Funcionario> funcionarios = serviceFuncionario.listarFuncionario();
         List<Cliente> clientes = serviceCliente.listarCliente();
+        List<Produto> produtos = serviceProduto.listarProduto();
         venda.setMetodoPagamento(vendaDTO.getMetodoPagamento());
         String sessaoValidada = ValidarSessao.validarSessao(request, "registrarVenda", "redirect:/");
         for (Funcionario f : funcionarios) {
@@ -100,6 +101,7 @@ public class ControllerItensVenda {
         }
         if (vendaDTO.getCpf().isEmpty()) {
             venda.setCliente(null);
+            return sessaoValidada;
         } else {
             int totalItens = 0;
             for (Cliente c : clientes) {
@@ -109,24 +111,50 @@ public class ControllerItensVenda {
                         totalItens += i.getQuantidade();
 
                     }
-                    c.setTotal_compras(totalItens);
+                    c.setTotal_compras(c.getTotal_compras() + totalItens);
+                    System.out.println("testes cliente: " + c.getCpf());
                     serviceCliente.atualizar(c.getId(), c);
                     venda.setCliente(c);
                 }
             }
             serviceVenda.criarVenda(venda);
             for (ItensDTO item : vendaDTO.getItens()) {
-                Produto produto = serviceProduto.buscarId(item.getCodigo());
-                produto.setStatusProduto("Vendido");
-                serviceProduto.atualizarQuantidadeproduto(produto);
-                serviceProduto.atualizar(produto.getId(), produto);
-                Itens_venda iv = new Itens_venda();
-                iv.setProduto(produto);
-                iv.setVenda(venda);
-                iv.setQuantidade(item.getQuantidade());
-                serviceItensVenda.criarItensVenda(iv);
+                if (item.getQuantidade() == 1) {
+                    Produto produto = serviceProduto.buscarId(item.getCodigo());
+                    produto.setStatusProduto("Vendido");
+                    serviceProduto.atualizarQuantidadeproduto(produto);
+                    serviceProduto.atualizar(produto.getId(), produto);
+                    Itens_venda iv = new Itens_venda();
+                    iv.setProduto(produto);
+                    iv.setVenda(venda);
+                    iv.setQuantidade(item.getQuantidade());
+                    serviceItensVenda.criarItensVenda(iv);
+                } else {
+                    int count = 0;
+                    List<Produto> produtosVendidos = new ArrayList<>();
+                    for (Produto p : produtos) {
+                        if (p.getNomeProduto().equalsIgnoreCase(item.getNome()) && p.getStatusProduto().equalsIgnoreCase("Disponível") && count < item.getQuantidade()) {
+                            produtosVendidos.add(p);
+                            count++;
+                        }
+                    }
+                        for (Produto produtoVendido : produtosVendidos) {
+                            System.out.println("id produto: " + produtoVendido.getId());
+                            produtoVendido.setStatusProduto("Vendido");
+                            serviceProduto.atualizarQuantidadeproduto(produtoVendido);
+                            serviceProduto.atualizar(produtoVendido.getId(), produtoVendido);
+                            Itens_venda iv = new Itens_venda();
+                            iv.setProduto(produtoVendido);
+                            iv.setVenda(venda);
+                            iv.setQuantidade(item.getQuantidade());
+                            serviceItensVenda.criarItensVenda(iv);
+                            System.out.println("teste count: " + count);
+                            System.out.println("teste item quantidade: " + item.getQuantidade());
+                        }
+
+                }
             }
+            return sessaoValidada;
         }
-        return sessaoValidada;
     }
 }

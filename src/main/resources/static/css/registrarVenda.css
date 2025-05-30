@@ -28,7 +28,7 @@
 
 .registrar-venda .btn-adicionar {
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
 }
 
 .registrar-venda .interface-registroVenda .flex .form-registroVenda .resultado-busca {

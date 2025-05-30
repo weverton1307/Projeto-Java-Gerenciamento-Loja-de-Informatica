@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lojaInfo</title>
+    <link rel="icon" href="./img/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!--end google font-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!--end icons bootstrap-->
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/pesquisarVendas.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- end  SweetAlert2) -->
+    <!--end style -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--end jquery -->
+</head>
+
+<body>
+    <header>
+        <div th:replace="~{navbar :: body(titulo='Pesquisar Vendas')}"></div>
+    </header>
+    <!-- end cabeçalho -->
+    <main>
+        <section class="pesquisar-venda">
+            <div class="interface-pesquisar">
+                <div class="flex">
+                    <form class="form-pesquisar">
+                        <select id="pesquisarProduto_criterio" class="select">
+                            <option value="">Selecione um critério de pesquisa</option>
+                            <option value="CPF do cliente">CPF do cliente</option>
+                            <option value="Nome do vendedor">Nome do vendedor</option>
+                            <option value="Status">Status</option>
+                            <option value="Data da venda">Data da venda</option>
+                            <option value="Método de pagamento">Método de pagamento</option>
+                        </select>
+                        <input type="text" id="buscar-venda" placeholder="Buscar venda">
+                        <div class="btn-pesquisar-Venda">
+                            <button class="btn-branco" id="btn-limpar" onclick="limparCampos()">LIMPAR</button>
+                            <button class="btn-verde" id="search-button">PESQUISAR</button>
+                            
+                        </div>
+                    </form>
+                    <!--end form-pesquisar -->
+                    <div class="resultado-pesquisa">
+
+                        <h1>RESULTADO</h1>
+                        <div class="resultado-itens">
+                            <div class="text-venda">
+                                <h4>ID:</h4>
+                                <h4>Cliente:</h4>
+                                <h4>Vendedor:</h4>
+                                <h4>Método de pagamento:</h4>
+                                <h4>Status:</h4>
+                            </div>
+                            <div class="box-itens">
+                                <table class="table-venda">
+                                    <thead>
+                                        <tr>
+                                            <th>Produto</th>
+                                            <th>Unitário</th>
+                                            <th>SubTotal</th>
+                                            <th>Quantidade</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody id="corpoTabelaVenda">
+                                        <!-- As linhas dos produtos serão adicionadas aqui -->
+                                    </tbody>
+                                </table>
+
+                                <!-- end table-regitroVenda -->
+                                <div class="box-info">
+                                    <h5>Total de itens: <span id="total-itens">0</span></h5>
+                                    <h5>Total: <span id="valor-total">R$ 0,00</span></h5>
+                                </div>
+                                <!-- end box-info -->
+                            </div>
+                            <!-- end box-itens -->
+                        </div>
+
+                    </div>
+                </div>
+                <!--end flex -->
+            </div>
+            <!--end interface-pesquisar -->
+        </section>
+        <!--end pesquisar-produto -->
+        <section class="tabela-venda-pesquisar tabelaGeral">
+            <div class="interface-pesquisar">
+                <div class="flex">
+                    <table class="table-pesquisa">
+                        <thead>
+                            <tr>
+                                <th class="linha">ID</th>
+                                <th>Produto</th>
+                                <th class="linha">cliente</th>
+                                <th>Vendedor</th>
+                                <th>Método de pagamento</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-venda">
+                        </tbody>
+                    </table>
+                    <!-- end tabela-venda -->
+                </div>
+                <!--end flex -->
+            </div>
+            <!-- end interface-pesquisar -->
+        </section>
+        <!-- end tabela-venda-pesquisar -->
+    </main>
+    <script th:src="@{/js/global.js}"></script>
+    <script th:src="@{/js/pesquisarVendas.js}"></script>
+    <!--end javaScript  -->
+</body>
+
+</html>

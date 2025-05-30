@@ -1,0 +1,203 @@
+/* Estilo da página registrar Venda */
+.pesquisar-venda .interface-pesquisar {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.pesquisar-venda .interface-pesquisar .flex {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+
+.pesquisar-venda .resultado-pesquisa {
+    background-color: #fff;
+    height: 100%;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.pesquisar-venda .resultado-pesquisa h1 {
+    font-size: 30px;
+    color: #683781;
+    border-radius: 8px;
+    padding: 8px 8px;
+}
+
+.form-pesquisar{
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+input{
+  border-radius: 15px;
+  width: 100%;
+  margin-bottom: 10px;
+  border: 1px;
+  padding-left: 5px;
+}
+.form-pesquisar select{
+  margin-bottom: 15px;
+  border-radius: 15px;
+  width: 100%;
+}
+.text-venda{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  
+}
+
+.text-venda h4{
+  padding: 6px;
+}
+.box-itens{
+   border-top: 2px solid #060606;
+}
+.table-venda th,
+.table-venda td {
+    padding: 12px;
+    text-align: center;
+}
+
+
+.box-itens {
+    width: 100%;
+    max-width: 800px;
+    overflow-x: auto;
+}
+
+.resultado-pesquisa {
+    text-align: center;
+}
+.resultado-itens{
+  text-align: start;
+}
+.resultado-pesquisa  {
+    text-align: center;
+}
+.box-itens .table-venda {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.box-itens table td {
+    padding: 10px;
+    border-top: 2px solid #060606;
+    font-size: 15px;
+    text-align: center;
+    color: #333;
+}
+
+.table-venda td:nth-child(4) button {
+    text-align: center;
+    margin: 8px;
+}
+
+.box-itens thead th {
+    padding: 8px 8px;
+}
+
+.table-venda tbody tr:hover {
+    background: #D6C7FB;
+}
+
+.box-info {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    border-top: 2px solid #060606;
+    padding-top: 5px;
+}
+
+.box-info h5 {
+    font-size: 15px;
+
+}
+
+
+.table-venda {
+    margin-bottom: 80px;
+}
+
+
+.resultado-pesquisa {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+section.tabela-venda-pesquisar .interface-pesquisar {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+section.tabela-venda-pesquisar .flex{
+   justify-content: center;
+   align-items: center;
+}
+
+section.tabela-venda-pesquisar .table-pesquisa {
+    margin-top: 15px;
+    background-color: #683781;
+    border-radius: 8px;
+    padding: 5px 5px;
+}
+
+section.tabela-venda-pesquisar th {
+    font-size: 15px;
+    color: #D6C7FB;
+    padding: 5px 6px;
+}
+
+/* Estilo para telas menores que 882px */
+@media screen and (max-width: 882px){
+    /* Pesquisar venda */
+    section.pesquisar-venda .flex {
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+
+    section.pesquisar-venda .resultado-pesquisa {
+        width: 100%;
+        margin: 0 8px;
+    }
+
+    .box-itens .table-venda thead tr th {
+        font-size: 11px;
+        padding-right: 5px;
+    }
+
+    .box-itens .table-venda tbody tr td {
+        font-size: 11px;
+
+    }
+
+    .table-venda tbody .quant-venda,
+    .nome-produto-venda,
+    .preço-produto-venda,
+    .subTotal-produto-venda {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+     .tabela-venda-pesquisar .table-produto .linha {
+        display: none;
+    }
+    
+
+    section.tabela-venda-pesquisar .table-produto {
+        margin-top: 0px;
+        background-color: #683781;
+        border-radius: 8px;
+        padding: 5px 5px;
+        margin-left: 0;
+    }
+    .tabela-venda {
+    width: 100%;
+    border-collapse: collapse;
+}
+}
