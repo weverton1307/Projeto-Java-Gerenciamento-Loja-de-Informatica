@@ -14,7 +14,10 @@ import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Venda;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceDevolucao;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceItensVenda;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceVenda;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -58,5 +61,27 @@ public class ControllerVenda {
         List<Itens_venda> itens = serviceItensVenda.listarItensVenda();
         return ResponseEntity.ok(itens);
     }
+    
+  @GetMapping("/pesquisarVenda/data")
+@ResponseBody
+public ResponseEntity<?> buscarPorData(@RequestParam String data) {
+    List<Itens_venda> itensPorData = new ArrayList<>();
+
+    try {
+        LocalDate dataConvertida = LocalDate.parse(data);
+        List<Itens_venda> itens = serviceItensVenda.listarItensVenda();
+        for (Itens_venda iv : itens) {
+            LocalDate dataVenda = iv.getVenda().getDataHora().toLocalDate();
+            if (dataVenda.equals(dataConvertida)) {
+                itensPorData.add(iv);
+            }
+        }
+        return ResponseEntity.ok(itensPorData);
+    } catch (DateTimeParseException e) {
+        return ResponseEntity.badRequest().body("Data inválida: " + data);
+    }
+}
+
+
 
 }
