@@ -52,9 +52,9 @@ public class ControllerVenda {
         return ResponseEntity.ok(itens);
     }
     
-      @GetMapping("/pesquisarVenda/data")
+      @GetMapping("/listarVendas")
     @ResponseBody
-    public ResponseEntity<?> buscarPorData() {
+    public ResponseEntity<?> listarVendas() {
         List<Itens_venda> itens = serviceItensVenda.listarItensVenda();
         return ResponseEntity.ok(itens);
     }

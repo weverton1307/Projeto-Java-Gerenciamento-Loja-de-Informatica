@@ -21,17 +21,17 @@ function mostrarCampo() {
 
 function listarVendas(){
   $.ajax({
-    url: "/pesquisarVenda/data",
+    url: "/listarVendas",
     method: "GET",
     dataType: "json",
     success: function(itensVendas){
       if(itensVendas && itensVendas.length > 0){
         itensVendas.forEach((item)=>{
-
+let nomeCliente = item.cliente?.nome ?? "Cliente não informado";
           let linha = "<tr class= 'linha-venda' vendaId = '"+item.venda.id +"'>"+
           "<td class='linha'>" + item.venda.id + "</td>" +
           "<td >" + item.produto.nomeProduto + "</td>" +
-          "<td class='linha'>" + item.cliente.nome + "</td>" +
+          "<td class='linha'>" + nomeCliente + "</td>" +
           "<td>" + item.venda.vendedor.nome + "</td>" +
            "<td>" + item.venda.metodoPagamento + "</td>" +
            "<td>" + item.venda.statusVenda + "</td>" +
@@ -43,8 +43,11 @@ function listarVendas(){
             }
     }
 
-  })
+  });
 }
+$(document).ready(function () {
+    listarVendas();
+});
 function pesquisarPorCodigo() {
   console.log($("#pesquisarProduto_criterio").val())
   if ($("#pesquisarProduto_criterio").val() === "Código") {
