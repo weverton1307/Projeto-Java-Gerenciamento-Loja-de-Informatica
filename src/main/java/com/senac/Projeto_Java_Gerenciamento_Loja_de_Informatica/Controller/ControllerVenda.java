@@ -35,10 +35,9 @@ public class ControllerVenda {
 
     @Autowired
     ServiceItensVenda serviceItensVenda;
-    
+
     @Autowired
     ServiceDevolucao serviceDevolucao;
-    
 
     @GetMapping("/pesquisarVendas")
     public String inicioVendas() {
@@ -46,7 +45,18 @@ public class ControllerVenda {
         return "pesquisarVendas";
     }
 
+    @GetMapping("/pesquisarVenda/codigo")
+    @ResponseBody
+    public ResponseEntity<?> buscarPorCodigo() {
+        List<Itens_venda> itens = serviceItensVenda.listarItensVenda();
+        return ResponseEntity.ok(itens);
+    }
+    
+      @GetMapping("/pesquisarVenda/data")
+    @ResponseBody
+    public ResponseEntity<?> buscarPorData() {
+        List<Itens_venda> itens = serviceItensVenda.listarItensVenda();
+        return ResponseEntity.ok(itens);
+    }
 
-    
-    
 }

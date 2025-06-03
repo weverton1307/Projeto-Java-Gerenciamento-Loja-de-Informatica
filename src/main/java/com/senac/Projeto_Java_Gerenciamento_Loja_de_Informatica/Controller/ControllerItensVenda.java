@@ -81,6 +81,7 @@ public class ControllerItensVenda {
 
     @PostMapping("/registrarVenda")
     public String registrarVenda(@RequestBody VendaDTO vendaDTO, HttpServletRequest request) {
+        System.out.println("teste: "+vendaDTO.getCpf());
         HttpSession sessao = request.getSession();
         String nomeVendedor = (String) sessao.getAttribute("usuario");
         Venda venda = new Venda();
@@ -91,11 +92,11 @@ public class ControllerItensVenda {
         List<Cliente> clientes = serviceCliente.listarCliente();
         List<Produto> produtos = serviceProduto.listarProduto();
         venda.setMetodoPagamento(vendaDTO.getMetodoPagamento());
-        String sessaoValidada = ValidarSessao.validarSessao(request, "registrarVenda", "redirect:/");
+        String sessaoValidada = ValidarSessao.validarSessao(request, "inicio", "redirect:/");
         for (Funcionario f : funcionarios) {
             if (f.getUsuario().getLogin().equalsIgnoreCase(nomeVendedor)) {
                 funcionarioEncontrado = f;
-                System.out.println("funcionario encontrado: " + funcionarioEncontrado.getId());
+                System.out.println("página inicio: " + sessaoValidada);
                 venda.setVendedor(funcionarioEncontrado);
             }
         }
@@ -112,7 +113,7 @@ public class ControllerItensVenda {
 
                     }
                     c.setTotal_compras(c.getTotal_compras() + totalItens);
-                    System.out.println("testes cliente: " + c.getCpf());
+                    System.out.println("testes cliente: " + c.getNome());
                     serviceCliente.atualizar(c.getId(), c);
                     venda.setCliente(c);
                 }

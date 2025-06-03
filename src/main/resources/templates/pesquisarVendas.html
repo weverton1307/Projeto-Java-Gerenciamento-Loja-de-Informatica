@@ -33,8 +33,9 @@
             <div class="interface-pesquisar">
                 <div class="flex">
                     <form class="form-pesquisar">
-                        <select id="pesquisarProduto_criterio" class="select">
-                            <option value="">Selecione um critério de pesquisa</option>
+                        <select id="pesquisarProduto_criterio" class="select" onclick="mostrarCampo()">
+                            <option value="Selecione um critério de pesquisa">Selecione um critério de pesquisa</option>
+                             <option value="Código">Código</option>
                             <option value="CPF do cliente">CPF do cliente</option>
                             <option value="Nome do vendedor">Nome do vendedor</option>
                             <option value="Status">Status</option>
@@ -43,8 +44,8 @@
                         </select>
                         <input type="text" id="buscar-venda" placeholder="Buscar venda">
                         <div class="btn-pesquisar-Venda">
-                            <button class="btn-branco" id="btn-limpar" onclick="limparCampos()">LIMPAR</button>
-                            <button class="btn-verde" id="search-button">PESQUISAR</button>
+                            <button type="button" class="btn-branco" id="btn-limpar" onclick="limparCampos()">LIMPAR</button>
+                            <button type="button" class="btn-verde" id="search-button" onclick="pesquisarPorCodigo()">PESQUISAR</button>
                             
                         </div>
                     </form>
@@ -54,11 +55,11 @@
                         <h1>RESULTADO</h1>
                         <div class="resultado-itens">
                             <div class="text-venda">
-                                <h4>ID:</h4>
-                                <h4>Cliente:</h4>
-                                <h4>Vendedor:</h4>
-                                <h4>Método de pagamento:</h4>
-                                <h4>Status:</h4>
+                                <h4 id="id">ID:</h4>
+                                <h4 id="cliente">Cliente:</h4>
+                                <h4 id="vendedor">Vendedor:</h4>
+                                <h4 id="metodoPagamento">Método de pagamento:</h4>
+                                <h4 id="status">Status:</h4>
                             </div>
                             <div class="box-itens">
                                 <table class="table-venda">

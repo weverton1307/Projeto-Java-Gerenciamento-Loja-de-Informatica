@@ -1,4 +1,5 @@
-const itens = [];
+let itens = [];
+let produto ; 
 $("#registrarVenda").hide();
 $("#cancelarVenda").hide();
 $("#adicionarProduto").hide();
@@ -17,6 +18,7 @@ function limparCampos(event) {
   tbody.empty();
   $("#total-itens").text(" 0");
    $("#valor-total").text(" R$ 0,00")
+   itens=[];
 }
 function verificarCpf(event) {
   event.preventDefault();
@@ -76,24 +78,11 @@ alert("Por favor, selecione um método de pagamento");
         data: { id: id },
         dataType: "json",
         success: function (data) {
-          const codigo = data.id;
-          const nome = data.nomeProduto;
-          const valor = data.valorVenda;
-          const quantidade = 1;
-          const subTotal = quantidade * valor;
-          const desconto = false;
-          let item = [codigo, nome, valor, subTotal, quantidade, desconto];
-          let tanaLista = itens.some((item) => item[1] === nome);
-          if (tanaLista) {
-            alert("O produto já está na lista de selecionados");
-          } else {
-            $("#nomeProduto").text(data.nomeProduto);
-            $("#valorProduto").text("R$ " + data.valorVenda.toFixed(2));
-            itens.push(item);
-            $("#adicionarProduto").show();
-            tanaLista = false;
-          }
-
+          produto = data;
+          $("#adicionarProduto").show();
+          $("#nomeProduto").text(produto.nomeProduto);
+            $("#valorProduto").text("R$ " + produto.valorVenda.toFixed(2));
+          
         },
         error: function (xhr) {
           var errorMessage = "Por favor, digitr um id válido.";
@@ -154,6 +143,21 @@ function adicionarItens(event) {
     method: "GET",
     dataType: "json",
     success: function (clientes) {
+      const codigo = produto.id;
+          const nome = produto.nomeProduto;
+          const valor = produto.valorVenda;
+          const quantidade = 1;
+          const subTotal = quantidade * valor;
+          const desconto = false;
+          let item = [codigo, nome, valor, subTotal, quantidade, desconto];
+          let tanaLista = itens.some((item) => item[1] === nome);
+          if (tanaLista) {
+            alert("O produto já está na lista de selecionados");
+          } else {
+            itens.push(item);
+            tanaLista = false;
+          }
+
       let clienteVenda = null;
       clientes.forEach((cliente) => {
         
@@ -227,6 +231,7 @@ function registrarVenda(event) {
   if (cpfCliente === "") {
     cpfCliente = "111.111.111-11";
   }
+
   const dadosVenda = {
     cpf: cpfCliente,
     metodoPagamento: $("#metodo-pagamento").val(),
@@ -240,7 +245,7 @@ function registrarVenda(event) {
 
     success: function (success) {
       alert("Venda realizada com sucesso");
-      limparCampos(event);
+      window.location.href = "/inicio";
     },
 
     error: function (xhr, status, error) {
