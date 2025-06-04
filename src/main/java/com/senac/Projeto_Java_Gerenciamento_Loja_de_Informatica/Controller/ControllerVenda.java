@@ -54,34 +54,78 @@ public class ControllerVenda {
         List<Itens_venda> itens = serviceItensVenda.listarItensVenda();
         return ResponseEntity.ok(itens);
     }
-    
-      @GetMapping("/listarVendas")
+
+    @GetMapping("/listarVendas")
     @ResponseBody
     public ResponseEntity<?> listarVendas() {
         List<Itens_venda> itens = serviceItensVenda.listarItensVenda();
         return ResponseEntity.ok(itens);
     }
-    
-  @GetMapping("/pesquisarVenda/data")
-@ResponseBody
-public ResponseEntity<?> buscarPorData(@RequestParam String data) {
-    List<Itens_venda> itensPorData = new ArrayList<>();
 
-    try {
-        LocalDate dataConvertida = LocalDate.parse(data);
+    @GetMapping("/pesquisarVenda/data")
+    @ResponseBody
+    public ResponseEntity<?> buscarPorData(@RequestParam String data) {
+        List<Itens_venda> itensPorData = new ArrayList<>();
+
+        try {
+            LocalDate dataConvertida = LocalDate.parse(data);
+            List<Itens_venda> itens = serviceItensVenda.listarItensVenda();
+            for (Itens_venda iv : itens) {
+                LocalDate dataVenda = iv.getVenda().getDataHora().toLocalDate();
+                if (dataVenda.equals(dataConvertida)) {
+                    itensPorData.add(iv);
+                }
+            }
+            return ResponseEntity.ok(itensPorData);
+        } catch (DateTimeParseException e) {
+            return ResponseEntity.badRequest().body("Data inválida: " + data);
+        }
+    }
+
+    @GetMapping("/pesquisarVenda/status")
+    @ResponseBody
+    public ResponseEntity<?> buscarPorStatus(@RequestParam String status) {
+        List<Itens_venda> itensPorStatus = new ArrayList<>();
+
         List<Itens_venda> itens = serviceItensVenda.listarItensVenda();
         for (Itens_venda iv : itens) {
-            LocalDate dataVenda = iv.getVenda().getDataHora().toLocalDate();
-            if (dataVenda.equals(dataConvertida)) {
-                itensPorData.add(iv);
+            if (iv.getVenda().getStatusVenda().equalsIgnoreCase(status)) {
+                itensPorStatus.add(iv);
             }
         }
-        return ResponseEntity.ok(itensPorData);
-    } catch (DateTimeParseException e) {
-        return ResponseEntity.badRequest().body("Data inválida: " + data);
+        return ResponseEntity.ok(itensPorStatus);
+
     }
-}
+    
+    
+    @GetMapping("/pesquisarVenda/cpf")
+    @ResponseBody
+    public ResponseEntity<?> buscarPorCpf(@RequestParam String cpf) {
+        List<Itens_venda> itensPorCpf = new ArrayList<>();
 
+        List<Itens_venda> itens = serviceItensVenda.listarItensVenda();
+        for (Itens_venda iv : itens) {
+            if (iv.getVenda().getCliente().getCpf().equalsIgnoreCase(cpf)) {
+                itensPorCpf.add(iv);
+            }
+        }
+        return ResponseEntity.ok(itensPorCpf);
 
+    }
+    
+      @GetMapping("/pesquisarVenda/vendedor")
+    @ResponseBody
+    public ResponseEntity<?> buscarPorVendedor(@RequestParam String vendedor) {
+        List<Itens_venda> itensPorVendedor = new ArrayList<>();
+
+        List<Itens_venda> itens = serviceItensVenda.listarItensVenda();
+        for (Itens_venda iv : itens) {
+            if (iv.getVenda().getVendedor().getNome().equalsIgnoreCase(vendedor)) {
+                itensPorVendedor.add(iv);
+            }
+        }
+        return ResponseEntity.ok(itensPorVendedor);
+
+    }
 
 }
