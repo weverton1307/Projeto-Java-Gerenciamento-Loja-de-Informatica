@@ -127,5 +127,18 @@ public class ControllerVenda {
         return ResponseEntity.ok(itensPorVendedor);
 
     }
+      @GetMapping("/pesquisarVenda/metodoPagamento")
+    @ResponseBody
+    public ResponseEntity<?> buscarPorMetodoPag(@RequestParam String metodoPagamento) {
+        List<Itens_venda> itensPorMetodoPag = new ArrayList<>();
 
+        List<Itens_venda> itens = serviceItensVenda.listarItensVenda();
+        for (Itens_venda iv : itens) {
+            if (iv.getVenda().getMetodoPagamento().equalsIgnoreCase(metodoPagamento)) {
+                itensPorMetodoPag.add(iv);
+            }
+        }
+        return ResponseEntity.ok(itensPorMetodoPag);
+
+    }
 }

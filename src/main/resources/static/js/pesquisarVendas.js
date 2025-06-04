@@ -2,6 +2,8 @@ function limparCampos() {
 
   $("#pesquisarProduto_criterio").val("Selecione um critério de pesquisa");
   $("#buscar-venda").val("").hide();
+   $("#opcaoStatus").hide();
+   $("#opcaoPagamento").hide();
   $("#btn-limpar").hide();
   $("#search-button").hide();
   $("#corpoTabelaVenda").empty();
@@ -12,15 +14,44 @@ function limparCampos() {
   $("#status").text("Status:");
   $("#total-itens").text("0");
   $("#valor-total").text("R$ 0,00");
-   $("#resultadoPesquisa").show();
-    listarVendas();
+  $("#resultadoPesquisa").show();
+  listarVendas();
 }
 
 limparCampos();
 
 function mostrarCampo() {
   if ($("#pesquisarProduto_criterio").val() !== "Selecione um critério de pesquisa") {
-    $("#buscar-venda").show();
+   if($("#pesquisarProduto_criterio").val() ==="Código"){
+     $("#buscar-venda").show();
+     $("#opcaoStatus").hide();
+     $("#opcaoPagamento").hide();
+    $("#buscar-venda").attr("placeholder", "Digite o código da venda");
+   }else if($("#pesquisarProduto_criterio").val() ==="CPF do cliente"){
+     $("#buscar-venda").show();
+     $("#opcaoStatus").hide();
+     $("#opcaoPagamento").hide();
+    $("#buscar-venda").attr("placeholder", "xxx.xxx.xxx-xx");
+   }
+   else if($("#pesquisarProduto_criterio").val() ==="Nome do vendedor"){
+     $("#buscar-venda").show();
+     $("#opcaoStatus").hide();
+     $("#opcaoPagamento").hide();
+    $("#buscar-venda").attr("placeholder", "Digite o nome do vendedor");
+   }else if($("#pesquisarProduto_criterio").val() ==="Status"){
+    $("#buscar-venda").hide();
+     $("#opcaoStatus").show();
+     $("#opcaoPagamento").hide();
+   }else if($("#pesquisarProduto_criterio").val() ==="Data da venda"){
+     $("#buscar-venda").show();
+     $("#opcaoStatus").hide();
+     $("#opcaoPagamento").hide();
+    $("#buscar-venda").attr("placeholder", "dd/mm/aaaa");
+   }else if($("#pesquisarProduto_criterio").val() ==="Método de pagamento"){
+    $("#buscar-venda").hide();
+     $("#opcaoPagamento").show();
+     $("#opcaoStatus").hide();
+   }
     $("#btn-limpar").show();
     $("#search-button").show();
   } else {
@@ -71,27 +102,33 @@ $(document).ready(function () {
 
 function pesquisar() {
   if ($("#pesquisarProduto_criterio").val() === "Código") {
-    const codigo = $("#buscar-venda").val();
-    let totalItens = 0;
-    let valorTotal = 0;
+    const numero = $("#buscar-venda").val();
+    if (!/^\d+$/.test(numero) || parseInt(numero, 10) < 1) {
+    alert("Valor inválido. Insira apenas números inteiros positivos.");
+     $("#buscar-venda").val("");
+    return;
+  }else {
+  const codigo = parseInt(numero, 10);
+      let totalItens = 0;
+      let valorTotal = 0;
 
-    $.ajax({
-      url: "/pesquisarVenda/codigo",
-      method: "GET",
-      dataType: "json",
-      success: function (response) {
-         $("#corpoTabelaVenda").empty();
-         $("#buscar-venda").val("");
-        response.forEach((item) => {
-          if (item.venda && item.venda.id == codigo) {
-             $("#resultadoPesquisa").show();
-            $("#id").text("ID: " + item.venda.id);
-            $("#cliente").text("Cliente: " + item.venda.cliente.nome);
-            $("#vendedor").text("Vendedor: " + item.venda.vendedor.nome);
-            $("#metodoPagamento").text("Método de pagamento: " + item.venda.metodoPagamento);
-            $("#status").text("Status: " + item.venda.statusVenda);
-            let subtotal = item.produto.valorVenda * item.quantidade;
-            const linha = `
+      $.ajax({
+        url: "/pesquisarVenda/codigo",
+        method: "GET",
+        dataType: "json",
+        success: function (response) {
+          $("#corpoTabelaVenda").empty();
+          $("#buscar-venda").val("");
+          response.forEach((item) => {
+            if (item.venda && item.venda.id == codigo) {
+              $("#resultadoPesquisa").show();
+              $("#id").text("ID: " + item.venda.id);
+              $("#cliente").text("Cliente: " + item.venda.cliente.nome);
+              $("#vendedor").text("Vendedor: " + item.venda.vendedor.nome);
+              $("#metodoPagamento").text("Método de pagamento: " + item.venda.metodoPagamento);
+              $("#status").text("Status: " + item.venda.statusVenda);
+              let subtotal = item.produto.valorVenda * item.quantidade;
+              const linha = `
               <tr>
                 <td>${item.produto.nomeProduto}</td>
                 <td>R$ ${item.produto.valorVenda.toFixed(2)}</td>
@@ -99,22 +136,24 @@ function pesquisar() {
                 <td>${item.quantidade}</td>
               </tr>
             `;
-            $("#corpoTabelaVenda").append(linha);
-            
-            totalItens += item.quantidade;
-            valorTotal += subtotal;
+              $("#corpoTabelaVenda").append(linha);
 
-          }
+              totalItens += item.quantidade;
+              valorTotal += subtotal;
 
-        });
-        $("#total-itens").text(totalItens);
-        $("#valor-total").text("R$ " + valorTotal.toFixed(2));
-      },
-      error: function (xhr) {
-        alert("Erro ao buscar venda: " + xhr.responseText);
-        limparCampos();
-      }
-    });
+            }
+
+          });
+          $("#total-itens").text(totalItens);
+          $("#valor-total").text("R$ " + valorTotal.toFixed(2));
+        },
+        error: function (xhr) {
+          alert("Erro ao buscar venda: " + xhr.responseText);
+          limparCampos();
+        }
+      });
+    }
+
   } else if ($("#pesquisarProduto_criterio").val() === "Data da venda") {
     let dataBr = $("#buscar-venda").val();
     let partes = dataBr.split("/");
@@ -153,7 +192,7 @@ function pesquisar() {
               </tr>
             `;
               $("#tabela-venda").append(linha);
-               $("#resultadoPesquisa").hide();
+              $("#resultadoPesquisa").hide();
             }
           });
         } else {
@@ -167,7 +206,8 @@ function pesquisar() {
     });
 
   } else if ($("#pesquisarProduto_criterio").val() === "Status") {
-    let status = $("#buscar-venda").val();
+
+    let status =  $("#opcaoStatus").val();
 
     $.ajax({
       url: "/pesquisarVenda/status",
@@ -196,7 +236,7 @@ function pesquisar() {
               </tr>
             `;
               $("#tabela-venda").append(linha);
-               $("#resultadoPesquisa").hide();
+              $("#resultadoPesquisa").hide();
             }
           });
         } else {
@@ -211,8 +251,6 @@ function pesquisar() {
     });
   } else if ($("#pesquisarProduto_criterio").val() === "CPF do cliente") {
     let cpfCliente = $("#buscar-venda").val().trim();
-    let totalItens = 0;
-    let valorTotal = 0;
     $.ajax({
       url: "/pesquisarVenda/cpf",
       method: "GET",
@@ -220,8 +258,8 @@ function pesquisar() {
       dataType: "json",
       success: function (itensVendas) {
         $("#corpoTabelaVenda").empty();
-       $("#tabela-venda").empty();
-       $("#buscar-venda").val("");
+        $("#tabela-venda").empty();
+        $("#buscar-venda").val("");
         let idsExibidos = new Set();
         if (itensVendas && itensVendas.length > 0) {
           itensVendas.forEach((item) => {
@@ -256,19 +294,17 @@ function pesquisar() {
     });
 
 
-  }else if ($("#pesquisarProduto_criterio").val() === "Nome do vendedor") {
-    let nomeVendedor = $("#buscar-venda").val().trim();
-    let totalItens = 0;
-    let valorTotal = 0;
+  } else if ($("#pesquisarProduto_criterio").val() === "Nome do vendedor") {
+    let nomeVendedor = $("#buscar-venda").val().trim()
     $.ajax({
       url: "/pesquisarVenda/vendedor",
       method: "GET",
       data: { vendedor: nomeVendedor },
       dataType: "json",
       success: function (itensVendas) {
-         $("#corpoTabelaVenda").empty();
-         $("#tabela-venda").empty();
-         $("#buscar-venda").val("");
+        $("#corpoTabelaVenda").empty();
+        $("#tabela-venda").empty();
+        $("#buscar-venda").val("");
         let idsExibidos = new Set();
         if (itensVendas && itensVendas.length > 0) {
           itensVendas.forEach((item) => {
@@ -287,7 +323,7 @@ function pesquisar() {
               </tr>
             `;
               $("#tabela-venda").append(linha);
-               $("#resultadoPesquisa").hide();
+              $("#resultadoPesquisa").hide();
             }
           });
         } else {
@@ -303,7 +339,52 @@ function pesquisar() {
     });
 
 
-  }else {
+  } else if ($("#pesquisarProduto_criterio").val() === "Método de pagamento") {
+    let metodoPagamento =  $("#opcaoPagamento").val();
+    $.ajax({
+      url: "/pesquisarVenda/metodoPagamento",
+      method: "GET",
+      data: { metodoPagamento: metodoPagamento },
+      dataType: "json",
+      success: function (itensVendas) {
+        $("#corpoTabelaVenda").empty();
+        $("#tabela-venda").empty();
+        $("#buscar-venda").val("");
+        let idsExibidos = new Set();
+        if (itensVendas && itensVendas.length > 0) {
+          itensVendas.forEach((item) => {
+            if (!idsExibidos.has(item.venda.id)) {
+              idsExibidos.add(item.venda.id);
+
+              let nomeCliente = item.cliente?.nome ?? "Cliente não informado";
+              let linha = `
+              <tr class='linha-venda' data-id='${item.venda.id}'>
+                <td class='linha'>${item.venda.id}</td>
+                <td>${item.produto.nomeProduto}</td>
+                <td class='linha'>${nomeCliente}</td>
+                <td>${item.venda.vendedor.nome}</td>
+                <td>${item.venda.metodoPagamento}</td>
+                <td>${item.venda.statusVenda}</td>
+              </tr>
+            `;
+              $("#tabela-venda").append(linha);
+              $("#resultadoPesquisa").hide();
+            }
+          });
+        } else {
+          alert("Nenhuma venda encontrada.");
+          limparCampos();
+        }
+      },
+      error: function (xhr) {
+        alert("Erro ao buscar vendas por metódo de pagamento: " + xhr.responseText);
+        limparCampos();
+      }
+
+    });
+
+
+  } else {
     Swal.fire("Selecione o critério para pesquisar.");
 
   }
