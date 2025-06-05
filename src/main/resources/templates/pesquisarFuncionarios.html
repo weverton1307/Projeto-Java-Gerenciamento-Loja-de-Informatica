@@ -115,5 +115,16 @@
     <script th:src="@{/js/pesquisarFuncionarios.js}"></script>
     <!-- end javascript -->
 </body>
-
+  <script>
+  window.addEventListener("pageshow", function (event) {
+  if (event.persisted) {
+    window.location.href = "/erro.html";
+  } else {
+    const [navEntry] = performance.getEntriesByType("navigation");
+    if (navEntry && navEntry.type === "back_forward") {
+      window.location.href = "/erro.html";
+    }
+  }
+});
+    </script>
 </html>

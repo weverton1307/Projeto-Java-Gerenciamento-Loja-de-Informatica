@@ -46,21 +46,13 @@ section.inicio .interface {
     margin-top: 0px;
 }
 
-.inicio .btn-branco {
-    padding: 8px 35px;
-    font-size: 15px;
-    font-weight: 600;
-    border-radius: 15px;
-    background-color: #ffffff;
-    color: #D6C7FB;
-    border: 0;
-    cursor: pointer;
-}
-
 .btn {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-top: 20px;
+}
+.btn button{
+    width: 130px;
 }
 
 /* Estilo para telas menores que 882px */

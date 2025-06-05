@@ -1,4 +1,5 @@
 //PÁGINA PARA PESQUISAR CLIENTES
+
 // Função para listar os clientes
 $(document).ready(function () {
     function listarClientes() {

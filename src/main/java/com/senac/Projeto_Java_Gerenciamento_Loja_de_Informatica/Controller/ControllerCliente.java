@@ -50,8 +50,13 @@ public class ControllerCliente {
     // Controller para pesquisar um cliente cadastrado
     @GetMapping("/buscar-cliente")
     @ResponseBody
-    public ResponseEntity<?> buscarCliente(@RequestParam("id") Integer id) {
-        if (id == null || id <= 0) {
+    public ResponseEntity<?> buscarCliente(@RequestParam("id") Integer id, HttpServletRequest request) {
+         String senssaoValidada = ValidarSessao.validarSessao(request, "cadastrarClientes", "redirect:/");
+         System.out.println(senssaoValidada);
+         if(senssaoValidada.equalsIgnoreCase("redirect:/")){
+             return ResponseEntity.ok(null);
+         }else{
+             if (id == null || id <= 0) {
             return ResponseEntity.badRequest().body("ID inválido.");
         }
         Cliente clienteEncontrado = serviceCliente.buscarId(id);
@@ -59,7 +64,9 @@ public class ControllerCliente {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado.");
         }
 
-        return ResponseEntity.ok(clienteEncontrado);
+        return ResponseEntity.ok(clienteEncontrado); 
+         }
+      
     }
 
     // Controller para retornar uma lista com todos os clientes cadastrados

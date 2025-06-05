@@ -6,6 +6,8 @@ import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Produto;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceCategoria;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceLocalArmazenamento;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceProduto;
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.util.ValidarSessao;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,27 +31,30 @@ public class ControllerProduto {
 
     @Autowired
     ServiceLocalArmazenamento serviceLocalArmazenamento;
-    
+
     //Controller para exibir a página cadastroProduto.html
     @GetMapping("/cadastroProduto")
-    public String inicio(Model model) {
+    public String inicio(Model model, HttpServletRequest request) {
         model.addAttribute("produto", new Produto());
         model.addAttribute("categoria", new Categoria());
         model.addAttribute("localArmazenamento", new Local_armazenamento());
-        return "cadastroProduto";
+        String sessaoValidada = ValidarSessao.validarSessao(request, "cadastroProduto", "redirect:/");
+        return sessaoValidada;
     }
-     //Controller para exibir a página pesquisarProdutos.html
+    //Controller para exibir a página pesquisarProdutos.html
+
     @GetMapping("/pesquisarProdutos")
-    public String buscarProduto(Model model) {
+    public String buscarProduto(Model model, HttpServletRequest request) {
         model.addAttribute("produto", new Produto());
         model.addAttribute("categoria", new Categoria());
         model.addAttribute("localArmazenamento", new Local_armazenamento());
-        return "pesquisarProdutos";
+        String sessaoValidada = ValidarSessao.validarSessao(request, "pesquisarProdutos", "redirect:/");
+        return sessaoValidada;
     }
 
     //Controller para cadastrar um produto
     @PostMapping("/cadastro-produto")
-    public String cadastrarProduto(Model model, @RequestBody Produto produto) {
+    public String cadastrarProduto(Model model, @RequestBody Produto produto, HttpServletRequest request) {
         System.out.println("Produto do formulario " + produto.getCategoria());
         Categoria categoriaEncontrada = serviceCategoria.buscarCategoria(produto);
         Local_armazenamento localArmazenamentoEncontrado = serviceLocalArmazenamento.buscarLoca_armazenamento(produto);
@@ -57,7 +62,8 @@ public class ControllerProduto {
         produto.setLocalArmazenamento(localArmazenamentoEncontrado);
         serviceProduto.criarProduto(produto);
         serviceProduto.atualizarQuantidadeproduto(produto);
-        return "cadastroProduto";
+        String sessaoValidada = ValidarSessao.validarSessao(request, "cadastroProduto", "redirect:/");
+        return sessaoValidada;
     }
 
     //Controller para pesquisar produtos cadastrados
@@ -72,7 +78,7 @@ public class ControllerProduto {
             @RequestParam(required = false) String devolvido,
             @RequestParam(required = false) String categoria
     ) {
-       return serviceProduto.pesquisarProdutos(id, nome, modelo, fabricante, disponibilidade, devolvido, categoria);
+        return serviceProduto.pesquisarProdutos(id, nome, modelo, fabricante, disponibilidade, devolvido, categoria);
     }
 
     //Controller para retornar uma lista de produtos
@@ -84,7 +90,7 @@ public class ControllerProduto {
 
     //Controller para atualizar os das do produto cadastrado
     @PutMapping("/atualizar-produto")
-    public String atualizarProduto(@RequestBody Produto produto) {
+    public String atualizarProduto(@RequestBody Produto produto, HttpServletRequest request) {
         Categoria categoriaEncontrada = null;
         List<Categoria> listaCategoria = serviceCategoria.listarCategoria();
         for (Categoria c : listaCategoria) {
@@ -104,14 +110,14 @@ public class ControllerProduto {
         produto.setLocalArmazenamento(localArmazenamentoEncontrado);
         serviceProduto.atualizar(produto.getId(), produto);
         serviceProduto.atualizarQuantidadeproduto(produto);
-
-        return "pesquisarProdutos";
+        String sessaoValidada = ValidarSessao.validarSessao(request, "pesquisarProdutos", "redirect:/");
+        return sessaoValidada;
     }
 
     @GetMapping("/quantidade-produto")
     @ResponseBody
     public String quantidadeCadaProduto() {
-       String mensagem = serviceProduto.contarProdutos();
+        String mensagem = serviceProduto.contarProdutos();
         return mensagem;
     }
 }
