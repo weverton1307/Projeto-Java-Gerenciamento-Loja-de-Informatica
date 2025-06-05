@@ -185,10 +185,13 @@ section.tabela-venda-pesquisar th {
         justify-content: center;
     }
 
-     .tabela-venda-pesquisar .table-produto .linha {
+    .table-pesquisa{
+        width: 95%;
+        padding: 0 3px;
+    }
+    .linha{
         display: none;
     }
-    
 
     section.tabela-venda-pesquisar .table-produto {
         margin-top: 0px;

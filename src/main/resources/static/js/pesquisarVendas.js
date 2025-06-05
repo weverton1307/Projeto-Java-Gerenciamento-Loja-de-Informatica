@@ -1,6 +1,7 @@
 function limparCampos() {
 
   $("#pesquisarProduto_criterio").val("Selecione um critério de pesquisa");
+   $("#resultadoPesquisa").hide();
   $("#buscar-venda").val("").hide();
    $("#opcaoStatus").hide();
    $("#opcaoPagamento").hide();
@@ -61,25 +62,33 @@ function mostrarCampo() {
   }
 }
 
+let todasAsVendas = [];
+
 function listarVendas() {
+   $("#resultadoPesquisa").hide();
   $.ajax({
     url: "/listarVendas",
     method: "GET",
     dataType: "json",
     success: function (itensVendas) {
       let idsExibidos = new Set();
+      todasAsVendas = itensVendas; // armazenar todas as vendas
+
       if (itensVendas && itensVendas.length > 0) {
+        $("#tabela-venda").empty(); // limpa a tabela antes de preencher
+
         itensVendas.forEach((item) => {
           if (!idsExibidos.has(item.venda.id)) {
             idsExibidos.add(item.venda.id);
 
             let nomeCliente = item.cliente?.nome ?? "Cliente não informado";
+
             let linha = `
               <tr class='linha-venda' data-id='${item.venda.id}'>
                 <td class='linha'>${item.venda.id}</td>
                 <td>${item.produto.nomeProduto}</td>
                 <td class='linha'>${nomeCliente}</td>
-                <td>${item.venda.vendedor.nome}</td>
+                <td class='linha'>${item.venda.vendedor.nome}</td>
                 <td>${item.venda.metodoPagamento}</td>
                 <td>${item.venda.statusVenda}</td>
               </tr>
@@ -89,12 +98,57 @@ function listarVendas() {
         });
       } else {
         alert("Nenhuma venda encontrada.");
-        limparCampos();
       }
     }
-
   });
 }
+
+// Evento de clique em uma linha da tabela
+$(document).on("click", "#tabela-venda tr.linha-venda", function () {
+   $("#resultadoPesquisa").show();
+  let idSelecionado = $(this).data("id");
+
+  // Filtrar os itens da venda com o ID correspondente
+  let itensDaVenda = todasAsVendas.filter(item => item.venda.id === idSelecionado);
+
+  if (itensDaVenda.length > 0) {
+    let venda = itensDaVenda[0].venda;
+    let cliente = itensDaVenda[0].cliente?.nome ?? "";
+
+    // Preencher os dados no painel de resultado
+    $("#id").text("ID: " + venda.id);
+    $("#cliente").text("Cliente: " + cliente);
+    $("#vendedor").text("Vendedor: " + venda.vendedor.nome);
+    $("#metodoPagamento").text("Método de pagamento: " + venda.metodoPagamento);
+    $("#status").text("Status: " + venda.statusVenda);
+
+    // Preencher os produtos
+    let corpoTabela = $("#corpoTabelaVenda");
+    corpoTabela.empty();
+    let totalItens = 0;
+    let valorTotal = 0;
+
+    itensDaVenda.forEach(item => {
+      let subtotal = item.produto.valorVenda * item.quantidade;
+      totalItens += item.quantidade;
+      valorTotal += subtotal;
+
+      let linhaProduto = `
+        <tr>
+          <td>${item.produto.nomeProduto}</td>
+          <td>R$ ${item.produto.valorVenda.toFixed(2)}</td>
+          <td>R$ ${subtotal.toFixed(2)}</td>
+          <td>${item.quantidade}</td>
+        </tr>
+      `;
+      corpoTabela.append(linhaProduto);
+    });
+
+    $("#total-itens").text(totalItens);
+    $("#valor-total").text("R$ " + valorTotal.toFixed(2));
+  }
+});
+
 $(document).ready(function () {
   listarVendas();
 });
