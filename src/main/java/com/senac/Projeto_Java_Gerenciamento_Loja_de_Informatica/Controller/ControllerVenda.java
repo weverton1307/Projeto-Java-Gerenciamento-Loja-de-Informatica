@@ -14,6 +14,8 @@ import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Model.Venda;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceDevolucao;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceItensVenda;
 import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.Service.ServiceVenda;
+import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.util.ValidarSessao;
+import jakarta.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
@@ -43,28 +45,40 @@ public class ControllerVenda {
     ServiceDevolucao serviceDevolucao;
 
     @GetMapping("/pesquisarVendas")
-    public String inicioVendas() {
-
-        return "pesquisarVendas";
+    public String inicioVendas( HttpServletRequest request) {
+String sessaoValidada = ValidarSessao.validarSessao(request, "pesquisarVendas", "redirect:/");
+        return sessaoValidada;
     }
 
     @GetMapping("/pesquisarVenda/codigo")
     @ResponseBody
-    public ResponseEntity<?> buscarPorCodigo() {
+    public ResponseEntity<?> buscarPorCodigo( HttpServletRequest request) {
+    String sessaoValidada = ValidarSessao.validarSessao(request, "pesquisarVendas", "redirect:/");
+    if (sessaoValidada.equalsIgnoreCase("redirect:/")) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Sessão inválida");
+    }
         List<Itens_venda> itens = serviceItensVenda.listarItensVenda();
         return ResponseEntity.ok(itens);
     }
 
     @GetMapping("/listarVendas")
     @ResponseBody
-    public ResponseEntity<?> listarVendas() {
+    public ResponseEntity<?> listarVendas( HttpServletRequest request) {
+    String sessaoValidada = ValidarSessao.validarSessao(request, "pesquisarVendas", "redirect:/");
+    if (sessaoValidada.equalsIgnoreCase("redirect:/")) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Sessão inválida");
+    }
         List<Itens_venda> itens = serviceItensVenda.listarItensVenda();
         return ResponseEntity.ok(itens);
     }
 
     @GetMapping("/pesquisarVenda/data")
     @ResponseBody
-    public ResponseEntity<?> buscarPorData(@RequestParam String data) {
+    public ResponseEntity<?> buscarPorData(@RequestParam String data, HttpServletRequest request) {
+    String sessaoValidada = ValidarSessao.validarSessao(request, "pesquisarVendas", "redirect:/");
+    if (sessaoValidada.equalsIgnoreCase("redirect:/")) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Sessão inválida");
+    }
         List<Itens_venda> itensPorData = new ArrayList<>();
 
         try {
@@ -84,7 +98,11 @@ public class ControllerVenda {
 
     @GetMapping("/pesquisarVenda/status")
     @ResponseBody
-    public ResponseEntity<?> buscarPorStatus(@RequestParam String status) {
+    public ResponseEntity<?> buscarPorStatus(@RequestParam String status, HttpServletRequest request) {
+    String sessaoValidada = ValidarSessao.validarSessao(request, "pesquisarVendas", "redirect:/");
+    if (sessaoValidada.equalsIgnoreCase("redirect:/")) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Sessão inválida");
+    }
         List<Itens_venda> itensPorStatus = new ArrayList<>();
 
         List<Itens_venda> itens = serviceItensVenda.listarItensVenda();
@@ -100,7 +118,11 @@ public class ControllerVenda {
     
     @GetMapping("/pesquisarVenda/cpf")
     @ResponseBody
-    public ResponseEntity<?> buscarPorCpf(@RequestParam String cpf) {
+    public ResponseEntity<?> buscarPorCpf(@RequestParam String cpf, HttpServletRequest request) {
+    String sessaoValidada = ValidarSessao.validarSessao(request, "pesquisarVendas", "redirect:/");
+    if (sessaoValidada.equalsIgnoreCase("redirect:/")) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Sessão inválida");
+    }
         List<Itens_venda> itensPorCpf = new ArrayList<>();
 
         List<Itens_venda> itens = serviceItensVenda.listarItensVenda();
@@ -115,7 +137,11 @@ public class ControllerVenda {
     
       @GetMapping("/pesquisarVenda/vendedor")
     @ResponseBody
-    public ResponseEntity<?> buscarPorVendedor(@RequestParam String vendedor) {
+    public ResponseEntity<?> buscarPorVendedor(@RequestParam String vendedor, HttpServletRequest request) {
+    String sessaoValidada = ValidarSessao.validarSessao(request, "pesquisarVendas", "redirect:/");
+    if (sessaoValidada.equalsIgnoreCase("redirect:/")) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Sessão inválida");
+    }
         List<Itens_venda> itensPorVendedor = new ArrayList<>();
 
         List<Itens_venda> itens = serviceItensVenda.listarItensVenda();
@@ -129,7 +155,11 @@ public class ControllerVenda {
     }
       @GetMapping("/pesquisarVenda/metodoPagamento")
     @ResponseBody
-    public ResponseEntity<?> buscarPorMetodoPag(@RequestParam String metodoPagamento) {
+    public ResponseEntity<?> buscarPorMetodoPag(@RequestParam String metodoPagamento, HttpServletRequest request) {
+    String sessaoValidada = ValidarSessao.validarSessao(request, "pesquisarVendas", "redirect:/");
+    if (sessaoValidada.equalsIgnoreCase("redirect:/")) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Sessão inválida");
+    }
         List<Itens_venda> itensPorMetodoPag = new ArrayList<>();
 
         List<Itens_venda> itens = serviceItensVenda.listarItensVenda();

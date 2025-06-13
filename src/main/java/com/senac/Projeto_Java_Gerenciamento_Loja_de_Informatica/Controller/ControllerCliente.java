@@ -72,7 +72,11 @@ public class ControllerCliente {
     // Controller para retornar uma lista com todos os clientes cadastrados
     @GetMapping("/listar-clientes")
     @ResponseBody
-    public List<Cliente> listarClientes() {
+    public List<Cliente> listarClientes(HttpServletRequest request) {
+        String senssaoValidada = ValidarSessao.validarSessao(request, "pesquisarClientes", "redirect:/");
+        if(senssaoValidada.equalsIgnoreCase("redirect:/")){
+            return null;
+        }
         return serviceCliente.listarCliente();
     }
 

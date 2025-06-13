@@ -10,6 +10,7 @@ import com.senac.Projeto_Java_Gerenciamento_Loja_de_Informatica.util.ValidarSess
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -77,14 +78,22 @@ public class ControllerProduto {
             @RequestParam(required = false) String disponibilidade,
             @RequestParam(required = false) String devolvido,
             @RequestParam(required = false) String categoria
-    ) {
+    , HttpServletRequest request) {
+    String sessaoValidada = ValidarSessao.validarSessao(request, "pesquisarProdutos", "redirect:/");
+    if (sessaoValidada.equalsIgnoreCase("redirect:/")) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Sessão inválida");
+    }
         return serviceProduto.pesquisarProdutos(id, nome, modelo, fabricante, disponibilidade, devolvido, categoria);
     }
 
     //Controller para retornar uma lista de produtos
     @GetMapping("/listar-produtos")
     @ResponseBody
-    public List<Produto> listarProduto() {
+    public List<Produto> listarProduto(HttpServletRequest request) {
+      String sessaoValidada = ValidarSessao.validarSessao(request, "pesquisarProdutos", "redirect:/");
+      if(sessaoValidada.equalsIgnoreCase("redirect:/")){
+          return null;
+      }
         return serviceProduto.listarProduto();
     }
 
@@ -116,7 +125,11 @@ public class ControllerProduto {
 
     @GetMapping("/quantidade-produto")
     @ResponseBody
-    public String quantidadeCadaProduto() {
+    public String quantidadeCadaProduto(HttpServletRequest request) {
+        String sessaoValidada = ValidarSessao.validarSessao(request, "pesquisarProdutos", "redirect:/");
+        if(sessaoValidada.equalsIgnoreCase("redirect:/")){
+            return null;
+        }
         String mensagem = serviceProduto.contarProdutos();
         return mensagem;
     }

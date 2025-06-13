@@ -70,7 +70,11 @@ public class ControllerFuncionario {
     //Controller para pesquisar funcionário cadastrado
     @GetMapping("/buscar-funcionario")
     @ResponseBody
-    public ResponseEntity<?> buscarFuncionario(@RequestParam("id") Integer id) {
+    public ResponseEntity<?> buscarFuncionario(@RequestParam("id") Integer id, HttpServletRequest request) {
+        String sessaoValidada = ValidarSessao.validarSessao(request, "pesquisarFuncionarios", "redirect:/");
+        if(sessaoValidada.equalsIgnoreCase("redirect:/")){
+            return null;
+        }
         if (id == null || id <= 0) {
             return ResponseEntity.badRequest().body("ID inválido.");
         }
@@ -96,7 +100,11 @@ public class ControllerFuncionario {
     //Controller para retornar uma lista com todos os funcionários cadastrados
     @GetMapping("/listar-funcionarios")
     @ResponseBody
-    public List<Funcionario> listarFuncionarios() {
+    public List<Funcionario> listarFuncionarios(HttpServletRequest request) {
+        String sessaoValidada = ValidarSessao.validarSessao(request, "pesquisarFuncionarios", "redirect:/");
+        if(sessaoValidada.equalsIgnoreCase("redirect:/")){
+            return null;
+        }
         return serviceFuncionario.listarFuncionario();
     }
 

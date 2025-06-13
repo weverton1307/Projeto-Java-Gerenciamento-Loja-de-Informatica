@@ -62,7 +62,11 @@ public class ControllerDevolucao {
     //Controller para pesquisar uma devolução
     @GetMapping("/buscar-devolucao")
     @ResponseBody
-    public ResponseEntity<?> buscarDevolucao(@RequestParam("id") Integer id) {
+    public ResponseEntity<?> buscarDevolucao(@RequestParam("id") Integer id, HttpServletRequest request) {
+        String sessaoValidada = ValidarSessao.validarSessao(request, "pesquisarDevolucao", "redirect:/");
+        if(sessaoValidada.equalsIgnoreCase("redirect:/")){
+            return null;
+        }
         if (id == null || id <= 0) {
             return ResponseEntity.badRequest().body("ID inválido.");
         }
@@ -78,7 +82,11 @@ public class ControllerDevolucao {
     //Controller para retornar uma lista de devoluções cadastradas
     @GetMapping("/listar-devolucao")
     @ResponseBody
-    public List<Devolucao> listarDevolucao() {
+    public List<Devolucao> listarDevolucao(HttpServletRequest request) {
+        String sessaoValidada = ValidarSessao.validarSessao(request, "pesquisarDevolucao", "redirect:/");
+        if(sessaoValidada.equalsIgnoreCase("redirect:/")){
+            return null;
+        }
         return serviceDevolucao.listarDevolucao();
     }
 

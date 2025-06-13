@@ -64,7 +64,11 @@ public class ControllerTroca {
     //Controller para pesquisar uma troca cadastrada
     @GetMapping("/buscar-troca")
     @ResponseBody
-    public ResponseEntity<?> buscartroca(@RequestParam("id") Integer id) {
+    public ResponseEntity<?> buscartroca(@RequestParam("id") Integer id, HttpServletRequest request) {
+    String sessaoValidada = ValidarSessao.validarSessao(request, "pesquisarTroca", "redirect:/");
+    if (sessaoValidada.equalsIgnoreCase("redirect:/")) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Sessão inválida");
+    }
         if (id == null || id <= 0) {
             return ResponseEntity.badRequest().body("ID inválido.");
         }
@@ -80,7 +84,11 @@ public class ControllerTroca {
     //Controller para retornar uma lista com trocas cadastradas
     @GetMapping("/listar-troca")
     @ResponseBody
-    public List<Troca> listarTroca() {
+    public List<Troca> listarTroca(HttpServletRequest request) {
+        String sessaoValidada = ValidarSessao.validarSessao(request, "registrarTroca", "redirect:/");
+        if(sessaoValidada.equalsIgnoreCase("redirect:/")){
+            return null;
+        }
         return serviceTroca.listarTroca();
     }
 

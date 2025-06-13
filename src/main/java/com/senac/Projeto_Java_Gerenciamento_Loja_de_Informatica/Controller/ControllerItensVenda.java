@@ -53,7 +53,11 @@ public class ControllerItensVenda {
 
     @GetMapping("/buscarProduto")
     @ResponseBody
-    public ResponseEntity<?> buscarProduto(@RequestParam("id") Integer id) {
+    public ResponseEntity<?> buscarProduto(@RequestParam("id") Integer id, HttpServletRequest request) {
+    String sessaoValidada = ValidarSessao.validarSessao(request, "registrarVenda", "redirect:/");
+    if (sessaoValidada.equalsIgnoreCase("redirect:/")) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Sessão inválida");
+    }
         if (id == null || id <= 0) {
             return ResponseEntity.badRequest().body("ID inválido");
         }
@@ -65,13 +69,21 @@ public class ControllerItensVenda {
     }
 
     @GetMapping("/listarClientes")
-    public ResponseEntity<?> listarClientes() {
+    public ResponseEntity<?> listarClientes(HttpServletRequest request) {
+    String sessaoValidada = ValidarSessao.validarSessao(request, "registrarVenda", "redirect:/");
+    if (sessaoValidada.equalsIgnoreCase("redirect:/")) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Sessão inválida");
+    }
         List<Cliente> clientes = serviceCliente.listarCliente();
         return ResponseEntity.ok(clientes);
     }
 
     @GetMapping("/listarProdutos")
-    public ResponseEntity<?> listarProdutos() {
+    public ResponseEntity<?> listarProdutos(HttpServletRequest request) {
+    String sessaoValidada = ValidarSessao.validarSessao(request, "registrarVenda", "redirect:/");
+    if (sessaoValidada.equalsIgnoreCase("redirect:/")) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Sessão inválida");
+    }
         List<Produto> produtos = serviceProduto.listarProduto();
         return ResponseEntity.ok(produtos);
     }
